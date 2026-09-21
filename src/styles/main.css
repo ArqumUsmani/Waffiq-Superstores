@@ -1,0 +1,3973 @@
+/* ==================================================================
+   Wafiq Superstores — component styles
+
+   Brand tokens and the semantic light/dark layer live in tailwind.css.
+   Nothing here should introduce a new brand colour; everything reads
+   from the tokens so the dark theme is one declaration, not a rewrite.
+   ================================================================== */
+
+/* Cross-document morph from a product card into the product page.
+   Browsers without the API navigate normally — nothing to fall back to. */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(product-art),
+::view-transition-new(product-art) {
+  animation-duration: 0.45s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ------------------------------------------------------------------ *
+   Layout primitives
+ * ------------------------------------------------------------------ */
+
+.section {
+  padding-block: clamp(3.5rem, 8vw, 7rem);
+}
+
+.section--framed {
+  margin-inline: auto;
+  max-width: 1400px;
+  padding-inline: clamp(1rem, 3vw, 2rem);
+
+  > .section__frame {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-frame);
+    padding: clamp(1.5rem, 4vw, 3.5rem);
+    box-shadow: 0 1px 0 rgb(255 255 255 / 0.4) inset;
+  }
+}
+
+.section__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-block-end: clamp(1.5rem, 3vw, 2.75rem);
+
+  h2 {
+    font-size: clamp(1.65rem, 3.4vw, 2.75rem);
+    margin: 0;
+  }
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin: 0 0 0.75rem;
+
+  &::before {
+    content: '';
+    width: 1.75rem;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--color-lime);
+  }
+}
+
+.lede {
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  color: var(--fg-muted);
+  max-width: 62ch;
+}
+
+/* Fine grain, borrowed from print — keeps the big flat colour fields
+   from looking like plastic. One background image, reused. */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ------------------------------------------------------------------ *
+   Controls
+ * ------------------------------------------------------------------ */
+
+.btn {
+  --btn-bg: var(--color-green);
+  --btn-fg: #fff;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.6rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-out-expo);
+
+  svg {
+    width: 1.05em;
+    height: 1.05em;
+    transition: transform 0.4s var(--ease-out-expo);
+  }
+
+  /* Lime wipe that grows from where the pointer entered. */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--color-lime);
+    transform: scaleY(0);
+    transform-origin: bottom center;
+    transition: transform 0.45s var(--ease-out-expo);
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lift);
+    color: var(--color-green-ink);
+
+    &::before {
+      transform: scaleY(1);
+    }
+    svg {
+      transform: translateX(4px);
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn--solid {
+  background: var(--color-green);
+  color: #fff;
+
+  [data-theme='dark'] & {
+    background: var(--color-lime);
+    color: var(--color-green-ink);
+
+    &::before {
+      background: #fff;
+    }
+  }
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--fg);
+  border-color: var(--border-strong);
+
+  &:hover {
+    color: var(--color-green-ink);
+  }
+}
+
+.btn--light {
+  background: #fff;
+  color: var(--color-green-ink);
+}
+
+.btn--sm {
+  padding: 0.6rem 1.1rem;
+  font-size: 0.85rem;
+}
+
+.btn--pill {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.4;
+  background: color-mix(in oklab, var(--fg) 8%, transparent);
+  color: var(--fg-muted);
+}
+
+.pill--quiet {
+  border: 1px solid var(--border);
+  background: transparent;
+}
+
+.pill--lime {
+  background: var(--color-lime);
+  color: var(--color-green-ink);
+  font-weight: 600;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--fg);
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.3s var(--ease-spring), background 0.25s, color 0.25s,
+    border-color 0.25s;
+
+  &:hover {
+    transform: translateY(-2px) scale(1.02);
+    border-color: var(--border-strong);
+  }
+
+  &.is-active {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+  }
+}
+
+.chip__count {
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.65;
+}
+
+.chip--swatch::before {
+  content: '';
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 999px;
+  background: var(--swatch);
+}
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--fg);
+  cursor: pointer;
+  transition: transform 0.35s var(--ease-spring), background 0.25s, color 0.25s;
+
+  svg {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    background: var(--color-lime);
+    color: var(--color-green-ink);
+    border-color: transparent;
+  }
+}
+
+.icon-btn--sm {
+  width: 2.1rem;
+  height: 2.1rem;
+
+  svg {
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+}
+
+/* Sun / moon crossfade inside the theme button. */
+.icon-btn__swap {
+  display: grid;
+  place-items: center;
+
+  > svg {
+    grid-area: 1 / 1;
+    transition: opacity 0.35s, transform 0.45s var(--ease-spring);
+  }
+
+  .ico--moon {
+    opacity: 0;
+    transform: rotate(-70deg) scale(0.6);
+  }
+}
+
+[data-theme='dark'] .icon-btn__swap {
+  .ico--sun {
+    opacity: 0;
+    transform: rotate(70deg) scale(0.6);
+  }
+  .ico--moon {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Speaker on / speaker-off crossfade, same shape as the theme swap
+   above but keyed off the button's own .is-muted rather than the root
+   theme attribute. */
+.icon-btn__swap--sound .ico--sound-off {
+  opacity: 0;
+  transform: rotate(-20deg) scale(0.6);
+}
+
+.icon-btn.is-muted .icon-btn__swap--sound {
+  .ico--sound-on {
+    opacity: 0;
+    transform: rotate(20deg) scale(0.6);
+  }
+  .ico--sound-off {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.field {
+  display: grid;
+  gap: 0.35rem;
+
+  select,
+  input,
+  textarea {
+    padding: 0.75rem 1rem;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--fg);
+    transition: border-color 0.25s, box-shadow 0.25s;
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-lime);
+      box-shadow: 0 0 0 4px color-mix(in oklab, var(--color-lime) 30%, transparent);
+    }
+  }
+
+  textarea {
+    min-height: 9rem;
+    resize: vertical;
+  }
+}
+
+.field__label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.notice {
+  padding: 0.9rem 1.1rem;
+  border-radius: 14px;
+  border: 1px dashed var(--border-strong);
+  background: color-mix(in oklab, var(--color-lime) 12%, transparent);
+  color: var(--fg-muted);
+  font-size: 0.86rem;
+}
+
+.notice--warn {
+  border-style: solid;
+  background: color-mix(in oklab, #e0a33d 16%, transparent);
+}
+
+.sticker {
+  position: absolute;
+  inset-block-start: 0.9rem;
+  inset-inline-end: 0.9rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-lime);
+  color: var(--color-green-ink);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  rotate: -6deg;
+  box-shadow: var(--shadow-chip);
+}
+
+/* ------------------------------------------------------------------ *
+   Header
+ * ------------------------------------------------------------------ */
+
+.skip-link {
+  position: fixed;
+  inset-block-start: 0.5rem;
+  inset-inline-start: 0.5rem;
+  z-index: 200;
+  padding: 0.7rem 1.1rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-green);
+  color: #fff;
+  transform: translateY(-150%);
+  transition: transform 0.25s;
+
+  &:focus-visible {
+    transform: none;
+  }
+}
+
+.site-header {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 90;
+  transition: background 0.35s, box-shadow 0.35s, backdrop-filter 0.35s;
+
+  &.is-stuck {
+    background: color-mix(in oklab, var(--surface) 82%, transparent);
+    backdrop-filter: blur(14px) saturate(1.3);
+    box-shadow: 0 1px 0 var(--border);
+
+    .site-header__inner {
+      padding-block: 0.6rem;
+    }
+  }
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.15rem;
+  transition: padding 0.35s var(--ease-out-expo);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex: none;
+}
+
+.brand__badge {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 2.6rem;
+  padding: 0.45rem 0.55rem;
+  border-radius: 14px;
+  /* Always light: the monogram's deep green would vanish on a dark plate. */
+  background: #fff;
+  box-shadow: var(--shadow-chip);
+
+  svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.brand__text {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.brand__name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.brand__sub {
+  font-size: 0.6rem;
+  line-height: 1;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.site-nav {
+  display: none;
+  gap: 0.25rem;
+  padding: 0.3rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--surface) 70%, transparent);
+  backdrop-filter: blur(10px);
+
+  @media (min-width: 1024px) {
+    display: flex;
+  }
+}
+
+.site-nav__link {
+  position: relative;
+  padding: 0.55rem 1.05rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--fg-muted);
+  transition: color 0.25s;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset-block-end: 0.35rem;
+    inset-inline: 1.05rem;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--color-lime);
+    transform: scaleX(0);
+    transform-origin: inherit;
+    transition: transform 0.35s var(--ease-out-expo);
+  }
+
+  &:hover {
+    color: var(--fg);
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &.is-current {
+    color: var(--fg);
+    background: color-mix(in oklab, var(--color-lime) 26%, transparent);
+  }
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--fg-muted);
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: border-color 0.25s, color 0.25s, transform 0.3s var(--ease-spring);
+
+  svg {
+    width: 1.05rem;
+    height: 1.05rem;
+    flex: none;
+  }
+
+  &:hover {
+    color: var(--fg);
+    border-color: var(--border-strong);
+    transform: translateY(-1px);
+  }
+}
+
+.search-trigger__label,
+.search-trigger__kbd {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .search-trigger {
+    width: auto;
+    padding-inline: 1rem 0.7rem;
+  }
+
+  .search-trigger__label,
+  .search-trigger__kbd {
+    display: inline-block;
+  }
+}
+
+.search-trigger__kbd,
+kbd {
+  padding: 0.18rem 0.45rem;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  font-size: 0.7rem;
+  font-family: inherit;
+  color: var(--fg-faint);
+}
+
+.lang-toggle {
+  height: 2.75rem;
+  padding-inline: 0.95rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--fg);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, transform 0.3s var(--ease-spring);
+
+  &:hover {
+    background: var(--color-lime);
+    color: var(--color-green-ink);
+    transform: translateY(-2px);
+  }
+}
+
+.icon-btn--menu {
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+.scroll-progress {
+  height: 2px;
+  background: transparent;
+
+  span {
+    display: block;
+    height: 100%;
+    background: var(--color-lime);
+    transform-origin: left center;
+    transform: scaleX(0);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+   Drawer
+ * ------------------------------------------------------------------ */
+
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+}
+
+.drawer__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgb(10 20 14 / 0.55);
+  backdrop-filter: blur(6px);
+  animation: fade-in 0.3s both;
+}
+
+.drawer__panel {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: 0;
+  width: min(22rem, 88vw);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: var(--surface);
+  border-start-start-radius: var(--radius-frame);
+  border-end-start-radius: var(--radius-frame);
+  animation: drawer-in 0.45s var(--ease-out-expo) both;
+}
+
+.drawer__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drawer__nav {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.drawer__link {
+  padding: 0.9rem 1rem;
+  border-radius: 16px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  animation: drawer-link 0.5s var(--ease-out-expo) both;
+  animation-delay: calc(var(--i) * 60ms + 120ms);
+
+  &:hover,
+  &.is-current {
+    background: color-mix(in oklab, var(--color-lime) 24%, transparent);
+  }
+}
+
+.drawer__note {
+  margin-block-start: auto;
+  font-size: 0.78rem;
+  color: var(--fg-faint);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes drawer-in {
+  from {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes drawer-link {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+   Hero
+ * ------------------------------------------------------------------ */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  background: var(--hero-bg);
+  color: #fff;
+  padding-block: clamp(7rem, 14vw, 10rem) clamp(3rem, 8vw, 6rem);
+  border-end-start-radius: var(--radius-frame);
+  border-end-end-radius: var(--radius-frame);
+
+  /* Soft lime bloom behind the wordmark. */
+  &::before {
+    content: '';
+    position: absolute;
+    inset-block-start: -30%;
+    inset-inline-start: 50%;
+    translate: -50% 0;
+    width: min(1100px, 120vw);
+    aspect-ratio: 1;
+    background: radial-gradient(
+      circle,
+      color-mix(in oklab, var(--color-lime) 34%, transparent) 0%,
+      transparent 62%
+    );
+    z-index: -1;
+  }
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--radius-pill);
+  background: rgb(255 255 255 / 0.12);
+  border: 1px solid rgb(255 255 255 / 0.18);
+  font-size: 0.82rem;
+  backdrop-filter: blur(6px);
+  /* Floating chip: a shadow of its own rather than sitting flush on the
+     hero, plus room for hero-cluster.js's cursor-follow translate —
+     see floatBadge() there. Idle otherwise: it only moves when the
+     pointer does. */
+  box-shadow: 0 16px 30px -10px rgb(4 20 12 / 0.45);
+  will-change: transform;
+
+  &::before {
+    content: '✦';
+    color: var(--color-lime);
+  }
+}
+
+.hero__stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: clamp(15rem, 40vw, 32rem);
+  margin-block: clamp(1rem, 3vw, 2.5rem);
+}
+
+.hero__display {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  font-size: clamp(3.5rem, 23vw, 17rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.85;
+  color: var(--color-lime);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.split-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.split-char {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* The logo's S-curve, reused as a hand-drawn underline beneath the
+   wordmark rather than a mark floating on its own. */
+.hero__swoosh {
+  position: absolute;
+  inset-block-end: 14%;
+  inset-inline-start: 66%;
+  z-index: 5;
+  width: clamp(5rem, 13vw, 11rem);
+  color: var(--color-lime-bright);
+  opacity: 0.8;
+  pointer-events: none;
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.hero-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-layer--back {
+  z-index: 1;
+}
+.hero-layer--front {
+  z-index: 4;
+}
+
+.hero-piece {
+  position: absolute;
+  inset-block-start: var(--y);
+  inset-inline-start: var(--x);
+  width: var(--size);
+  height: var(--size);
+  margin-inline-start: calc(var(--size) / -2);
+  margin-block-start: calc(var(--size) / -2);
+  transform: translate3d(calc(var(--px, 0) * 1px), calc(var(--py, 0) * 1px), 0);
+  will-change: transform;
+
+  /* Base tilt sits on the child so GSAP owns the parent's transform
+     without the two writing the same property. */
+  > .hero-piece__art > * {
+    width: 100%;
+    height: auto;
+    rotate: var(--spin);
+    filter: drop-shadow(0 22px 30px rgb(4 30 16 / 0.4));
+  }
+}
+
+.hero-piece__art {
+  display: block;
+  width: 100%;
+  will-change: transform;
+}
+
+@media (max-width: 767px) {
+  /* Nine floating objects is noise at phone width, and the low ones land
+     on the paragraph below. Keep only the three marked for small screens. */
+  .hero-piece {
+    display: none;
+  }
+  .hero-piece[data-small] {
+    display: block;
+    --size: 86px !important;
+  }
+}
+
+.hero__lower {
+  display: grid;
+  gap: 2rem;
+  align-items: end;
+
+  @media (min-width: 900px) {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+  }
+}
+
+.hero__sub {
+  max-width: 46ch;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  color: rgb(255 255 255 / 0.82);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-block-start: 1.5rem;
+}
+
+.hero__aside {
+  position: relative;
+  min-height: 8rem;
+}
+
+.hero__connector {
+  position: absolute;
+  inset-block-start: -3rem;
+  inset-inline-start: -30%;
+  width: 70%;
+  color: var(--color-lime);
+  opacity: 0.75;
+  pointer-events: none;
+
+  path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+  }
+
+  @media (max-width: 899px) {
+    display: none;
+  }
+}
+
+.hero__card {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.1rem 1.3rem;
+  border-radius: 20px;
+  background: var(--surface);
+  color: var(--fg);
+  box-shadow: var(--shadow-lift);
+
+  strong {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  a {
+    font-size: 0.85rem;
+    color: var(--color-green);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    [data-theme='dark'] & {
+      color: var(--color-lime);
+    }
+  }
+
+  svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    color: var(--color-green);
+  }
+}
+
+.hero__scroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-block-start: 2.5rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.6);
+
+  &::after {
+    content: '';
+    width: 2.5rem;
+    height: 1px;
+    background: currentColor;
+    animation: scroll-hint 1.8s var(--ease-in-out-quart) infinite;
+    transform-origin: left center;
+  }
+}
+
+@keyframes scroll-hint {
+  0%,
+  100% {
+    transform: scaleX(0.4);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+   Hero storefront — the real shopfront render, floating beneath the
+   wordmark scene on a ghost repeat of it, a lime spotlight and a
+   contact shadow, tilting toward the pointer. See hero-storefront.js.
+ * ------------------------------------------------------------------ */
+
+.hero-storefront {
+  position: relative;
+  margin-block-start: clamp(4rem, 9vw, 7rem);
+  padding-block: clamp(2rem, 6vw, 4rem);
+  display: grid;
+  place-items: center;
+}
+
+.hero-storefront__ghost {
+  position: absolute;
+  inset-block-start: -0.35em;
+  inset-inline-start: 50%;
+  translate: -50% 0;
+  z-index: 0;
+  margin: 0;
+  font-size: clamp(3rem, 16vw, 11rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgb(255 255 255 / 0.1);
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-storefront__stage {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 74rem);
+  perspective: 1600px;
+
+  &::before {
+    /* Lime spotlight. */
+    content: '';
+    position: absolute;
+    inset: -18% -6%;
+    z-index: -1;
+    background: radial-gradient(
+      ellipse 60% 55% at 50% 42%,
+      color-mix(in oklab, var(--color-lime) 30%, transparent) 0%,
+      transparent 68%
+    );
+    pointer-events: none;
+  }
+}
+
+.hero-storefront__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translate3d(var(--tilt-tx, 0px), 0, 0);
+  will-change: transform;
+  filter: drop-shadow(0 30px 45px rgb(3 16 9 / 0.55));
+  /* Fades the bottom edge into the hero rather than ending on a hard line. */
+  mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
+}
+
+.hero-storefront__shadow {
+  position: absolute;
+  inset-block-end: 6%;
+  inset-inline-start: 50%;
+  translate: -50% 0;
+  width: 62%;
+  height: clamp(1.5rem, 4vw, 2.75rem);
+  background: radial-gradient(ellipse closest-side, rgb(3 16 9 / 0.55), transparent 75%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.hero-storefront__cards {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
+  }
+}
+
+.hero-storefront__card {
+  position: absolute;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.85rem 1.15rem;
+  border-radius: 16px;
+  background: rgb(255 255 255 / 0.12);
+  border: 1px solid rgb(255 255 255 / 0.18);
+  backdrop-filter: blur(10px) saturate(1.2);
+  box-shadow: 0 16px 30px -10px rgb(4 20 12 / 0.45);
+  pointer-events: auto;
+  color: #fff;
+  text-decoration: none;
+  animation: hero-card-bob 5s ease-in-out infinite;
+
+  strong {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-lime);
+  }
+
+  span {
+    font-size: 0.78rem;
+    color: rgb(255 255 255 / 0.75);
+    white-space: nowrap;
+  }
+
+  &:nth-child(1) {
+    inset-block-start: 6%;
+    inset-inline-start: -2%;
+    animation-delay: 0s;
+  }
+  &:nth-child(2) {
+    inset-block-start: 2%;
+    inset-inline-end: -3%;
+    animation-delay: -1.6s;
+  }
+  &:nth-child(3) {
+    inset-block-end: 10%;
+    inset-inline-start: -4%;
+    animation-delay: -3.1s;
+  }
+  &:nth-child(4) {
+    inset-block-end: 4%;
+    inset-inline-end: -1%;
+    animation-delay: -0.8s;
+  }
+}
+
+@keyframes hero-card-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+   Hero gate — the real storefront. Scroll pins the panel while the
+   photo zooms in and the closed-door render crossfades to the open one,
+   so the zoom itself reads as the doors swinging open. See hero-gate.js.
+ * ------------------------------------------------------------------ */
+
+.hero-gate {
+  position: relative;
+  padding-block: clamp(3rem, 7vw, 5rem);
+}
+
+.hero-gate__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-block-end: 1.25rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+
+  &::before {
+    content: '';
+    width: 1.75rem;
+    height: 1px;
+    background: var(--color-green);
+
+    [data-theme='dark'] & {
+      background: var(--color-lime);
+    }
+  }
+}
+
+.hero-gate__frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-frame);
+  box-shadow: var(--shadow-lift);
+  aspect-ratio: 2752 / 1536;
+  background: var(--surface-2);
+}
+
+.hero-gate__zoom {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 42%;
+  will-change: transform;
+}
+
+.hero-gate__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-gate__img--open {
+  opacity: 0;
+}
+
+.hero-gate__caption {
+  position: absolute;
+  inset-inline-start: clamp(1.1rem, 3vw, 2rem);
+  inset-block-end: clamp(1.1rem, 3vw, 2rem);
+  max-width: min(26rem, 80%);
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.85rem 1.2rem;
+  border-radius: 16px;
+  background: rgb(10 20 14 / 0.55);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  opacity: 0;
+
+  strong {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  span {
+    font-size: 0.85rem;
+    color: rgb(255 255 255 / 0.78);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-gate__frame {
+    border-radius: 20px;
+  }
+
+  .hero-gate__caption {
+    padding: 0.7rem 1rem;
+
+    strong {
+      font-size: 0.9rem;
+    }
+
+    span {
+      font-size: 0.78rem;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ *
+   Marquee
+ * ------------------------------------------------------------------ */
+
+.marquee-band {
+  padding-block: clamp(1.75rem, 4vw, 3rem);
+  overflow-x: hidden;
+}
+
+.marquee {
+  /* Horizontal clipping only — marquee.js curves each item's Y position
+     into a shallow arc as it crosses the ribbon (see curve() there), and
+     an overflow:hidden box would have guillotined that arc at the top.
+     The edge mask below is unaffected: it fades painted pixels, it does
+     not depend on the box clipping them. */
+  overflow-x: hidden;
+  overflow-y: visible;
+  /* Headroom for the arc: the peak lifts above rest, the ends droop
+     below it, both need room the flat ribbon never used. */
+  padding-block: 3rem;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+
+  &.is-static {
+    overflow-x: auto;
+    padding-block: 0;
+    mask-image: none;
+  }
+}
+
+.marquee__track {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 3vw, 2.75rem);
+  width: max-content;
+  will-change: transform;
+}
+
+.marquee__item {
+  display: grid;
+  place-items: end center;
+  flex: none;
+  /* transform is curve()'s exclusive target — see marquee.js. Untouched
+     (no transform at all) under .is-static, where the ribbon is a plain
+     scrollable list. */
+  will-change: transform;
+}
+
+.brand-mark {
+  display: block;
+  height: clamp(4rem, 7vw, 5.75rem);
+  width: auto;
+  filter: drop-shadow(0 10px 14px rgb(20 40 28 / 0.16));
+  transition: transform 0.45s var(--ease-spring);
+}
+
+.marquee__item:hover .brand-mark {
+  transform: translateY(-6px);
+}
+
+[data-theme='dark'] .brand-mark {
+  filter: drop-shadow(0 10px 14px rgb(0 0 0 / 0.5)) saturate(0.9) brightness(0.92);
+}
+
+/* ------------------------------------------------------------------ *
+   Aisle rail
+ * ------------------------------------------------------------------ */
+
+.aisle-rail {
+  position: relative;
+  isolation: isolate;
+  background: color-mix(in oklab, var(--rail-pastel, var(--surface-2)) 48%, var(--bg));
+  transition: background 0.7s var(--ease-out-expo);
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+  overflow: hidden;
+}
+
+.aisle-rail__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-block-end: clamp(1.5rem, 3vw, 2.5rem);
+
+  h2 {
+    font-size: clamp(1.7rem, 4vw, 3.2rem);
+    margin: 0;
+  }
+}
+
+.aisle-rail__track {
+  display: flex;
+  gap: clamp(1rem, 2vw, 2rem);
+  will-change: transform;
+}
+
+.aisle-rail[data-mode='pinned'] {
+  /* Fills the viewport while pinned, so the screen is the scene rather
+     than the scene plus a strip of whatever comes next. A hard cap, not
+     a floor: while pinned, the section cannot itself be scrolled to
+     reveal anything that didn't fit — content taller than the viewport
+     is simply gone for the whole pin, dots included. */
+  height: 100vh;
+  display: grid;
+  align-content: center;
+  padding-block: clamp(5rem, 9vw, 7rem) clamp(2rem, 4vw, 3rem);
+
+  .aisle-rail__track {
+    padding-inline-end: 25vw;
+  }
+  .aisle {
+    flex: 0 0 min(70vw, 940px);
+    /* max-height, not height: a card whose real content (title, blurb,
+       all 4 shelves, button, count) needs less than this just shrinks
+       to fit, no wasted space — only a card that would need *more* than
+       the viewport has room for gets capped, and clipped by the
+       overflow rule below rather than pushed taller than the fixed
+       100vh pin above has room for. Sized generously past the tallest
+       real card (four full-length shelf names, some wrapping to two
+       lines, on "Home & Kitchen Essentials") at everyday laptop
+       heights — see .aisle__stage for why it can't just be height:100%
+       of this. */
+    max-height: min(68vh, calc(100vh - 13rem), 620px);
+  }
+  .aisle__stage {
+    /* Independent of the card's own height, which is only a *max* now
+       (see above) and so isn't definite — a percentage here couldn't
+       resolve against it anyway: percentage heights on a grid item only
+       resolve against a *definite* row size, and a max-height'd auto
+       row never becomes one. Sized directly off the viewport instead,
+       with the same headroom as .aisle above minus this card's own
+       padding (5rem more subtracted). */
+    height: min(68vh, calc(100vh - 18rem), 620px);
+    width: auto;
+    justify-self: center;
+  }
+}
+
+/* No scroll inside a card, by request — the text column's own content
+   can still be taller than a *very* short viewport has room for even
+   with the card above capped. Rather than spilling past the card's
+   rounded edge uncontained (the original bug this rule exists to fix),
+   it's clipped there instead. Everyday laptop heights never reach this;
+   only an unusually short window does. */
+.aisle {
+  overflow: hidden;
+}
+
+.aisle-rail[data-mode='carousel'] {
+  .aisle-rail__track {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-inline: 0.25rem;
+    padding-block-end: 0.75rem;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .aisle {
+    flex: 0 0 min(86vw, 620px);
+    scroll-snap-align: center;
+  }
+}
+
+.aisle {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  border-radius: var(--radius-frame);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  opacity: 0.55;
+  scale: 0.95;
+  transition: opacity 0.5s var(--ease-out-expo), scale 0.5s var(--ease-out-expo),
+    box-shadow 0.5s;
+
+  @media (min-width: 768px) {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  }
+
+  &.is-active {
+    opacity: 1;
+    scale: 1;
+    box-shadow: var(--shadow-bloom);
+  }
+}
+
+.aisle__stage {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border-radius: var(--radius-card);
+  background: linear-gradient(
+    150deg,
+    color-mix(in oklab, var(--pastel) 88%, #fff),
+    var(--pastel)
+  );
+}
+
+.aisle__index {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+}
+
+.aisle__name {
+  font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+  margin: 0 0 0.6rem;
+}
+
+.aisle__blurb {
+  color: var(--fg-muted);
+  margin: 0 0 1.1rem;
+}
+
+.aisle__shelves {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 1.4rem;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-pill);
+    background: color-mix(in oklab, var(--pastel) 62%, transparent);
+    color: var(--fg);
+    font-size: 0.78rem;
+  }
+}
+
+.aisle__footer {
+  /* No visual effect until .aisle__body actually needs to scroll — a
+     card that fits (every normal viewport) renders this exactly as if
+     it were flat, unstyled markup. It only engages on a genuinely short
+     viewport, where .aisle__body scrolls internally rather than
+     spilling past the card: without this, the "Open aisle" button and
+     count could scroll out of reach with nothing visible telling the
+     visitor to look for them. */
+  position: sticky;
+  inset-block-end: 0;
+  background: var(--surface);
+  padding-block-end: 0.25rem;
+}
+
+.aisle__count {
+  margin: 1rem 0 0;
+  font-size: 0.82rem;
+  color: var(--fg-muted);
+
+  strong {
+    color: var(--fg);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.aisle-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-block-start: clamp(1.25rem, 3vw, 2rem);
+}
+
+.aisle-dot {
+  width: 0.65rem;
+  height: 0.65rem;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--fg) 22%, transparent);
+  cursor: pointer;
+  transition: width 0.4s var(--ease-spring), background 0.3s;
+
+  &.is-active {
+    width: 2rem;
+    background: var(--accent);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+   Category cards
+ * ------------------------------------------------------------------ */
+
+.category-grid {
+  display: grid;
+  gap: clamp(0.9rem, 2vw, 1.5rem);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+}
+
+.category-card {
+  position: relative;
+  display: grid;
+  gap: 0.9rem;
+  padding: 1.25rem;
+  border-radius: var(--radius-frame);
+  background: linear-gradient(155deg, color-mix(in oklab, var(--pastel) 78%, #fff), var(--pastel));
+  color: var(--color-ink);
+  /* No overflow:hidden here — a scene card's produce needs to visibly
+     rise past this box. The glow below is the one child that actually
+     needs clipping to the rounded corners; it gets its own mask instead
+     of clipping the whole card. */
+  isolation: isolate;
+  transform-style: preserve-3d;
+  perspective: 900px;
+  transition: transform 0.6s var(--ease-spring), box-shadow 0.5s var(--ease-out-expo);
+
+  &.is-tilting {
+    transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg))
+      translateZ(6px);
+    box-shadow: var(--shadow-bloom);
+  }
+
+  [data-theme='dark'] & {
+    color: var(--color-green-ink);
+  }
+}
+
+.category-card__mask {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.category-card__glow {
+  position: absolute;
+  inset: -30%;
+  z-index: 0;
+  background: radial-gradient(
+    circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    color-mix(in oklab, var(--color-lime) 55%, transparent),
+    transparent 46%
+  );
+  opacity: 0;
+  transition: opacity 0.4s;
+
+  .category-card.is-tilting & {
+    opacity: 1;
+  }
+}
+
+.category-card__stage {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  transform: translateZ(40px);
+}
+
+.category-card__body {
+  position: relative;
+  z-index: 1;
+  /* Keeps long aisle names clear of the arrow button in the corner. */
+  padding-inline-end: 3.25rem;
+  transform: translateZ(18px);
+}
+
+.category-card__name {
+  font-size: 1.1rem;
+  margin: 0 0 0.3rem;
+}
+
+.category-card__meta {
+  display: flex;
+  gap: 0.4rem;
+  margin: 0;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.category-card__go {
+  position: absolute;
+  inset-block-end: 1.25rem;
+  inset-inline-end: 1.25rem;
+  z-index: 2;
+  background: rgb(255 255 255 / 0.7);
+  border-color: transparent;
+  transform: translateZ(30px);
+}
+
+/* ------------------------------------------------------------------ *
+   Lottie icon
+ * ------------------------------------------------------------------ */
+
+.category-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+
+  > * {
+    grid-area: 1 / 1;
+    width: 100%;
+    height: 100%;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 14px 18px rgb(20 40 28 / 0.18));
+  }
+}
+
+/* Real 3D renders are wider than they are tall and carry their own
+   lighting, so they get a contain fit and a softer ground shadow. */
+.category-icon__render {
+  width: 116%;
+  height: 116%;
+  margin: -8%;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 20px rgb(20 40 28 / 0.22));
+  transform-origin: 50% 85%;
+  /* No bounce, no settle — just eases toward the hover position and
+     back to rest the moment the pointer leaves, on the same curve both
+     ways. (hover) and (pointer:fine) keeps this off touch, where a tap
+     can otherwise leave :hover stuck on. */
+  transition: transform 0.45s var(--ease-spring);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .category-card:hover .category-icon__render,
+  .category-card:focus-visible .category-icon__render,
+  .aisle:hover .category-icon__render,
+  .aisle:focus-within .category-icon__render {
+    transform: translateY(-6%) scale(1.05);
+  }
+}
+
+.category-icon__poster {
+  transition: opacity 0.4s;
+}
+
+.category-icon.is-ready .category-icon__poster {
+  opacity: 0;
+}
+
+.category-icon__stage {
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.category-icon.is-ready .category-icon__stage {
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------------ *
+   Basket scene — the interactive crate (Fruits & Vegetables).
+
+   Layer order, back to front: ground shadow (0) → tilt group (1),
+   holding crate back (10) → items at rest (20+) → crate front lip (50)
+   → items once lifted past the lip, and any piece the manifest marks
+   `front`, at 60+. See basket-scene.js.
+
+   The ground shadow sits *outside* the tilt group on purpose: the crate
+   turns and rises above a shadow that stays put on the floor, which is
+   what sells the float.
+ * ------------------------------------------------------------------ */
+
+.basket-scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* perspective on the stage, not on any one item, so several items
+     rising at once still read as one consistent little scene. */
+  perspective: 900px;
+}
+
+.basket-scene__shadow {
+  position: absolute;
+  z-index: 0;
+  inset-inline: 13%;
+  inset-block-end: 1%;
+  height: 10%;
+  border-radius: 999px;
+  /* Detached and soft rather than a tight contact shadow — the gap
+     between crate and shadow is the whole floating cue. */
+  background: radial-gradient(ellipse at center, rgb(20 30 15 / 0.3), transparent 72%);
+  filter: blur(5px);
+  transform-origin: 50% 50%;
+  transition: transform 0.6s var(--ease-spring), opacity 0.5s var(--ease-out-expo);
+}
+
+.basket-scene__tilt {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* Deliberately flat, not preserve-3d: the scene should turn as one
+     card. Preserving 3D would put the crate back and the clip-path lip —
+     coplanar by design, since they are the same image — into the same
+     space to z-fight as the plane rotates.
+
+     The scale is on the group rather than on the container box, so the
+     crate art and the item coordinates in scene.json — which are tuned
+     against that box — grow together and stay registered. */
+  transform: translateY(-4%) scale(1.14);
+  transform-origin: 50% 88%;
+  transition: transform 0.7s var(--ease-spring);
+  will-change: transform;
+}
+
+/* Hover/focus only — the class is set by enter() and never under
+   prefers-reduced-motion, so idle stays completely still. */
+.basket-scene.is-lifted .basket-scene__tilt {
+  transform: translateY(-8%) rotateY(-9deg) rotateX(4deg) scale(1.16);
+}
+
+.basket-scene.is-lifted .basket-scene__shadow {
+  /* Wider and fainter as the crate pulls away from the floor. */
+  transform: scale(1.15, 0.82);
+  opacity: 0.65;
+}
+
+.basket-scene__container {
+  position: absolute;
+  inset: 6%;
+  width: 88%;
+  height: 88%;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.basket-scene__container--back {
+  z-index: 10;
+}
+
+.basket-scene__container--lip {
+  z-index: 50;
+  /* clip-path comes from scene.json's frontClip, set inline per scene */
+}
+
+.basket-scene__items {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+}
+
+.basket-item {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  aspect-ratio: 1;
+  /* Static placement + the item's fixed rest tilt live here, on the
+     element GSAP never touches — see the comment in basket-scene.js on
+     why this is split from .basket-item__lift. */
+  transform: translate(-50%, -100%) rotate(var(--rest-rotate));
+  transform-origin: 50% 100%;
+
+  &.is-in-front {
+    z-index: 60;
+  }
+}
+
+.basket-item__shadow {
+  position: absolute;
+  inset-inline: 12%;
+  inset-block-end: -6%;
+  height: 22%;
+  border-radius: 999px;
+  background: radial-gradient(ellipse at center, rgb(20 30 15 / 0.4), transparent 75%);
+  opacity: 0.35;
+  transform-origin: 50% 50%;
+}
+
+.basket-item__lift {
+  /* Load-bearing: a <span> defaults to display:inline, and CSS transform
+     has no effect at all on a non-replaced inline box — width/height are
+     equally ignored. Every property below silently did nothing until
+     this line was added. */
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 100%;
+  will-change: transform;
+}
+
+.basket-item__art {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 10px rgb(20 40 28 / 0.22));
+}
+
+/* ------------------------------------------------------------------ *
+   Fly-out-and-grow launch overlay — a body-level layer, since the
+   chosen item has to leave its card's box and its 3D tilt transform
+   entirely to travel to the centre of the screen.
+ * ------------------------------------------------------------------ */
+
+.scene-launch {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.scene-launch__item {
+  position: fixed;
+  z-index: 2;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 30px rgb(20 40 28 / 0.35));
+  will-change: transform;
+}
+
+.scene-launch__flood {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: var(--flood-color, var(--color-lime));
+  --flood-scale: 0;
+  /* GSAP tweens --flood-scale 0 -> 1; the circle grows from the item's
+     own screen position out past the viewport's furthest corner. */
+  clip-path: circle(calc(var(--flood-scale) * 150%) at var(--flood-x, 50%) var(--flood-y, 50%));
+}
+
+/* ------------------------------------------------------------------ *
+   Product cards
+ * ------------------------------------------------------------------ */
+
+.product-grid {
+  display: grid;
+  gap: clamp(0.75rem, 1.6vw, 1.25rem);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
+}
+
+.product-rail {
+  display: grid;
+  gap: clamp(0.75rem, 1.6vw, 1.25rem);
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(15rem, 1fr);
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding-block-end: 0.75rem;
+  scrollbar-width: thin;
+
+  > * {
+    scroll-snap-align: start;
+  }
+
+  @media (min-width: 1280px) {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    overflow: visible;
+  }
+}
+
+.product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 0.85rem;
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: transform 0.45s var(--ease-spring), box-shadow 0.45s var(--ease-out-expo),
+    opacity 0.35s, border-color 0.3s;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lift);
+    border-color: transparent;
+    z-index: 2;
+  }
+
+  /* The reference treatment: hovering one card recedes its neighbours. */
+  .product-rail.is-focused &:not(:hover) {
+    opacity: 0.55;
+  }
+}
+
+.product-card__art {
+  position: relative;
+  display: block;
+  aspect-ratio: 1;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--surface-2);
+
+  .tile {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.product-card__flag {
+  position: absolute;
+  inset-block-start: 0.5rem;
+  inset-inline-start: 0.5rem;
+  display: grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 999px;
+  background: var(--color-lime);
+  color: var(--color-green-ink);
+  font-size: 0.75rem;
+}
+
+.product-card__body {
+  display: grid;
+  gap: 0.15rem;
+  flex: 1;
+}
+
+.product-card__brand {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent, var(--fg-muted));
+}
+
+.product-card__name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.product-card__alt {
+  font-family: var(--font-urdu);
+  font-size: 0.85rem;
+  line-height: 2;
+  color: var(--fg-muted);
+}
+
+.product-card__shelf {
+  margin-block-start: 0.25rem;
+  font-size: 0.72rem;
+  color: var(--fg-faint);
+}
+
+.product-card__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+/* Product artwork — a real photo or a generated tile, both plain PNGs
+   by the time they reach the browser (see product-tile.js). */
+.tile {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+[data-theme='dark'] .product-card__art {
+  filter: saturate(0.82) brightness(0.86);
+}
+
+/* ------------------------------------------------------------------ *
+   Sections: statement, stats
+ * ------------------------------------------------------------------ */
+
+.statement {
+  font-size: clamp(1.6rem, 4.6vw, 3.6rem);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  max-width: 20ch;
+  margin: 0;
+}
+
+/* Rounded photo chip sitting inside the headline, as a word would. */
+.text-chip {
+  display: inline-grid;
+  place-items: center;
+  vertical-align: middle;
+  width: clamp(3.5rem, 8vw, 6.5rem);
+  aspect-ratio: 5 / 3;
+  margin-inline: 0.2em;
+  border-radius: var(--radius-pill);
+  background: var(--chip-bg, var(--surface-2));
+  overflow: hidden;
+  rotate: var(--chip-rotate, -2deg);
+  box-shadow: var(--shadow-chip);
+  transition: rotate 0.5s var(--ease-spring), scale 0.5s var(--ease-spring);
+
+  svg {
+    width: 78%;
+    height: 78%;
+  }
+
+  &:hover {
+    rotate: 2deg;
+    scale: 1.06;
+  }
+}
+
+.stat-grid {
+  display: grid;
+  gap: clamp(0.75rem, 1.6vw, 1.25rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  margin-block-start: clamp(2rem, 4vw, 3rem);
+}
+
+.stat {
+  padding: 1.4rem;
+  border-radius: var(--radius-card);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+
+  strong {
+    display: block;
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-green);
+
+    [data-theme='dark'] & {
+      color: var(--color-lime);
+    }
+  }
+
+  span {
+    display: block;
+    margin-block-start: 0.4rem;
+    font-size: 0.84rem;
+    color: var(--fg-muted);
+  }
+}
+
+.shelf-rule {
+  display: block;
+  flex: 1;
+  min-width: 2rem;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-lime), transparent);
+}
+
+/* ------------------------------------------------------------------ *
+   Promo band (three colour cards, per the references)
+ * ------------------------------------------------------------------ */
+
+.promo-grid {
+  display: grid;
+  gap: clamp(0.75rem, 1.6vw, 1.25rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+}
+
+.promo {
+  position: relative;
+  display: grid;
+  gap: 0.6rem;
+  align-content: start;
+  padding: 1.6rem;
+  border-radius: var(--radius-frame);
+  background: var(--promo-bg);
+  color: var(--promo-fg, var(--color-ink));
+  min-height: 13rem;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.5s var(--ease-spring);
+
+  h3 {
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.88rem;
+    opacity: 0.78;
+    max-width: 30ch;
+  }
+
+  .icon-btn {
+    margin-block-start: auto;
+    justify-self: start;
+    background: var(--color-ink);
+    color: #fff;
+    border-color: transparent;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+   Category / search pages
+ * ------------------------------------------------------------------ */
+
+.aisle-head {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border-radius: var(--radius-frame);
+  background: linear-gradient(150deg, color-mix(in oklab, var(--pastel) 80%, #fff), var(--pastel));
+  color: var(--color-ink);
+
+  @media (min-width: 860px) {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr);
+  }
+}
+
+.aisle-head__title {
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  margin: 0 0 0.6rem;
+}
+
+.aisle-head__blurb {
+  max-width: 48ch;
+  margin: 0 0 1.2rem;
+  opacity: 0.75;
+}
+
+.aisle-head__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+
+  .pill {
+    border-color: rgb(35 35 35 / 0.18);
+    color: inherit;
+  }
+}
+
+.aisle-head__stage {
+  display: grid;
+  place-items: center;
+}
+
+/* The arrival state: a basket-scene fly-out chose an item, and this is
+   its landing spot instead of the plain interactive icon. */
+.aisle-head__stage--hero {
+  position: relative;
+  isolation: isolate;
+}
+
+.aisle-head__hero-wash {
+  position: absolute;
+  inset: -20%;
+  z-index: 0;
+  border-radius: 999px;
+  background: radial-gradient(circle, var(--pastel), transparent 72%);
+}
+
+.aisle-head__hero-img {
+  position: relative;
+  z-index: 1;
+  width: 78%;
+  max-width: 220px;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 26px rgb(20 40 28 / 0.28));
+}
+
+.shelf-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-block: clamp(1.5rem, 3vw, 2.5rem) 1.25rem;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: end;
+  margin-block-end: 1.5rem;
+}
+
+.results-summary {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-block-end: 1.25rem;
+  font-size: 0.88rem;
+  color: var(--fg-muted);
+
+  strong {
+    color: var(--fg);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.results__shelf {
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-pill);
+  background: color-mix(in oklab, var(--pastel, var(--surface-2)) 60%, transparent);
+  color: var(--fg);
+}
+
+.shelf-index {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.75rem);
+  margin-block-start: clamp(2.5rem, 5vw, 4rem);
+}
+
+.shelf-index__group {
+  padding: 1.25rem clamp(1rem, 2vw, 1.75rem);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  border-inline-start: 4px solid var(--accent);
+  background: var(--surface);
+}
+
+.shelf-index__head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  margin-block-end: 0.75rem;
+
+  h3 {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+}
+
+.shelf-index__num {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+}
+
+.shelf-index__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  a {
+    display: inline-block;
+    padding: 0.35rem 0.8rem;
+    border-radius: var(--radius-pill);
+    background: color-mix(in oklab, var(--pastel) 55%, transparent);
+    color: var(--color-ink);
+    font-size: 0.8rem;
+    transition: transform 0.3s var(--ease-spring);
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.empty-state {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+  padding-block: clamp(3rem, 8vw, 6rem);
+
+  h1,
+  h2 {
+    margin: 0;
+  }
+  p {
+    margin: 0;
+    color: var(--fg-muted);
+  }
+  .btn {
+    margin-block-start: 0.75rem;
+  }
+}
+
+.empty-state--inline {
+  padding: 2.5rem;
+  border-radius: var(--radius-card);
+  border: 1px dashed var(--border-strong);
+}
+
+/* ------------------------------------------------------------------ *
+   Product detail
+ * ------------------------------------------------------------------ */
+
+.crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-block: 1.25rem;
+  font-size: 0.82rem;
+  color: var(--fg-muted);
+
+  a:hover {
+    color: var(--fg);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+.product {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+
+  @media (min-width: 860px) {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  }
+}
+
+.product__art {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-frame);
+  overflow: hidden;
+  background: linear-gradient(150deg, color-mix(in oklab, var(--pastel) 80%, #fff), var(--pastel));
+  box-shadow: var(--shadow-lift);
+}
+
+.product__name {
+  font-size: clamp(1.8rem, 4.2vw, 3rem);
+  margin: 0 0 0.4rem;
+}
+
+.product__alt {
+  font-family: var(--font-urdu);
+  font-size: 1.05rem;
+  line-height: 2;
+  color: var(--fg-muted);
+  margin: 0 0 1.5rem;
+}
+
+.product__facts {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+  margin: 0 0 1.75rem;
+
+  div {
+    padding: 0.85rem 1rem;
+    border-radius: 14px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+  }
+
+  dt {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+  }
+
+  dd {
+    margin: 0.25rem 0 0;
+    font-weight: 500;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+.product__subhead {
+  font-size: 1rem;
+  margin: 0 0 0.4rem;
+}
+
+.product__desc {
+  color: var(--fg-muted);
+  margin: 0 0 1.5rem;
+  max-width: 56ch;
+}
+
+.product__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-block-start: 1.5rem;
+}
+
+/* ------------------------------------------------------------------ *
+   Branches
+ * ------------------------------------------------------------------ */
+
+.branch-grid {
+  display: grid;
+  gap: clamp(0.9rem, 2vw, 1.5rem);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+  margin-block-start: 1.5rem;
+}
+
+.branch-card {
+  position: relative;
+  display: grid;
+  gap: 0.6rem;
+  align-content: start;
+  padding: 1.5rem;
+  border-radius: var(--radius-frame);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: transform 0.45s var(--ease-spring), box-shadow 0.45s;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+  }
+
+  &.is-flagship {
+    border-color: var(--color-lime);
+    background: linear-gradient(
+      150deg,
+      color-mix(in oklab, var(--color-lime) 14%, var(--surface)),
+      var(--surface)
+    );
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  .btn {
+    justify-self: start;
+    margin-block-start: 0.5rem;
+  }
+}
+
+.branch-card__pin {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--color-lime) 30%, transparent);
+  color: var(--color-green);
+
+  svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+}
+
+.branch-card__address {
+  margin: 0;
+  color: var(--fg-muted);
+  font-size: 0.9rem;
+}
+
+.branch-card__facts {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0.5rem 0 0;
+
+  dt {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+  }
+  dd {
+    margin: 0;
+    font-size: 0.88rem;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+   Reviews
+ * ------------------------------------------------------------------ */
+
+.reviews {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.reviews__score {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1.1rem 1.4rem;
+  border-radius: var(--radius-card);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+
+  strong {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.reviews__count {
+  color: var(--fg-muted);
+  font-size: 0.9rem;
+}
+
+.reviews__source {
+  margin-inline-start: auto;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-green);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  [data-theme='dark'] & {
+    color: var(--color-lime);
+  }
+}
+
+/* Five stars with the filled row clipped to the score. */
+.stars {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  font-size: 1.05rem;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.stars__base {
+  color: color-mix(in oklab, var(--fg) 18%, transparent);
+}
+
+.stars__fill {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  width: var(--pct, 0%);
+  overflow: hidden;
+  color: #f5a623;
+}
+
+.reviews__grid {
+  display: grid;
+  gap: clamp(0.75rem, 1.6vw, 1.25rem);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+}
+
+.review {
+  display: grid;
+  gap: 0.7rem;
+  align-content: start;
+  padding: 1.25rem;
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: transform 0.45s var(--ease-spring), box-shadow 0.45s;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+.review__head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.review__avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: none;
+  border-radius: 999px;
+  object-fit: cover;
+  background: var(--surface-2);
+}
+
+.review__avatar--initials {
+  display: grid;
+  place-items: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-green);
+  background: color-mix(in oklab, var(--color-lime) 32%, transparent);
+}
+
+.review__who {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.review__author {
+  font-weight: 600;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+.review__when {
+  font-size: 0.76rem;
+  color: var(--fg-faint);
+}
+
+.review__text {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--fg-muted);
+  /* Long reviews clamp so the grid stays even; the full text is on Google. */
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.reviews__attribution,
+.reviews__empty,
+.reviews__loading {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--fg-faint);
+
+  a {
+    color: var(--fg-muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    &:hover {
+      color: var(--fg);
+    }
+  }
+}
+
+.reviews__placeholder {
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+  padding: 1.75rem;
+  border-radius: var(--radius-card);
+  border: 1px dashed var(--border-strong);
+  background: color-mix(in oklab, var(--color-lime) 8%, transparent);
+
+  p {
+    margin: 0;
+    max-width: 52ch;
+    color: var(--fg-muted);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+   Branch opening hours
+ * ------------------------------------------------------------------ */
+
+.branch-solo {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.75rem);
+  margin-block-start: 1.5rem;
+  align-items: stretch;
+
+  @media (min-width: 860px) {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  }
+}
+
+.branch-map {
+  position: relative;
+  border-radius: var(--radius-frame);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  min-height: 20rem;
+  background: var(--surface-2);
+
+  /* Absolute fill — an iframe with height:100% collapses to its default
+     300x150 until the embed decides otherwise. */
+  iframe {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    /* The embed is always light; nudge it toward the dark palette. */
+    [data-theme='dark'] & {
+      filter: invert(0.92) hue-rotate(180deg) saturate(0.7);
+    }
+  }
+}
+
+.branch-card__summary {
+  justify-self: start;
+}
+
+.branch-hours {
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  overflow: hidden;
+
+  summary {
+    padding: 0.7rem 0.95rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::after {
+      content: '+';
+      float: inline-end;
+      color: var(--fg-faint);
+    }
+  }
+
+  &[open] summary::after {
+    content: '–';
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+  }
+
+  th,
+  td {
+    padding: 0.4rem 0.95rem;
+    text-align: start;
+    font-weight: 400;
+    color: var(--fg-muted);
+  }
+
+  tr.is-today th,
+  tr.is-today td {
+    color: var(--fg);
+    font-weight: 600;
+    background: color-mix(in oklab, var(--color-lime) 16%, transparent);
+  }
+
+  tr:last-child td,
+  tr:last-child th {
+    padding-block-end: 0.75rem;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+   Search palette
+ * ------------------------------------------------------------------ */
+
+.palette {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  display: grid;
+  align-items: start;
+  justify-items: center;
+  padding: clamp(1rem, 8vh, 6rem) 1rem 1rem;
+}
+
+.palette__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgb(8 18 12 / 0.55);
+  backdrop-filter: blur(10px);
+  animation: fade-in 0.25s both;
+}
+
+.palette__panel {
+  position: relative;
+  width: min(44rem, 100%);
+  max-height: min(34rem, 82vh);
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-frame);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 40px 90px -30px rgb(8 20 12 / 0.6);
+  overflow: hidden;
+  animation: palette-in 0.4s var(--ease-out-expo) both;
+
+  .palette.is-plain & {
+    animation: none;
+  }
+}
+
+@keyframes palette-in {
+  from {
+    opacity: 0;
+    transform: translateY(-14px) scale(0.97);
+  }
+}
+
+.palette__field {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.15rem;
+  border-block-end: 1px solid var(--border);
+
+  svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    color: var(--fg-faint);
+    flex: none;
+  }
+}
+
+.palette__input {
+  flex: 1;
+  border: none;
+  background: none;
+  font-size: 1.05rem;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+}
+
+.palette__results {
+  overflow-y: auto;
+  padding: 0.5rem;
+  overscroll-behavior: contain;
+}
+
+.palette__section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+
+  h3 {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+    margin: 0;
+  }
+
+  button {
+    border: none;
+    background: none;
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--fg);
+    }
+  }
+}
+
+.palette__row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: none;
+  border-radius: 14px;
+  background: none;
+  text-align: start;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover,
+  &.is-active {
+    background: color-mix(in oklab, var(--color-lime) 22%, transparent);
+  }
+
+  mark {
+    background: color-mix(in oklab, var(--color-lime) 70%, transparent);
+    color: inherit;
+    border-radius: 4px;
+    padding-inline: 1px;
+  }
+}
+
+.palette__art {
+  flex: none;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.palette__art--swatch {
+  background: var(--swatch);
+}
+
+.palette__text {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.palette__title {
+  font-weight: 600;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.palette__meta {
+  font-size: 0.76rem;
+  color: var(--fg-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.palette__kind {
+  flex: none;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+}
+
+.palette__all {
+  display: block;
+  padding: 0.8rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.88rem;
+  border-radius: 14px;
+  color: var(--color-green);
+
+  &:hover,
+  &.is-active {
+    background: color-mix(in oklab, var(--color-lime) 22%, transparent);
+  }
+
+  [data-theme='dark'] & {
+    color: var(--color-lime);
+  }
+}
+
+.palette__empty {
+  display: grid;
+  gap: 0.35rem;
+  padding: 2.5rem 1rem;
+  text-align: center;
+  color: var(--fg-muted);
+
+  strong {
+    color: var(--fg);
+  }
+}
+
+.palette__foot {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.75rem 1.15rem;
+  border-block-start: 1px solid var(--border);
+  font-size: 0.74rem;
+  color: var(--fg-faint);
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+}
+
+body.has-palette,
+body.has-drawer,
+.is-scroll-locked body {
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------------ *
+   Cursor
+ * ------------------------------------------------------------------ */
+
+.cursor {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  z-index: 300;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s;
+  mix-blend-mode: normal;
+
+  &.is-visible {
+    opacity: 1;
+  }
+}
+
+.cursor__ring {
+  position: absolute;
+  translate: -50% -50%;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 999px;
+  background: var(--color-lime);
+  transition: width 0.35s var(--ease-spring), height 0.35s var(--ease-spring),
+    background 0.3s, opacity 0.3s;
+}
+
+.cursor__label {
+  position: absolute;
+  translate: -50% -50%;
+  display: grid;
+  place-items: center;
+  width: 4.4rem;
+  height: 4.4rem;
+  border-radius: 999px;
+  background: var(--color-green);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  opacity: 0;
+  scale: 0.4;
+  transition: opacity 0.3s, scale 0.4s var(--ease-spring);
+}
+
+.cursor.is-magnetic .cursor__ring {
+  width: 2.2rem;
+  height: 2.2rem;
+  background: color-mix(in oklab, var(--color-lime) 45%, transparent);
+}
+
+.cursor.is-labelled {
+  .cursor__ring {
+    opacity: 0;
+  }
+  .cursor__label {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+.cursor.is-down .cursor__ring {
+  scale: 0.7;
+}
+
+/* Hide the native cursor only where the custom one is actually running. */
+body.has-cursor,
+body.has-cursor a,
+body.has-cursor button {
+  cursor: none;
+}
+
+/* ------------------------------------------------------------------ *
+   Footer & back to top
+ * ------------------------------------------------------------------ */
+
+.site-footer {
+  margin-block-start: clamp(3rem, 8vw, 6rem);
+  padding-block-start: clamp(2.5rem, 6vw, 4.5rem);
+  background: var(--surface);
+  border-block-start: 1px solid var(--border);
+}
+
+.site-footer__inner {
+  display: grid;
+  gap: 2.5rem;
+  padding-block-end: clamp(2rem, 4vw, 3rem);
+
+  @media (min-width: 860px) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  }
+}
+
+.site-footer__logo {
+  width: 180px;
+  height: auto;
+}
+
+.site-footer__tagline {
+  margin: 1rem 0 0.5rem;
+  color: var(--fg-muted);
+  max-width: 32ch;
+}
+
+.site-footer__stats {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--fg-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.site-footer__cols {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr));
+}
+
+.site-footer__col {
+  display: grid;
+  gap: 0.55rem;
+  align-content: start;
+
+  h2 {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+    margin: 0 0 0.25rem;
+  }
+
+  a {
+    color: var(--fg-muted);
+    font-size: 0.92rem;
+    width: fit-content;
+    transition: color 0.25s, transform 0.3s var(--ease-spring);
+
+    &:hover {
+      color: var(--fg);
+      transform: translateX(3px);
+    }
+  }
+}
+
+.site-footer__bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-block: 1.25rem;
+  border-block-start: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--fg-faint);
+
+  p {
+    margin: 0;
+  }
+}
+
+.back-to-top {
+  position: fixed;
+  inset-block-end: 1.25rem;
+  inset-inline-end: 1.25rem;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--color-green);
+  color: #fff;
+  cursor: pointer;
+  opacity: 0;
+  translate: 0 16px;
+  pointer-events: none;
+  box-shadow: var(--shadow-lift);
+  transition: opacity 0.35s, translate 0.45s var(--ease-spring), background 0.3s;
+
+  svg {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  &.is-visible {
+    opacity: 1;
+    translate: 0;
+    pointer-events: auto;
+  }
+
+  &:hover {
+    background: var(--color-lime);
+    color: var(--color-green-ink);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+   404
+ * ------------------------------------------------------------------ */
+
+.trolley {
+  width: clamp(6rem, 14vw, 10rem);
+  color: var(--color-green);
+  animation: roll 2.6s var(--ease-in-out-quart) infinite;
+
+  [data-theme='dark'] & {
+    color: var(--color-lime);
+  }
+}
+
+@keyframes roll {
+  0%,
+  100% {
+    transform: translateX(-14px) rotate(-3deg);
+  }
+  50% {
+    transform: translateX(14px) rotate(3deg);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+   Aisle page — the coloured header the launch transition lands on, the
+   four-item grid with its cart stepper, and the other-aisles chip row.
+ * ------------------------------------------------------------------ */
+
+.aisle-header {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  padding-block: clamp(6rem, 12vw, 9rem) clamp(2.5rem, 6vw, 4rem);
+  background: linear-gradient(160deg, color-mix(in oklab, var(--pastel) 82%, #fff), var(--pastel));
+  border-end-start-radius: var(--radius-frame);
+  border-end-end-radius: var(--radius-frame);
+  color: var(--color-green-ink);
+}
+
+/* The wash the arrival animation fades out, so the page appears to
+   emerge from the flood rather than cutting to it. */
+.aisle-header__wash {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: var(--pastel);
+  pointer-events: none;
+}
+
+.aisle-header__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: start;
+  gap: 0.6rem;
+}
+
+.aisle-header__crumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: color-mix(in oklab, var(--color-green-ink) 65%, transparent);
+
+  a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+.aisle-header__art {
+  margin-block: 0.5rem;
+}
+
+.aisle-header__title {
+  margin: 0;
+  font-size: clamp(2rem, 5.5vw, 3.5rem);
+}
+
+.aisle-header__blurb {
+  max-width: 48ch;
+  margin: 0;
+  color: color-mix(in oklab, var(--color-green-ink) 78%, transparent);
+}
+
+.aisle-header__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-block-start: 0.5rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: color-mix(in oklab, var(--color-green-ink) 70%, transparent);
+}
+
+.aisle-items {
+  display: grid;
+  gap: clamp(0.9rem, 2vw, 1.5rem);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+}
+
+.aisle-item {
+  display: grid;
+  gap: 0.35rem;
+  align-content: start;
+  padding: 1.1rem;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: transform 0.45s var(--ease-spring), box-shadow 0.45s var(--ease-out-expo);
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lift);
+    border-color: transparent;
+  }
+}
+
+.aisle-item__tile {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1.4;
+  margin-block-end: 0.6rem;
+  border-radius: 16px;
+  background: linear-gradient(155deg, color-mix(in oklab, var(--pastel, #e4f2d3) 70%, #fff), var(--pastel, #e4f2d3));
+}
+
+.aisle-item__emoji {
+  font-size: clamp(2.5rem, 6vw, 3.25rem);
+  line-height: 1;
+  animation: hero-card-bob 5s ease-in-out infinite;
+}
+
+.aisle-item__tag {
+  position: absolute;
+  inset-block-start: 0.5rem;
+  inset-inline-end: 0.5rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-lime);
+  color: var(--color-green-ink);
+  font-size: 0.66rem;
+  font-weight: 700;
+}
+
+.aisle-item__name {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.aisle-item__unit {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+}
+
+.aisle-item__price {
+  margin: 0.15rem 0 0.6rem;
+  font-weight: 700;
+  color: var(--color-green);
+
+  [data-theme='dark'] & {
+    color: var(--color-lime);
+  }
+}
+
+.aisle-item__stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  justify-self: start;
+  padding: 0.2rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+
+  button {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    border: 0;
+    background: transparent;
+    color: var(--fg);
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: background 0.25s;
+
+    &:hover {
+      background: var(--color-lime);
+      color: var(--color-green-ink);
+    }
+  }
+
+  span {
+    min-width: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.aisle-item__add {
+  justify-self: start;
+}
+
+.aisle-items__note {
+  margin-block-start: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+
+  a {
+    color: var(--color-green);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    [data-theme='dark'] & {
+      color: var(--color-lime);
+    }
+  }
+}
+
+.aisle-others {
+  margin-block-start: clamp(2.5rem, 6vw, 4rem);
+}
+
+.aisle-others__title {
+  font-size: 1.1rem;
+  margin: 0 0 0.9rem;
+}
+
+.aisle-others__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Last-resort category artwork: a gradient plate with the aisle's glyph.
+   Only reachable if an aisle has neither a render nor a generated icon. */
+.category-icon--tile {
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: linear-gradient(155deg, color-mix(in oklab, var(--pastel) 72%, #fff), var(--pastel));
+}
+
+.category-icon__glyph {
+  font-size: 44%;
+  line-height: 1;
+}
+
+/* ================================================================== *
+   Global keyframes from the build brief.
+ * ================================================================== */
+
+@keyframes float-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+@keyframes drift {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  33%  { transform: translate(18px, -24px) rotate(8deg); }
+  66%  { transform: translate(-14px, -12px) rotate(-6deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { transform: scale(1);    opacity: 0.45; }
+  50%      { transform: scale(1.18); opacity: 0.75; }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+/* ================================================================== *
+   Living background — fixed behind the light half of the site.
+ * ================================================================== */
+
+.living-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 90% at 50% 0%,
+    color-mix(in oklab, var(--color-lime) 10%, var(--bg)),
+    var(--bg) 60%
+  );
+}
+
+.living-bg__orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(70px);
+  animation: pulse-glow var(--dur, 14s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.living-bg__grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    color-mix(in oklab, var(--color-green) 28%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 34px 34px;
+  opacity: 0.22;
+  /* Fades out at every edge so the grid never meets a hard boundary. */
+  mask-image: radial-gradient(75% 65% at 50% 40%, #000 35%, transparent 100%);
+  -webkit-mask-image: radial-gradient(75% 65% at 50% 40%, #000 35%, transparent 100%);
+}
+
+.living-bg__produce {
+  position: absolute;
+  inset-inline-start: var(--x);
+  inset-block-start: var(--y);
+  font-size: var(--size, 2rem);
+  opacity: 0.09;
+  animation: drift var(--dur, 26s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  will-change: transform;
+}
+
+[data-theme='dark'] .living-bg__grid { opacity: 0.16; }
+[data-theme='dark'] .living-bg__produce { opacity: 0.07; }
+
+/* ================================================================== *
+   Hero — grocery bag variation.
+   Deep-green immersive section with a rounded bottom that melts into
+   the bright body. The bag itself is CSS and SVG, no image.
+ * ================================================================== */
+
+.hero-grocery {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  padding-block: clamp(7rem, 13vw, 10rem) 0;
+  background:
+    radial-gradient(90% 70% at 50% 0%, var(--color-ground-glow), transparent 60%),
+    linear-gradient(170deg, var(--color-ground-mid), var(--color-ground-deep) 55%, #093820);
+  color: var(--color-cream);
+  border-end-start-radius: var(--radius-frame);
+  border-end-end-radius: var(--radius-frame);
+  text-align: center;
+}
+
+/* ---- the hero's own dark background layer ---- */
+
+.hero-grocery__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-grocery__bg .living-bg__grid {
+  background-image: radial-gradient(rgb(255 255 255 / 0.5) 1px, transparent 1px);
+  opacity: 0.12;
+}
+
+.hero-grocery__bg .living-bg__produce { opacity: 0.08; }
+
+.hero-grocery__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 1.1rem;
+}
+
+/* ---- badge ---- */
+
+.hero-grocery__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--radius-pill);
+  background: rgb(255 255 255 / 0.1);
+  border: 1px solid rgb(255 255 255 / 0.18);
+  backdrop-filter: blur(6px);
+  font-size: 0.82rem;
+  animation: float-in 0.7s var(--ease-out-expo) both;
+}
+
+.hero-grocery__dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: var(--color-lime);
+  animation: pulse-glow 2.2s ease-in-out infinite;
+}
+
+/* ---- headline ---- */
+
+.hero-grocery__title {
+  max-width: 16ch;
+  margin: 0;
+  font-size: clamp(2.6rem, 7.5vw, 5.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  margin-block-end: 0.5rem;
+  animation: float-in 0.8s var(--ease-out-expo) 0.08s both;
+}
+
+.hero-grocery__accent {
+  position: relative;
+  color: var(--color-lime);
+  white-space: nowrap;
+}
+
+/* Hand-drawn underline, drawn under the lime phrase. */
+.hero-grocery__underline {
+  position: absolute;
+  inset-inline: -2%;
+  inset-block-end: -0.16em;
+  width: 104%;
+  height: 0.26em;
+  color: var(--color-lime);
+  overflow: visible;
+
+  path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw-underline 1s var(--ease-out-expo) 0.55s both;
+  }
+}
+
+@keyframes draw-underline {
+  to { stroke-dashoffset: 0; }
+}
+
+.hero-grocery__sub {
+  max-width: 52ch;
+  margin: 0;
+  color: rgb(255 255 255 / 0.76);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  animation: float-in 0.8s var(--ease-out-expo) 0.16s both;
+}
+
+.hero-grocery__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-block-start: 0.6rem;
+  animation: float-in 0.8s var(--ease-out-expo) 0.24s both;
+}
+
+/* ---- the stage: ghost word, glow, bag, spill, cards ---- */
+
+.hero-grocery__stage {
+  position: relative;
+  width: min(100%, 60rem);
+  margin-block-start: clamp(2rem, 5vw, 3.5rem);
+  aspect-ratio: 16 / 11;
+  perspective: 1400px;
+}
+
+.hero-grocery__ghost {
+  position: absolute;
+  inset-block-start: 6%;
+  left: 50%;
+  translate: -50% 0;
+  z-index: 0;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 19vw, 15rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 2px rgb(255 255 255 / 0.11);
+  user-select: none;
+}
+
+.hero-grocery__glow {
+  position: absolute;
+  inset-block-start: 18%;
+  left: 50%;
+  translate: -50% 0;
+  z-index: 0;
+  width: 70%;
+  aspect-ratio: 1;
+  background: radial-gradient(
+    circle,
+    color-mix(in oklab, var(--color-lime) 34%, transparent) 0%,
+    transparent 62%
+  );
+  filter: blur(6px);
+}
+
+/* ---- the bag ---- */
+
+.hero-grocery__bag {
+  position: absolute;
+  inset-block-end: 6%;
+  left: 50%;
+  z-index: 2;
+  width: min(46%, 21rem);
+  translate: -50% 0;
+  transform:
+    rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg))
+    translate3d(var(--tilt-tx, 0px), var(--tilt-ty, 0px), 0);
+  transform-style: preserve-3d;
+  will-change: transform;
+  animation: float-in 0.9s var(--ease-out-expo) 0.3s both;
+}
+
+.bag__handle {
+  position: absolute;
+  inset-block-end: 93%;
+  left: 50%;
+  translate: -50% 0;
+  width: 56%;
+  color: #7d5c3a;
+  overflow: visible;
+}
+
+.bag__body {
+  position: relative;
+  aspect-ratio: 0.82;
+  border-radius: 6px 6px 12px 12px;
+  /* Kraft paper, lit from the upper left, with the two side panels
+     shaded by inset shadows rather than extra elements. */
+  background:
+    linear-gradient(100deg, rgb(0 0 0 / 0.16) 0 9%, transparent 9% 88%, rgb(0 0 0 / 0.2) 88%),
+    linear-gradient(175deg, #e0b581, #c2905c 55%, #a9764a);
+  box-shadow:
+    inset 0 2px 0 rgb(255 255 255 / 0.3),
+    inset 0 -18px 30px -18px rgb(80 45 15 / 0.7),
+    0 30px 45px -22px rgb(3 16 9 / 0.75);
+}
+
+/* Folded-over cuff along the top edge. */
+.bag__cuff {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  height: 13%;
+  border-radius: 6px 6px 3px 3px;
+  background: linear-gradient(180deg, #edc491, #cf9c66);
+  box-shadow: 0 3px 6px -1px rgb(80 45 15 / 0.45);
+}
+
+/* Vertical crease lines — the folds a paper sack keeps. */
+.bag__creases {
+  position: absolute;
+  inset: 13% 0 0;
+  background-image:
+    linear-gradient(90deg, transparent 0 24%, rgb(255 255 255 / 0.16) 24% 24.6%, transparent 24.6%),
+    linear-gradient(90deg, transparent 0 50%, rgb(80 45 15 / 0.14) 50% 50.6%, transparent 50.6%),
+    linear-gradient(90deg, transparent 0 76%, rgb(255 255 255 / 0.12) 76% 76.6%, transparent 76.6%);
+}
+
+.bag__label {
+  position: absolute;
+  inset-block-end: 16%;
+  left: 50%;
+  translate: -50% 0;
+  display: grid;
+  justify-items: center;
+  gap: 0.15rem;
+  width: 62%;
+  padding: 0.7rem 0.5rem;
+  border-radius: 8px;
+  background: var(--color-cream);
+  box-shadow: 0 6px 14px -8px rgb(80 45 15 / 0.7);
+  color: var(--color-ground-deep);
+
+  svg { width: 2.1rem; height: auto; }
+}
+
+.bag__label-name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.bag__label-sub {
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--color-ground-deep) 70%, transparent);
+}
+
+/* Contact shadow on the ground beneath the bag. */
+.bag__shadow {
+  position: absolute;
+  inset-block-end: -7%;
+  left: 50%;
+  translate: -50% 0;
+  width: 86%;
+  height: 8%;
+  background: radial-gradient(ellipse closest-side, rgb(3 16 9 / 0.62), transparent 72%);
+}
+
+/* ---- produce spilling out of the top ---- */
+
+.bag__spill {
+  position: absolute;
+  inset-block-end: 60%;
+  left: 50%;
+  translate: -50% 0;
+  z-index: 3;
+  width: 120%;
+  height: 8rem;
+  pointer-events: none;
+}
+
+.bag__item {
+  position: absolute;
+  inset-inline-start: var(--x);
+  inset-block-end: var(--y);
+  font-size: var(--size, 2.4rem);
+  line-height: 1;
+  translate: -50% 0;
+  filter: drop-shadow(0 8px 10px rgb(3 16 9 / 0.45));
+  animation: bob var(--dur, 4s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  will-change: transform;
+}
+
+/* ---- floating glass info cards ---- */
+
+.hero-grocery__cards {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: none;
+  pointer-events: none;
+
+  @media (min-width: 1280px) {
+    display: block;
+  }
+}
+
+.hero-grocery__card {
+  position: absolute;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.8rem 1.1rem;
+  border-radius: 16px;
+  background: rgb(255 255 255 / 0.12);
+  border: 1px solid rgb(255 255 255 / 0.18);
+  backdrop-filter: blur(10px) saturate(1.2);
+  box-shadow: 0 16px 30px -10px rgb(4 20 12 / 0.45);
+  text-align: start;
+  color: var(--color-cream);
+  pointer-events: auto;
+  text-decoration: none;
+  animation: bob 5s ease-in-out infinite;
+
+  strong { font-size: 1.1rem; font-weight: 700; color: var(--color-lime); }
+  span   { font-size: 0.76rem; color: rgb(255 255 255 / 0.75); white-space: nowrap; }
+
+  &:nth-child(1) { inset-block-start: 14%; inset-inline-start: 1%;  animation-delay: 0s; }
+  &:nth-child(2) { inset-block-start: 6%;  inset-inline-end: 2%;    animation-delay: -1.6s; }
+  &:nth-child(3) { inset-block-end: 22%;   inset-inline-start: -1%; animation-delay: -3.1s; }
+  &:nth-child(4) { inset-block-end: 12%;   inset-inline-end: 0%;    animation-delay: -0.8s; }
+}
+
+/* ---- the category marquee that closes the hero ---- */
+
+.aisle-marquee {
+  position: relative;
+  z-index: 1;
+  margin-block-start: clamp(2rem, 5vw, 3.5rem);
+  padding-block: 1.1rem;
+  border-block-start: 1px solid rgb(255 255 255 / 0.12);
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.aisle-marquee__track {
+  display: flex;
+  width: max-content;
+  gap: 2.5rem;
+  animation: marquee 38s linear infinite;
+}
+
+.aisle-marquee:hover .aisle-marquee__track { animation-play-state: paused; }
+
+.aisle-marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: rgb(255 255 255 / 0.8);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.25s;
+
+  &:hover { color: var(--color-lime); }
+
+  em { font-style: normal; font-size: 1.25rem; }
+}
+
+@media (max-width: 767px) {
+  .hero-grocery__stage { aspect-ratio: 4 / 5; }
+  .hero-grocery__bag { width: min(66%, 17rem); }
+  .bag__item { font-size: 1.9rem; }
+}

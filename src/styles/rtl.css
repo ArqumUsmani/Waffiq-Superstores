@@ -1,0 +1,99 @@
+/* ==================================================================
+   RTL exceptions.
+
+   Spacing and placement are already direction-agnostic — the layout uses
+   logical properties throughout, so `dir="rtl"` flips it for free. What
+   is left here is the handful of things logical properties cannot
+   express: physical transforms, gradient angles, and glyphs that point
+   somewhere.
+
+   Loaded after main.scss so these genuinely win.
+   ================================================================== */
+
+[dir='rtl'] {
+  /* Arrows point the way the reader is going. */
+  .btn svg,
+  .icon-btn svg,
+  .category-card__go svg,
+  .product-card__foot svg {
+    scale: -1 1;
+  }
+
+  .btn:hover svg {
+    transform: translateX(-4px);
+  }
+
+  /* The dashed hero connector curves out from the other side. */
+  .hero__connector svg {
+    scale: -1 1;
+  }
+
+  /* Progress and shelf rules fill from the right. */
+  .scroll-progress span {
+    transform-origin: right center;
+  }
+
+  .shelf-rule {
+    background: linear-gradient(270deg, var(--color-lime), transparent);
+  }
+
+  .site-nav__link::after {
+    transform-origin: right center;
+  }
+
+  .site-footer__col a:hover {
+    transform: translateX(-3px);
+  }
+
+  .hero__scroll::after {
+    transform-origin: right center;
+  }
+
+  /* The drawer slides in from the left edge instead. */
+  .drawer__panel {
+    animation-name: drawer-in-rtl;
+  }
+
+  /* Marquee fades at both ends either way, but the gradient is physical. */
+  .marquee {
+    mask-image: linear-gradient(270deg, transparent, #000 8%, #000 92%, transparent);
+  }
+
+  /* Latin brand names inside Urdu text keep their own direction. */
+  .marquee__item,
+  .product-card__brand,
+  .stat strong {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+}
+
+@keyframes drawer-in-rtl {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
+/* Nastaliq sits low in its em box; a little extra room stops descenders
+   from clipping inside pills and buttons. */
+[lang='ur'] {
+  .btn,
+  .chip,
+  .pill,
+  .site-nav__link {
+    padding-block: 0.75rem;
+    line-height: 1.9;
+  }
+
+  .hero__display {
+    line-height: 1.2;
+  }
+
+  .eyebrow,
+  .field__label,
+  .product__facts dt,
+  .site-footer__col h2 {
+    letter-spacing: 0;
+    text-transform: none;
+  }
+}

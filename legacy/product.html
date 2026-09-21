@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product — Wafiq Superstores</title>
+    <meta name="description" content="Product details at Wafiq Superstores. A listing site — visit a branch to buy." />
+    <meta name="theme-color" content="#136f37" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('wafiq:theme');
+          if (t !== 'dark' && t !== 'light') {
+            t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.setAttribute('data-theme', t);
+          var l = localStorage.getItem('wafiq:lang') === 'ur' ? 'ur' : 'en';
+          document.documentElement.setAttribute('lang', l);
+          document.documentElement.setAttribute('dir', l === 'ur' ? 'rtl' : 'ltr');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+
+  <body data-page="product">
+    <main id="main" data-product-page style="padding-block-start: clamp(5.5rem, 10vw, 7rem)"></main>
+
+    <script type="module" src="/src/js/main.js"></script>
+  </body>
+</html>

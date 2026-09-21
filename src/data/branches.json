@@ -1,0 +1,52 @@
+[
+  {
+    "id": "gulberg-greens",
+    "name": "Wafiq Super Stores — Gulberg Arena Mall",
+    "nameUr": "وافق سپر اسٹورز — گلبرگ ارینا مال",
+    "address": "Shop # 39–46, Ground Floor, Gulberg Arena Mall, Block A, Gulberg Greens, Islamabad 46000",
+    "city": "Islamabad",
+    "hoursSummary": "Open daily, 6:00 am – 11:00 pm",
+    "hours": [
+      {
+        "day": "Monday",
+        "dayUr": "پیر",
+        "open": "6:00 am – 11:00 pm"
+      },
+      {
+        "day": "Tuesday",
+        "dayUr": "منگل",
+        "open": "6:00 am – 11:00 pm"
+      },
+      {
+        "day": "Wednesday",
+        "dayUr": "بدھ",
+        "open": "6:00 am – 11:00 pm"
+      },
+      {
+        "day": "Thursday",
+        "dayUr": "جمعرات",
+        "open": "6:00 am – 11:00 pm"
+      },
+      {
+        "day": "Friday",
+        "dayUr": "جمعہ",
+        "open": "6:00 am – 11:00 pm"
+      },
+      {
+        "day": "Saturday",
+        "dayUr": "ہفتہ",
+        "open": "6:00 am – 11:00 pm"
+      },
+      {
+        "day": "Sunday",
+        "dayUr": "اتوار",
+        "open": "6:00 am – 11:00 pm"
+      }
+    ],
+    "phone": null,
+    "maps": "https://www.google.com/maps/search/?api=1&query=Wafiq+Super+Stores+Gulberg+Arena+Mall+Islamabad",
+    "flagship": true,
+    "placeholder": false,
+    "embed": "https://www.google.com/maps?q=Wafiq+Super+Stores,+Gulberg+Arena+Mall,+Gulberg+Greens,+Islamabad&output=embed"
+  }
+]

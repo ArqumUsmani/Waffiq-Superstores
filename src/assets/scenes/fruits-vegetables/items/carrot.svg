@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+    <defs>
+      <radialGradient id="shine-carrot" cx="35%" cy="30%" r="65%">
+        <stop offset="0" stop-color="#ffffff" stop-opacity="0.35"/>
+        <stop offset="55%" stop-color="#ffffff" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <g>
+    <path d="M170 90 Q230 92 240 150 L215 330 Q205 350 195 330 L160 150
+             Q158 100 170 90 Z" fill="#ef8232"/>
+    <path d="M180 92 L165 60 M200 88 L200 54 M220 92 L235 60"
+          stroke="#3d8f3c" stroke-width="9" stroke-linecap="round"/></g>
+    <circle cx="200" cy="210" r="140" fill="url(#shine-carrot)"/>
+  </svg>

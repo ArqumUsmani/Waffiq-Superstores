@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+    <defs>
+      <radialGradient id="shine-tomato" cx="35%" cy="30%" r="65%">
+        <stop offset="0" stop-color="#ffffff" stop-opacity="0.35"/>
+        <stop offset="55%" stop-color="#ffffff" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <g>
+    <circle cx="200" cy="225" r="110" fill="#e2523f"/>
+    <path d="M155 118 L175 140 M200 108 L200 135 M245 118 L225 140"
+          stroke="#3d6b2c" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="200" cy="128" r="16" fill="#3d6b2c"/></g>
+    <circle cx="200" cy="210" r="140" fill="url(#shine-tomato)"/>
+  </svg>

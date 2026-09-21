@@ -1,0 +1,238 @@
+{
+  "brand": {
+    "name": "Wafiq Superstores",
+    "short": "Wafiq",
+    "tagline": "Everything you need, all in one place."
+  },
+  "nav": {
+    "home": "Home",
+    "categories": "Categories",
+    "branches": "Branches",
+    "reviews": "Reviews",
+    "about": "About",
+    "contact": "Contact",
+    "search": "Search products",
+    "menu": "Menu",
+    "close": "Close",
+    "skip": "Skip to content"
+  },
+  "hero": {
+    "badge": "{{aisles}} aisles. {{shelves}} shelves. One store.",
+    "display": "WAFIQ",
+    "titleLead": "Everything you need,",
+    "titleAccent": "all in one place.",
+    "sub": "Browse the full Wafiq shelf — groceries, pantry staples, cleaning, baby care and everyday essentials. Look before you leave the house.",
+    "ctaPrimary": "Walk the aisles",
+    "ctaSecondary": "Find a branch",
+    "cardTitle": "Islamabad, Pakistan",
+    "cardLink": "Find your nearest branch",
+    "scroll": "Scroll to browse"
+  },
+  "heroGate": {
+    "eyebrow": "Step inside",
+    "alt": "The Wafiq Super Store storefront at Gulberg Arena Mall, Islamabad"
+  },
+  "heroStorefront": {
+    "reviewsFallback": "See our reviews",
+    "reviewsSuffix": "Google reviews",
+    "hoursLabel": "Open daily",
+    "locationLabel": "Nearest branch"
+  },
+  "marquee": {
+    "label": "Brands on our shelves"
+  },
+  "aisle": {
+    "eyebrow": "{{aisles}} aisles",
+    "title": "Walk the store, aisle by aisle",
+    "sub": "Scroll to move through every section of the shop.",
+    "hint": "Scroll",
+    "hintTouch": "Swipe",
+    "open": "Open aisle",
+    "products": "products",
+    "shelves": "shelves"
+  },
+  "statement": {
+    "eyebrow": "What we stock",
+    "lead": "From the first",
+    "mid": "of the morning to the",
+    "tail": "that finishes the day — it is on our shelves.",
+    "chipTea": "chai",
+    "chipClean": "clean-up",
+    "body": "Wafiq Superstores keeps the whole household list under one roof, so one trip covers the pantry, the kitchen cupboard, the bathroom shelf and the baby bag."
+  },
+  "stats": {
+    "aisles": "Aisles in store",
+    "shelves": "Shelves to browse",
+    "products": "Products listed",
+    "brands": "Brands stocked"
+  },
+  "popular": {
+    "eyebrow": "Moving fast",
+    "title": "Popular this week",
+    "sub": "What our shoppers reach for most.",
+    "showAll": "See all products"
+  },
+  "branchCta": {
+    "eyebrow": "Come and see",
+    "title": "Find your nearest Wafiq",
+    "body": "Opening hours, addresses and directions for every branch.",
+    "cta": "View branches"
+  },
+  "product": {
+    "view": "View",
+    "viewProduct": "View product",
+    "packSize": "Pack size",
+    "brand": "Brand",
+    "aisle": "Aisle",
+    "shelf": "Shelf",
+    "about": "About this product",
+    "related": "More on this shelf",
+    "back": "Back to",
+    "notFound": "We could not find that product",
+    "notFoundBody": "It may have been renamed or moved to another shelf.",
+    "browseAll": "Browse all products",
+    "listingNote": "Listing only — Wafiq Superstores does not sell online. Visit a branch to buy."
+  },
+  "categories": {
+    "eyebrow": "The full shop",
+    "title": "Every aisle we stock",
+    "sub": "{{aisles}} aisles, {{shelves}} shelves, and the whole household list in between.",
+    "explore": "Explore aisle",
+    "shelvesIn": "Shelves in this aisle"
+  },
+  "category": {
+    "all": "Everything",
+    "shelves": "Shelves",
+    "sortLabel": "Sort",
+    "sortDefault": "Featured",
+    "sortAz": "Name A–Z",
+    "sortZa": "Name Z–A",
+    "sortBrand": "Brand",
+    "brandLabel": "Brand",
+    "allBrands": "All brands",
+    "clear": "Clear filters",
+    "count": "products",
+    "countOne": "product",
+    "empty": "Nothing on this shelf yet",
+    "emptyBody": "Try another shelf, or clear the filters.",
+    "notFound": "We could not find that aisle",
+    "notFoundBody": "Pick one from the full list instead."
+  },
+  "search": {
+    "open": "Search",
+    "shortcut": "Press",
+    "placeholder": "Search products, brands or aisles…",
+    "title": "Search the shop",
+    "sub": "Type a product, a brand or an aisle name.",
+    "recent": "Recent searches",
+    "clearRecent": "Clear",
+    "noResults": "No matches",
+    "noResultsBody": "Try a shorter word, or a brand name.",
+    "resultsFor": "Results for",
+    "count": "matches",
+    "hintNav": "to navigate",
+    "hintOpen": "to open",
+    "hintClose": "to close",
+    "seeAll": "See all results",
+    "empty": "Start typing to search the full shelf."
+  },
+  "branches": {
+    "eyebrow": "Come and see",
+    "title": "Our branches",
+    "sub": "Where to find Wafiq Super Stores, with opening hours and directions.",
+    "hours": "Opening hours",
+    "phone": "Phone",
+    "directions": "Get directions",
+    "placeholder": "Phone number is still being confirmed.",
+    "mapTitle": "Map of the store location"
+  },
+  "about": {
+    "eyebrow": "Who we are",
+    "title": "One roof, one list, one trip",
+    "lead": "Wafiq Superstores brings groceries, pantry staples, household goods, cleaning supplies, baby care and personal care together in a single shop.",
+    "bodyOne": "The idea is simple. Most households run on the same forty or fifty items, and most of those trips end up split across three different shops. We built Wafiq so the whole list sits in one place — the chai and the biscuits, the masala and the mop, the shampoo and the nappies.",
+    "bodyTwo": "This site is our shelf, published. It is a catalogue, not a shop: browse what we carry, check the pack sizes, then visit a branch. Nothing is sold online.",
+    "valuesTitle": "What we care about",
+    "valueOneTitle": "Everything in one trip",
+    "valueOneBody": "{{aisles}} aisles covering the full household list, so one visit is enough.",
+    "valueTwoTitle": "Brands people trust",
+    "valueTwoBody": "The names already on your shopping list, stocked and restocked.",
+    "valueThreeTitle": "Know before you go",
+    "valueThreeBody": "Check the shelf online first, then come in for what you need."
+  },
+  "contact": {
+    "eyebrow": "Say hello",
+    "title": "Get in touch",
+    "sub": "Questions about stock, branches or anything else — send them over.",
+    "nameLabel": "Your name",
+    "emailLabel": "Email address",
+    "messageLabel": "Message",
+    "send": "Send message",
+    "sending": "Sending…",
+    "sent": "Thanks — we will be in touch.",
+    "error": "That did not send. Please try again, or call us.",
+    "phone": "Phone",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "social": "Social",
+    "detailsNote": "Contact details are placeholders until confirmed."
+  },
+  "footer": {
+    "tagline": "Everything you need, all in one place.",
+    "explore": "Explore",
+    "company": "Company",
+    "connect": "Connect",
+    "rights": "All rights reserved.",
+    "note": "A listing site — no online sales, no delivery. Visit a branch to buy."
+  },
+  "theme": {
+    "toDark": "Switch to dark mode",
+    "toLight": "Switch to light mode"
+  },
+  "sound": {
+    "toOff": "Turn sound off",
+    "toOn": "Turn sound on"
+  },
+  "lang": {
+    "toUrdu": "اردو",
+    "toEnglish": "English",
+    "label": "Change language"
+  },
+  "common": {
+    "backToTop": "Back to top",
+    "loading": "Loading",
+    "showAll": "Show all",
+    "products": "products",
+    "close": "Close"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "That trolley went down the wrong aisle",
+    "body": "The page you were after is not on this shelf.",
+    "cta": "Back to the shop"
+  },
+  "reviews": {
+    "eyebrow": "What shoppers say",
+    "title": "Reviews from Google",
+    "sub": "Straight from our Google listing — nothing written here by us.",
+    "count": "Google reviews",
+    "onGoogle": "View on Google",
+    "attribution": "Reviews and ratings are provided by Google.",
+    "viewAll": "See all reviews",
+    "none": "No written reviews on the listing yet.",
+    "unconfigured": "Live Google reviews appear here once a Places API key is configured. Until then, read them on the Google listing.",
+    "error": "Reviews could not be loaded right now. You can read them on the Google listing instead."
+  },
+  "heroBag": {
+    "badge": "Fresh crates restocked every morning",
+    "titleLead": "Fill your bag with",
+    "titleAccent": "everything fresh.",
+    "sub": "Fresh produce, pantry staples, cleaning and baby care — the whole household list under one roof in Gulberg Greens. Check the shelf before you leave the house.",
+    "ctaPrimary": "Start your list",
+    "ctaSecondary": "Find the branch",
+    "cardFresh": "Farm fresh",
+    "cardFreshSub": "Crates in every morning",
+    "cardRated": "Rated on Google",
+    "cardReviews": "Google reviews"
+  }
+}

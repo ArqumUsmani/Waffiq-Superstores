@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wafiq Superstores — Everything you need, all in one place</title>
+    <meta
+      name="description"
+      content="Browse the full Wafiq Superstores shelf: fresh produce, groceries, pantry staples, cleaning, baby care and everyday essentials across every aisle. A listing site — visit a branch to buy."
+    />
+    <meta name="theme-color" content="#136f37" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Wafiq Superstores" />
+    <meta property="og:description" content="Everything you need, all in one place." />
+    <meta property="og:site_name" content="Wafiq Superstores" />
+
+    <script>
+      /* Theme and language must be settled before first paint, or the page
+         flashes the wrong one. Kept inline and tiny for that reason. */
+      (function () {
+        try {
+          var t = localStorage.getItem('wafiq:theme');
+          if (t !== 'dark' && t !== 'light') {
+            t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.setAttribute('data-theme', t);
+          var l = localStorage.getItem('wafiq:lang') === 'ur' ? 'ur' : 'en';
+          document.documentElement.setAttribute('lang', l);
+          document.documentElement.setAttribute('dir', l === 'ur' ? 'rtl' : 'ltr');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

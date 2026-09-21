@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" width="600" height="420">
+    <defs>
+      <linearGradient id="crateBack" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#c8873f"/><stop offset="1" stop-color="#a8672a"/>
+      </linearGradient>
+      <linearGradient id="crateFront" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#a8672a"/><stop offset="1" stop-color="#8a5220"/>
+      </linearGradient>
+    </defs>
+    <path d="M40 90 L560 90 L520 340 L80 340 Z" fill="url(#crateBack)"/>
+    <path d="M60 240 L540 240 L520 340 L80 340 Z" fill="url(#crateFront)"/>
+    <line x1="130" y1="240" x2="122" y2="340" stroke="#8a5220" stroke-width="4" opacity="0.5"/><line x1="220" y1="240" x2="212" y2="340" stroke="#8a5220" stroke-width="4" opacity="0.5"/><line x1="310" y1="240" x2="302" y2="340" stroke="#8a5220" stroke-width="4" opacity="0.5"/><line x1="400" y1="240" x2="392" y2="340" stroke="#8a5220" stroke-width="4" opacity="0.5"/><line x1="470" y1="240" x2="462" y2="340" stroke="#8a5220" stroke-width="4" opacity="0.5"/>
+    <rect x="40" y="80" width="520" height="18" rx="6" fill="#a8672a"/>
+  </svg>

@@ -1,0 +1,162 @@
+[
+  {
+    "slug": "fruits-vegetables",
+    "en": "Fruits & Vegetables",
+    "ur": "پھل اور سبزیاں",
+    "blurbEn": "Fresh off the crate every morning — fruit, vegetables, herbs and dried nuts.",
+    "blurbUr": "ہر صبح تازہ — پھل، سبزیاں، جڑی بوٹیاں اور خشک میوہ جات۔",
+    "pastel": "#E4F2D3",
+    "accent": "#6BAA3A",
+    "glyph": "fruit",
+    "subcategories": [
+      { "slug": "fresh-fruits", "en": "Fresh Fruits", "ur": "تازہ پھل" },
+      { "slug": "fresh-vegetables", "en": "Fresh Vegetables", "ur": "تازہ سبزیاں" },
+      { "slug": "herbs-leafy-greens", "en": "Herbs & Leafy Greens", "ur": "ہری سبزیاں اور پتے" },
+      { "slug": "dried-fruits-nuts", "en": "Dried Fruits & Nuts", "ur": "خشک میوہ جات" }
+    ]
+  },
+  {
+    "slug": "snacks-confectionery",
+    "en": "Snacks & Confectionery",
+    "ur": "سنیکس اور مٹھائیاں",
+    "blurbEn": "The shelf everyone raids first — biscuits, chocolate, toffees and bars.",
+    "blurbUr": "بسکٹ، چاکلیٹ، ٹافیاں اور بار۔",
+    "pastel": "#FBE8CE",
+    "accent": "#E09B3D",
+    "glyph": "cookie",
+    "subcategories": [
+      { "slug": "cookies-biscuits", "en": "Cookies & Biscuits", "ur": "بسکٹ اور کوکیز" },
+      { "slug": "candies-jellies", "en": "Candies & Jellies", "ur": "ٹافیاں اور جیلی" },
+      { "slug": "chocolates", "en": "Chocolates", "ur": "چاکلیٹ" },
+      { "slug": "protein-bars", "en": "Protein Bars", "ur": "پروٹین بار" }
+    ]
+  },
+  {
+    "slug": "tea-coffee-breakfast",
+    "en": "Tea, Coffee & Breakfast",
+    "ur": "چائے، کافی اور ناشتہ",
+    "blurbEn": "From the first chai of the morning to what goes on the toast.",
+    "blurbUr": "صبح کی چائے سے لے کر ناشتے کی ہر چیز تک۔",
+    "pastel": "#F6DCCB",
+    "accent": "#C97848",
+    "glyph": "cup",
+    "subcategories": [
+      { "slug": "tea-sweeteners", "en": "Tea & Tea Sweeteners", "ur": "چائے اور مٹھاس" },
+      { "slug": "coffee", "en": "Coffee Powder & Canned Coffee", "ur": "کافی پاؤڈر اور کین کافی" },
+      { "slug": "cereals-porridge", "en": "Cereals & Porridge", "ur": "سیریل اور دلیہ" },
+      { "slug": "spreads-honey-jams", "en": "Spreads, Honey & Jams", "ur": "جام، شہد اور اسپریڈ" }
+    ]
+  },
+  {
+    "slug": "milk-beverages",
+    "en": "Milk & Beverages",
+    "ur": "دودھ اور مشروبات",
+    "blurbEn": "Packed, powdered, condensed and fizzy — the whole cold aisle.",
+    "blurbUr": "پیکڈ، پاؤڈر، کنڈنسڈ اور سافٹ ڈرنکس۔",
+    "pastel": "#DCEAF7",
+    "accent": "#4C8FCB",
+    "glyph": "bottle",
+    "subcategories": [
+      { "slug": "packed-milk", "en": "Packed Milk", "ur": "پیکڈ دودھ" },
+      { "slug": "powdered-milk", "en": "Powdered Milk", "ur": "پاؤڈر دودھ" },
+      { "slug": "condensed-milk", "en": "Condensed Milk", "ur": "کنڈنسڈ دودھ" },
+      { "slug": "soft-drinks", "en": "Soft Drinks", "ur": "سافٹ ڈرنکس" }
+    ]
+  },
+  {
+    "slug": "cooking-baking",
+    "en": "Cooking & Baking Essentials",
+    "ur": "کھانا پکانے اور بیکنگ کا سامان",
+    "blurbEn": "Masalas, sauces, pasta and everything a dessert needs.",
+    "blurbUr": "مصالحے، ساس، پاستا اور میٹھے کا سامان۔",
+    "pastel": "#F9D9D3",
+    "accent": "#D4573F",
+    "glyph": "spice",
+    "subcategories": [
+      { "slug": "powdered-masalas", "en": "Powdered Masalas", "ur": "پاؤڈر مصالحے" },
+      { "slug": "sauces-syrups", "en": "Sauces, Syrups, Toppings & Garnishing", "ur": "ساس، شربت اور گارنش" },
+      { "slug": "noodles-pasta", "en": "Noodles & Pasta", "ur": "نوڈلز اور پاستا" },
+      { "slug": "baking-desserts", "en": "Baking & Desserts", "ur": "بیکنگ اور میٹھے" }
+    ]
+  },
+  {
+    "slug": "condiments-canned",
+    "en": "Condiments & Canned Foods",
+    "ur": "چٹنیاں اور ڈبہ بند غذائیں",
+    "blurbEn": "Pickles, spreads, tins and the oils that finish a dish.",
+    "blurbUr": "اچار، اسپریڈ، ڈبے اور تیل۔",
+    "pastel": "#F1EBC8",
+    "accent": "#B9A03A",
+    "glyph": "jar",
+    "subcategories": [
+      { "slug": "pickles-ketchups", "en": "Pickles, Ketchups & Mustards", "ur": "اچار، کیچپ اور مسٹرڈ" },
+      { "slug": "spreads-chinese-sauces", "en": "Sandwich Spreads & Sauces", "ur": "سینڈوچ اسپریڈ اور چائنیز ساس" },
+      { "slug": "canned-fruit-veg", "en": "Canned Fruit & Vegetables", "ur": "ڈبہ بند پھل اور سبزیاں" },
+      { "slug": "mushrooms-olives-oils", "en": "Mushrooms, Olives & Cooking Oils", "ur": "مشروم، زیتون اور کوکنگ آئل" }
+    ]
+  },
+  {
+    "slug": "home-kitchen",
+    "en": "Home & Kitchen Essentials",
+    "ur": "گھر اور باورچی خانے کا سامان",
+    "blurbEn": "The quiet stuff that runs a kitchen — wraps, foils, containers, sponges.",
+    "blurbUr": "ریپ، فوائل، ڈبے اور اسفنج۔",
+    "pastel": "#E4E4F0",
+    "accent": "#6F6FA8",
+    "glyph": "box",
+    "subcategories": [
+      { "slug": "tissues-foils", "en": "Tissues, Tapes & Foils", "ur": "ٹشو، ٹیپ اور فوائل" },
+      { "slug": "lighters-matches", "en": "Lighters & Match Sticks", "ur": "لائٹر اور ماچس" },
+      { "slug": "storage-wraps", "en": "Storage Containers, Food Wraps & Sponges", "ur": "ڈبے، فوڈ ریپ اور اسفنج" },
+      { "slug": "dish-washing", "en": "Dish Washing (Tabs & Liquids)", "ur": "برتن دھونے کا سامان" }
+    ]
+  },
+  {
+    "slug": "cleaning-fresheners",
+    "en": "Cleaning & Fresheners",
+    "ur": "صفائی اور خوشبو",
+    "blurbEn": "Everything for a clean floor, a clean bathroom and a room that smells right.",
+    "blurbUr": "فرش، باتھ روم اور خوشبو کا مکمل سامان۔",
+    "pastel": "#D5EFE8",
+    "accent": "#3DA58A",
+    "glyph": "spray",
+    "subcategories": [
+      { "slug": "toilet-cleaning", "en": "Toilet Cleaning Items", "ur": "ٹوائلٹ صفائی کا سامان" },
+      { "slug": "washing-cleaning", "en": "Washing & Cleaning Items", "ur": "دھلائی اور صفائی کا سامان" },
+      { "slug": "insect-killers", "en": "Insect Killers", "ur": "کیڑے مار ادویات" },
+      { "slug": "air-fresheners", "en": "Air Fresheners", "ur": "ایئر فریشنر" }
+    ]
+  },
+  {
+    "slug": "baby-hygiene",
+    "en": "Baby & Personal Hygiene",
+    "ur": "بچوں اور ذاتی حفظان صحت",
+    "blurbEn": "Gentle things for the smallest people, and the essentials nobody talks about.",
+    "blurbUr": "بچوں کی نرم مصنوعات اور ضروری حفظان صحت۔",
+    "pastel": "#F9DCE7",
+    "accent": "#D66B96",
+    "glyph": "baby",
+    "subcategories": [
+      { "slug": "diapers", "en": "Diapers", "ur": "ڈایپر" },
+      { "slug": "baby-care", "en": "Baby Care Products", "ur": "بچوں کی مصنوعات" },
+      { "slug": "hair-removal", "en": "Hair Removal Products", "ur": "بال ہٹانے کی مصنوعات" },
+      { "slug": "sanitary-pads", "en": "Sanitary Pads", "ur": "سینیٹری پیڈ" }
+    ]
+  },
+  {
+    "slug": "personal-care",
+    "en": "Personal Care",
+    "ur": "ذاتی نگہداشت",
+    "blurbEn": "Hair, skin, teeth and hands — the daily routine shelf.",
+    "blurbUr": "بال، جلد، دانت اور ہاتھ — روزمرہ کی ضروریات۔",
+    "pastel": "#E9DEF5",
+    "accent": "#8A63C4",
+    "glyph": "bottle-pump",
+    "subcategories": [
+      { "slug": "shampoos-soaps", "en": "Shampoos & Soaps", "ur": "شیمپو اور صابن" },
+      { "slug": "oral-care", "en": "Toothpastes & Tooth Brushes", "ur": "ٹوتھ پیسٹ اور برش" },
+      { "slug": "handwash-baby-oils", "en": "Liquid Hand Wash & Baby Oils", "ur": "ہینڈ واش اور بے بی آئل" },
+      { "slug": "intimate-care", "en": "Intimate Care", "ur": "نجی نگہداشت" }
+    ]
+  }
+]

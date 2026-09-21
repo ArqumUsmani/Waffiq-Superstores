@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+    <defs>
+      <radialGradient id="shine-capsicum" cx="35%" cy="30%" r="65%">
+        <stop offset="0" stop-color="#ffffff" stop-opacity="0.35"/>
+        <stop offset="55%" stop-color="#ffffff" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <g>
+    <path d="M200 130 Q270 140 275 220 Q278 300 200 320 Q122 300 125 220
+             Q130 140 200 130 Z" fill="#4fae52"/>
+    <path d="M190 132 Q195 98 175 82 M205 132 Q212 100 232 88"
+          stroke="#3d6b2c" stroke-width="10" stroke-linecap="round" fill="none"/></g>
+    <circle cx="200" cy="210" r="140" fill="url(#shine-capsicum)"/>
+  </svg>

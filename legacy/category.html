@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aisle — Wafiq Superstores</title>
+    <meta name="description" content="Browse everything on this Wafiq Superstores aisle, shelf by shelf." />
+    <meta name="theme-color" content="#136f37" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('wafiq:theme');
+          if (t !== 'dark' && t !== 'light') {
+            t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.setAttribute('data-theme', t);
+          var l = localStorage.getItem('wafiq:lang') === 'ur' ? 'ur' : 'en';
+          document.documentElement.setAttribute('lang', l);
+          document.documentElement.setAttribute('dir', l === 'ur' ? 'rtl' : 'ltr');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+
+  <body data-page="category">
+    <main id="main" data-category-page>
+      <section class="shell" style="padding-block-start: clamp(7rem, 12vw, 9rem)">
+        <header class="aisle-head" data-aisle-head></header>
+      </section>
+
+      <section class="shell">
+        <div class="shelf-tabs" data-shelf-tabs role="group" aria-label="Shelves"></div>
+        <div class="controls" data-controls></div>
+        <div class="results-summary" data-summary></div>
+        <div data-results></div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/js/main.js"></script>
+  </body>
+</html>

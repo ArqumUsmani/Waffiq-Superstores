@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+    <defs>
+      <radialGradient id="shine-onion" cx="35%" cy="30%" r="65%">
+        <stop offset="0" stop-color="#ffffff" stop-opacity="0.35"/>
+        <stop offset="55%" stop-color="#ffffff" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <g>
+    <path d="M200 320 Q120 300 122 220 Q124 140 200 110 Q276 140 278 220
+             Q280 300 200 320 Z" fill="#e0b8d8"/>
+    <path d="M198 112 Q192 90 200 70" stroke="#a8863a" stroke-width="8" stroke-linecap="round" fill="none"/></g>
+    <circle cx="200" cy="210" r="140" fill="url(#shine-onion)"/>
+  </svg>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact — Wafiq Superstores</title>
+    <meta name="description" content="Get in touch with Wafiq Superstores about stock, branches or anything else." />
+    <meta name="theme-color" content="#136f37" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('wafiq:theme');
+          if (t !== 'dark' && t !== 'light') {
+            t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.setAttribute('data-theme', t);
+          var l = localStorage.getItem('wafiq:lang') === 'ur' ? 'ur' : 'en';
+          document.documentElement.setAttribute('lang', l);
+          document.documentElement.setAttribute('dir', l === 'ur' ? 'rtl' : 'ltr');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+
+  <body data-page="contact">
+    <main id="main">
+      <section class="section shell" style="padding-block-start: clamp(7rem, 12vw, 9rem); padding-block-end: 0">
+        <p class="eyebrow" data-i18n="contact.eyebrow">Say hello</p>
+        <h1 style="font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 1rem" data-i18n="contact.title">
+          Get in touch
+        </h1>
+        <p class="lede" data-i18n="contact.sub"></p>
+      </section>
+
+      <section class="section section--framed">
+        <div class="section__frame" style="display: grid; gap: 2.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr))">
+          <!-- Swap data-endpoint in for a Formspree/Basin URL to post for real;
+               without one the form falls back to the visitor's mail client. -->
+          <form data-contact-form data-mailto="hello@wafiq.pk" style="display: grid; gap: 1rem">
+            <label class="field">
+              <span class="field__label" data-i18n="contact.nameLabel">Your name</span>
+              <input type="text" name="name" required autocomplete="name" />
+            </label>
+            <label class="field">
+              <span class="field__label" data-i18n="contact.emailLabel">Email address</span>
+              <input type="email" name="email" required autocomplete="email" />
+            </label>
+            <label class="field">
+              <span class="field__label" data-i18n="contact.messageLabel">Message</span>
+              <textarea name="message" required></textarea>
+            </label>
+            <button class="btn btn--solid" type="submit" style="justify-self: start">
+              <span data-i18n="contact.send">Send message</span>
+            </button>
+            <p data-form-status role="status" aria-live="polite" style="font-size: 0.88rem; color: var(--fg-muted)"></p>
+          </form>
+
+          <div style="display: grid; gap: 1.25rem; align-content: start">
+            <div class="product__facts" style="margin: 0">
+              <div>
+                <dt data-i18n="contact.phone">Phone</dt>
+                <dd><a href="tel:+922100000000">+92 21 0000 0000</a></dd>
+              </div>
+              <div>
+                <dt data-i18n="contact.whatsapp">WhatsApp</dt>
+                <dd><a href="https://wa.me/922100000000" rel="noopener noreferrer" target="_blank">Message us</a></dd>
+              </div>
+              <div>
+                <dt data-i18n="contact.email">Email</dt>
+                <dd><a href="mailto:hello@wafiq.pk">hello@wafiq.pk</a></dd>
+              </div>
+              <div>
+                <dt data-i18n="contact.social">Social</dt>
+                <dd><a href="https://wafiq.pk" rel="noopener noreferrer" target="_blank">wafiq.pk</a></dd>
+              </div>
+            </div>
+
+            <p class="notice notice--warn" data-i18n="contact.detailsNote"></p>
+            <p class="notice" data-i18n="footer.note"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/js/main.js"></script>
+  </body>
+</html>

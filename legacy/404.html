@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Not found — Wafiq Superstores</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#136f37" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('wafiq:theme');
+          if (t !== 'dark' && t !== 'light') {
+            t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.setAttribute('data-theme', t);
+          var l = localStorage.getItem('wafiq:lang') === 'ur' ? 'ur' : 'en';
+          document.documentElement.setAttribute('lang', l);
+          document.documentElement.setAttribute('dir', l === 'ur' ? 'rtl' : 'ltr');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+
+  <body data-page="notfound">
+    <main id="main">
+      <section class="section shell" style="padding-block-start: clamp(7rem, 14vw, 10rem)">
+        <svg class="trolley" viewBox="0 0 120 96" fill="none" stroke="currentColor" stroke-width="6"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 10h16l14 46h56l12-32H30" />
+          <circle cx="46" cy="80" r="8" />
+          <circle cx="88" cy="80" r="8" />
+        </svg>
+
+        <p class="eyebrow" style="margin-block-start: 1.5rem" data-i18n="notFound.code">404</p>
+        <h1 style="font-size: clamp(2rem, 5.5vw, 3.8rem); margin: 0 0 1rem" data-i18n="notFound.title">
+          That trolley went down the wrong aisle
+        </h1>
+        <p class="lede" data-i18n="notFound.body"></p>
+        <a class="btn btn--solid" style="margin-block-start: 1.75rem" href="/index.html">
+          <span data-i18n="notFound.cta">Back to the shop</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </section>
+    </main>
+
+    <script type="module" src="/src/js/main.js"></script>
+  </body>
+</html>

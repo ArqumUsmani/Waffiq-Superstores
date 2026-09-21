@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+    <defs>
+      <radialGradient id="shine-banana" cx="35%" cy="30%" r="65%">
+        <stop offset="0" stop-color="#ffffff" stop-opacity="0.35"/>
+        <stop offset="55%" stop-color="#ffffff" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <g>
+    <path d="M120 340 Q60 300 70 210 Q76 150 130 110 Q145 100 155 108
+             Q160 118 150 128 Q108 158 100 210 Q94 280 145 315
+             Q160 325 150 338 Q140 348 120 340 Z" fill="#f3c94d"/>
+    <path d="M130 112 Q140 96 155 100" stroke="#7a5a1e" stroke-width="8" stroke-linecap="round" fill="none"/></g>
+    <circle cx="200" cy="210" r="140" fill="url(#shine-banana)"/>
+  </svg>

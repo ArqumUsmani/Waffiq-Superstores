@@ -1,0 +1,3314 @@
+[
+  {
+    "sku": "fresh-fruits-sindhri-mango",
+    "name": "Sindhri Mango",
+    "nameUr": "سندھڑی آم",
+    "brand": "Sindh",
+    "category": "fruits-vegetables",
+    "subcategory": "fresh-fruits",
+    "size": "1 kg",
+    "desc": "Seasonal fruit, picked fresh and priced by the kilo.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 160,
+      "glyph": "fruit"
+    },
+    "image": "/products/fresh-fruits-sindhri-mango.png"
+  },
+  {
+    "sku": "fresh-fruits-chaunsa-mango",
+    "name": "Chaunsa Mango",
+    "nameUr": "چونسا آم",
+    "brand": "Punjab",
+    "category": "fruits-vegetables",
+    "subcategory": "fresh-fruits",
+    "size": "1 kg",
+    "desc": "Seasonal fruit, picked fresh and priced by the kilo.",
+    "tags": [],
+    "tile": {
+      "hue": 166,
+      "glyph": "fruit"
+    },
+    "image": "/products/fresh-fruits-chaunsa-mango.png"
+  },
+  {
+    "sku": "fresh-fruits-kinnow",
+    "name": "Kinnow",
+    "nameUr": "کینو",
+    "brand": "Punjab",
+    "category": "fruits-vegetables",
+    "subcategory": "fresh-fruits",
+    "size": "1 kg",
+    "desc": "Seasonal fruit, picked fresh and priced by the kilo.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 18,
+      "glyph": "fruit"
+    },
+    "image": "/products/fresh-fruits-kinnow.png"
+  },
+  {
+    "sku": "fresh-fruits-banana",
+    "name": "Banana",
+    "nameUr": "کیلا",
+    "brand": "Local",
+    "category": "fruits-vegetables",
+    "subcategory": "fresh-fruits",
+    "size": "Dozen",
+    "desc": "Seasonal fruit, picked fresh and priced by the kilo.",
+    "tags": [],
+    "tile": {
+      "hue": 225,
+      "glyph": "fruit"
+    },
+    "image": "/products/fresh-fruits-banana.png"
+  },
+  {
+    "sku": "fresh-fruits-red-apple",
+    "name": "Red Apple",
+    "nameUr": "سرخ سیب",
+    "brand": "Imported",
+    "category": "fruits-vegetables",
+    "subcategory": "fresh-fruits",
+    "size": "1 kg",
+    "desc": "Seasonal fruit, picked fresh and priced by the kilo.",
+    "tags": [],
+    "tile": {
+      "hue": 242,
+      "glyph": "fruit"
+    },
+    "image": "/products/fresh-fruits-red-apple.png"
+  },
+  {
+    "sku": "fresh-fruits-seedless-watermelon",
+    "name": "Seedless Watermelon",
+    "nameUr": "بغیر بیج تربوز",
+    "brand": "Local",
+    "category": "fruits-vegetables",
+    "subcategory": "fresh-fruits",
+    "size": "1 piece",
+    "desc": "Seasonal fruit, picked fresh and priced by the kilo.",
+    "tags": [],
+    "tile": {
+      "hue": 145,
+      "glyph": "fruit"
+    },
+    "image": "/products/fresh-fruits-seedless-watermelon.png"
+  },
+  {
+    "sku": "fresh-vegetables-tomato",
+    "name": "Tomato",
+    "nameUr": "ٹماٹر",
+    "brand": "Local",
+    "category": "fruits-vegetables",
+    "subcategory": "fresh-vegetables",
+    "size": "1 kg",
+    "desc": "The daily vegetable basket — onions, tomatoes and the rest of the list.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 223,
+      "glyph": "vegetable"
+    },
+    "image": "/products/fresh-vegetables-tomato.png"
+  },
+  {
+    "sku": "fresh-vegetables-onion",
+    "name": "Onion",
+    "nameUr": "پیاز",
+    "brand": "Local",
+    "category": "fruits-vegetables",
+    "subcategory": "fresh-vegetables",
+    "size": "1 kg",
+    "desc": "The daily vegetable basket — onions, tomatoes and the rest of the list.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 122,
+      "glyph": "vegetable"
+    },
+    "image": "/products/fresh-vegetables-onion.png"
+  },
+  {
+    "sku": "fresh-vegetables-potato",
+    "name": "Potato",
+    "nameUr": "آلو",
+    "brand": "Local",
+    "category": "fruits-vegetables",
+    "subcategory": "fresh-vegetables",
+    "size": "1 kg",
+    "desc": "The daily vegetable basket — onions, tomatoes and the rest of the list.",
+    "tags": [],
+    "tile": {
+      "hue": 254,
+      "glyph": "vegetable"
+    },
+    "image": "/products/fresh-vegetables-potato.png"
+  },
+  {
+    "sku": "fresh-vegetables-green-chilli",
+    "name": "Green Chilli",
+    "nameUr": "ہری مرچ",
+    "brand": "Local",
+    "category": "fruits-vegetables",
+    "subcategory": "fresh-vegetables",
+    "size": "250 g",
+    "desc": "The daily vegetable basket — onions, tomatoes and the rest of the list.",
+    "tags": [],
+    "tile": {
+      "hue": 282,
+      "glyph": "vegetable"
+    },
+    "image": "/products/fresh-vegetables-green-chilli.png"
+  },
+  {
+    "sku": "fresh-vegetables-capsicum",
+    "name": "Capsicum",
+    "nameUr": "شملہ مرچ",
+    "brand": "Local",
+    "category": "fruits-vegetables",
+    "subcategory": "fresh-vegetables",
+    "size": "1 kg",
+    "desc": "The daily vegetable basket — onions, tomatoes and the rest of the list.",
+    "tags": [],
+    "tile": {
+      "hue": 34,
+      "glyph": "vegetable"
+    },
+    "image": "/products/fresh-vegetables-capsicum.png"
+  },
+  {
+    "sku": "fresh-vegetables-cucumber",
+    "name": "Cucumber",
+    "nameUr": "کھیرا",
+    "brand": "Local",
+    "category": "fruits-vegetables",
+    "subcategory": "fresh-vegetables",
+    "size": "1 kg",
+    "desc": "The daily vegetable basket — onions, tomatoes and the rest of the list.",
+    "tags": [],
+    "tile": {
+      "hue": 333,
+      "glyph": "vegetable"
+    },
+    "image": "/products/fresh-vegetables-cucumber.png"
+  },
+  {
+    "sku": "herbs-leafy-greens-coriander-bunch",
+    "name": "Coriander Bunch",
+    "nameUr": "دھنیا",
+    "brand": "Local",
+    "category": "fruits-vegetables",
+    "subcategory": "herbs-leafy-greens",
+    "size": "Bunch",
+    "desc": "Coriander, mint and leafy greens sold by the bunch.",
+    "tags": [],
+    "tile": {
+      "hue": 161,
+      "glyph": "leaf"
+    },
+    "image": "/products/herbs-leafy-greens-coriander-bunch.png"
+  },
+  {
+    "sku": "herbs-leafy-greens-mint-bunch",
+    "name": "Mint Bunch",
+    "nameUr": "پودینہ",
+    "brand": "Local",
+    "category": "fruits-vegetables",
+    "subcategory": "herbs-leafy-greens",
+    "size": "Bunch",
+    "desc": "Coriander, mint and leafy greens sold by the bunch.",
+    "tags": [],
+    "tile": {
+      "hue": 244,
+      "glyph": "leaf"
+    },
+    "image": "/products/herbs-leafy-greens-mint-bunch.png"
+  },
+  {
+    "sku": "herbs-leafy-greens-spinach",
+    "name": "Spinach",
+    "nameUr": "پالک",
+    "brand": "Local",
+    "category": "fruits-vegetables",
+    "subcategory": "herbs-leafy-greens",
+    "size": "Bunch",
+    "desc": "Coriander, mint and leafy greens sold by the bunch.",
+    "tags": [],
+    "tile": {
+      "hue": 5,
+      "glyph": "leaf"
+    },
+    "image": "/products/herbs-leafy-greens-spinach.png"
+  },
+  {
+    "sku": "herbs-leafy-greens-fenugreek-leaves",
+    "name": "Fenugreek Leaves",
+    "nameUr": "میتھی",
+    "brand": "Local",
+    "category": "fruits-vegetables",
+    "subcategory": "herbs-leafy-greens",
+    "size": "Bunch",
+    "desc": "Coriander, mint and leafy greens sold by the bunch.",
+    "tags": [],
+    "tile": {
+      "hue": 88,
+      "glyph": "leaf"
+    },
+    "image": "/products/herbs-leafy-greens-fenugreek-leaves.png"
+  },
+  {
+    "sku": "herbs-leafy-greens-spring-onion",
+    "name": "Spring Onion",
+    "nameUr": "ہری پیاز",
+    "brand": "Local",
+    "category": "fruits-vegetables",
+    "subcategory": "herbs-leafy-greens",
+    "size": "Bunch",
+    "desc": "Coriander, mint and leafy greens sold by the bunch.",
+    "tags": [],
+    "tile": {
+      "hue": 298,
+      "glyph": "leaf"
+    },
+    "image": "/products/herbs-leafy-greens-spring-onion.png"
+  },
+  {
+    "sku": "dried-fruits-nuts-kabuli-almonds",
+    "name": "Kabuli Almonds",
+    "nameUr": "کابلی بادام",
+    "brand": "Afghan",
+    "category": "fruits-vegetables",
+    "subcategory": "dried-fruits-nuts",
+    "size": "500 g",
+    "desc": "Almonds, dates and dried fruit for snacking and desserts.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 52,
+      "glyph": "nut"
+    },
+    "image": "/products/dried-fruits-nuts-kabuli-almonds.png"
+  },
+  {
+    "sku": "dried-fruits-nuts-kabuli-pine-nuts",
+    "name": "Kabuli Pine Nuts",
+    "nameUr": "کابلی چلغوزہ",
+    "brand": "Afghan",
+    "category": "fruits-vegetables",
+    "subcategory": "dried-fruits-nuts",
+    "size": "250 g",
+    "desc": "Almonds, dates and dried fruit for snacking and desserts.",
+    "tags": [],
+    "tile": {
+      "hue": 357,
+      "glyph": "nut"
+    },
+    "image": "/products/dried-fruits-nuts-kabuli-pine-nuts.png"
+  },
+  {
+    "sku": "dried-fruits-nuts-aseel-dates",
+    "name": "Aseel Dates",
+    "nameUr": "اصیل کھجور",
+    "brand": "Sindh",
+    "category": "fruits-vegetables",
+    "subcategory": "dried-fruits-nuts",
+    "size": "500 g",
+    "desc": "Almonds, dates and dried fruit for snacking and desserts.",
+    "tags": [],
+    "tile": {
+      "hue": 143,
+      "glyph": "nut"
+    },
+    "image": "/products/dried-fruits-nuts-aseel-dates.png"
+  },
+  {
+    "sku": "dried-fruits-nuts-walnuts",
+    "name": "Walnuts",
+    "nameUr": "اخروٹ",
+    "brand": "Balochistan",
+    "category": "fruits-vegetables",
+    "subcategory": "dried-fruits-nuts",
+    "size": "500 g",
+    "desc": "Almonds, dates and dried fruit for snacking and desserts.",
+    "tags": [],
+    "tile": {
+      "hue": 337,
+      "glyph": "nut"
+    },
+    "image": "/products/dried-fruits-nuts-walnuts.png"
+  },
+  {
+    "sku": "dried-fruits-nuts-kabuli-raisins",
+    "name": "Kabuli Raisins",
+    "nameUr": "کابلی کشمش",
+    "brand": "Afghan",
+    "category": "fruits-vegetables",
+    "subcategory": "dried-fruits-nuts",
+    "size": "250 g",
+    "desc": "Almonds, dates and dried fruit for snacking and desserts.",
+    "tags": [],
+    "tile": {
+      "hue": 327,
+      "glyph": "nut"
+    },
+    "image": "/products/dried-fruits-nuts-kabuli-raisins.png"
+  },
+  {
+    "sku": "dried-fruits-nuts-pistachios",
+    "name": "Pistachios",
+    "nameUr": "پستہ",
+    "brand": "Imported",
+    "category": "fruits-vegetables",
+    "subcategory": "dried-fruits-nuts",
+    "size": "250 g",
+    "desc": "Almonds, dates and dried fruit for snacking and desserts.",
+    "tags": [],
+    "tile": {
+      "hue": 70,
+      "glyph": "nut"
+    },
+    "image": "/products/dried-fruits-nuts-pistachios.png"
+  },
+  {
+    "sku": "cookies-biscuits-peek-freans-sooper-biscuits",
+    "name": "Peek Freans Sooper Biscuits",
+    "nameUr": "پیک فرینز بسکٹ",
+    "brand": "Peek Freans",
+    "category": "snacks-confectionery",
+    "subcategory": "cookies-biscuits",
+    "size": "Family Pack",
+    "desc": "Tea-time biscuits and cookies from the brands people ask for by name.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 345,
+      "glyph": "cookie"
+    },
+    "image": "/products/cookies-biscuits-peek-freans-sooper-biscuits.png"
+  },
+  {
+    "sku": "cookies-biscuits-lu-tuc-crackers",
+    "name": "LU Tuc Crackers",
+    "nameUr": "ایل یو بسکٹ",
+    "brand": "LU",
+    "category": "snacks-confectionery",
+    "subcategory": "cookies-biscuits",
+    "size": "Snack Pack",
+    "desc": "Tea-time biscuits and cookies from the brands people ask for by name.",
+    "tags": [],
+    "tile": {
+      "hue": 257,
+      "glyph": "cookie"
+    },
+    "image": "/products/cookies-biscuits-lu-tuc-crackers.png"
+  },
+  {
+    "sku": "cookies-biscuits-lu-prince-chocolate-biscuits",
+    "name": "LU Prince Chocolate Biscuits",
+    "nameUr": "ایل یو بسکٹ",
+    "brand": "LU",
+    "category": "snacks-confectionery",
+    "subcategory": "cookies-biscuits",
+    "size": "Family Pack",
+    "desc": "Tea-time biscuits and cookies from the brands people ask for by name.",
+    "tags": [],
+    "tile": {
+      "hue": 97,
+      "glyph": "cookie"
+    },
+    "image": "/products/cookies-biscuits-lu-prince-chocolate-biscuits.png"
+  },
+  {
+    "sku": "cookies-biscuits-peek-freans-gluco-biscuits",
+    "name": "Peek Freans Gluco Biscuits",
+    "nameUr": "پیک فرینز بسکٹ",
+    "brand": "Peek Freans",
+    "category": "snacks-confectionery",
+    "subcategory": "cookies-biscuits",
+    "size": "Half Roll",
+    "desc": "Tea-time biscuits and cookies from the brands people ask for by name.",
+    "tags": [],
+    "tile": {
+      "hue": 131,
+      "glyph": "cookie"
+    },
+    "image": "/products/cookies-biscuits-peek-freans-gluco-biscuits.png"
+  },
+  {
+    "sku": "cookies-biscuits-bisconni-chocolate-chip-cookies",
+    "name": "Bisconni Chocolate Chip Cookies",
+    "nameUr": "بسکونی بسکٹ",
+    "brand": "Bisconni",
+    "category": "snacks-confectionery",
+    "subcategory": "cookies-biscuits",
+    "size": "Party Pack",
+    "desc": "Tea-time biscuits and cookies from the brands people ask for by name.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 129,
+      "glyph": "cookie"
+    },
+    "image": "/products/cookies-biscuits-bisconni-chocolate-chip-cookies.png"
+  },
+  {
+    "sku": "cookies-biscuits-peek-freans-rio-sandwich",
+    "name": "Peek Freans Rio Sandwich",
+    "nameUr": "پیک فرینز بسکٹ",
+    "brand": "Peek Freans",
+    "category": "snacks-confectionery",
+    "subcategory": "cookies-biscuits",
+    "size": "Half Roll",
+    "desc": "Tea-time biscuits and cookies from the brands people ask for by name.",
+    "tags": [],
+    "tile": {
+      "hue": 268,
+      "glyph": "cookie"
+    },
+    "image": "/products/cookies-biscuits-peek-freans-rio-sandwich.png"
+  },
+  {
+    "sku": "candies-jellies-hilal-ding-dong-bubble-gum",
+    "name": "Hilal Ding Dong Bubble Gum",
+    "nameUr": "ہلال ٹافی",
+    "brand": "Hilal",
+    "category": "snacks-confectionery",
+    "subcategory": "candies-jellies",
+    "size": "Jar of 100",
+    "desc": "Sweets for the counter jar — toffees, jellies, lollipops and gum.",
+    "tags": [],
+    "tile": {
+      "hue": 65,
+      "glyph": "candy"
+    },
+    "image": "/products/candies-jellies-hilal-ding-dong-bubble-gum.png"
+  },
+  {
+    "sku": "candies-jellies-hilal-chocomax-toffee",
+    "name": "Hilal Chocomax Toffee",
+    "nameUr": "ہلال ٹافی",
+    "brand": "Hilal",
+    "category": "snacks-confectionery",
+    "subcategory": "candies-jellies",
+    "size": "Pouch 200 g",
+    "desc": "Sweets for the counter jar — toffees, jellies, lollipops and gum.",
+    "tags": [],
+    "tile": {
+      "hue": 343,
+      "glyph": "candy"
+    },
+    "image": "/products/candies-jellies-hilal-chocomax-toffee.png"
+  },
+  {
+    "sku": "candies-jellies-candyland-jelly-bites",
+    "name": "Candyland Jelly Bites",
+    "nameUr": "کینڈی لینڈ ٹافی",
+    "brand": "Candyland",
+    "category": "snacks-confectionery",
+    "subcategory": "candies-jellies",
+    "size": "Pouch 120 g",
+    "desc": "Sweets for the counter jar — toffees, jellies, lollipops and gum.",
+    "tags": [],
+    "tile": {
+      "hue": 261,
+      "glyph": "candy"
+    },
+    "image": "/products/candies-jellies-candyland-jelly-bites.png"
+  },
+  {
+    "sku": "candies-jellies-hilal-super-pop-lollipop",
+    "name": "Hilal Super Pop Lollipop",
+    "nameUr": "ہلال ٹافی",
+    "brand": "Hilal",
+    "category": "snacks-confectionery",
+    "subcategory": "candies-jellies",
+    "size": "Jar of 50",
+    "desc": "Sweets for the counter jar — toffees, jellies, lollipops and gum.",
+    "tags": [],
+    "tile": {
+      "hue": 126,
+      "glyph": "candy"
+    },
+    "image": "/products/candies-jellies-hilal-super-pop-lollipop.png"
+  },
+  {
+    "sku": "candies-jellies-candyland-fanty-jelly",
+    "name": "Candyland Fanty Jelly",
+    "nameUr": "کینڈی لینڈ ٹافی",
+    "brand": "Candyland",
+    "category": "snacks-confectionery",
+    "subcategory": "candies-jellies",
+    "size": "Pouch 150 g",
+    "desc": "Sweets for the counter jar — toffees, jellies, lollipops and gum.",
+    "tags": [],
+    "tile": {
+      "hue": 224,
+      "glyph": "candy"
+    },
+    "image": "/products/candies-jellies-candyland-fanty-jelly.png"
+  },
+  {
+    "sku": "chocolates-cadbury-dairy-milk",
+    "name": "Cadbury Dairy Milk",
+    "nameUr": "کیڈبری چاکلیٹ",
+    "brand": "Cadbury",
+    "category": "snacks-confectionery",
+    "subcategory": "chocolates",
+    "size": "65 g",
+    "desc": "Chocolate bars kept cool and stocked all year round.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 347,
+      "glyph": "chocolate"
+    },
+    "image": "/products/chocolates-cadbury-dairy-milk.png"
+  },
+  {
+    "sku": "chocolates-kit-kat-4-finger",
+    "name": "Kit Kat 4 Finger",
+    "nameUr": "نیسلے چاکلیٹ",
+    "brand": "Nestlé",
+    "category": "snacks-confectionery",
+    "subcategory": "chocolates",
+    "size": "41.5 g",
+    "desc": "Chocolate bars kept cool and stocked all year round.",
+    "tags": [],
+    "tile": {
+      "hue": 263,
+      "glyph": "chocolate"
+    },
+    "image": "/products/chocolates-kit-kat-4-finger.png"
+  },
+  {
+    "sku": "chocolates-snickers-bar",
+    "name": "Snickers Bar",
+    "nameUr": "مارس چاکلیٹ",
+    "brand": "Mars",
+    "category": "snacks-confectionery",
+    "subcategory": "chocolates",
+    "size": "50 g",
+    "desc": "Chocolate bars kept cool and stocked all year round.",
+    "tags": [],
+    "tile": {
+      "hue": 299,
+      "glyph": "chocolate"
+    },
+    "image": "/products/chocolates-snickers-bar.png"
+  },
+  {
+    "sku": "chocolates-cadbury-perk",
+    "name": "Cadbury Perk",
+    "nameUr": "کیڈبری چاکلیٹ",
+    "brand": "Cadbury",
+    "category": "snacks-confectionery",
+    "subcategory": "chocolates",
+    "size": "35 g",
+    "desc": "Chocolate bars kept cool and stocked all year round.",
+    "tags": [],
+    "tile": {
+      "hue": 62,
+      "glyph": "chocolate"
+    },
+    "image": "/products/chocolates-cadbury-perk.png"
+  },
+  {
+    "sku": "chocolates-galaxy-smooth-milk",
+    "name": "Galaxy Smooth Milk",
+    "nameUr": "مارس چاکلیٹ",
+    "brand": "Mars",
+    "category": "snacks-confectionery",
+    "subcategory": "chocolates",
+    "size": "40 g",
+    "desc": "Chocolate bars kept cool and stocked all year round.",
+    "tags": [],
+    "tile": {
+      "hue": 326,
+      "glyph": "chocolate"
+    },
+    "image": "/products/chocolates-galaxy-smooth-milk.png"
+  },
+  {
+    "sku": "protein-bars-quaker-oats-protein-bar",
+    "name": "Quaker Oats Protein Bar",
+    "nameUr": "کوکر پروٹین بار",
+    "brand": "Quaker",
+    "category": "snacks-confectionery",
+    "subcategory": "protein-bars",
+    "size": "60 g",
+    "desc": "Grab-and-go bars for gym bags, lunch boxes and long drives.",
+    "tags": [],
+    "tile": {
+      "hue": 83,
+      "glyph": "bar"
+    },
+    "image": "/products/protein-bars-quaker-oats-protein-bar.png"
+  },
+  {
+    "sku": "protein-bars-nature-valley-crunchy-granola-bar",
+    "name": "Nature Valley Crunchy Granola Bar",
+    "nameUr": "نیچر ویلی پروٹین بار",
+    "brand": "Nature Valley",
+    "category": "snacks-confectionery",
+    "subcategory": "protein-bars",
+    "size": "42 g",
+    "desc": "Grab-and-go bars for gym bags, lunch boxes and long drives.",
+    "tags": [],
+    "tile": {
+      "hue": 273,
+      "glyph": "bar"
+    },
+    "image": "/products/protein-bars-nature-valley-crunchy-granola-bar.png"
+  },
+  {
+    "sku": "protein-bars-kind-nut-and-dark-chocolate-bar",
+    "name": "Kind Nut & Dark Chocolate Bar",
+    "nameUr": "کائنڈ پروٹین بار",
+    "brand": "Kind",
+    "category": "snacks-confectionery",
+    "subcategory": "protein-bars",
+    "size": "40 g",
+    "desc": "Grab-and-go bars for gym bags, lunch boxes and long drives.",
+    "tags": [],
+    "tile": {
+      "hue": 152,
+      "glyph": "bar"
+    },
+    "image": "/products/protein-bars-kind-nut-and-dark-chocolate-bar.png"
+  },
+  {
+    "sku": "protein-bars-nestl-fitness-cereal-bar",
+    "name": "Nestlé Fitness Cereal Bar",
+    "nameUr": "نیسلے پروٹین بار",
+    "brand": "Nestlé",
+    "category": "snacks-confectionery",
+    "subcategory": "protein-bars",
+    "size": "23.5 g",
+    "desc": "Grab-and-go bars for gym bags, lunch boxes and long drives.",
+    "tags": [],
+    "tile": {
+      "hue": 114,
+      "glyph": "bar"
+    },
+    "image": "/products/protein-bars-nestl-fitness-cereal-bar.png"
+  },
+  {
+    "sku": "tea-sweeteners-tapal-danedar-black-tea",
+    "name": "Tapal Danedar Black Tea",
+    "nameUr": "ٹپال چائے",
+    "brand": "Tapal",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "tea-sweeteners",
+    "size": "450 g",
+    "desc": "Loose tea, tea bags and sweeteners for the daily chai.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 29,
+      "glyph": "cup"
+    },
+    "image": "/products/tea-sweeteners-tapal-danedar-black-tea.png"
+  },
+  {
+    "sku": "tea-sweeteners-lipton-yellow-label-tea",
+    "name": "Lipton Yellow Label Tea",
+    "nameUr": "لپٹن چائے",
+    "brand": "Lipton",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "tea-sweeteners",
+    "size": "475 g",
+    "desc": "Loose tea, tea bags and sweeteners for the daily chai.",
+    "tags": [],
+    "tile": {
+      "hue": 89,
+      "glyph": "cup"
+    },
+    "image": "/products/tea-sweeteners-lipton-yellow-label-tea.png"
+  },
+  {
+    "sku": "tea-sweeteners-tapal-mezban-family-mixture",
+    "name": "Tapal Mezban Family Mixture",
+    "nameUr": "ٹپال چائے",
+    "brand": "Tapal",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "tea-sweeteners",
+    "size": "950 g",
+    "desc": "Loose tea, tea bags and sweeteners for the daily chai.",
+    "tags": [],
+    "tile": {
+      "hue": 84,
+      "glyph": "cup"
+    },
+    "image": "/products/tea-sweeteners-tapal-mezban-family-mixture.png"
+  },
+  {
+    "sku": "tea-sweeteners-supreme-tea",
+    "name": "Supreme Tea",
+    "nameUr": "ٹپال چائے",
+    "brand": "Tapal",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "tea-sweeteners",
+    "size": "430 g",
+    "desc": "Loose tea, tea bags and sweeteners for the daily chai.",
+    "tags": [],
+    "tile": {
+      "hue": 188,
+      "glyph": "cup"
+    },
+    "image": "/products/tea-sweeteners-supreme-tea.png"
+  },
+  {
+    "sku": "tea-sweeteners-canderel-sweetener-tablets",
+    "name": "Canderel Sweetener Tablets",
+    "nameUr": "کینڈرل چائے",
+    "brand": "Canderel",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "tea-sweeteners",
+    "size": "100 tablets",
+    "desc": "Loose tea, tea bags and sweeteners for the daily chai.",
+    "tags": [],
+    "tile": {
+      "hue": 185,
+      "glyph": "cup"
+    },
+    "image": "/products/tea-sweeteners-canderel-sweetener-tablets.png"
+  },
+  {
+    "sku": "tea-sweeteners-vital-green-tea-bags",
+    "name": "Vital Green Tea Bags",
+    "nameUr": "وائٹل چائے",
+    "brand": "Vital",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "tea-sweeteners",
+    "size": "30 bags",
+    "desc": "Loose tea, tea bags and sweeteners for the daily chai.",
+    "tags": [],
+    "tile": {
+      "hue": 129,
+      "glyph": "cup"
+    },
+    "image": "/products/tea-sweeteners-vital-green-tea-bags.png"
+  },
+  {
+    "sku": "coffee-nescaf-classic",
+    "name": "Nescafé Classic",
+    "nameUr": "نیسکافے کافی",
+    "brand": "Nescafé",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "coffee",
+    "size": "100 g",
+    "desc": "Instant coffee, sachets and ready-to-drink cans.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 85,
+      "glyph": "cup"
+    },
+    "image": "/products/coffee-nescaf-classic.png"
+  },
+  {
+    "sku": "coffee-nescaf-3-in-1-sachets",
+    "name": "Nescafé 3-in-1 Sachets",
+    "nameUr": "نیسکافے کافی",
+    "brand": "Nescafé",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "coffee",
+    "size": "Pack of 24",
+    "desc": "Instant coffee, sachets and ready-to-drink cans.",
+    "tags": [],
+    "tile": {
+      "hue": 228,
+      "glyph": "cup"
+    },
+    "image": "/products/coffee-nescaf-3-in-1-sachets.png"
+  },
+  {
+    "sku": "coffee-nescaf-gold-blend",
+    "name": "Nescafé Gold Blend",
+    "nameUr": "نیسکافے کافی",
+    "brand": "Nescafé",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "coffee",
+    "size": "100 g",
+    "desc": "Instant coffee, sachets and ready-to-drink cans.",
+    "tags": [],
+    "tile": {
+      "hue": 207,
+      "glyph": "cup"
+    },
+    "image": "/products/coffee-nescaf-gold-blend.png"
+  },
+  {
+    "sku": "coffee-davidoff-rich-aroma",
+    "name": "Davidoff Rich Aroma",
+    "nameUr": "ڈیوی ڈوف کافی",
+    "brand": "Davidoff",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "coffee",
+    "size": "100 g",
+    "desc": "Instant coffee, sachets and ready-to-drink cans.",
+    "tags": [],
+    "tile": {
+      "hue": 279,
+      "glyph": "cup"
+    },
+    "image": "/products/coffee-davidoff-rich-aroma.png"
+  },
+  {
+    "sku": "coffee-nescaf-xpress-canned-coffee",
+    "name": "Nescafé Xpress Canned Coffee",
+    "nameUr": "نیسکافے کافی",
+    "brand": "Nescafé",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "coffee",
+    "size": "240 ml",
+    "desc": "Instant coffee, sachets and ready-to-drink cans.",
+    "tags": [],
+    "tile": {
+      "hue": 229,
+      "glyph": "cup"
+    },
+    "image": "/products/coffee-nescaf-xpress-canned-coffee.png"
+  },
+  {
+    "sku": "cereals-porridge-nestl-nido-fortified",
+    "name": "Nestlé Nido Fortified",
+    "nameUr": "نیسلے سیریل",
+    "brand": "Nestlé",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "cereals-porridge",
+    "size": "900 g",
+    "desc": "Breakfast cereals, oats, porridge and fortified milk powders.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 36,
+      "glyph": "cereal"
+    },
+    "image": "/products/cereals-porridge-nestl-nido-fortified.png"
+  },
+  {
+    "sku": "cereals-porridge-nestl-koko-krunch",
+    "name": "Nestlé Koko Krunch",
+    "nameUr": "نیسلے سیریل",
+    "brand": "Nestlé",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "cereals-porridge",
+    "size": "330 g",
+    "desc": "Breakfast cereals, oats, porridge and fortified milk powders.",
+    "tags": [],
+    "tile": {
+      "hue": 185,
+      "glyph": "cereal"
+    },
+    "image": "/products/cereals-porridge-nestl-koko-krunch.png"
+  },
+  {
+    "sku": "cereals-porridge-kelloggs-corn-flakes",
+    "name": "Kellogg's Corn Flakes",
+    "nameUr": "کیلاگز سیریل",
+    "brand": "Kellogg's",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "cereals-porridge",
+    "size": "275 g",
+    "desc": "Breakfast cereals, oats, porridge and fortified milk powders.",
+    "tags": [],
+    "tile": {
+      "hue": 18,
+      "glyph": "cereal"
+    },
+    "image": "/products/cereals-porridge-kelloggs-corn-flakes.png"
+  },
+  {
+    "sku": "cereals-porridge-quaker-oats",
+    "name": "Quaker Oats",
+    "nameUr": "کوکر سیریل",
+    "brand": "Quaker",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "cereals-porridge",
+    "size": "500 g",
+    "desc": "Breakfast cereals, oats, porridge and fortified milk powders.",
+    "tags": [],
+    "tile": {
+      "hue": 213,
+      "glyph": "cereal"
+    },
+    "image": "/products/cereals-porridge-quaker-oats.png"
+  },
+  {
+    "sku": "cereals-porridge-nestl-cerelac-wheat",
+    "name": "Nestlé Cerelac Wheat",
+    "nameUr": "نیسلے سیریل",
+    "brand": "Nestlé",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "cereals-porridge",
+    "size": "350 g",
+    "desc": "Breakfast cereals, oats, porridge and fortified milk powders.",
+    "tags": [],
+    "tile": {
+      "hue": 150,
+      "glyph": "cereal"
+    },
+    "image": "/products/cereals-porridge-nestl-cerelac-wheat.png"
+  },
+  {
+    "sku": "cereals-porridge-nestl-milo-powder",
+    "name": "Nestlé Milo Powder",
+    "nameUr": "نیسلے سیریل",
+    "brand": "Nestlé",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "cereals-porridge",
+    "size": "400 g",
+    "desc": "Breakfast cereals, oats, porridge and fortified milk powders.",
+    "tags": [],
+    "tile": {
+      "hue": 236,
+      "glyph": "cereal"
+    },
+    "image": "/products/cereals-porridge-nestl-milo-powder.png"
+  },
+  {
+    "sku": "spreads-honey-jams-youngs-peanut-butter-creamy",
+    "name": "Young's Peanut Butter Creamy",
+    "nameUr": "ینگز جام",
+    "brand": "Young's",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "spreads-honey-jams",
+    "size": "340 g",
+    "desc": "What goes on the toast — peanut butter, honey and fruit jams.",
+    "tags": [],
+    "tile": {
+      "hue": 80,
+      "glyph": "jar"
+    },
+    "image": "/products/spreads-honey-jams-youngs-peanut-butter-creamy.png"
+  },
+  {
+    "sku": "spreads-honey-jams-national-mixed-fruit-jam",
+    "name": "National Mixed Fruit Jam",
+    "nameUr": "نیشنل جام",
+    "brand": "National",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "spreads-honey-jams",
+    "size": "440 g",
+    "desc": "What goes on the toast — peanut butter, honey and fruit jams.",
+    "tags": [],
+    "tile": {
+      "hue": 106,
+      "glyph": "jar"
+    },
+    "image": "/products/spreads-honey-jams-national-mixed-fruit-jam.png"
+  },
+  {
+    "sku": "spreads-honey-jams-marhaba-natural-honey",
+    "name": "Marhaba Natural Honey",
+    "nameUr": "مرحبا جام",
+    "brand": "Marhaba",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "spreads-honey-jams",
+    "size": "500 g",
+    "desc": "What goes on the toast — peanut butter, honey and fruit jams.",
+    "tags": [],
+    "tile": {
+      "hue": 252,
+      "glyph": "jar"
+    },
+    "image": "/products/spreads-honey-jams-marhaba-natural-honey.png"
+  },
+  {
+    "sku": "spreads-honey-jams-nutella-hazelnut-spread",
+    "name": "Nutella Hazelnut Spread",
+    "nameUr": "نیوٹیلا جام",
+    "brand": "Nutella",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "spreads-honey-jams",
+    "size": "350 g",
+    "desc": "What goes on the toast — peanut butter, honey and fruit jams.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 291,
+      "glyph": "jar"
+    },
+    "image": "/products/spreads-honey-jams-nutella-hazelnut-spread.png"
+  },
+  {
+    "sku": "spreads-honey-jams-youngs-strawberry-jam",
+    "name": "Young's Strawberry Jam",
+    "nameUr": "ینگز جام",
+    "brand": "Young's",
+    "category": "tea-coffee-breakfast",
+    "subcategory": "spreads-honey-jams",
+    "size": "450 g",
+    "desc": "What goes on the toast — peanut butter, honey and fruit jams.",
+    "tags": [],
+    "tile": {
+      "hue": 104,
+      "glyph": "jar"
+    },
+    "image": "/products/spreads-honey-jams-youngs-strawberry-jam.png"
+  },
+  {
+    "sku": "packed-milk-olpers-full-cream-milk",
+    "name": "Olper's Full Cream Milk",
+    "nameUr": "اولپرز دودھ",
+    "brand": "Olper's",
+    "category": "milk-beverages",
+    "subcategory": "packed-milk",
+    "size": "1 L",
+    "desc": "Tetra-packed milk in full cream, cooking and fresh varieties.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 190,
+      "glyph": "carton"
+    },
+    "image": "/products/packed-milk-olpers-full-cream-milk.png"
+  },
+  {
+    "sku": "packed-milk-milkpak-full-cream-milk",
+    "name": "Milkpak Full Cream Milk",
+    "nameUr": "نیسلے دودھ",
+    "brand": "Nestlé",
+    "category": "milk-beverages",
+    "subcategory": "packed-milk",
+    "size": "1 L",
+    "desc": "Tetra-packed milk in full cream, cooking and fresh varieties.",
+    "tags": [],
+    "tile": {
+      "hue": 196,
+      "glyph": "carton"
+    },
+    "image": "/products/packed-milk-milkpak-full-cream-milk.png"
+  },
+  {
+    "sku": "packed-milk-haleeb-full-cream-milk",
+    "name": "Haleeb Full Cream Milk",
+    "nameUr": "حلیب دودھ",
+    "brand": "Haleeb",
+    "category": "milk-beverages",
+    "subcategory": "packed-milk",
+    "size": "1 L",
+    "desc": "Tetra-packed milk in full cream, cooking and fresh varieties.",
+    "tags": [],
+    "tile": {
+      "hue": 274,
+      "glyph": "carton"
+    },
+    "image": "/products/packed-milk-haleeb-full-cream-milk.png"
+  },
+  {
+    "sku": "packed-milk-day-fresh-fresh-milk",
+    "name": "Day Fresh Fresh Milk",
+    "nameUr": "ڈے فریش دودھ",
+    "brand": "Day Fresh",
+    "category": "milk-beverages",
+    "subcategory": "packed-milk",
+    "size": "1 L",
+    "desc": "Tetra-packed milk in full cream, cooking and fresh varieties.",
+    "tags": [],
+    "tile": {
+      "hue": 356,
+      "glyph": "carton"
+    },
+    "image": "/products/packed-milk-day-fresh-fresh-milk.png"
+  },
+  {
+    "sku": "packed-milk-good-milk-full-cream",
+    "name": "Good Milk Full Cream",
+    "nameUr": "گڈ ملک دودھ",
+    "brand": "Good Milk",
+    "category": "milk-beverages",
+    "subcategory": "packed-milk",
+    "size": "1 L",
+    "desc": "Tetra-packed milk in full cream, cooking and fresh varieties.",
+    "tags": [],
+    "tile": {
+      "hue": 78,
+      "glyph": "carton"
+    },
+    "image": "/products/packed-milk-good-milk-full-cream.png"
+  },
+  {
+    "sku": "packed-milk-olpers-tarrka-cooking-milk",
+    "name": "Olper's Tarrka Cooking Milk",
+    "nameUr": "اولپرز دودھ",
+    "brand": "Olper's",
+    "category": "milk-beverages",
+    "subcategory": "packed-milk",
+    "size": "1 L",
+    "desc": "Tetra-packed milk in full cream, cooking and fresh varieties.",
+    "tags": [],
+    "tile": {
+      "hue": 302,
+      "glyph": "carton"
+    },
+    "image": "/products/packed-milk-olpers-tarrka-cooking-milk.png"
+  },
+  {
+    "sku": "powdered-milk-nido-fortigrow-milk-powder",
+    "name": "Nido Fortigrow Milk Powder",
+    "nameUr": "نیسلے دودھ پاؤڈر",
+    "brand": "Nestlé",
+    "category": "milk-beverages",
+    "subcategory": "powdered-milk",
+    "size": "800 g",
+    "desc": "Milk powders, tea whiteners and infant formula.",
+    "tags": [],
+    "tile": {
+      "hue": 262,
+      "glyph": "tin"
+    },
+    "image": "/products/powdered-milk-nido-fortigrow-milk-powder.png"
+  },
+  {
+    "sku": "powdered-milk-everyday-tea-whitener",
+    "name": "Everyday Tea Whitener",
+    "nameUr": "نیسلے دودھ پاؤڈر",
+    "brand": "Nestlé",
+    "category": "milk-beverages",
+    "subcategory": "powdered-milk",
+    "size": "900 g",
+    "desc": "Milk powders, tea whiteners and infant formula.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 195,
+      "glyph": "tin"
+    },
+    "image": "/products/powdered-milk-everyday-tea-whitener.png"
+  },
+  {
+    "sku": "powdered-milk-olpers-dairy-cream-whitener",
+    "name": "Olper's Dairy Cream Whitener",
+    "nameUr": "اولپرز دودھ پاؤڈر",
+    "brand": "Olper's",
+    "category": "milk-beverages",
+    "subcategory": "powdered-milk",
+    "size": "1 kg",
+    "desc": "Milk powders, tea whiteners and infant formula.",
+    "tags": [],
+    "tile": {
+      "hue": 105,
+      "glyph": "tin"
+    },
+    "image": "/products/powdered-milk-olpers-dairy-cream-whitener.png"
+  },
+  {
+    "sku": "powdered-milk-nespray-fortified-milk-powder",
+    "name": "Nespray Fortified Milk Powder",
+    "nameUr": "نیسلے دودھ پاؤڈر",
+    "brand": "Nestlé",
+    "category": "milk-beverages",
+    "subcategory": "powdered-milk",
+    "size": "900 g",
+    "desc": "Milk powders, tea whiteners and infant formula.",
+    "tags": [],
+    "tile": {
+      "hue": 79,
+      "glyph": "tin"
+    },
+    "image": "/products/powdered-milk-nespray-fortified-milk-powder.png"
+  },
+  {
+    "sku": "powdered-milk-lactogen-1-infant-formula",
+    "name": "Lactogen 1 Infant Formula",
+    "nameUr": "نیسلے دودھ پاؤڈر",
+    "brand": "Nestlé",
+    "category": "milk-beverages",
+    "subcategory": "powdered-milk",
+    "size": "400 g",
+    "desc": "Milk powders, tea whiteners and infant formula.",
+    "tags": [],
+    "tile": {
+      "hue": 295,
+      "glyph": "tin"
+    },
+    "image": "/products/powdered-milk-lactogen-1-infant-formula.png"
+  },
+  {
+    "sku": "condensed-milk-nestl-milkmaid",
+    "name": "Nestlé Milkmaid",
+    "nameUr": "نیسلے کنڈنسڈ دودھ",
+    "brand": "Nestlé",
+    "category": "milk-beverages",
+    "subcategory": "condensed-milk",
+    "size": "390 g",
+    "desc": "Sweetened condensed milk for desserts and chai.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 292,
+      "glyph": "tin"
+    },
+    "image": "/products/condensed-milk-nestl-milkmaid.png"
+  },
+  {
+    "sku": "condensed-milk-haleeb-condensed-milk",
+    "name": "Haleeb Condensed Milk",
+    "nameUr": "حلیب کنڈنسڈ دودھ",
+    "brand": "Haleeb",
+    "category": "milk-beverages",
+    "subcategory": "condensed-milk",
+    "size": "390 g",
+    "desc": "Sweetened condensed milk for desserts and chai.",
+    "tags": [],
+    "tile": {
+      "hue": 206,
+      "glyph": "tin"
+    },
+    "image": "/products/condensed-milk-haleeb-condensed-milk.png"
+  },
+  {
+    "sku": "condensed-milk-youngs-condensed-milk",
+    "name": "Young's Condensed Milk",
+    "nameUr": "ینگز کنڈنسڈ دودھ",
+    "brand": "Young's",
+    "category": "milk-beverages",
+    "subcategory": "condensed-milk",
+    "size": "390 g",
+    "desc": "Sweetened condensed milk for desserts and chai.",
+    "tags": [],
+    "tile": {
+      "hue": 212,
+      "glyph": "tin"
+    },
+    "image": "/products/condensed-milk-youngs-condensed-milk.png"
+  },
+  {
+    "sku": "condensed-milk-nurpur-condensed-milk",
+    "name": "Nurpur Condensed Milk",
+    "nameUr": "نور پور کنڈنسڈ دودھ",
+    "brand": "Nurpur",
+    "category": "milk-beverages",
+    "subcategory": "condensed-milk",
+    "size": "390 g",
+    "desc": "Sweetened condensed milk for desserts and chai.",
+    "tags": [],
+    "tile": {
+      "hue": 99,
+      "glyph": "tin"
+    },
+    "image": "/products/condensed-milk-nurpur-condensed-milk.png"
+  },
+  {
+    "sku": "soft-drinks-coca-cola",
+    "name": "Coca-Cola",
+    "nameUr": "کوکا کولا مشروب",
+    "brand": "Coca-Cola",
+    "category": "milk-beverages",
+    "subcategory": "soft-drinks",
+    "size": "1.5 L",
+    "desc": "Bottled soft drinks, sharbats and powdered drink mixes.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 286,
+      "glyph": "bottle"
+    },
+    "image": "/products/soft-drinks-coca-cola.png"
+  },
+  {
+    "sku": "soft-drinks-pepsi",
+    "name": "Pepsi",
+    "nameUr": "پیپسی مشروب",
+    "brand": "Pepsi",
+    "category": "milk-beverages",
+    "subcategory": "soft-drinks",
+    "size": "1.5 L",
+    "desc": "Bottled soft drinks, sharbats and powdered drink mixes.",
+    "tags": [],
+    "tile": {
+      "hue": 43,
+      "glyph": "bottle"
+    },
+    "image": "/products/soft-drinks-pepsi.png"
+  },
+  {
+    "sku": "soft-drinks-sprite",
+    "name": "Sprite",
+    "nameUr": "کوکا کولا مشروب",
+    "brand": "Coca-Cola",
+    "category": "milk-beverages",
+    "subcategory": "soft-drinks",
+    "size": "1.5 L",
+    "desc": "Bottled soft drinks, sharbats and powdered drink mixes.",
+    "tags": [],
+    "tile": {
+      "hue": 331,
+      "glyph": "bottle"
+    },
+    "image": "/products/soft-drinks-sprite.png"
+  },
+  {
+    "sku": "soft-drinks-7up",
+    "name": "7UP",
+    "nameUr": "پیپسی مشروب",
+    "brand": "Pepsi",
+    "category": "milk-beverages",
+    "subcategory": "soft-drinks",
+    "size": "1.5 L",
+    "desc": "Bottled soft drinks, sharbats and powdered drink mixes.",
+    "tags": [],
+    "tile": {
+      "hue": 242,
+      "glyph": "bottle"
+    },
+    "image": "/products/soft-drinks-7up.png"
+  },
+  {
+    "sku": "soft-drinks-tang-orange-powder-drink",
+    "name": "Tang Orange Powder Drink",
+    "nameUr": "ٹینگ مشروب",
+    "brand": "Tang",
+    "category": "milk-beverages",
+    "subcategory": "soft-drinks",
+    "size": "750 g",
+    "desc": "Bottled soft drinks, sharbats and powdered drink mixes.",
+    "tags": [],
+    "tile": {
+      "hue": 236,
+      "glyph": "bottle"
+    },
+    "image": "/products/soft-drinks-tang-orange-powder-drink.png"
+  },
+  {
+    "sku": "soft-drinks-rooh-afza-sharbat",
+    "name": "Rooh Afza Sharbat",
+    "nameUr": "ہمدرد مشروب",
+    "brand": "Hamdard",
+    "category": "milk-beverages",
+    "subcategory": "soft-drinks",
+    "size": "800 ml",
+    "desc": "Bottled soft drinks, sharbats and powdered drink mixes.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 213,
+      "glyph": "bottle"
+    },
+    "image": "/products/soft-drinks-rooh-afza-sharbat.png"
+  },
+  {
+    "sku": "powdered-masalas-shan-biryani-masala",
+    "name": "Shan Biryani Masala",
+    "nameUr": "شان مصالحہ",
+    "brand": "Shan",
+    "category": "cooking-baking",
+    "subcategory": "powdered-masalas",
+    "size": "65 g",
+    "desc": "Recipe masalas and single spices for everyday cooking.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 248,
+      "glyph": "spice"
+    },
+    "image": "/products/powdered-masalas-shan-biryani-masala.png"
+  },
+  {
+    "sku": "powdered-masalas-shan-karahi-gosht-masala",
+    "name": "Shan Karahi Gosht Masala",
+    "nameUr": "شان مصالحہ",
+    "brand": "Shan",
+    "category": "cooking-baking",
+    "subcategory": "powdered-masalas",
+    "size": "50 g",
+    "desc": "Recipe masalas and single spices for everyday cooking.",
+    "tags": [],
+    "tile": {
+      "hue": 94,
+      "glyph": "spice"
+    },
+    "image": "/products/powdered-masalas-shan-karahi-gosht-masala.png"
+  },
+  {
+    "sku": "powdered-masalas-national-chicken-tikka-masala",
+    "name": "National Chicken Tikka Masala",
+    "nameUr": "نیشنل مصالحہ",
+    "brand": "National",
+    "category": "cooking-baking",
+    "subcategory": "powdered-masalas",
+    "size": "50 g",
+    "desc": "Recipe masalas and single spices for everyday cooking.",
+    "tags": [],
+    "tile": {
+      "hue": 262,
+      "glyph": "spice"
+    },
+    "image": "/products/powdered-masalas-national-chicken-tikka-masala.png"
+  },
+  {
+    "sku": "powdered-masalas-national-red-chilli-powder",
+    "name": "National Red Chilli Powder",
+    "nameUr": "نیشنل مصالحہ",
+    "brand": "National",
+    "category": "cooking-baking",
+    "subcategory": "powdered-masalas",
+    "size": "200 g",
+    "desc": "Recipe masalas and single spices for everyday cooking.",
+    "tags": [],
+    "tile": {
+      "hue": 229,
+      "glyph": "spice"
+    },
+    "image": "/products/powdered-masalas-national-red-chilli-powder.png"
+  },
+  {
+    "sku": "powdered-masalas-mehran-haleem-masala",
+    "name": "Mehran Haleem Masala",
+    "nameUr": "مہران مصالحہ",
+    "brand": "Mehran",
+    "category": "cooking-baking",
+    "subcategory": "powdered-masalas",
+    "size": "300 g",
+    "desc": "Recipe masalas and single spices for everyday cooking.",
+    "tags": [],
+    "tile": {
+      "hue": 223,
+      "glyph": "spice"
+    },
+    "image": "/products/powdered-masalas-mehran-haleem-masala.png"
+  },
+  {
+    "sku": "powdered-masalas-shan-chaat-masala",
+    "name": "Shan Chaat Masala",
+    "nameUr": "شان مصالحہ",
+    "brand": "Shan",
+    "category": "cooking-baking",
+    "subcategory": "powdered-masalas",
+    "size": "100 g",
+    "desc": "Recipe masalas and single spices for everyday cooking.",
+    "tags": [],
+    "tile": {
+      "hue": 227,
+      "glyph": "spice"
+    },
+    "image": "/products/powdered-masalas-shan-chaat-masala.png"
+  },
+  {
+    "sku": "sauces-syrups-knorr-chilli-garlic-sauce",
+    "name": "Knorr Chilli Garlic Sauce",
+    "nameUr": "نار ساس",
+    "brand": "Knorr",
+    "category": "cooking-baking",
+    "subcategory": "sauces-syrups",
+    "size": "300 ml",
+    "desc": "Sauces, squashes, syrups and finishing touches.",
+    "tags": [],
+    "tile": {
+      "hue": 334,
+      "glyph": "bottle"
+    },
+    "image": "/products/sauces-syrups-knorr-chilli-garlic-sauce.png"
+  },
+  {
+    "sku": "sauces-syrups-mitchells-chocolate-syrup",
+    "name": "Mitchell's Chocolate Syrup",
+    "nameUr": "مچلز ساس",
+    "brand": "Mitchell's",
+    "category": "cooking-baking",
+    "subcategory": "sauces-syrups",
+    "size": "450 g",
+    "desc": "Sauces, squashes, syrups and finishing touches.",
+    "tags": [],
+    "tile": {
+      "hue": 29,
+      "glyph": "bottle"
+    },
+    "image": "/products/sauces-syrups-mitchells-chocolate-syrup.png"
+  },
+  {
+    "sku": "sauces-syrups-national-synthetic-vinegar",
+    "name": "National Synthetic Vinegar",
+    "nameUr": "نیشنل ساس",
+    "brand": "National",
+    "category": "cooking-baking",
+    "subcategory": "sauces-syrups",
+    "size": "800 ml",
+    "desc": "Sauces, squashes, syrups and finishing touches.",
+    "tags": [],
+    "tile": {
+      "hue": 308,
+      "glyph": "bottle"
+    },
+    "image": "/products/sauces-syrups-national-synthetic-vinegar.png"
+  },
+  {
+    "sku": "sauces-syrups-youngs-mayo-garlic",
+    "name": "Young's Mayo Garlic",
+    "nameUr": "ینگز ساس",
+    "brand": "Young's",
+    "category": "cooking-baking",
+    "subcategory": "sauces-syrups",
+    "size": "500 ml",
+    "desc": "Sauces, squashes, syrups and finishing touches.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 272,
+      "glyph": "bottle"
+    },
+    "image": "/products/sauces-syrups-youngs-mayo-garlic.png"
+  },
+  {
+    "sku": "sauces-syrups-shezan-mango-squash",
+    "name": "Shezan Mango Squash",
+    "nameUr": "شیزان ساس",
+    "brand": "Shezan",
+    "category": "cooking-baking",
+    "subcategory": "sauces-syrups",
+    "size": "800 ml",
+    "desc": "Sauces, squashes, syrups and finishing touches.",
+    "tags": [],
+    "tile": {
+      "hue": 179,
+      "glyph": "bottle"
+    },
+    "image": "/products/sauces-syrups-shezan-mango-squash.png"
+  },
+  {
+    "sku": "noodles-pasta-maggi-2-minute-noodles-chicken",
+    "name": "Maggi 2-Minute Noodles Chicken",
+    "nameUr": "میگی نوڈلز",
+    "brand": "Maggi",
+    "category": "cooking-baking",
+    "subcategory": "noodles-pasta",
+    "size": "4-pack",
+    "desc": "Instant noodles, vermicelli, macaroni and spaghetti.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 264,
+      "glyph": "noodles"
+    },
+    "image": "/products/noodles-pasta-maggi-2-minute-noodles-chicken.png"
+  },
+  {
+    "sku": "noodles-pasta-knorr-noodles-masala",
+    "name": "Knorr Noodles Masala",
+    "nameUr": "نار نوڈلز",
+    "brand": "Knorr",
+    "category": "cooking-baking",
+    "subcategory": "noodles-pasta",
+    "size": "4-pack",
+    "desc": "Instant noodles, vermicelli, macaroni and spaghetti.",
+    "tags": [],
+    "tile": {
+      "hue": 319,
+      "glyph": "noodles"
+    },
+    "image": "/products/noodles-pasta-knorr-noodles-masala.png"
+  },
+  {
+    "sku": "noodles-pasta-kolson-elbow-macaroni",
+    "name": "Kolson Elbow Macaroni",
+    "nameUr": "کولسن نوڈلز",
+    "brand": "Kolson",
+    "category": "cooking-baking",
+    "subcategory": "noodles-pasta",
+    "size": "400 g",
+    "desc": "Instant noodles, vermicelli, macaroni and spaghetti.",
+    "tags": [],
+    "tile": {
+      "hue": 43,
+      "glyph": "noodles"
+    },
+    "image": "/products/noodles-pasta-kolson-elbow-macaroni.png"
+  },
+  {
+    "sku": "noodles-pasta-bake-parlor-spaghetti",
+    "name": "Bake Parlor Spaghetti",
+    "nameUr": "بیک پارلر نوڈلز",
+    "brand": "Bake Parlor",
+    "category": "cooking-baking",
+    "subcategory": "noodles-pasta",
+    "size": "400 g",
+    "desc": "Instant noodles, vermicelli, macaroni and spaghetti.",
+    "tags": [],
+    "tile": {
+      "hue": 6,
+      "glyph": "noodles"
+    },
+    "image": "/products/noodles-pasta-bake-parlor-spaghetti.png"
+  },
+  {
+    "sku": "noodles-pasta-kolson-vermicelli",
+    "name": "Kolson Vermicelli",
+    "nameUr": "کولسن نوڈلز",
+    "brand": "Kolson",
+    "category": "cooking-baking",
+    "subcategory": "noodles-pasta",
+    "size": "150 g",
+    "desc": "Instant noodles, vermicelli, macaroni and spaghetti.",
+    "tags": [],
+    "tile": {
+      "hue": 31,
+      "glyph": "noodles"
+    },
+    "image": "/products/noodles-pasta-kolson-vermicelli.png"
+  },
+  {
+    "sku": "baking-desserts-rafhan-custard-powder-vanilla",
+    "name": "Rafhan Custard Powder Vanilla",
+    "nameUr": "رفحان میٹھا",
+    "brand": "Rafhan",
+    "category": "cooking-baking",
+    "subcategory": "baking-desserts",
+    "size": "275 g",
+    "desc": "Custard, jelly, kheer mixes and the basics for baking.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 175,
+      "glyph": "whisk"
+    },
+    "image": "/products/baking-desserts-rafhan-custard-powder-vanilla.png"
+  },
+  {
+    "sku": "baking-desserts-rafhan-jelly-strawberry",
+    "name": "Rafhan Jelly Strawberry",
+    "nameUr": "رفحان میٹھا",
+    "brand": "Rafhan",
+    "category": "cooking-baking",
+    "subcategory": "baking-desserts",
+    "size": "80 g",
+    "desc": "Custard, jelly, kheer mixes and the basics for baking.",
+    "tags": [],
+    "tile": {
+      "hue": 241,
+      "glyph": "whisk"
+    },
+    "image": "/products/baking-desserts-rafhan-jelly-strawberry.png"
+  },
+  {
+    "sku": "baking-desserts-national-kheer-mix",
+    "name": "National Kheer Mix",
+    "nameUr": "نیشنل میٹھا",
+    "brand": "National",
+    "category": "cooking-baking",
+    "subcategory": "baking-desserts",
+    "size": "155 g",
+    "desc": "Custard, jelly, kheer mixes and the basics for baking.",
+    "tags": [],
+    "tile": {
+      "hue": 325,
+      "glyph": "whisk"
+    },
+    "image": "/products/baking-desserts-national-kheer-mix.png"
+  },
+  {
+    "sku": "baking-desserts-rafhan-corn-flour",
+    "name": "Rafhan Corn Flour",
+    "nameUr": "رفحان میٹھا",
+    "brand": "Rafhan",
+    "category": "cooking-baking",
+    "subcategory": "baking-desserts",
+    "size": "300 g",
+    "desc": "Custard, jelly, kheer mixes and the basics for baking.",
+    "tags": [],
+    "tile": {
+      "hue": 172,
+      "glyph": "whisk"
+    },
+    "image": "/products/baking-desserts-rafhan-corn-flour.png"
+  },
+  {
+    "sku": "baking-desserts-bake-parlor-falooda-sev",
+    "name": "Bake Parlor Falooda Sev",
+    "nameUr": "بیک پارلر میٹھا",
+    "brand": "Bake Parlor",
+    "category": "cooking-baking",
+    "subcategory": "baking-desserts",
+    "size": "150 g",
+    "desc": "Custard, jelly, kheer mixes and the basics for baking.",
+    "tags": [],
+    "tile": {
+      "hue": 160,
+      "glyph": "whisk"
+    },
+    "image": "/products/baking-desserts-bake-parlor-falooda-sev.png"
+  },
+  {
+    "sku": "baking-desserts-blue-bird-baking-powder",
+    "name": "Blue Bird Baking Powder",
+    "nameUr": "بلیو برڈ میٹھا",
+    "brand": "Blue Bird",
+    "category": "cooking-baking",
+    "subcategory": "baking-desserts",
+    "size": "100 g",
+    "desc": "Custard, jelly, kheer mixes and the basics for baking.",
+    "tags": [],
+    "tile": {
+      "hue": 313,
+      "glyph": "whisk"
+    },
+    "image": "/products/baking-desserts-blue-bird-baking-powder.png"
+  },
+  {
+    "sku": "pickles-ketchups-national-mixed-pickle-in-oil",
+    "name": "National Mixed Pickle in Oil",
+    "nameUr": "نیشنل اچار",
+    "brand": "National",
+    "category": "condiments-canned",
+    "subcategory": "pickles-ketchups",
+    "size": "1 kg",
+    "desc": "Pickles in oil, ketchups, vinegars and mustards.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 125,
+      "glyph": "jar"
+    },
+    "image": "/products/pickles-ketchups-national-mixed-pickle-in-oil.png"
+  },
+  {
+    "sku": "pickles-ketchups-shangrila-tomato-ketchup",
+    "name": "Shangrila Tomato Ketchup",
+    "nameUr": "شنگریلا اچار",
+    "brand": "Shangrila",
+    "category": "condiments-canned",
+    "subcategory": "pickles-ketchups",
+    "size": "800 g",
+    "desc": "Pickles in oil, ketchups, vinegars and mustards.",
+    "tags": [],
+    "tile": {
+      "hue": 308,
+      "glyph": "jar"
+    },
+    "image": "/products/pickles-ketchups-shangrila-tomato-ketchup.png"
+  },
+  {
+    "sku": "pickles-ketchups-national-tomato-ketchup",
+    "name": "National Tomato Ketchup",
+    "nameUr": "نیشنل اچار",
+    "brand": "National",
+    "category": "condiments-canned",
+    "subcategory": "pickles-ketchups",
+    "size": "800 g",
+    "desc": "Pickles in oil, ketchups, vinegars and mustards.",
+    "tags": [],
+    "tile": {
+      "hue": 253,
+      "glyph": "jar"
+    },
+    "image": "/products/pickles-ketchups-national-tomato-ketchup.png"
+  },
+  {
+    "sku": "pickles-ketchups-ahmed-mango-pickle",
+    "name": "Ahmed Mango Pickle",
+    "nameUr": "احمد اچار",
+    "brand": "Ahmed",
+    "category": "condiments-canned",
+    "subcategory": "pickles-ketchups",
+    "size": "400 g",
+    "desc": "Pickles in oil, ketchups, vinegars and mustards.",
+    "tags": [],
+    "tile": {
+      "hue": 308,
+      "glyph": "jar"
+    },
+    "image": "/products/pickles-ketchups-ahmed-mango-pickle.png"
+  },
+  {
+    "sku": "pickles-ketchups-youngs-french-mustard",
+    "name": "Young's French Mustard",
+    "nameUr": "ینگز اچار",
+    "brand": "Young's",
+    "category": "condiments-canned",
+    "subcategory": "pickles-ketchups",
+    "size": "300 g",
+    "desc": "Pickles in oil, ketchups, vinegars and mustards.",
+    "tags": [],
+    "tile": {
+      "hue": 198,
+      "glyph": "jar"
+    },
+    "image": "/products/pickles-ketchups-youngs-french-mustard.png"
+  },
+  {
+    "sku": "spreads-chinese-sauces-youngs-sandwich-spread",
+    "name": "Young's Sandwich Spread",
+    "nameUr": "ینگز ساس",
+    "brand": "Young's",
+    "category": "condiments-canned",
+    "subcategory": "spreads-chinese-sauces",
+    "size": "300 ml",
+    "desc": "Sandwich spreads, mayo and the Chinese sauce shelf.",
+    "tags": [],
+    "tile": {
+      "hue": 296,
+      "glyph": "bottle"
+    },
+    "image": "/products/spreads-chinese-sauces-youngs-sandwich-spread.png"
+  },
+  {
+    "sku": "spreads-chinese-sauces-knorr-soy-sauce",
+    "name": "Knorr Soy Sauce",
+    "nameUr": "نار ساس",
+    "brand": "Knorr",
+    "category": "condiments-canned",
+    "subcategory": "spreads-chinese-sauces",
+    "size": "500 ml",
+    "desc": "Sandwich spreads, mayo and the Chinese sauce shelf.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 9,
+      "glyph": "bottle"
+    },
+    "image": "/products/spreads-chinese-sauces-knorr-soy-sauce.png"
+  },
+  {
+    "sku": "spreads-chinese-sauces-shangrila-hot-and-sour-sauce",
+    "name": "Shangrila Hot & Sour Sauce",
+    "nameUr": "شنگریلا ساس",
+    "brand": "Shangrila",
+    "category": "condiments-canned",
+    "subcategory": "spreads-chinese-sauces",
+    "size": "300 ml",
+    "desc": "Sandwich spreads, mayo and the Chinese sauce shelf.",
+    "tags": [],
+    "tile": {
+      "hue": 40,
+      "glyph": "bottle"
+    },
+    "image": "/products/spreads-chinese-sauces-shangrila-hot-and-sour-sauce.png"
+  },
+  {
+    "sku": "spreads-chinese-sauces-national-chilli-sauce",
+    "name": "National Chilli Sauce",
+    "nameUr": "نیشنل ساس",
+    "brand": "National",
+    "category": "condiments-canned",
+    "subcategory": "spreads-chinese-sauces",
+    "size": "300 ml",
+    "desc": "Sandwich spreads, mayo and the Chinese sauce shelf.",
+    "tags": [],
+    "tile": {
+      "hue": 287,
+      "glyph": "bottle"
+    },
+    "image": "/products/spreads-chinese-sauces-national-chilli-sauce.png"
+  },
+  {
+    "sku": "spreads-chinese-sauces-youngs-thousand-island-dressing",
+    "name": "Young's Thousand Island Dressing",
+    "nameUr": "ینگز ساس",
+    "brand": "Young's",
+    "category": "condiments-canned",
+    "subcategory": "spreads-chinese-sauces",
+    "size": "300 ml",
+    "desc": "Sandwich spreads, mayo and the Chinese sauce shelf.",
+    "tags": [],
+    "tile": {
+      "hue": 235,
+      "glyph": "bottle"
+    },
+    "image": "/products/spreads-chinese-sauces-youngs-thousand-island-dressing.png"
+  },
+  {
+    "sku": "canned-fruit-veg-del-monte-pineapple-slices",
+    "name": "Del Monte Pineapple Slices",
+    "nameUr": "ڈیل مونٹے ڈبہ بند",
+    "brand": "Del Monte",
+    "category": "condiments-canned",
+    "subcategory": "canned-fruit-veg",
+    "size": "565 g",
+    "desc": "Tinned fruit, beans and corn for the store cupboard.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 317,
+      "glyph": "can"
+    },
+    "image": "/products/canned-fruit-veg-del-monte-pineapple-slices.png"
+  },
+  {
+    "sku": "canned-fruit-veg-american-garden-red-kidney-beans",
+    "name": "American Garden Red Kidney Beans",
+    "nameUr": "امریکن گارڈن ڈبہ بند",
+    "brand": "American Garden",
+    "category": "condiments-canned",
+    "subcategory": "canned-fruit-veg",
+    "size": "400 g",
+    "desc": "Tinned fruit, beans and corn for the store cupboard.",
+    "tags": [],
+    "tile": {
+      "hue": 180,
+      "glyph": "can"
+    },
+    "image": "/products/canned-fruit-veg-american-garden-red-kidney-beans.png"
+  },
+  {
+    "sku": "canned-fruit-veg-del-monte-whole-kernel-corn",
+    "name": "Del Monte Whole Kernel Corn",
+    "nameUr": "ڈیل مونٹے ڈبہ بند",
+    "brand": "Del Monte",
+    "category": "condiments-canned",
+    "subcategory": "canned-fruit-veg",
+    "size": "410 g",
+    "desc": "Tinned fruit, beans and corn for the store cupboard.",
+    "tags": [],
+    "tile": {
+      "hue": 273,
+      "glyph": "can"
+    },
+    "image": "/products/canned-fruit-veg-del-monte-whole-kernel-corn.png"
+  },
+  {
+    "sku": "canned-fruit-veg-national-baked-beans",
+    "name": "National Baked Beans",
+    "nameUr": "نیشنل ڈبہ بند",
+    "brand": "National",
+    "category": "condiments-canned",
+    "subcategory": "canned-fruit-veg",
+    "size": "420 g",
+    "desc": "Tinned fruit, beans and corn for the store cupboard.",
+    "tags": [],
+    "tile": {
+      "hue": 237,
+      "glyph": "can"
+    },
+    "image": "/products/canned-fruit-veg-national-baked-beans.png"
+  },
+  {
+    "sku": "canned-fruit-veg-green-giant-sweet-corn",
+    "name": "Green Giant Sweet Corn",
+    "nameUr": "گرین جائنٹ ڈبہ بند",
+    "brand": "Green Giant",
+    "category": "condiments-canned",
+    "subcategory": "canned-fruit-veg",
+    "size": "340 g",
+    "desc": "Tinned fruit, beans and corn for the store cupboard.",
+    "tags": [],
+    "tile": {
+      "hue": 280,
+      "glyph": "can"
+    },
+    "image": "/products/canned-fruit-veg-green-giant-sweet-corn.png"
+  },
+  {
+    "sku": "mushrooms-olives-oils-dalda-cooking-oil",
+    "name": "Dalda Cooking Oil",
+    "nameUr": "دالدا تیل",
+    "brand": "Dalda",
+    "category": "condiments-canned",
+    "subcategory": "mushrooms-olives-oils",
+    "size": "5 L",
+    "desc": "Cooking oils, olive oil, olives and tinned mushrooms.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 52,
+      "glyph": "oil"
+    },
+    "image": "/products/mushrooms-olives-oils-dalda-cooking-oil.png"
+  },
+  {
+    "sku": "mushrooms-olives-oils-sufi-sunflower-oil",
+    "name": "Sufi Sunflower Oil",
+    "nameUr": "صوفی تیل",
+    "brand": "Sufi",
+    "category": "condiments-canned",
+    "subcategory": "mushrooms-olives-oils",
+    "size": "5 L",
+    "desc": "Cooking oils, olive oil, olives and tinned mushrooms.",
+    "tags": [],
+    "tile": {
+      "hue": 282,
+      "glyph": "oil"
+    },
+    "image": "/products/mushrooms-olives-oils-sufi-sunflower-oil.png"
+  },
+  {
+    "sku": "mushrooms-olives-oils-figaro-olive-oil",
+    "name": "Figaro Olive Oil",
+    "nameUr": "فگارو تیل",
+    "brand": "Figaro",
+    "category": "condiments-canned",
+    "subcategory": "mushrooms-olives-oils",
+    "size": "500 ml",
+    "desc": "Cooking oils, olive oil, olives and tinned mushrooms.",
+    "tags": [],
+    "tile": {
+      "hue": 3,
+      "glyph": "oil"
+    },
+    "image": "/products/mushrooms-olives-oils-figaro-olive-oil.png"
+  },
+  {
+    "sku": "mushrooms-olives-oils-del-monte-button-mushrooms",
+    "name": "Del Monte Button Mushrooms",
+    "nameUr": "ڈیل مونٹے تیل",
+    "brand": "Del Monte",
+    "category": "condiments-canned",
+    "subcategory": "mushrooms-olives-oils",
+    "size": "400 g",
+    "desc": "Cooking oils, olive oil, olives and tinned mushrooms.",
+    "tags": [],
+    "tile": {
+      "hue": 72,
+      "glyph": "oil"
+    },
+    "image": "/products/mushrooms-olives-oils-del-monte-button-mushrooms.png"
+  },
+  {
+    "sku": "mushrooms-olives-oils-italia-green-olives",
+    "name": "Italia Green Olives",
+    "nameUr": "اٹالیا تیل",
+    "brand": "Italia",
+    "category": "condiments-canned",
+    "subcategory": "mushrooms-olives-oils",
+    "size": "350 g",
+    "desc": "Cooking oils, olive oil, olives and tinned mushrooms.",
+    "tags": [],
+    "tile": {
+      "hue": 125,
+      "glyph": "oil"
+    },
+    "image": "/products/mushrooms-olives-oils-italia-green-olives.png"
+  },
+  {
+    "sku": "tissues-foils-rose-petal-facial-tissues",
+    "name": "Rose Petal Facial Tissues",
+    "nameUr": "روز پیٹل ٹشو",
+    "brand": "Rose Petal",
+    "category": "home-kitchen",
+    "subcategory": "tissues-foils",
+    "size": "150 pulls",
+    "desc": "Tissues, kitchen towels, foils and tapes.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 328,
+      "glyph": "tissue"
+    },
+    "image": "/products/tissues-foils-rose-petal-facial-tissues.png"
+  },
+  {
+    "sku": "tissues-foils-rose-petal-kitchen-towel",
+    "name": "Rose Petal Kitchen Towel",
+    "nameUr": "روز پیٹل ٹشو",
+    "brand": "Rose Petal",
+    "category": "home-kitchen",
+    "subcategory": "tissues-foils",
+    "size": "2 rolls",
+    "desc": "Tissues, kitchen towels, foils and tapes.",
+    "tags": [],
+    "tile": {
+      "hue": 113,
+      "glyph": "tissue"
+    },
+    "image": "/products/tissues-foils-rose-petal-kitchen-towel.png"
+  },
+  {
+    "sku": "tissues-foils-homez-aluminium-foil-roll",
+    "name": "Homez Aluminium Foil Roll",
+    "nameUr": "ہومز ٹشو",
+    "brand": "Homez",
+    "category": "home-kitchen",
+    "subcategory": "tissues-foils",
+    "size": "9 m",
+    "desc": "Tissues, kitchen towels, foils and tapes.",
+    "tags": [],
+    "tile": {
+      "hue": 240,
+      "glyph": "tissue"
+    },
+    "image": "/products/tissues-foils-homez-aluminium-foil-roll.png"
+  },
+  {
+    "sku": "tissues-foils-scotch-cellophane-tape",
+    "name": "Scotch Cellophane Tape",
+    "nameUr": "اسکاچ ٹشو",
+    "brand": "Scotch",
+    "category": "home-kitchen",
+    "subcategory": "tissues-foils",
+    "size": "Pack of 6",
+    "desc": "Tissues, kitchen towels, foils and tapes.",
+    "tags": [],
+    "tile": {
+      "hue": 151,
+      "glyph": "tissue"
+    },
+    "image": "/products/tissues-foils-scotch-cellophane-tape.png"
+  },
+  {
+    "sku": "tissues-foils-rose-petal-toilet-rolls",
+    "name": "Rose Petal Toilet Rolls",
+    "nameUr": "روز پیٹل ٹشو",
+    "brand": "Rose Petal",
+    "category": "home-kitchen",
+    "subcategory": "tissues-foils",
+    "size": "6 rolls",
+    "desc": "Tissues, kitchen towels, foils and tapes.",
+    "tags": [],
+    "tile": {
+      "hue": 205,
+      "glyph": "tissue"
+    },
+    "image": "/products/tissues-foils-rose-petal-toilet-rolls.png"
+  },
+  {
+    "sku": "lighters-matches-chand-safety-match-box",
+    "name": "Chand Safety Match Box",
+    "nameUr": "چاند ماچس",
+    "brand": "Chand",
+    "category": "home-kitchen",
+    "subcategory": "lighters-matches",
+    "size": "Pack of 10",
+    "desc": "Match boxes and refillable kitchen lighters.",
+    "tags": [],
+    "tile": {
+      "hue": 109,
+      "glyph": "flame"
+    },
+    "image": "/products/lighters-matches-chand-safety-match-box.png"
+  },
+  {
+    "sku": "lighters-matches-zorro-refillable-gas-lighter",
+    "name": "Zorro Refillable Gas Lighter",
+    "nameUr": "زورو ماچس",
+    "brand": "Zorro",
+    "category": "home-kitchen",
+    "subcategory": "lighters-matches",
+    "size": "1 piece",
+    "desc": "Match boxes and refillable kitchen lighters.",
+    "tags": [],
+    "tile": {
+      "hue": 329,
+      "glyph": "flame"
+    },
+    "image": "/products/lighters-matches-zorro-refillable-gas-lighter.png"
+  },
+  {
+    "sku": "lighters-matches-zorro-long-kitchen-lighter",
+    "name": "Zorro Long Kitchen Lighter",
+    "nameUr": "زورو ماچس",
+    "brand": "Zorro",
+    "category": "home-kitchen",
+    "subcategory": "lighters-matches",
+    "size": "1 piece",
+    "desc": "Match boxes and refillable kitchen lighters.",
+    "tags": [],
+    "tile": {
+      "hue": 194,
+      "glyph": "flame"
+    },
+    "image": "/products/lighters-matches-zorro-long-kitchen-lighter.png"
+  },
+  {
+    "sku": "lighters-matches-cricket-pocket-lighter",
+    "name": "Cricket Pocket Lighter",
+    "nameUr": "کرکٹ ماچس",
+    "brand": "Cricket",
+    "category": "home-kitchen",
+    "subcategory": "lighters-matches",
+    "size": "Pack of 3",
+    "desc": "Match boxes and refillable kitchen lighters.",
+    "tags": [],
+    "tile": {
+      "hue": 78,
+      "glyph": "flame"
+    },
+    "image": "/products/lighters-matches-cricket-pocket-lighter.png"
+  },
+  {
+    "sku": "storage-wraps-homez-cling-film-food-wrap",
+    "name": "Homez Cling Film Food Wrap",
+    "nameUr": "ہومز ریپ",
+    "brand": "Homez",
+    "category": "home-kitchen",
+    "subcategory": "storage-wraps",
+    "size": "30 m",
+    "desc": "Airtight containers, cling film, freezer bags and sponges.",
+    "tags": [],
+    "tile": {
+      "hue": 31,
+      "glyph": "box"
+    },
+    "image": "/products/storage-wraps-homez-cling-film-food-wrap.png"
+  },
+  {
+    "sku": "storage-wraps-lock-and-lock-airtight-containers",
+    "name": "Lock & Lock Airtight Containers",
+    "nameUr": "لاک اینڈ لاک ریپ",
+    "brand": "Lock & Lock",
+    "category": "home-kitchen",
+    "subcategory": "storage-wraps",
+    "size": "Set of 3",
+    "desc": "Airtight containers, cling film, freezer bags and sponges.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 296,
+      "glyph": "box"
+    },
+    "image": "/products/storage-wraps-lock-and-lock-airtight-containers.png"
+  },
+  {
+    "sku": "storage-wraps-scotch-brite-scrub-sponge",
+    "name": "Scotch-Brite Scrub Sponge",
+    "nameUr": "اسکاچ برائٹ ریپ",
+    "brand": "Scotch-Brite",
+    "category": "home-kitchen",
+    "subcategory": "storage-wraps",
+    "size": "Pack of 3",
+    "desc": "Airtight containers, cling film, freezer bags and sponges.",
+    "tags": [],
+    "tile": {
+      "hue": 149,
+      "glyph": "box"
+    },
+    "image": "/products/storage-wraps-scotch-brite-scrub-sponge.png"
+  },
+  {
+    "sku": "storage-wraps-homez-zip-lock-freezer-bags",
+    "name": "Homez Zip Lock Freezer Bags",
+    "nameUr": "ہومز ریپ",
+    "brand": "Homez",
+    "category": "home-kitchen",
+    "subcategory": "storage-wraps",
+    "size": "Pack of 25",
+    "desc": "Airtight containers, cling film, freezer bags and sponges.",
+    "tags": [],
+    "tile": {
+      "hue": 16,
+      "glyph": "box"
+    },
+    "image": "/products/storage-wraps-homez-zip-lock-freezer-bags.png"
+  },
+  {
+    "sku": "storage-wraps-appollo-plastic-lunch-box",
+    "name": "Appollo Plastic Lunch Box",
+    "nameUr": "اپالو ریپ",
+    "brand": "Appollo",
+    "category": "home-kitchen",
+    "subcategory": "storage-wraps",
+    "size": "1.2 L",
+    "desc": "Airtight containers, cling film, freezer bags and sponges.",
+    "tags": [],
+    "tile": {
+      "hue": 22,
+      "glyph": "box"
+    },
+    "image": "/products/storage-wraps-appollo-plastic-lunch-box.png"
+  },
+  {
+    "sku": "dish-washing-vim-dishwash-bar",
+    "name": "Vim Dishwash Bar",
+    "nameUr": "ویم برتن صابن",
+    "brand": "Vim",
+    "category": "home-kitchen",
+    "subcategory": "dish-washing",
+    "size": "300 g",
+    "desc": "Dishwash bars, liquids, gels and machine tablets.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 316,
+      "glyph": "dish"
+    },
+    "image": "/products/dish-washing-vim-dishwash-bar.png"
+  },
+  {
+    "sku": "dish-washing-vim-dishwash-liquid-lemon",
+    "name": "Vim Dishwash Liquid Lemon",
+    "nameUr": "ویم برتن صابن",
+    "brand": "Vim",
+    "category": "home-kitchen",
+    "subcategory": "dish-washing",
+    "size": "750 ml",
+    "desc": "Dishwash bars, liquids, gels and machine tablets.",
+    "tags": [],
+    "tile": {
+      "hue": 65,
+      "glyph": "dish"
+    },
+    "image": "/products/dish-washing-vim-dishwash-liquid-lemon.png"
+  },
+  {
+    "sku": "dish-washing-max-dishwash-gel",
+    "name": "Max Dishwash Gel",
+    "nameUr": "میکس برتن صابن",
+    "brand": "Max",
+    "category": "home-kitchen",
+    "subcategory": "dish-washing",
+    "size": "500 ml",
+    "desc": "Dishwash bars, liquids, gels and machine tablets.",
+    "tags": [],
+    "tile": {
+      "hue": 179,
+      "glyph": "dish"
+    },
+    "image": "/products/dish-washing-max-dishwash-gel.png"
+  },
+  {
+    "sku": "dish-washing-finish-dishwasher-tablets",
+    "name": "Finish Dishwasher Tablets",
+    "nameUr": "فنش برتن صابن",
+    "brand": "Finish",
+    "category": "home-kitchen",
+    "subcategory": "dish-washing",
+    "size": "Pack of 30",
+    "desc": "Dishwash bars, liquids, gels and machine tablets.",
+    "tags": [],
+    "tile": {
+      "hue": 214,
+      "glyph": "dish"
+    },
+    "image": "/products/dish-washing-finish-dishwasher-tablets.png"
+  },
+  {
+    "sku": "toilet-cleaning-harpic-power-plus-toilet-cleaner",
+    "name": "Harpic Power Plus Toilet Cleaner",
+    "nameUr": "ہارپک ٹوائلٹ کلینر",
+    "brand": "Harpic",
+    "category": "cleaning-fresheners",
+    "subcategory": "toilet-cleaning",
+    "size": "1 L",
+    "desc": "Toilet cleaners, rim blocks and brushes.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 2,
+      "glyph": "spray"
+    },
+    "image": "/products/toilet-cleaning-harpic-power-plus-toilet-cleaner.png"
+  },
+  {
+    "sku": "toilet-cleaning-harpic-flushmatic-rim-block",
+    "name": "Harpic Flushmatic Rim Block",
+    "nameUr": "ہارپک ٹوائلٹ کلینر",
+    "brand": "Harpic",
+    "category": "cleaning-fresheners",
+    "subcategory": "toilet-cleaning",
+    "size": "50 g",
+    "desc": "Toilet cleaners, rim blocks and brushes.",
+    "tags": [],
+    "tile": {
+      "hue": 348,
+      "glyph": "spray"
+    },
+    "image": "/products/toilet-cleaning-harpic-flushmatic-rim-block.png"
+  },
+  {
+    "sku": "toilet-cleaning-domex-toilet-cleaner",
+    "name": "Domex Toilet Cleaner",
+    "nameUr": "ڈومیکس ٹوائلٹ کلینر",
+    "brand": "Domex",
+    "category": "cleaning-fresheners",
+    "subcategory": "toilet-cleaning",
+    "size": "500 ml",
+    "desc": "Toilet cleaners, rim blocks and brushes.",
+    "tags": [],
+    "tile": {
+      "hue": 41,
+      "glyph": "spray"
+    },
+    "image": "/products/toilet-cleaning-domex-toilet-cleaner.png"
+  },
+  {
+    "sku": "toilet-cleaning-homez-toilet-brush-with-holder",
+    "name": "Homez Toilet Brush with Holder",
+    "nameUr": "ہومز ٹوائلٹ کلینر",
+    "brand": "Homez",
+    "category": "cleaning-fresheners",
+    "subcategory": "toilet-cleaning",
+    "size": "1 piece",
+    "desc": "Toilet cleaners, rim blocks and brushes.",
+    "tags": [],
+    "tile": {
+      "hue": 125,
+      "glyph": "spray"
+    },
+    "image": "/products/toilet-cleaning-homez-toilet-brush-with-holder.png"
+  },
+  {
+    "sku": "washing-cleaning-surf-excel-washing-powder",
+    "name": "Surf Excel Washing Powder",
+    "nameUr": "سرف ایکسل واشنگ پاؤڈر",
+    "brand": "Surf Excel",
+    "category": "cleaning-fresheners",
+    "subcategory": "washing-cleaning",
+    "size": "1 kg",
+    "desc": "Washing powders, liquid detergents and fabric conditioners.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 279,
+      "glyph": "detergent"
+    },
+    "image": "/products/washing-cleaning-surf-excel-washing-powder.png"
+  },
+  {
+    "sku": "washing-cleaning-ariel-washing-powder",
+    "name": "Ariel Washing Powder",
+    "nameUr": "ایریل واشنگ پاؤڈر",
+    "brand": "Ariel",
+    "category": "cleaning-fresheners",
+    "subcategory": "washing-cleaning",
+    "size": "1 kg",
+    "desc": "Washing powders, liquid detergents and fabric conditioners.",
+    "tags": [],
+    "tile": {
+      "hue": 278,
+      "glyph": "detergent"
+    },
+    "image": "/products/washing-cleaning-ariel-washing-powder.png"
+  },
+  {
+    "sku": "washing-cleaning-bonus-detergent-powder",
+    "name": "Bonus Detergent Powder",
+    "nameUr": "بونس واشنگ پاؤڈر",
+    "brand": "Bonus",
+    "category": "cleaning-fresheners",
+    "subcategory": "washing-cleaning",
+    "size": "1 kg",
+    "desc": "Washing powders, liquid detergents and fabric conditioners.",
+    "tags": [],
+    "tile": {
+      "hue": 197,
+      "glyph": "detergent"
+    },
+    "image": "/products/washing-cleaning-bonus-detergent-powder.png"
+  },
+  {
+    "sku": "washing-cleaning-comfort-fabric-conditioner",
+    "name": "Comfort Fabric Conditioner",
+    "nameUr": "کمفرٹ واشنگ پاؤڈر",
+    "brand": "Comfort",
+    "category": "cleaning-fresheners",
+    "subcategory": "washing-cleaning",
+    "size": "800 ml",
+    "desc": "Washing powders, liquid detergents and fabric conditioners.",
+    "tags": [],
+    "tile": {
+      "hue": 180,
+      "glyph": "detergent"
+    },
+    "image": "/products/washing-cleaning-comfort-fabric-conditioner.png"
+  },
+  {
+    "sku": "washing-cleaning-robin-blue-whitener",
+    "name": "Robin Blue Whitener",
+    "nameUr": "روبن واشنگ پاؤڈر",
+    "brand": "Robin",
+    "category": "cleaning-fresheners",
+    "subcategory": "washing-cleaning",
+    "size": "Pack of 6",
+    "desc": "Washing powders, liquid detergents and fabric conditioners.",
+    "tags": [],
+    "tile": {
+      "hue": 135,
+      "glyph": "detergent"
+    },
+    "image": "/products/washing-cleaning-robin-blue-whitener.png"
+  },
+  {
+    "sku": "washing-cleaning-surf-excel-liquid-detergent",
+    "name": "Surf Excel Liquid Detergent",
+    "nameUr": "سرف ایکسل واشنگ پاؤڈر",
+    "brand": "Surf Excel",
+    "category": "cleaning-fresheners",
+    "subcategory": "washing-cleaning",
+    "size": "1 L",
+    "desc": "Washing powders, liquid detergents and fabric conditioners.",
+    "tags": [],
+    "tile": {
+      "hue": 23,
+      "glyph": "detergent"
+    },
+    "image": "/products/washing-cleaning-surf-excel-liquid-detergent.png"
+  },
+  {
+    "sku": "insect-killers-mortein-cockroach-killer-spray",
+    "name": "Mortein Cockroach Killer Spray",
+    "nameUr": "مورٹین کیڑے مار",
+    "brand": "Mortein",
+    "category": "cleaning-fresheners",
+    "subcategory": "insect-killers",
+    "size": "400 ml",
+    "desc": "Sprays, coils and liquid refills for mosquitoes and roaches.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 313,
+      "glyph": "spray"
+    },
+    "image": "/products/insect-killers-mortein-cockroach-killer-spray.png"
+  },
+  {
+    "sku": "insect-killers-mortein-mosquito-coil",
+    "name": "Mortein Mosquito Coil",
+    "nameUr": "مورٹین کیڑے مار",
+    "brand": "Mortein",
+    "category": "cleaning-fresheners",
+    "subcategory": "insect-killers",
+    "size": "Pack of 10",
+    "desc": "Sprays, coils and liquid refills for mosquitoes and roaches.",
+    "tags": [],
+    "tile": {
+      "hue": 3,
+      "glyph": "spray"
+    },
+    "image": "/products/insect-killers-mortein-mosquito-coil.png"
+  },
+  {
+    "sku": "insect-killers-mortein-peaceful-nights-refill",
+    "name": "Mortein Peaceful Nights Refill",
+    "nameUr": "مورٹین کیڑے مار",
+    "brand": "Mortein",
+    "category": "cleaning-fresheners",
+    "subcategory": "insect-killers",
+    "size": "45 ml",
+    "desc": "Sprays, coils and liquid refills for mosquitoes and roaches.",
+    "tags": [],
+    "tile": {
+      "hue": 276,
+      "glyph": "spray"
+    },
+    "image": "/products/insect-killers-mortein-peaceful-nights-refill.png"
+  },
+  {
+    "sku": "insect-killers-finis-insect-killer-spray",
+    "name": "Finis Insect Killer Spray",
+    "nameUr": "فنس کیڑے مار",
+    "brand": "Finis",
+    "category": "cleaning-fresheners",
+    "subcategory": "insect-killers",
+    "size": "300 ml",
+    "desc": "Sprays, coils and liquid refills for mosquitoes and roaches.",
+    "tags": [],
+    "tile": {
+      "hue": 173,
+      "glyph": "spray"
+    },
+    "image": "/products/insect-killers-finis-insect-killer-spray.png"
+  },
+  {
+    "sku": "air-fresheners-air-wick-freshmatic-refill",
+    "name": "Air Wick Freshmatic Refill",
+    "nameUr": "ایئر وک ایئر فریشنر",
+    "brand": "Air Wick",
+    "category": "cleaning-fresheners",
+    "subcategory": "air-fresheners",
+    "size": "250 ml",
+    "desc": "Automatic sprays, aerosols and room freshener blocks.",
+    "tags": [],
+    "tile": {
+      "hue": 51,
+      "glyph": "spray"
+    },
+    "image": "/products/air-fresheners-air-wick-freshmatic-refill.png"
+  },
+  {
+    "sku": "air-fresheners-glade-automatic-spray",
+    "name": "Glade Automatic Spray",
+    "nameUr": "گلیڈ ایئر فریشنر",
+    "brand": "Glade",
+    "category": "cleaning-fresheners",
+    "subcategory": "air-fresheners",
+    "size": "175 g",
+    "desc": "Automatic sprays, aerosols and room freshener blocks.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 85,
+      "glyph": "spray"
+    },
+    "image": "/products/air-fresheners-glade-automatic-spray.png"
+  },
+  {
+    "sku": "air-fresheners-odonil-room-freshener-block",
+    "name": "Odonil Room Freshener Block",
+    "nameUr": "اوڈونل ایئر فریشنر",
+    "brand": "Odonil",
+    "category": "cleaning-fresheners",
+    "subcategory": "air-fresheners",
+    "size": "50 g",
+    "desc": "Automatic sprays, aerosols and room freshener blocks.",
+    "tags": [],
+    "tile": {
+      "hue": 130,
+      "glyph": "spray"
+    },
+    "image": "/products/air-fresheners-odonil-room-freshener-block.png"
+  },
+  {
+    "sku": "air-fresheners-air-wick-aerosol-lavender",
+    "name": "Air Wick Aerosol Lavender",
+    "nameUr": "ایئر وک ایئر فریشنر",
+    "brand": "Air Wick",
+    "category": "cleaning-fresheners",
+    "subcategory": "air-fresheners",
+    "size": "300 ml",
+    "desc": "Automatic sprays, aerosols and room freshener blocks.",
+    "tags": [],
+    "tile": {
+      "hue": 69,
+      "glyph": "spray"
+    },
+    "image": "/products/air-fresheners-air-wick-aerosol-lavender.png"
+  },
+  {
+    "sku": "diapers-pampers-baby-dry-medium",
+    "name": "Pampers Baby Dry Medium",
+    "nameUr": "پیمپرز ڈایپر",
+    "brand": "Pampers",
+    "category": "baby-hygiene",
+    "subcategory": "diapers",
+    "size": "Pack of 46",
+    "desc": "Taped and pant-style diapers in every size.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 291,
+      "glyph": "baby"
+    },
+    "image": "/products/diapers-pampers-baby-dry-medium.png"
+  },
+  {
+    "sku": "diapers-canbebe-comfort-dry-large",
+    "name": "Canbebe Comfort Dry Large",
+    "nameUr": "کین بے بے ڈایپر",
+    "brand": "Canbebe",
+    "category": "baby-hygiene",
+    "subcategory": "diapers",
+    "size": "Pack of 36",
+    "desc": "Taped and pant-style diapers in every size.",
+    "tags": [],
+    "tile": {
+      "hue": 105,
+      "glyph": "baby"
+    },
+    "image": "/products/diapers-canbebe-comfort-dry-large.png"
+  },
+  {
+    "sku": "diapers-molfix-pants-extra-large",
+    "name": "Molfix Pants Extra Large",
+    "nameUr": "مولفکس ڈایپر",
+    "brand": "Molfix",
+    "category": "baby-hygiene",
+    "subcategory": "diapers",
+    "size": "Pack of 30",
+    "desc": "Taped and pant-style diapers in every size.",
+    "tags": [],
+    "tile": {
+      "hue": 317,
+      "glyph": "baby"
+    },
+    "image": "/products/diapers-molfix-pants-extra-large.png"
+  },
+  {
+    "sku": "diapers-huggies-dry-small",
+    "name": "Huggies Dry Small",
+    "nameUr": "ہگیز ڈایپر",
+    "brand": "Huggies",
+    "category": "baby-hygiene",
+    "subcategory": "diapers",
+    "size": "Pack of 60",
+    "desc": "Taped and pant-style diapers in every size.",
+    "tags": [],
+    "tile": {
+      "hue": 350,
+      "glyph": "baby"
+    },
+    "image": "/products/diapers-huggies-dry-small.png"
+  },
+  {
+    "sku": "diapers-pampers-newborn",
+    "name": "Pampers Newborn",
+    "nameUr": "پیمپرز ڈایپر",
+    "brand": "Pampers",
+    "category": "baby-hygiene",
+    "subcategory": "diapers",
+    "size": "Pack of 28",
+    "desc": "Taped and pant-style diapers in every size.",
+    "tags": [],
+    "tile": {
+      "hue": 318,
+      "glyph": "baby"
+    },
+    "image": "/products/diapers-pampers-newborn.png"
+  },
+  {
+    "sku": "baby-care-johnsons-baby-shampoo",
+    "name": "Johnson's Baby Shampoo",
+    "nameUr": "جانسنز بے بی کیئر",
+    "brand": "Johnson's",
+    "category": "baby-hygiene",
+    "subcategory": "baby-care",
+    "size": "200 ml",
+    "desc": "Gentle shampoos, lotions, powders, wipes and soaps.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 3,
+      "glyph": "baby"
+    },
+    "image": "/products/baby-care-johnsons-baby-shampoo.png"
+  },
+  {
+    "sku": "baby-care-johnsons-baby-powder",
+    "name": "Johnson's Baby Powder",
+    "nameUr": "جانسنز بے بی کیئر",
+    "brand": "Johnson's",
+    "category": "baby-hygiene",
+    "subcategory": "baby-care",
+    "size": "200 g",
+    "desc": "Gentle shampoos, lotions, powders, wipes and soaps.",
+    "tags": [],
+    "tile": {
+      "hue": 183,
+      "glyph": "baby"
+    },
+    "image": "/products/baby-care-johnsons-baby-powder.png"
+  },
+  {
+    "sku": "baby-care-johnsons-baby-lotion",
+    "name": "Johnson's Baby Lotion",
+    "nameUr": "جانسنز بے بی کیئر",
+    "brand": "Johnson's",
+    "category": "baby-hygiene",
+    "subcategory": "baby-care",
+    "size": "200 ml",
+    "desc": "Gentle shampoos, lotions, powders, wipes and soaps.",
+    "tags": [],
+    "tile": {
+      "hue": 113,
+      "glyph": "baby"
+    },
+    "image": "/products/baby-care-johnsons-baby-lotion.png"
+  },
+  {
+    "sku": "baby-care-pampers-baby-wipes",
+    "name": "Pampers Baby Wipes",
+    "nameUr": "پیمپرز بے بی کیئر",
+    "brand": "Pampers",
+    "category": "baby-hygiene",
+    "subcategory": "baby-care",
+    "size": "Pack of 64",
+    "desc": "Gentle shampoos, lotions, powders, wipes and soaps.",
+    "tags": [],
+    "tile": {
+      "hue": 328,
+      "glyph": "baby"
+    },
+    "image": "/products/baby-care-pampers-baby-wipes.png"
+  },
+  {
+    "sku": "baby-care-chicco-baby-soap",
+    "name": "Chicco Baby Soap",
+    "nameUr": "چیکو بے بی کیئر",
+    "brand": "Chicco",
+    "category": "baby-hygiene",
+    "subcategory": "baby-care",
+    "size": "75 g",
+    "desc": "Gentle shampoos, lotions, powders, wipes and soaps.",
+    "tags": [],
+    "tile": {
+      "hue": 48,
+      "glyph": "baby"
+    },
+    "image": "/products/baby-care-chicco-baby-soap.png"
+  },
+  {
+    "sku": "hair-removal-veet-hair-removal-cream-normal",
+    "name": "Veet Hair Removal Cream Normal",
+    "nameUr": "ویٹ بال صفا",
+    "brand": "Veet",
+    "category": "baby-hygiene",
+    "subcategory": "hair-removal",
+    "size": "100 ml",
+    "desc": "Creams, wax strips, razors and removal lotions.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 244,
+      "glyph": "razor"
+    },
+    "image": "/products/hair-removal-veet-hair-removal-cream-normal.png"
+  },
+  {
+    "sku": "hair-removal-veet-cold-wax-strips",
+    "name": "Veet Cold Wax Strips",
+    "nameUr": "ویٹ بال صفا",
+    "brand": "Veet",
+    "category": "baby-hygiene",
+    "subcategory": "hair-removal",
+    "size": "Pack of 20",
+    "desc": "Creams, wax strips, razors and removal lotions.",
+    "tags": [],
+    "tile": {
+      "hue": 123,
+      "glyph": "razor"
+    },
+    "image": "/products/hair-removal-veet-cold-wax-strips.png"
+  },
+  {
+    "sku": "hair-removal-gillette-venus-razor",
+    "name": "Gillette Venus Razor",
+    "nameUr": "جیلیٹ بال صفا",
+    "brand": "Gillette",
+    "category": "baby-hygiene",
+    "subcategory": "hair-removal",
+    "size": "1 piece",
+    "desc": "Creams, wax strips, razors and removal lotions.",
+    "tags": [],
+    "tile": {
+      "hue": 168,
+      "glyph": "razor"
+    },
+    "image": "/products/hair-removal-gillette-venus-razor.png"
+  },
+  {
+    "sku": "hair-removal-anne-french-hair-removing-lotion",
+    "name": "Anne French Hair Removing Lotion",
+    "nameUr": "این فرینچ بال صفا",
+    "brand": "Anne French",
+    "category": "baby-hygiene",
+    "subcategory": "hair-removal",
+    "size": "120 ml",
+    "desc": "Creams, wax strips, razors and removal lotions.",
+    "tags": [],
+    "tile": {
+      "hue": 243,
+      "glyph": "razor"
+    },
+    "image": "/products/hair-removal-anne-french-hair-removing-lotion.png"
+  },
+  {
+    "sku": "sanitary-pads-always-ultra-thin-long",
+    "name": "Always Ultra Thin Long",
+    "nameUr": "آلویز پیڈ",
+    "brand": "Always",
+    "category": "baby-hygiene",
+    "subcategory": "sanitary-pads",
+    "size": "Pack of 16",
+    "desc": "Ultra-thin, maxi and breathable pads in multiple counts.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 69,
+      "glyph": "pad"
+    },
+    "image": "/products/sanitary-pads-always-ultra-thin-long.png"
+  },
+  {
+    "sku": "sanitary-pads-butterfly-cottony-soft",
+    "name": "Butterfly Cottony Soft",
+    "nameUr": "بٹرفلائی پیڈ",
+    "brand": "Butterfly",
+    "category": "baby-hygiene",
+    "subcategory": "sanitary-pads",
+    "size": "Pack of 10",
+    "desc": "Ultra-thin, maxi and breathable pads in multiple counts.",
+    "tags": [],
+    "tile": {
+      "hue": 69,
+      "glyph": "pad"
+    },
+    "image": "/products/sanitary-pads-butterfly-cottony-soft.png"
+  },
+  {
+    "sku": "sanitary-pads-always-maxi-thick",
+    "name": "Always Maxi Thick",
+    "nameUr": "آلویز پیڈ",
+    "brand": "Always",
+    "category": "baby-hygiene",
+    "subcategory": "sanitary-pads",
+    "size": "Pack of 20",
+    "desc": "Ultra-thin, maxi and breathable pads in multiple counts.",
+    "tags": [],
+    "tile": {
+      "hue": 303,
+      "glyph": "pad"
+    },
+    "image": "/products/sanitary-pads-always-maxi-thick.png"
+  },
+  {
+    "sku": "sanitary-pads-butterfly-breathable-ultra",
+    "name": "Butterfly Breathable Ultra",
+    "nameUr": "بٹرفلائی پیڈ",
+    "brand": "Butterfly",
+    "category": "baby-hygiene",
+    "subcategory": "sanitary-pads",
+    "size": "Pack of 8",
+    "desc": "Ultra-thin, maxi and breathable pads in multiple counts.",
+    "tags": [],
+    "tile": {
+      "hue": 285,
+      "glyph": "pad"
+    },
+    "image": "/products/sanitary-pads-butterfly-breathable-ultra.png"
+  },
+  {
+    "sku": "shampoos-soaps-head-and-shoulders-anti-dandruff",
+    "name": "Head & Shoulders Anti-Dandruff",
+    "nameUr": "ہیڈ اینڈ شولڈرز شیمپو",
+    "brand": "Head & Shoulders",
+    "category": "personal-care",
+    "subcategory": "shampoos-soaps",
+    "size": "360 ml",
+    "desc": "Shampoos, conditioners and bathing soaps.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 305,
+      "glyph": "bottle-pump"
+    },
+    "image": "/products/shampoos-soaps-head-and-shoulders-anti-dandruff.png"
+  },
+  {
+    "sku": "shampoos-soaps-pantene-silky-smooth-care",
+    "name": "Pantene Silky Smooth Care",
+    "nameUr": "پینٹین شیمپو",
+    "brand": "Pantene",
+    "category": "personal-care",
+    "subcategory": "shampoos-soaps",
+    "size": "400 ml",
+    "desc": "Shampoos, conditioners and bathing soaps.",
+    "tags": [],
+    "tile": {
+      "hue": 66,
+      "glyph": "bottle-pump"
+    },
+    "image": "/products/shampoos-soaps-pantene-silky-smooth-care.png"
+  },
+  {
+    "sku": "shampoos-soaps-sunsilk-black-shine",
+    "name": "Sunsilk Black Shine",
+    "nameUr": "سن سلک شیمپو",
+    "brand": "Sunsilk",
+    "category": "personal-care",
+    "subcategory": "shampoos-soaps",
+    "size": "340 ml",
+    "desc": "Shampoos, conditioners and bathing soaps.",
+    "tags": [],
+    "tile": {
+      "hue": 340,
+      "glyph": "bottle-pump"
+    },
+    "image": "/products/shampoos-soaps-sunsilk-black-shine.png"
+  },
+  {
+    "sku": "shampoos-soaps-lux-soft-touch-soap",
+    "name": "Lux Soft Touch Soap",
+    "nameUr": "لکس شیمپو",
+    "brand": "Lux",
+    "category": "personal-care",
+    "subcategory": "shampoos-soaps",
+    "size": "Pack of 3",
+    "desc": "Shampoos, conditioners and bathing soaps.",
+    "tags": [],
+    "tile": {
+      "hue": 209,
+      "glyph": "bottle-pump"
+    },
+    "image": "/products/shampoos-soaps-lux-soft-touch-soap.png"
+  },
+  {
+    "sku": "shampoos-soaps-safeguard-pure-white-soap",
+    "name": "Safeguard Pure White Soap",
+    "nameUr": "سیف گارڈ شیمپو",
+    "brand": "Safeguard",
+    "category": "personal-care",
+    "subcategory": "shampoos-soaps",
+    "size": "Pack of 3",
+    "desc": "Shampoos, conditioners and bathing soaps.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 146,
+      "glyph": "bottle-pump"
+    },
+    "image": "/products/shampoos-soaps-safeguard-pure-white-soap.png"
+  },
+  {
+    "sku": "shampoos-soaps-dettol-original-soap",
+    "name": "Dettol Original Soap",
+    "nameUr": "ڈیٹول شیمپو",
+    "brand": "Dettol",
+    "category": "personal-care",
+    "subcategory": "shampoos-soaps",
+    "size": "Pack of 3",
+    "desc": "Shampoos, conditioners and bathing soaps.",
+    "tags": [],
+    "tile": {
+      "hue": 169,
+      "glyph": "bottle-pump"
+    },
+    "image": "/products/shampoos-soaps-dettol-original-soap.png"
+  },
+  {
+    "sku": "oral-care-colgate-maximum-cavity-protection",
+    "name": "Colgate Maximum Cavity Protection",
+    "nameUr": "کولگیٹ ٹوتھ پیسٹ",
+    "brand": "Colgate",
+    "category": "personal-care",
+    "subcategory": "oral-care",
+    "size": "200 g",
+    "desc": "Toothpastes for every sensitivity, plus brushes.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 205,
+      "glyph": "tooth"
+    },
+    "image": "/products/oral-care-colgate-maximum-cavity-protection.png"
+  },
+  {
+    "sku": "oral-care-sensodyne-fresh-mint",
+    "name": "Sensodyne Fresh Mint",
+    "nameUr": "سینسوڈائن ٹوتھ پیسٹ",
+    "brand": "Sensodyne",
+    "category": "personal-care",
+    "subcategory": "oral-care",
+    "size": "100 g",
+    "desc": "Toothpastes for every sensitivity, plus brushes.",
+    "tags": [],
+    "tile": {
+      "hue": 346,
+      "glyph": "tooth"
+    },
+    "image": "/products/oral-care-sensodyne-fresh-mint.png"
+  },
+  {
+    "sku": "oral-care-close-up-red-hot",
+    "name": "Close Up Red Hot",
+    "nameUr": "کلوز اپ ٹوتھ پیسٹ",
+    "brand": "Close Up",
+    "category": "personal-care",
+    "subcategory": "oral-care",
+    "size": "140 g",
+    "desc": "Toothpastes for every sensitivity, plus brushes.",
+    "tags": [],
+    "tile": {
+      "hue": 174,
+      "glyph": "tooth"
+    },
+    "image": "/products/oral-care-close-up-red-hot.png"
+  },
+  {
+    "sku": "oral-care-oral-b-all-rounder-toothbrush",
+    "name": "Oral-B All Rounder Toothbrush",
+    "nameUr": "اورل بی ٹوتھ پیسٹ",
+    "brand": "Oral-B",
+    "category": "personal-care",
+    "subcategory": "oral-care",
+    "size": "Pack of 2",
+    "desc": "Toothpastes for every sensitivity, plus brushes.",
+    "tags": [],
+    "tile": {
+      "hue": 344,
+      "glyph": "tooth"
+    },
+    "image": "/products/oral-care-oral-b-all-rounder-toothbrush.png"
+  },
+  {
+    "sku": "oral-care-colgate-zigzag-toothbrush",
+    "name": "Colgate ZigZag Toothbrush",
+    "nameUr": "کولگیٹ ٹوتھ پیسٹ",
+    "brand": "Colgate",
+    "category": "personal-care",
+    "subcategory": "oral-care",
+    "size": "Pack of 3",
+    "desc": "Toothpastes for every sensitivity, plus brushes.",
+    "tags": [],
+    "tile": {
+      "hue": 129,
+      "glyph": "tooth"
+    },
+    "image": "/products/oral-care-colgate-zigzag-toothbrush.png"
+  },
+  {
+    "sku": "handwash-baby-oils-dettol-original-handwash-refill",
+    "name": "Dettol Original Handwash Refill",
+    "nameUr": "ڈیٹول ہینڈ واش",
+    "brand": "Dettol",
+    "category": "personal-care",
+    "subcategory": "handwash-baby-oils",
+    "size": "900 ml",
+    "desc": "Liquid hand washes, refills and baby oils.",
+    "tags": [
+      "popular"
+    ],
+    "tile": {
+      "hue": 313,
+      "glyph": "bottle-pump"
+    },
+    "image": "/products/handwash-baby-oils-dettol-original-handwash-refill.png"
+  },
+  {
+    "sku": "handwash-baby-oils-lifebuoy-total-10-handwash",
+    "name": "Lifebuoy Total 10 Handwash",
+    "nameUr": "لائف بوائے ہینڈ واش",
+    "brand": "Lifebuoy",
+    "category": "personal-care",
+    "subcategory": "handwash-baby-oils",
+    "size": "200 ml",
+    "desc": "Liquid hand washes, refills and baby oils.",
+    "tags": [],
+    "tile": {
+      "hue": 112,
+      "glyph": "bottle-pump"
+    },
+    "image": "/products/handwash-baby-oils-lifebuoy-total-10-handwash.png"
+  },
+  {
+    "sku": "handwash-baby-oils-johnsons-baby-oil",
+    "name": "Johnson's Baby Oil",
+    "nameUr": "جانسنز ہینڈ واش",
+    "brand": "Johnson's",
+    "category": "personal-care",
+    "subcategory": "handwash-baby-oils",
+    "size": "200 ml",
+    "desc": "Liquid hand washes, refills and baby oils.",
+    "tags": [],
+    "tile": {
+      "hue": 195,
+      "glyph": "bottle-pump"
+    },
+    "image": "/products/handwash-baby-oils-johnsons-baby-oil.png"
+  },
+  {
+    "sku": "handwash-baby-oils-safeguard-handwash-lemon",
+    "name": "Safeguard Handwash Lemon",
+    "nameUr": "سیف گارڈ ہینڈ واش",
+    "brand": "Safeguard",
+    "category": "personal-care",
+    "subcategory": "handwash-baby-oils",
+    "size": "220 ml",
+    "desc": "Liquid hand washes, refills and baby oils.",
+    "tags": [],
+    "tile": {
+      "hue": 30,
+      "glyph": "bottle-pump"
+    },
+    "image": "/products/handwash-baby-oils-safeguard-handwash-lemon.png"
+  },
+  {
+    "sku": "handwash-baby-oils-dettol-skincare-handwash",
+    "name": "Dettol Skincare Handwash",
+    "nameUr": "ڈیٹول ہینڈ واش",
+    "brand": "Dettol",
+    "category": "personal-care",
+    "subcategory": "handwash-baby-oils",
+    "size": "200 ml",
+    "desc": "Liquid hand washes, refills and baby oils.",
+    "tags": [],
+    "tile": {
+      "hue": 335,
+      "glyph": "bottle-pump"
+    },
+    "image": "/products/handwash-baby-oils-dettol-skincare-handwash.png"
+  },
+  {
+    "sku": "intimate-care-dettol-intimate-wash",
+    "name": "Dettol Intimate Wash",
+    "nameUr": "ڈیٹول نجی نگہداشت",
+    "brand": "Dettol",
+    "category": "personal-care",
+    "subcategory": "intimate-care",
+    "size": "120 ml",
+    "desc": "Discreet intimate washes, wipes and daily liners.",
+    "tags": [],
+    "tile": {
+      "hue": 47,
+      "glyph": "bottle-pump"
+    },
+    "image": "/products/intimate-care-dettol-intimate-wash.png"
+  },
+  {
+    "sku": "intimate-care-veet-sensitive-intimate-wipes",
+    "name": "Veet Sensitive Intimate Wipes",
+    "nameUr": "ویٹ نجی نگہداشت",
+    "brand": "Veet",
+    "category": "personal-care",
+    "subcategory": "intimate-care",
+    "size": "Pack of 12",
+    "desc": "Discreet intimate washes, wipes and daily liners.",
+    "tags": [],
+    "tile": {
+      "hue": 335,
+      "glyph": "bottle-pump"
+    },
+    "image": "/products/intimate-care-veet-sensitive-intimate-wipes.png"
+  },
+  {
+    "sku": "intimate-care-lifebuoy-hygiene-wash",
+    "name": "Lifebuoy Hygiene Wash",
+    "nameUr": "لائف بوائے نجی نگہداشت",
+    "brand": "Lifebuoy",
+    "category": "personal-care",
+    "subcategory": "intimate-care",
+    "size": "180 ml",
+    "desc": "Discreet intimate washes, wipes and daily liners.",
+    "tags": [],
+    "tile": {
+      "hue": 196,
+      "glyph": "bottle-pump"
+    },
+    "image": "/products/intimate-care-lifebuoy-hygiene-wash.png"
+  },
+  {
+    "sku": "intimate-care-always-daily-liners",
+    "name": "Always Daily Liners",
+    "nameUr": "آلویز نجی نگہداشت",
+    "brand": "Always",
+    "category": "personal-care",
+    "subcategory": "intimate-care",
+    "size": "Pack of 20",
+    "desc": "Discreet intimate washes, wipes and daily liners.",
+    "tags": [],
+    "tile": {
+      "hue": 30,
+      "glyph": "bottle-pump"
+    },
+    "image": "/products/intimate-care-always-daily-liners.png"
+  }
+]

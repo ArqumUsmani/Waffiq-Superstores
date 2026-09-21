@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+    <defs>
+      <radialGradient id="shine-apple" cx="35%" cy="30%" r="65%">
+        <stop offset="0" stop-color="#ffffff" stop-opacity="0.35"/>
+        <stop offset="55%" stop-color="#ffffff" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <g>
+    <circle cx="200" cy="220" r="105" fill="#d94f4f"/>
+    <circle cx="140" cy="180" r="60" fill="#d94f4f"/>
+    <path d="M200 118 Q205 95 225 88" stroke="#5a3a1e" stroke-width="9" stroke-linecap="round" fill="none"/>
+    <path d="M222 92 Q245 78 260 96 Q245 104 222 98 Z" fill="#4a8f3c"/></g>
+    <circle cx="200" cy="210" r="140" fill="url(#shine-apple)"/>
+  </svg>
