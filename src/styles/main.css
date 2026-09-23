@@ -4200,7 +4200,7 @@ body.has-cursor button {
   position: absolute;
   inset-block-start: clamp(5.5rem, 11vw, 8rem);
   left: 50%;
-  translate: -50% 250%;
+  translate: -50%;
   z-index: 2;
   display: inline-flex;
   align-items: center;
@@ -4244,6 +4244,7 @@ body.has-cursor button {
      marquee keeps the moving track inside the curve. */
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
+  width: 100vw;
 }
 
 /* On a phone the 16:9 art would sit as a thin strip under a tall empty sky.
