@@ -47,9 +47,18 @@ export function scrollTo(
     lenis.scrollTo(target, { offset: -90, duration: 1, ...options });
     return;
   }
+  if (typeof target === 'number') {
+    window.scrollTo({ top: target, behavior: 'auto' });
+    return;
+  }
   const node = typeof target === 'string' ? document.querySelector(target) : target;
   if (node instanceof HTMLElement) {
-    node.scrollIntoView({ behavior: motion.reduced ? 'auto' : 'smooth', block: 'start' });
+    // Same -90px as the Lenis path, so the fixed header never covers the target.
+    const top = node.getBoundingClientRect().top + window.scrollY - 90;
+    window.scrollTo({
+      top,
+      behavior: motion.reduced || options.immediate ? 'auto' : 'smooth',
+    });
   }
 }
 

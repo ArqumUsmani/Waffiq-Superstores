@@ -6,9 +6,12 @@ import { SiteFooter } from './SiteFooter';
 import { BackToTop } from './BackToTop';
 import { Background } from './Background';
 import { LaunchProvider } from './LaunchProvider';
+import { SearchPalette } from './SearchPalette';
+import { Cursor } from './Cursor';
 import { ScrollTrigger } from '../lib/gsap-setup';
-import { getLenis, initSmoothScroll } from '../lib/smooth-scroll';
+import { getLenis, initSmoothScroll, scrollTo } from '../lib/smooth-scroll';
 import { initSfxUnlock } from '../lib/sfx';
+import { initAmbience } from '../lib/ambience';
 import { syncDocumentLang, t } from '../lib/i18n';
 import { navFlags } from '../lib/nav-flags';
 import { useLang } from '../state/app-state';
@@ -34,6 +37,9 @@ export function Layout() {
     history.scrollRestoration = 'manual';
     initSmoothScroll();
     initSfxUnlock();
+    /* Silent until the first gesture unlocks the graph; initAmbience
+       subscribes and starts itself at that point. */
+    return initAmbience();
   }, []);
 
   useEffect(() => {
@@ -54,13 +60,29 @@ export function Layout() {
 
   /* One refresh per route change, at the root, deferred two frames so the
      new page has painted. Per-component refresh() calls are deliberately
-     not ported — N components meant N full recalcs per transition. */
+     not ported — N components meant N full recalcs per transition.
+
+     A hash target (/#branches from another route) is scrolled to *after*
+     the refresh, never alongside it: refresh() restores the scroll position
+     it recorded, and the pinned aisle rail's spacer only reaches its real
+     height during refresh — any offset measured earlier is short by
+     thousands of pixels. */
   useEffect(() => {
-    const id = requestAnimationFrame(() =>
-      requestAnimationFrame(() => ScrollTrigger.refresh()),
-    );
-    return () => cancelAnimationFrame(id);
-  }, [location.key]);
+    let frame = requestAnimationFrame(() => {
+      frame = requestAnimationFrame(() => {
+        ScrollTrigger.refresh();
+        /* Lenis caches the scroll limit and clamps to it. Its resize
+           observer has not seen the new document yet, so without this a
+           jump to a section on a taller page stops at the *previous*
+           page's bottom edge. */
+        getLenis()?.resize();
+        const id = location.hash.slice(1);
+        const target = id ? document.getElementById(id) : null;
+        if (target) scrollTo(target, { immediate: true });
+      });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [location.key, location.hash]);
 
   const openSearch = () => setSearchOpen(true);
 
@@ -89,19 +111,9 @@ export function Layout() {
       <SiteFooter onSearchOpen={openSearch} />
       <BackToTop />
 
-      {/* Phase 6 replaces this with the real palette. */}
-      {searchOpen ? <SearchStub onClose={() => setSearchOpen(false)} /> : null}
+      <SearchPalette open={searchOpen} onOpenChange={setSearchOpen} />
+      {/* Last, so it paints above every other body-level layer. */}
+      <Cursor />
     </>
   );
-}
-
-function SearchStub({ onClose }: { onClose: () => void }) {
-  useEffect(() => {
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') onClose();
-    };
-    document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
-  }, [onClose]);
-  return null;
 }

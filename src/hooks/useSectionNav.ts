@@ -49,14 +49,9 @@ export function useSectionNav() {
         scrollTo(target);
         return;
       }
-      // Coming from an aisle page: land home, then scroll once it is there.
-      navigate('/');
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          const landed = document.getElementById(id);
-          if (landed) scrollTo(landed);
-        });
-      });
+      // From another route: land home with the hash; the layout scrolls to
+      // it once the pinned rail has measured itself.
+      navigate(`/#${id}`);
     },
     [isHome, navigate],
   );

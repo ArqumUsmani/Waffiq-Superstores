@@ -429,7 +429,31 @@
   inset-block-start: 0;
   inset-inline: 0;
   z-index: 90;
-  transition: background 0.35s, box-shadow 0.35s, backdrop-filter 0.35s;
+  transition:
+    background 0.35s,
+    box-shadow 0.35s,
+    backdrop-filter 0.35s,
+    translate 0.45s var(--ease-out-expo),
+    opacity 0.35s;
+
+  /* Hidden over the top of the hero, so the only thing to interact with
+     there is the scene itself. `pointer-events: none` is what actually
+     frees the hero — the bar is full-width and would otherwise swallow
+     clicks along the top edge even at zero opacity. */
+  &.is-hidden {
+    translate: 0 -100%;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* A keyboard user tabbing in from the top would otherwise land on
+     controls they cannot see. Focus brings the bar back on its own, with
+     no JS involved. */
+  &.is-hidden:focus-within {
+    translate: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
 
   &.is-stuck {
     background: color-mix(in oklab, var(--surface) 82%, transparent);
@@ -456,6 +480,19 @@
   align-items: center;
   gap: 0.7rem;
   flex: none;
+}
+
+.brand__logo {
+  /* Height-led, width from the 220:63 ratio, so the lockup never distorts. */
+  height: 2.4rem;
+  width: auto;
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .brand__logo {
+    height: 2rem;
+  }
 }
 
 .brand__badge {
@@ -1321,227 +1358,8 @@ kbd {
    Aisle rail
  * ------------------------------------------------------------------ */
 
-.aisle-rail {
-  position: relative;
-  isolation: isolate;
-  background: color-mix(in oklab, var(--rail-pastel, var(--surface-2)) 48%, var(--bg));
-  transition: background 0.7s var(--ease-out-expo);
-  padding-block: clamp(2.5rem, 6vw, 4rem);
-  overflow: hidden;
-}
-
-.aisle-rail__head {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-block-end: clamp(1.5rem, 3vw, 2.5rem);
-
-  h2 {
-    font-size: clamp(1.7rem, 4vw, 3.2rem);
-    margin: 0;
-  }
-}
-
-.aisle-rail__track {
-  display: flex;
-  gap: clamp(1rem, 2vw, 2rem);
-  will-change: transform;
-}
-
-.aisle-rail[data-mode='pinned'] {
-  /* Fills the viewport while pinned, so the screen is the scene rather
-     than the scene plus a strip of whatever comes next. A hard cap, not
-     a floor: while pinned, the section cannot itself be scrolled to
-     reveal anything that didn't fit — content taller than the viewport
-     is simply gone for the whole pin, dots included. */
-  height: 100vh;
-  display: grid;
-  align-content: center;
-  padding-block: clamp(5rem, 9vw, 7rem) clamp(2rem, 4vw, 3rem);
-
-  .aisle-rail__track {
-    padding-inline-end: 25vw;
-  }
-  .aisle {
-    flex: 0 0 min(70vw, 940px);
-    /* max-height, not height: a card whose real content (title, blurb,
-       all 4 shelves, button, count) needs less than this just shrinks
-       to fit, no wasted space — only a card that would need *more* than
-       the viewport has room for gets capped, and clipped by the
-       overflow rule below rather than pushed taller than the fixed
-       100vh pin above has room for. Sized generously past the tallest
-       real card (four full-length shelf names, some wrapping to two
-       lines, on "Home & Kitchen Essentials") at everyday laptop
-       heights — see .aisle__stage for why it can't just be height:100%
-       of this. */
-    max-height: min(68vh, calc(100vh - 13rem), 620px);
-  }
-  .aisle__stage {
-    /* Independent of the card's own height, which is only a *max* now
-       (see above) and so isn't definite — a percentage here couldn't
-       resolve against it anyway: percentage heights on a grid item only
-       resolve against a *definite* row size, and a max-height'd auto
-       row never becomes one. Sized directly off the viewport instead,
-       with the same headroom as .aisle above minus this card's own
-       padding (5rem more subtracted). */
-    height: min(68vh, calc(100vh - 18rem), 620px);
-    width: auto;
-    justify-self: center;
-  }
-}
-
-/* No scroll inside a card, by request — the text column's own content
-   can still be taller than a *very* short viewport has room for even
-   with the card above capped. Rather than spilling past the card's
-   rounded edge uncontained (the original bug this rule exists to fix),
-   it's clipped there instead. Everyday laptop heights never reach this;
-   only an unusually short window does. */
-.aisle {
-  overflow: hidden;
-}
-
-.aisle-rail[data-mode='carousel'] {
-  .aisle-rail__track {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    padding-inline: 0.25rem;
-    padding-block-end: 0.75rem;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-  .aisle {
-    flex: 0 0 min(86vw, 620px);
-    scroll-snap-align: center;
-  }
-}
-
-.aisle {
-  display: grid;
-  gap: 1.5rem;
-  align-items: center;
-  padding: clamp(1.25rem, 3vw, 2.5rem);
-  border-radius: var(--radius-frame);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  opacity: 0.55;
-  scale: 0.95;
-  transition: opacity 0.5s var(--ease-out-expo), scale 0.5s var(--ease-out-expo),
-    box-shadow 0.5s;
-
-  @media (min-width: 768px) {
-    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-  }
-
-  &.is-active {
-    opacity: 1;
-    scale: 1;
-    box-shadow: var(--shadow-bloom);
-  }
-}
-
-.aisle__stage {
-  display: grid;
-  place-items: center;
-  aspect-ratio: 1;
-  border-radius: var(--radius-card);
-  background: linear-gradient(
-    150deg,
-    color-mix(in oklab, var(--pastel) 88%, #fff),
-    var(--pastel)
-  );
-}
-
-.aisle__index {
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  color: var(--accent);
-  margin: 0 0 0.5rem;
-}
-
-.aisle__name {
-  font-size: clamp(1.4rem, 2.6vw, 2.2rem);
-  margin: 0 0 0.6rem;
-}
-
-.aisle__blurb {
-  color: var(--fg-muted);
-  margin: 0 0 1.1rem;
-}
-
-.aisle__shelves {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin: 0 0 1.4rem;
-  padding: 0;
-  list-style: none;
-
-  li {
-    padding: 0.35rem 0.75rem;
-    border-radius: var(--radius-pill);
-    background: color-mix(in oklab, var(--pastel) 62%, transparent);
-    color: var(--fg);
-    font-size: 0.78rem;
-  }
-}
-
-.aisle__footer {
-  /* No visual effect until .aisle__body actually needs to scroll — a
-     card that fits (every normal viewport) renders this exactly as if
-     it were flat, unstyled markup. It only engages on a genuinely short
-     viewport, where .aisle__body scrolls internally rather than
-     spilling past the card: without this, the "Open aisle" button and
-     count could scroll out of reach with nothing visible telling the
-     visitor to look for them. */
-  position: sticky;
-  inset-block-end: 0;
-  background: var(--surface);
-  padding-block-end: 0.25rem;
-}
-
-.aisle__count {
-  margin: 1rem 0 0;
-  font-size: 0.82rem;
-  color: var(--fg-muted);
-
-  strong {
-    color: var(--fg);
-    font-variant-numeric: tabular-nums;
-  }
-}
-
-.aisle-dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-block-start: clamp(1.25rem, 3vw, 2rem);
-}
-
-.aisle-dot {
-  width: 0.65rem;
-  height: 0.65rem;
-  padding: 0;
-  border: none;
-  border-radius: 999px;
-  background: color-mix(in oklab, var(--fg) 22%, transparent);
-  cursor: pointer;
-  transition: width 0.4s var(--ease-spring), background 0.3s;
-
-  &.is-active {
-    width: 2rem;
-    background: var(--accent);
-  }
-}
-
-/* ------------------------------------------------------------------ *
-   Category cards
- * ------------------------------------------------------------------ */
+/* The "Walk the aisle" rail was removed — the category grid below covers
+   the same ground without pinning the page. */
 
 .category-grid {
   display: grid;
@@ -3931,21 +3749,40 @@ body.has-cursor button {
 /* ---- the category marquee that closes the hero ---- */
 
 .aisle-marquee {
-  position: relative;
+  top: 94.6%;
+  position: absolute;
   z-index: 1;
   margin-block-start: clamp(2rem, 5vw, 3.5rem);
-  padding-block: 1.1rem;
+  padding-block: .3rem;
   border-block-start: 1px solid rgb(255 255 255 / 0.12);
   overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  /* mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); */
+  /* -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); */
 }
 
 .aisle-marquee__track {
   display: flex;
   width: max-content;
-  gap: 2.5rem;
   animation: marquee 38s linear infinite;
+}
+
+/* Each run carries its own trailing gap, so half the track is exactly one
+   run and the -50% loop has no seam. */
+.aisle-marquee__run {
+  display: flex;
+  gap: 2.5rem;
+  padding-inline-end: 2.5rem;
+}
+
+/* In RTL the strip starts at the right edge, so it has to travel the
+   other way or the right half runs empty. */
+[dir='rtl'] .aisle-marquee__track {
+  animation-name: marquee-rtl;
+}
+
+@keyframes marquee-rtl {
+  from { transform: translateX(0); }
+  to   { transform: translateX(50%); }
 }
 
 .aisle-marquee:hover .aisle-marquee__track { animation-play-state: paused; }
@@ -3970,4 +3807,461 @@ body.has-cursor button {
   .hero-grocery__stage { aspect-ratio: 4 / 5; }
   .hero-grocery__bag { width: min(66%, 17rem); }
   .bag__item { font-size: 1.9rem; }
+}
+
+.aisle-shelf {
+  margin-block-start: clamp(2.5rem, 6vw, 4rem);
+  scroll-margin-block-start: 6rem;
+}
+
+/* ---- storefront variation of the hero ---- */
+
+.hero-grocery__storefront {
+  position: absolute;
+  inset-block-end: 8%;
+  left: 50%;
+  z-index: 2;
+  width: min(92%, 52rem);
+  translate: -50% 0;
+  transform:
+    rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg))
+    translate3d(var(--tilt-tx, 0px), var(--tilt-ty, 0px), 0);
+  will-change: transform;
+  animation: float-in 0.9s var(--ease-out-expo) 0.3s both;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 30px 45px rgb(3 16 9 / 0.55));
+  }
+
+  .bag__shadow {
+    inset-block-end: -4%;
+    height: 7%;
+  }
+}
+
+.hero-grocery--storefront .hero-grocery__stage {
+  aspect-ratio: 16 / 9;
+}
+
+/* Nastaliq descends far deeper than the Latin display face; the tight
+   Latin leading lets the headline spill onto the subheading. */
+[lang='ur'] .hero-grocery__title {
+  line-height: 1.55;
+  margin-block-end: 1.25rem;
+}
+
+/* ================================================================== *
+   Hero scene — day/night street scene with a clickable headlight.
+   See HeroScene.tsx and SkyLayer.tsx.
+ * ================================================================== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.hero-scene {
+  --lit: 0;
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  display: grid;
+  /* An explicit track: the art is sized in %, and against an auto-sized
+     column that percentage feeds back into the track width and compounds. */
+  grid-template-columns: minmax(0, 1fr);
+  /* The art takes whatever the marquee leaves; the sky shows through above
+     it. Explicit rows rather than `align-content: end` so the art has a
+     definite box to cap itself against on a short viewport. */
+  grid-template-rows: minmax(0, 1fr) auto;
+  /* Exactly one viewport tall. `svh` rather than `vh` so a phone's
+     retracting URL bar cannot make the hero taller than the screen. */
+  height: 100vh;
+  height: 100svh;
+  background: linear-gradient(180deg, #8fc4e8 0%, #bcd9ec 52%, #e7eef0 100%);
+  transition: background 1.4s var(--ease-in-out-quart);
+  color: var(--color-cream);
+}
+
+[data-theme='dark'] .hero-scene {
+  background: linear-gradient(180deg, #060d1c 0%, #0d1a33 46%, var(--color-hero) 100%);
+}
+
+/* ---- sky ---- */
+
+.hero-scene__sky {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-scene__sun,
+.hero-scene__moon {
+  position: absolute;
+  border-radius: 999px;
+  transition:
+    transform 1.5s var(--ease-in-out-quart),
+    opacity 1.2s var(--ease-in-out-quart);
+}
+
+.hero-scene__sun {
+  inset-block-start: 12%;
+  inset-inline-start: 16%;
+  width: clamp(4.5rem, 7vw, 7rem);
+  aspect-ratio: 1;
+  background:
+    radial-gradient(circle, #fffdf2 0%, #fff0b8 34%, #ffd873 58%, rgb(255 199 90 / 0.35) 72%, transparent 78%);
+  box-shadow:
+    0 0 4rem 1rem rgb(255 226 150 / 0.5),
+    0 0 12rem 5rem rgb(255 214 120 / 0.22);
+  filter: blur(0.5px);
+  transform: translateY(0);
+  opacity: 1;
+}
+
+[data-theme='dark'] .hero-scene__sun {
+  /* Sinks below the horizon rather than simply fading out. */
+  transform: translateY(420%);
+  opacity: 0;
+}
+
+.hero-scene__moon {
+  inset-block-start: 10%;
+  inset-inline-end: 14%;
+  width: clamp(3.5rem, 5.5vw, 5.5rem);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 36% 32%, #ffffff 0%, #e8eef7 55%, #c3cfe2 100%);
+  box-shadow:
+    0 0 5rem 1.5rem rgb(206 224 255 / 0.28),
+    inset -0.4rem -0.3rem 1.2rem rgb(120 140 175 / 0.4);
+  transform: translateY(-380%);
+  opacity: 0;
+}
+
+[data-theme='dark'] .hero-scene__moon {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hero-scene__crater {
+  position: absolute;
+  inset-block-start: var(--cy);
+  inset-inline-start: var(--cx);
+  width: var(--cs);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: rgb(169 184 209 / 0.55);
+}
+
+/* ---- stars ---- */
+
+.hero-scene__stars {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.9s var(--ease-in-out-quart);
+}
+
+[data-theme='dark'] .hero-scene__stars {
+  opacity: 1;
+}
+
+.hero-scene__star {
+  position: absolute;
+  inset-block-start: var(--y);
+  inset-inline-start: var(--x);
+  width: var(--size);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 0 0.5rem 0.1rem rgb(255 255 255 / 0.55);
+  opacity: 0;
+  /* Each lights a beat after the last, so they come up in a scatter. */
+  transition: opacity 0.7s ease-out var(--light-delay, 0s);
+}
+
+[data-theme='dark'] .hero-scene__star {
+  opacity: 1;
+  animation: star-twinkle var(--dur, 3s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes star-twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+/* ---- clouds ---- */
+
+.hero-scene__clouds {
+  position: absolute;
+  inset: 0;
+  opacity: 0.85;
+  transition: opacity 1.4s var(--ease-in-out-quart);
+}
+
+[data-theme='dark'] .hero-scene__clouds {
+  opacity: 0.28;
+}
+
+.hero-scene__cloud {
+  position: absolute;
+  inset-block-start: var(--y);
+  inset-inline-start: 0;
+  width: 26rem;
+  height: 7rem;
+  scale: var(--scale, 1);
+  background:
+    radial-gradient(circle 3.2rem at 22% 64%, rgb(255 255 255 / 0.92) 0 52%, transparent 100%),
+    radial-gradient(circle 4.6rem at 46% 46%, rgb(255 255 255 / 0.92) 0 54%, transparent 100%),
+    radial-gradient(circle 3.6rem at 68% 60%, rgb(255 255 255 / 0.88) 0 52%, transparent 100%),
+    radial-gradient(circle 2.4rem at 84% 70%, rgb(255 255 255 / 0.8) 0 50%, transparent 100%);
+  filter: blur(10px);
+  animation: cloud-drift var(--dur, 110s) linear infinite;
+  animation-delay: var(--delay, 0s);
+  will-change: transform;
+}
+
+[data-theme='dark'] .hero-scene__cloud {
+  filter: blur(8px) brightness(0.35);
+}
+
+@keyframes cloud-drift {
+  from {
+    translate: -30rem 0;
+  }
+  to {
+    translate: 110vw 0;
+  }
+}
+
+/* ---- the scene art ---- */
+
+.hero-scene__art {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  /* Intrinsic ratio, never object-fit: a crop would drift the headlight
+     hotspot off the lamp, and on a phone would cut the scooter out of
+     frame entirely — it has to stay clickable at every width. */
+  aspect-ratio: 1800 / 1005;
+  /* Anchored to the bottom, and deliberately uncapped in height: on a short
+     viewport the art is taller than the hero and overflows past the top,
+     where `overflow: clip` on the section trims sky. Capping the height
+     instead would leave width at 100% and stretch the scene — and a box
+     that no longer matches the image drifts the headlight off the lamp. */
+  align-self: end;
+  justify-self: center;
+  /* Pushed down off the bottom edge to open up sky above it, so the sun and
+     moon are not crowded against the top of the frame. A percentage of the
+     art's own height, so it scales with the scene. What slides past the
+     bottom is cobbles, behind the marquee — the scooter stays clear. */
+  translate: 0 var(--art-drop, 5%);
+}
+
+.hero-scene__frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-scene__frame--night {
+  opacity: var(--lit);
+}
+
+/* Warm bloom over the lamp itself, on the same flicker envelope. */
+.hero-scene__lamp {
+  position: absolute;
+  inset-block-start: var(--lamp-y);
+  /* Physical `left`: the lamp sits at a fixed spot in the image, and the
+     image is not mirrored under RTL. A logical property would flip it to
+     the wrong side of the scene. */
+  left: var(--lamp-x);
+  width: 16%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle,
+    rgb(255 248 224 / 0.95) 0%,
+    rgb(255 226 150 / 0.55) 26%,
+    transparent 62%
+  );
+  mix-blend-mode: screen;
+  opacity: var(--lit);
+  scale: calc(0.82 + var(--lit) * 0.18);
+  pointer-events: none;
+}
+
+/* ---- the hotspot ---- */
+
+.hero-scene__headlight {
+  position: absolute;
+  inset-block-start: var(--lamp-y);
+  left: var(--lamp-x);
+  width: clamp(2.5rem, 4.4%, 4rem);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.hero-scene__headlight-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 2px solid rgb(255 244 214 / 0.75);
+  opacity: 0;
+  scale: 0.7;
+  transition:
+    opacity 0.3s var(--ease-out-expo),
+    scale 0.4s var(--ease-spring);
+}
+
+/* A quiet hint that the lamp is clickable — pointer devices only. */
+@media (hover: hover) and (pointer: fine) {
+  .hero-scene__headlight:hover .hero-scene__headlight-ring {
+    opacity: 1;
+    scale: 1.25;
+  }
+}
+
+.hero-scene__headlight:focus-visible .hero-scene__headlight-ring {
+  opacity: 1;
+  scale: 1.25;
+}
+
+/* ---- floating controls ---- */
+
+.hero-scene__controls {
+  position: absolute;
+  inset-block-start: clamp(1rem, 2.5vh, 1.75rem);
+  /* Logical, unlike the lamp: these are interface, not part of the picture,
+     so they belong on the trailing side in either direction. */
+  inset-inline-end: clamp(1rem, 3vw, 2rem);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  /* The sky behind them shifts from bright blue to near-black, so they get
+     a little lift of their own rather than relying on the backdrop. */
+  .icon-btn,
+  .lang-toggle {
+    box-shadow: 0 6px 20px rgb(8 20 14 / 0.22);
+    backdrop-filter: blur(6px);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-scene__controls {
+    gap: 0.45rem;
+
+    .icon-btn {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+
+    .lang-toggle {
+      height: 2.4rem;
+      padding-inline: 0.7rem;
+      font-size: 0.78rem;
+    }
+  }
+}
+
+/* ---- badge ---- */
+
+.hero-scene__badge {
+  position: absolute;
+  inset-block-start: clamp(5.5rem, 11vw, 8rem);
+  left: 50%;
+  translate: -50% 250%;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0.4rem 1.1rem;
+  border-radius: var(--radius-pill);
+  background: rgb(10 30 20 / 0.42);
+  border: 1px solid rgb(255 255 255 / 0.2);
+  backdrop-filter: blur(8px);
+  font-size: 0.82rem;
+  white-space: nowrap;
+  color: var(--color-cream);
+}
+
+@media (max-width: 640px) {
+  .hero-scene__badge {
+    font-size: 0.7rem;
+    padding-inline: 0.7rem;
+    max-width: 92vw;
+    white-space: normal;
+    text-align: center;
+    /* A phone is far taller than the art is deep, so a viewport-height hero
+       leaves a lot of sky. Measuring up from the bottom keeps the badge
+       sitting just above the roofline instead of stranded in the middle of
+       it — the art is bottom-anchored, so this tracks it. */
+    inset-block-start: auto;
+    inset-block-end: 50%;
+    translate: -50% 0;
+  }
+}
+
+.hero-scene .aisle-marquee {
+  
+  z-index: 2;
+  margin-block-start: 0;
+  background: #0a4527;
+  backdrop-filter: blur(8px);
+  /* Physical corners: both top ones take the same radius, so there is
+     nothing for RTL to mirror. The existing `overflow: hidden` on the
+     marquee keeps the moving track inside the curve. */
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+/* On a phone the 16:9 art would sit as a thin strip under a tall empty sky.
+   Scale it past the viewport so the storefront and — crucially — the scooter
+   fill the frame. Centred rather than nudged with a margin: a grid item is
+   aligned to the opposite edge under RTL, which threw the headlight
+   off-screen. Centring overflows both sides equally, so the lamp lands in
+   view in either direction. */
+@media (max-width: 767px) {
+  .hero-scene__art {
+    width: 152%;
+    /* No drop here: a phone already shows far more sky than the sun and
+       moon need, and pushing the art down would tuck the headlight behind
+       the marquee — it has to stay comfortably tappable. */
+    --art-drop: 0px;
+  }
+
+  .hero-scene__headlight {
+    width: 2.75rem;
+  }
 }

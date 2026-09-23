@@ -79,8 +79,16 @@ export function LaunchProvider({ children }: { children: ReactNode }) {
       onCover: () => {
         /* Order matters: stop Lenis, reset scroll, then commit. Scrolling
            after the commit would be visible the moment the flood lifts. */
-        getLenis()?.stop();
-        window.scrollTo(0, 0);
+        /* Reset through Lenis, not window.scrollTo: Lenis keeps its own
+           scroll position, and a raw native reset leaves it holding the old
+           value, which it re-applies on the next resize or start(). */
+        const lenis = getLenis();
+        if (lenis) {
+          lenis.scrollTo(0, { immediate: true, force: true });
+          lenis.stop();
+        } else {
+          window.scrollTo(0, 0);
+        }
         navFlags.skipScrollReset = true;
         navigate(href);
         queueMicrotask(() => {

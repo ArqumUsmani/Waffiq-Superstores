@@ -1,14 +1,16 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router';
 import aislesJson from '../data/aisles.json';
-import { categories, countInCategory, getCategory } from '../lib/data';
+import { categories, countInCategory, getCategory, productsInCategory } from '../lib/data';
 import { pick, t } from '../lib/i18n';
 import { gsap } from '../lib/gsap-setup';
 import { motion } from '../lib/motion-guard';
+import { scrollTo } from '../lib/smooth-scroll';
 import { useLang } from '../state/app-state';
 import { useReveal } from '../hooks/useReveal';
 import { useLaunch, type Arrival } from '../components/LaunchProvider';
 import { CategoryIcon } from '../components/CategoryIcon';
+import { ProductCard } from '../components/ProductCard';
 import type { Aisle } from '../lib/types';
 
 const AISLES = aislesJson as Aisle[];
@@ -23,6 +25,7 @@ export default function AislePage() {
   const { takeArrival } = useLaunch();
   const headerRef = useRef<HTMLDivElement>(null);
   const gridRef = useReveal<HTMLDivElement>([slug]);
+  const shelfRef = useReveal<HTMLDivElement>([slug]);
   const [cart, setCart] = useState<Record<string, number>>({});
 
   /* The arrival half of the launch transition. The wash is rendered *only*
@@ -86,6 +89,7 @@ export default function AislePage() {
   const blurb = pick(category as unknown as Record<string, unknown>, 'blurbEn');
   const total = countInCategory(category.slug);
   const others = categories.filter((c) => c.slug !== category.slug);
+  const shelfProducts = productsInCategory(category.slug);
 
   const step = (key: string, delta: number) =>
     setCart((prev) => {
@@ -180,15 +184,29 @@ export default function AislePage() {
           <p className="aisle-items__note">
             Showing {aisle.items.length} of {total} —{' '}
             <a
-              href="#branches"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById('branches')?.scrollIntoView({ behavior: 'smooth' });
+              href="#full-shelf"
+              onClick={(event) => {
+                event.preventDefault();
+                const target = document.getElementById('full-shelf');
+                if (target) scrollTo(target);
               }}
             >
-              {t('branchCta.cta')}
-            </a>
+              see the full shelf
+            </a>{' '}
+            or{' '}
+            <Link to="/#branches">{t('branchCta.cta').toLowerCase()}</Link>
           </p>
+
+          <section className="aisle-shelf" id="full-shelf" aria-labelledby="full-shelf-title">
+            <h2 className="aisle-others__title" id="full-shelf-title">
+              {t('category.all')} · {total} {t('aisle.products')}
+            </h2>
+            <div className="product-grid" ref={shelfRef}>
+              {shelfProducts.map((product, index) => (
+                <ProductCard key={product.sku} product={product} index={index} />
+              ))}
+            </div>
+          </section>
 
           <div className="aisle-others">
             <h2 className="aisle-others__title">{t('categories.title')}</h2>

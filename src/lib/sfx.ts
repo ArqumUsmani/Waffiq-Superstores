@@ -1,5 +1,10 @@
 /**
- * Synthesised interaction sounds — no audio files, no licensing.
+ * Interaction sounds.
+ *
+ * The UI sounds (pickup, drop, peep) are synthesised — short, generic, and
+ * not worth a network request. The scene sounds (horn, rooster, and the two
+ * ambience beds in ambience.ts) are recordings, prepared for the web by
+ * scripts/gen-sfx.mjs.
  *
  * Browsers refuse to start an AudioContext before a user gesture, and a
  * hover is not a gesture. So this module stays silent until the visitor's
@@ -19,20 +24,76 @@ declare global {
   }
 }
 
-type SoundKind = 'pickup' | 'drop';
+type SoundKind = 'pickup' | 'drop' | 'peep' | 'horn' | 'rooster';
 
 interface Voice {
   source: AudioScheduledSourceNode;
   env: GainNode;
 }
 
+/* Written by scripts/gen-sfx.mjs from the recordings in src/assets/sfx. */
+const SAMPLE_FILES = {
+  horn: '/assets/sfx/horn.mp3',
+  rooster: '/assets/sfx/rooster.mp3',
+  day: '/assets/sfx/day.mp3',
+  night: '/assets/sfx/night.mp3',
+} as const;
+
+export type SampleName = keyof typeof SAMPLE_FILES;
+
+/**
+ * How late a sample may arrive and still play. A horn that lands a beat
+ * after the click reads as lag; one that lands two seconds later reads as a
+ * bug, so past this it is dropped instead.
+ */
+const LATE_MS = 400;
+
 const STORAGE_KEY = 'wafiq:sound';
 const MIN_GAP_MS = 120;
+/* The hover peep needs a longer gate than the rest: a pointer crossing the
+   headlight fires many enters, and at 120ms they machine-gun. */
+const PEEP_GAP_MS = 420;
+/* The crow is nearly a second long — overlapping two is a farmyard, not a
+   morning. */
+const ROOSTER_GAP_MS = 2500;
 
 let ctx: AudioContext | null = null;
 let unlocked = false;
 let masterGain: GainNode | null = null;
-const lastPlayedAt: Record<SoundKind, number> = { pickup: -Infinity, drop: -Infinity };
+const lastPlayedAt: Record<SoundKind, number> = {
+  pickup: -Infinity,
+  drop: -Infinity,
+  peep: -Infinity,
+  horn: -Infinity,
+  rooster: -Infinity,
+};
+
+/** Notified when the audio graph becomes usable, or when mute flips. */
+type AudioListener = () => void;
+const audioListeners = new Set<AudioListener>();
+const notifyAudio = () => audioListeners.forEach((cb) => cb());
+
+/**
+ * Subscribe to "the audio situation changed" — first gesture unlock, or a
+ * mute toggle. The ambience layer uses this to start and stop itself.
+ */
+export function onAudioChange(callback: AudioListener): () => void {
+  audioListeners.add(callback);
+  return () => {
+    audioListeners.delete(callback);
+  };
+}
+
+/**
+ * The shared graph, for layers that manage their own nodes (ambience).
+ * `null` until the visitor's first gesture has unlocked playback.
+ */
+export function audioGraph(): { context: AudioContext; master: GainNode } | null {
+  if (!unlocked || muted || motion.reduced) return null;
+  const context = ensureContext();
+  if (!context || !masterGain) return null;
+  return { context, master: masterGain };
+}
 
 const readMuted = (): boolean => {
   try {
@@ -62,18 +123,135 @@ function ensureContext(): AudioContext | null {
   return ctx;
 }
 
+/* ------------------------------------------------------------------ *
+   Recorded samples
+ * ------------------------------------------------------------------ */
+
+/** Decoded and ready to play this instant. */
+const samples = new Map<SampleName, AudioBuffer>();
+/** In flight, so concurrent callers share one fetch and one decode. */
+const pending = new Map<SampleName, Promise<AudioBuffer | null>>();
+/** Bytes fetched before the context existed, awaiting a gesture to decode. */
+const rawBytes = new Map<SampleName, Promise<ArrayBuffer | null>>();
+
+function fetchSample(name: SampleName): Promise<ArrayBuffer | null> {
+  const existing = rawBytes.get(name);
+  if (existing) return existing;
+
+  const request = fetch(SAMPLE_FILES[name])
+    .then((response) => (response.ok ? response.arrayBuffer() : null))
+    .catch(() => null);
+
+  rawBytes.set(name, request);
+  return request;
+}
+
+/**
+ * Fetches and decodes a sample, once. Resolves `null` if the file is
+ * missing or the context is not available yet — callers treat that as
+ * "stay silent", never as an error worth surfacing.
+ */
+export function loadSample(name: SampleName): Promise<AudioBuffer | null> {
+  const ready = samples.get(name);
+  if (ready) return Promise.resolve(ready);
+
+  const inFlight = pending.get(name);
+  if (inFlight) return inFlight;
+
+  const context = ensureContext();
+  if (!context) return Promise.resolve(null);
+
+  const task = fetchSample(name)
+    .then((bytes) => (bytes ? context.decodeAudioData(bytes.slice(0)) : null))
+    .then((buffer) => {
+      if (buffer) samples.set(name, buffer);
+      return buffer;
+    })
+    .catch(() => null)
+    .finally(() => {
+      pending.delete(name);
+    });
+
+  pending.set(name, task);
+  return task;
+}
+
+/** Plays a decoded sample once through the master bus. */
+function playSample(context: AudioContext, buffer: AudioBuffer, gain: number): void {
+  const source = context.createBufferSource();
+  source.buffer = buffer;
+
+  const env = context.createGain();
+  env.gain.value = gain;
+
+  source.connect(env).connect(masterGain!);
+  source.start();
+}
+
+/**
+ * The sample counterpart to `attempt`: same mute, gate and logging rules,
+ * but the buffer may not have arrived yet. If it has, this is synchronous
+ * and the sound lands on the gesture; if not, it plays on arrival provided
+ * that is still soon enough to read as a response.
+ */
+function attemptSample(kind: SoundKind, name: SampleName, gain: number): void {
+  if (!unlocked || !canPlay(kind)) return;
+  const context = ensureContext();
+  if (!context) return;
+
+  const ready = samples.get(name);
+  if (ready) {
+    log(kind);
+    playSample(context, ready, gain);
+    return;
+  }
+
+  const asked = performance.now();
+  void loadSample(name).then((buffer) => {
+    /* Re-checked on arrival: the visitor may have muted, or simply moved
+       on, in the time the fetch took. */
+    if (!buffer || muted || motion.reduced) return;
+    if (performance.now() - asked > LATE_MS) return;
+    log(kind);
+    playSample(context, buffer, gain);
+  });
+}
+
+/**
+ * Warms the two one-shots (~29 KB together) so the first horn is not late.
+ * Only the bytes — decoding needs a context, which needs a gesture. The
+ * ambience beds are an order of magnitude larger and are left until the
+ * visitor has actually interacted.
+ */
+function warmSamples(): void {
+  const warm = () => {
+    void fetchSample('horn');
+    void fetchSample('rooster');
+  };
+  if (typeof window.requestIdleCallback === 'function') {
+    window.requestIdleCallback(warm, { timeout: 3000 });
+  } else {
+    window.setTimeout(warm, 1200);
+  }
+}
+
 /**
  * Registers the one-time unlock listener. Call once at boot.
  * Safe to call multiple times — only the first gesture matters.
  */
 export function initSfxUnlock(): void {
   if (unlocked) return;
+  warmSamples();
 
   const unlock = () => {
     if (unlocked) return;
     unlocked = true;
     const context = ensureContext();
     void context?.resume?.();
+    /* Decode what was warmed, so the first horn plays from memory. */
+    void loadSample('horn');
+    void loadSample('rooster');
+    notifyAudio();
     window.removeEventListener('pointerdown', unlock);
     window.removeEventListener('keydown', unlock);
     window.removeEventListener('touchend', unlock);
@@ -179,7 +357,8 @@ const jitter = (): number => (Math.random() - 0.5) * 80;
 function canPlay(kind: SoundKind): boolean {
   if (muted || motion.reduced) return false;
   const now = performance.now();
-  if (now - lastPlayedAt[kind] < MIN_GAP_MS) return false;
+  const gap = kind === 'peep' ? PEEP_GAP_MS : kind === 'rooster' ? ROOSTER_GAP_MS : MIN_GAP_MS;
+  if (now - lastPlayedAt[kind] < gap) return false;
   lastPlayedAt[kind] = now;
   return true;
 }
@@ -270,6 +449,42 @@ export function drop(): void {
   });
 }
 
+/**
+ * A short high blip for hovering the headlight — a "this is a control"
+ * cue rather than a notification, so it stays quiet and brief.
+ */
+export function peep(): void {
+  attempt('peep', (context, detune) => {
+    tone(context, {
+      type: 'sine',
+      from: 1720,
+      to: 2380,
+      duration: 0.055,
+      gain: 0.16,
+      detuneCents: detune,
+    });
+    noiseBurst(context, {
+      duration: 0.02,
+      filterType: 'highpass',
+      filterFreq: 3200,
+      gain: 0.05,
+    });
+  });
+}
+
+/**
+ * The scooter's horn, on clicking the headlight. Levels are set so it sits
+ * clearly above the ambience bed rather than competing with it.
+ */
+export function horn(): void {
+  attemptSample('horn', 'horn', 0.9);
+}
+
+/** A cockerel, on the switch from night back to day. */
+export function rooster(): void {
+  attemptSample('rooster', 'rooster', 0.9);
+}
+
 export function isMuted(): boolean {
   return muted;
 }
@@ -281,6 +496,7 @@ export function setMuted(next: boolean): void {
   } catch {
     /* private mode — the choice just will not persist */
   }
+  notifyAudio();
 }
 
 export const toggleMuted = (): void => setMuted(!muted);

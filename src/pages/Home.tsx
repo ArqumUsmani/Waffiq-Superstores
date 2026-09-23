@@ -1,5 +1,4 @@
-import { HeroGrocery } from '../components/HeroGrocery';
-import { AisleRail } from '../components/AisleRail';
+import { HeroScene } from '../components/HeroScene';
 import { CategoriesSection } from '../components/CategoriesSection';
 import { ReviewsSection } from '../components/ReviewsSection';
 import { BranchSection } from '../components/BranchSection';
@@ -8,12 +7,10 @@ import { useLang } from '../state/app-state';
 export default function Home() {
   const lang = useLang();
 
-  /* Swap HeroGrocery for HeroStorefront to use the photographic
-     storefront hero instead — the two are interchangeable. */
+  /* Swap HeroScene for Hero to use the static storefront hero instead. */
   return (
     <>
-      <HeroGrocery key={lang} />
-      <AisleRail key={`rail-${lang}`} />
+      <HeroScene key={lang} />
       <CategoriesSection />
       <ReviewsSection />
       <BranchSection />
