@@ -183,7 +183,16 @@
     "company": "Company",
     "connect": "Connect",
     "rights": "All rights reserved.",
-    "note": "A listing site — no online sales, no delivery. Visit a branch to buy."
+    "note": "A listing site — no online sales, no delivery. Visit a branch to buy.",
+    "contact": "Contact",
+    "quick": "Quick links",
+    "browse": "Browse the aisles",
+    "website": "wafiq.pk",
+    "listing": "Google listing",
+    "rating": "Google rating",
+    "shelf": "products on the shelf",
+    "aisles": "aisles",
+    "top": "Back to top"
   },
   "theme": {
     "toDark": "Switch to dark mode",

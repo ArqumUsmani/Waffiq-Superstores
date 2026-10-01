@@ -1,9 +1,10 @@
 /**
- * Optimises the two hero scene renders.
+ * Optimises the large raster art for the web.
  *
- * The Figma exports are 2752x1536 PNGs at ~5 MB each with a transparent sky.
- * This downscales them and writes WebP (alpha preserved) into public/assets/,
- * where the hero loads them by path.
+ * The sources are design exports far heavier than anything the page renders:
+ * the hero scenes are 2752x1536 at ~5 MB each, the footer bag 12000x12000 at
+ * 20 MB. This downscales each and writes WebP (alpha preserved) into
+ * public/assets/, where the components load them by path.
  *
  * There is no sharp or ImageMagick on this machine, so the resize and encode
  * run through a headless Chrome canvas over CDP — the same approach already
@@ -15,7 +16,10 @@
  *
  *   node scripts/gen-hero-scene.mjs
  */
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, mkdtemp, rm } from 'node:fs/promises';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
+import { tmpdir } from 'node:os';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createServer } from 'node:http';
@@ -23,14 +27,35 @@ import { createServer } from 'node:http';
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const CDP_PORT = Number(process.env.CDP_PORT ?? 9333);
 
-/** Output width. The hero never renders wider than ~1500 CSS px. */
-const OUT_WIDTH = 1800;
 const QUALITY = 0.86;
 
+/**
+ * Past this many pixels a side, the source is shrunk with `sips` before it
+ * reaches Chrome. A 12000px square decodes to a ~576 MB bitmap, which is
+ * more than a headless tab should be asked to hold for a 720px output.
+ */
+const PRESHRINK_ABOVE = 4000;
+
+/* `width` is the output width — roughly twice the largest CSS size the
+   component renders it at, for high-density screens. */
 const SOURCES = [
-  { from: 'src/assets/hero/scene/day.png', to: 'public/assets/scene-day.webp' },
-  { from: 'src/assets/hero/scene/night.png', to: 'public/assets/scene-night.webp' },
+  { from: 'src/assets/hero/scene/day.png', to: 'public/assets/scene-day.webp', width: 1800 },
+  { from: 'src/assets/hero/scene/night.png', to: 'public/assets/scene-night.webp', width: 1800 },
+  { from: 'src/assets/Shopping Bag.png', to: 'public/assets/footer-bag.webp', width: 720 },
 ];
+
+const run = promisify(execFile);
+
+/** Reads a source, shrinking it first with macOS `sips` if it is enormous. */
+async function readSource(path, tmp) {
+  const { stdout } = await run('sips', ['-g', 'pixelWidth', '-g', 'pixelHeight', path]);
+  const side = Math.max(...[...stdout.matchAll(/pixel(?:Width|Height):\s*(\d+)/g)].map((m) => Number(m[1])));
+  if (side <= PRESHRINK_ABOVE) return readFile(path);
+
+  const shrunk = resolve(tmp, 'preshrink.png');
+  await run('sips', ['-Z', String(PRESHRINK_ABOVE), path, '--out', shrunk]);
+  return readFile(shrunk);
+}
 
 async function rpc(ws, method, params = {}, sessionId) {
   const id = Math.floor(Math.random() * 1e9);
@@ -67,13 +92,16 @@ function serve(files) {
 }
 
 async function main() {
-  const files = await Promise.all(
-    SOURCES.map(async (spec, i) => ({
-      name: `src-${i}.png`,
-      bytes: await readFile(resolve(ROOT, spec.from)),
-      spec,
-    })),
-  );
+  const tmp = await mkdtemp(resolve(tmpdir(), 'gen-images-'));
+  const files = [];
+  /* Sequential: the preshrink step reuses one temp file. */
+  const only = process.argv[2];
+  const wanted = only ? SOURCES.filter((spec) => spec.to.includes(only)) : SOURCES;
+  if (!wanted.length) throw new Error(`no source matches "${only}"`);
+  for (const [i, spec] of wanted.entries()) {
+    files.push({ name: `src-${i}.png`, bytes: await readSource(resolve(ROOT, spec.from), tmp), spec });
+  }
+  await rm(tmp, { recursive: true, force: true });
 
   const { server, port } = await serve(files);
 
@@ -98,7 +126,7 @@ async function main() {
         img.src = 'http://127.0.0.1:${port}/${file.name}';
         await img.decode();
 
-        const outW = ${OUT_WIDTH};
+        const outW = ${file.spec.width};
         const outH = Math.round(img.naturalHeight * (outW / img.naturalWidth));
         const canvas = new OffscreenCanvas(outW, outH);
         const ctx = canvas.getContext('2d');

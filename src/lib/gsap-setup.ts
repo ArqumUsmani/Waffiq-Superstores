@@ -8,10 +8,11 @@
  */
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/SplitText';
 import { useGSAP } from '@gsap/react';
 
 /* useGSAP is registered so its contextSafe() wrapper behaves. */
-gsap.registerPlugin(ScrollTrigger, useGSAP);
+gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
 
 gsap.defaults({ ease: 'power3.out', duration: 0.8 });
 
@@ -22,4 +23,4 @@ if (document.fonts?.ready) {
   void document.fonts.ready.then(() => ScrollTrigger.refresh());
 }
 
-export { gsap, ScrollTrigger };
+export { gsap, ScrollTrigger, SplitText };
