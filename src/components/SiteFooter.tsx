@@ -77,7 +77,6 @@ export function SiteFooter({ onSearchOpen }: { onSearchOpen: () => void }) {
   const year = new Date().getFullYear();
   const branch = branches[0];
   const summary = getCachedReviewSummary();
-  const listingUrl = summary?.url ?? FALLBACK_MAPS_URL;
   const mapsUrl = branch?.maps ?? FALLBACK_MAPS_URL;
 
   /* The footer is itself the "Contact" target, so it is left out here. */

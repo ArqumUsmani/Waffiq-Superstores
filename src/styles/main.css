@@ -3026,20 +3026,19 @@ body.has-cursor button {
   grid-template-areas:
     'brand'
     'contact'
-    'external'
     'quick';
 
   @media (min-width: 640px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-areas:
-      'brand    brand'
-      'contact  quick'
-      'external quick';
+      'brand   brand'
+      'contact quick';
   }
 
   @media (min-width: 1080px) {
-    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.5fr) minmax(0, 1fr);
-    grid-template-areas: 'contact external brand quick';
+    /* Equal side columns, so the brand stays centred under the bag. */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr);
+    grid-template-areas: 'contact brand quick';
     column-gap: clamp(1.5rem, 3vw, 3rem);
     align-items: end;
   }
@@ -3189,44 +3188,6 @@ body.has-cursor button {
   }
 }
 
-.site-footer__external {
-  grid-area: external;
-  display: grid;
-  gap: 0.55rem;
-  align-content: end;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-
-  a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.92rem;
-    color: var(--footer-cream);
-    transition: color 0.25s;
-
-    svg {
-      width: 0.9rem;
-      height: 0.9rem;
-      color: var(--color-lime-bright);
-      transition: transform 0.3s var(--ease-spring);
-    }
-
-    &:hover {
-      color: var(--color-lime-bright);
-    }
-
-    &:hover svg {
-      transform: translate(2px, -2px);
-    }
-  }
-}
-
-[dir='rtl'] .site-footer__external svg {
-  scale: -1 1;
-}
-
 .site-footer__quick {
   grid-area: quick;
 
@@ -3334,11 +3295,12 @@ body.has-cursor button {
 }
 
 .site-footer__wordmark {
-  /* "WAFIQ" at weight 700 and -0.02em tracking runs 3.19em once split into
-     per-letter boxes (splitting drops the font's kerning, which is large on
-     "WA"), so this makes the word run edge to edge of the content at every
-     width. Re-measure if the word, weight or tracking changes. */
-  font-size: calc(100cqw / 3.2);
+  /* The word, rendered lowercase by `.split-char`, runs 2.67em at weight
+     700 and -0.02em tracking once split into per-letter boxes (splitting
+     drops the font's kerning). Dividing by that makes it run edge to edge
+     of the content at every width. Re-measure if the word, its case, the
+     weight or the tracking changes — capitals measured 3.19em. */
+  font-size: calc(100cqw / 2.67);
   /* Shorter than the line box and clipped: the box ends just under the
      baseline, so the letters sit on the panel's bottom edge and rise out of
      it as they reveal. Pulled up into the line box's empty top so the caps
