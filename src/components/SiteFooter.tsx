@@ -144,21 +144,6 @@ export function SiteFooter({ onSearchOpen }: { onSearchOpen: () => void }) {
             </address>
           </div>
 
-          <ul className="site-footer__external">
-            <li>
-              <a href="https://wafiq.pk" target="_blank" rel="noopener noreferrer">
-                {t('footer.website')}
-                <Icon name="external" />
-              </a>
-            </li>
-            <li>
-              <a href={listingUrl} target="_blank" rel="noopener noreferrer">
-                {t('footer.listing')}
-                <Icon name="external" />
-              </a>
-            </li>
-          </ul>
-
           <nav className="site-footer__quick" aria-labelledby="footer-quick">
             <h2 className="site-footer__heading" id="footer-quick">
               {t('footer.quick')}

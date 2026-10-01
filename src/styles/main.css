@@ -850,6 +850,7 @@ kbd {
 
 .split-char {
   display: inline-block;
+  text-transform: lowercase;
   will-change: transform;
 }
 
