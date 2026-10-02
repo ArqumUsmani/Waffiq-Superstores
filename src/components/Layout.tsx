@@ -4,6 +4,7 @@ import { SiteHeader } from './SiteHeader';
 import { Drawer } from './Drawer';
 import { SiteFooter } from './SiteFooter';
 import { BackToTop } from './BackToTop';
+import { ShoppingBag } from './ShoppingBag';
 import { Background } from './Background';
 import { LaunchProvider } from './LaunchProvider';
 import { SearchPalette } from './SearchPalette';
@@ -110,6 +111,7 @@ export function Layout() {
 
       <SiteFooter onSearchOpen={openSearch} />
       <BackToTop />
+      <ShoppingBag />
 
       <SearchPalette open={searchOpen} onOpenChange={setSearchOpen} />
       {/* Last, so it paints above every other body-level layer. */}

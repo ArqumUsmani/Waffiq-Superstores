@@ -101,15 +101,32 @@ async function shot(name, outName, { start, end }) {
 
 await mkdir(OUT, { recursive: true });
 
-const written = [
-  await bed('DaytimeSound.mp3', 'day.mp3'),
-  await bed('NightSound.mp3', 'night.mp3'),
+/* Each job writes one file. `node scripts/gen-sfx.mjs bag` re-encodes only
+   the outputs whose name matches, so adding a sound never re-encodes the
+   ambience beds. */
+const JOBS = [
+  ['day.mp3', () => bed('DaytimeSound.mp3', 'day.mp3')],
+  ['night.mp3', () => bed('NightSound.mp3', 'night.mp3')],
   /* Silence runs to 0.095 s; the horn itself is done by 0.345 s and what
      follows is inaudible tail. */
-  await shot('ScooterSoundHorn.mp3', 'horn.mp3', { start: 0.09, end: 0.55 }),
+  ['horn.mp3', () => shot('ScooterSoundHorn.mp3', 'horn.mp3', { start: 0.09, end: 0.55 })],
   /* Silence to 0.085 s, crow ends at 1.886 s. */
-  await shot('RoasterSound.mp3', 'rooster.mp3', { start: 0.08, end: 1.95 }),
+  ['rooster.mp3', () => shot('RoasterSound.mp3', 'rooster.mp3', { start: 0.08, end: 1.95 })],
+  /* The source is 16.5 s of separate snips ~0.7 s apart — too slow to play
+     through. One snip (0.3–0.5 s) is kept and played per blade close. */
+  ['bag-snip.mp3', () => shot('bag-cutting.mp3', 'bag-snip.mp3', { start: 0.28, end: 0.56 })],
+  /* The rustle is loud from 0.3 s and has settled by 1.4 s. */
+  ['bag-place.mp3', () => shot('placing-in-bag.mp3', 'bag-place.mp3', { start: 0.25, end: 1.5 })],
+  /* Silence to 0.23 s, then a run of thuds that is done by 2.6 s. */
+  ['bag-spill.mp3', () => shot('dropping-item.mp3', 'bag-spill.mp3', { start: 0.2, end: 2.6 })],
 ];
+
+const only = process.argv[2];
+const written = [];
+for (const [name, job] of JOBS) {
+  if (only && !name.includes(only)) continue;
+  written.push(await job());
+}
 
 for (const name of written) {
   const { size } = await stat(resolve(OUT, name));

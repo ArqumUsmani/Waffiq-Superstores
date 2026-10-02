@@ -2906,7 +2906,7 @@ body.has-drawer,
   width: 0.65rem;
   height: 0.65rem;
   border-radius: 999px;
-  background: var(--color-lime);
+  background: var(--color-green-dark);
   transition: width 0.35s var(--ease-spring), height 0.35s var(--ease-spring),
     background 0.3s, opacity 0.3s;
 }
@@ -3024,6 +3024,16 @@ body.has-cursor button {
   filter: drop-shadow(0 22px 26px rgb(4 26 14 / 0.35));
   animation: footer-bag-float 6.5s ease-in-out infinite;
   pointer-events: none;
+}
+
+/* While the shopping bag has something in it, it flies down and takes this
+   bag's place; this one steps aside. See ShoppingBag.tsx. */
+[data-bag-in-footer] .site-footer__bag {
+  opacity: 0;
+}
+
+.site-footer__bag {
+  transition: opacity 0.35s;
 }
 
 @keyframes footer-bag-float {
@@ -3574,43 +3584,61 @@ body.has-cursor button {
   }
 }
 
-.aisle-item__stepper {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  justify-self: start;
-  padding: 0.2rem;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--border);
-  background: var(--surface-2);
+.aisle-item__plus {
+  position: absolute;
+  inset-block-end: 0.6rem;
+  inset-inline-end: 0.6rem;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: var(--color-green-ink);
+  color: var(--color-lime-bright);
+  cursor: pointer;
+  box-shadow: 0 8px 18px -6px rgb(4 26 14 / 0.55);
+  transition: transform 0.35s var(--ease-spring), background 0.25s;
 
-  button {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 999px;
-    border: 0;
-    background: transparent;
-    color: var(--fg);
-    font-size: 1.05rem;
-    cursor: pointer;
-    transition: background 0.25s;
-
-    &:hover {
-      background: var(--color-lime);
-      color: var(--color-green-ink);
-    }
+  svg {
+    width: 1.3rem;
+    height: 1.3rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.6;
+    stroke-linecap: round;
+    transition: rotate 0.35s var(--ease-spring);
   }
 
-  span {
-    min-width: 1.5rem;
-    text-align: center;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
+  &:hover {
+    transform: scale(1.1);
+    background: var(--color-green);
+  }
+
+  &:hover svg {
+    rotate: 90deg;
+  }
+
+  &:active {
+    transform: scale(0.92);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--color-lime-bright);
+    outline-offset: 3px;
   }
 }
 
-.aisle-item__add {
-  justify-self: start;
+.aisle-item__qty {
+  margin: 0.35rem 0 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-green);
+
+  [data-theme='dark'] & {
+    color: var(--color-lime-bright);
+  }
 }
 
 .aisle-items__note {
@@ -4605,5 +4633,286 @@ body.has-cursor button {
 
   .hero-scene__headlight {
     width: 2.75rem;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+   Shopping bag
+ * ------------------------------------------------------------------ */
+
+/* One element for every state of the bag — docked, popping up to catch an
+   item, open in the middle of the screen. GSAP positions it entirely by
+   transform (see ShoppingBag.tsx); the box is a fixed 200px square scaled
+   from its bottom-centre. Hidden until there is something in it. */
+.bag-dock {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 85;
+  width: 200px;
+  height: 200px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  visibility: hidden;
+  transform-origin: 50% 100%;
+  will-change: transform;
+  filter: drop-shadow(0 14px 18px rgb(4 26 14 / 0.28));
+  /* Tucking the bag away moves `top`, which GSAP never writes — it owns
+     `transform`, and also pins `translate` inline, so neither can be used. */
+  transition: top 0.45s var(--ease-out-expo);
+
+  &.is-open {
+    z-index: 131;
+    cursor: default;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:focus-visible .bag-dock__count {
+    box-shadow: 0 0 0 4px var(--color-green-ink), 0 0 0 7px var(--color-lime-bright);
+  }
+}
+
+/* Phones only: out of the way while the hero fills the screen. See
+   ShoppingBag.tsx. */
+@media (max-width: 767px) {
+  [data-bag-avoid='hero'] .bag-dock:not(.is-open) {
+    top: 30vh;
+    pointer-events: none;
+  }
+}
+
+/* The bag is drawn twice, split along the cut line, so its bottom can fall
+   away on its own when the scissors finish. Together they read as one. */
+.bag-dock__part {
+  position: absolute;
+  inset: 0;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.bag-dock__part--top {
+  clip-path: inset(0 0 16% 0);
+}
+
+.bag-dock__part--bottom {
+  clip-path: inset(84% 0 0 0);
+}
+
+/* "Cut here", across the bottom of the bag. A child of the bag so it scales
+   with it; shown only while the bag is open. Spans the bag's own width
+   (the art's edges inside the square image). */
+.bag-dock__mark {
+  position: absolute;
+  inset-block-start: 84%;
+  left: 21%;
+  right: 22%;
+  height: 3px;
+  background: repeating-linear-gradient(90deg, var(--color-green-ink) 0 9px, transparent 9px 16px);
+  opacity: 0;
+  transition: opacity 0.4s 0.3s;
+
+  .bag-dock.is-open & {
+    opacity: 0.85;
+  }
+}
+
+/* Sits on the bag, so it grows with it. */
+.bag-dock__count {
+  position: absolute;
+  left: 66%;
+  top: 22%;
+  display: grid;
+  place-items: center;
+  min-width: 2.6rem;
+  height: 2.6rem;
+  padding-inline: 0.5rem;
+  border-radius: 999px;
+  background: var(--color-lime-bright);
+  color: var(--color-green-ink);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  box-shadow: 0 6px 14px rgb(4 26 14 / 0.3);
+}
+
+/* An item in flight, or spilling out of the cut bag. Drawn as a little
+   product card: most photos are shot on white, and a loose white square
+   reads as a glitch against the dark scene behind an open bag. */
+.bag-sprite {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 132;
+  display: grid;
+  place-items: center;
+  /* Fixed, not a percentage: on a fixed-position element a percentage
+     padding resolves against the viewport, which swallowed the photo. */
+  padding: 5px;
+  border-radius: 22%;
+  background: #fff;
+  object-fit: contain;
+  pointer-events: none;
+  will-change: transform;
+  box-shadow: 0 10px 22px rgb(4 26 14 / 0.28);
+  line-height: 1;
+}
+
+/* The open bag: everything else dims and stops scrolling. The wrapper has
+   no position of its own — see ShoppingBag.tsx — so each piece below is a
+   fixed layer in the page's own stacking order, alongside the bag (131). */
+.bag-scene__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  background: rgb(6 20 12 / 0.62);
+  backdrop-filter: blur(6px);
+  animation: bag-scene-in 0.4s ease-out both;
+}
+
+@keyframes bag-scene-in {
+  from { opacity: 0; }
+}
+
+.bag-scene__count {
+  position: fixed;
+  z-index: 121;
+  animation: bag-scene-in 0.4s ease-out both;
+  inset-block-start: 9vh;
+  inset-inline: 0;
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 3vw, 1.9rem);
+  font-weight: 700;
+  color: var(--color-cream);
+}
+
+.bag-scene__scissors {
+  position: fixed;
+  left: 0;
+  top: 0;
+  /* Above the open bag (131) and the slit (132): the blades cut across the
+     front of the bag, not behind it. */
+  z-index: 133;
+  width: clamp(96px, 12vw, 132px);
+  aspect-ratio: 2;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: grab;
+  /* The drag is the gesture; the browser must not scroll or zoom with it. */
+  touch-action: none;
+  filter: drop-shadow(0 8px 14px rgb(0 0 0 / 0.35));
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    transition: scale 0.3s var(--ease-spring);
+  }
+
+  &:hover:not(:disabled) svg {
+    scale: 1.08;
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--color-lime-bright);
+    outline-offset: 6px;
+    border-radius: 12px;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+
+  /* Steel, not white: the blades cross a white bag and have to read
+     against it. */
+  .blade {
+    fill: #8c9a93;
+    stroke: #3e4a44;
+    stroke-width: 1.2;
+  }
+
+  .arm {
+    stroke: var(--color-lime-bright);
+    stroke-width: 6;
+    stroke-linecap: round;
+  }
+
+  .ring {
+    fill: none;
+    stroke: var(--color-lime-bright);
+    stroke-width: 6;
+  }
+
+  .pivot {
+    fill: #4f5f56;
+  }
+}
+
+/* The cut itself: a dark slit opening along the dashed line, as far as
+   the blades have reached. */
+.bag-scene__slit {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 132;
+  height: 4px;
+  visibility: hidden;
+  border-radius: 2px;
+  background: #1c2620;
+  box-shadow: 0 1px 0 rgb(255 255 255 / 0.55);
+}
+
+.bag-scene__hint {
+  position: fixed;
+  z-index: 121;
+  animation: bag-scene-in 0.6s 0.4s ease-out both;
+  inset-block-start: calc(var(--bag-bottom, 70vh) + 18px);
+  inset-inline: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: rgb(243 248 236 / 0.82);
+}
+
+.bag-scene__close {
+  position: fixed;
+  z-index: 121;
+  inset-block-end: 8vh;
+  left: 50%;
+  translate: -50% 0;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid rgb(243 248 236 / 0.45);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-cream);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s;
+
+  &:hover {
+    background: rgb(243 248 236 / 0.12);
+  }
+
+  &:disabled {
+    visibility: hidden;
   }
 }

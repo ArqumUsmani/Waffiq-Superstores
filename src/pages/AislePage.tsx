@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router';
 import aislesJson from '../data/aisles.json';
 import { categories, countInCategory, getCategory, productsInCategory } from '../lib/data';
@@ -11,6 +11,7 @@ import { useReveal } from '../hooks/useReveal';
 import { useLaunch, type Arrival } from '../components/LaunchProvider';
 import { CategoryIcon } from '../components/CategoryIcon';
 import { ProductCard } from '../components/ProductCard';
+import { addToBag, bagCount, useBag } from '../state/bag';
 import type { Aisle } from '../lib/types';
 
 const AISLES = aislesJson as Aisle[];
@@ -26,7 +27,7 @@ export default function AislePage() {
   const headerRef = useRef<HTMLDivElement>(null);
   const gridRef = useReveal<HTMLDivElement>([slug]);
   const shelfRef = useReveal<HTMLDivElement>([slug]);
-  const [cart, setCart] = useState<Record<string, number>>({});
+  const bag = useBag();
 
   /* The arrival half of the launch transition. The wash is rendered *only*
      when an arrival is actually in flight — defaulting it to opaque and
@@ -66,10 +67,7 @@ export default function AislePage() {
     };
   }, [arrival]);
 
-  const cartCount = useMemo(
-    () => Object.values(cart).reduce((sum, n) => sum + n, 0),
-    [cart],
-  );
+  const cartCount = bagCount(bag);
 
   if (!category || !aisle) {
     return (
@@ -90,15 +88,6 @@ export default function AislePage() {
   const total = countInCategory(category.slug);
   const others = categories.filter((c) => c.slug !== category.slug);
   const shelfProducts = productsInCategory(category.slug);
-
-  const step = (key: string, delta: number) =>
-    setCart((prev) => {
-      const next = Math.max(0, (prev[key] ?? 0) + delta);
-      const copy = { ...prev };
-      if (next === 0) delete copy[key];
-      else copy[key] = next;
-      return copy;
-    });
 
   return (
     <>
@@ -146,10 +135,10 @@ export default function AislePage() {
           <div className="aisle-items" ref={gridRef}>
             {aisle.items.map((item, index) => {
               const key = `${aisle.slug}:${item.name}`;
-              const qty = cart[key] ?? 0;
+              const qty = bag.find((entry) => entry.key === key)?.qty ?? 0;
               return (
                 <article className="aisle-item" key={key} data-reveal="" data-reveal-index={index}>
-                  <div className="aisle-item__tile" aria-hidden="true">
+                  <div className="aisle-item__tile">
                     {item.image ? (
                       <img
                         className="aisle-item__photo"
@@ -161,33 +150,32 @@ export default function AislePage() {
                         decoding="async"
                       />
                     ) : (
-                      <span className="aisle-item__emoji">{item.emoji}</span>
+                      <span className="aisle-item__emoji" aria-hidden="true">
+                        {item.emoji}
+                      </span>
                     )}
                     {item.tag ? <span className="aisle-item__tag">{item.tag}</span> : null}
+                    {/* The picture is what flies into the bag, so the
+                        click hands it over as the starting point. */}
+                    <button
+                      className="aisle-item__plus"
+                      type="button"
+                      aria-label={`Add ${item.name} to your bag`}
+                      onClick={(event) => {
+                        const tile = event.currentTarget.closest('.aisle-item__tile');
+                        const art = tile?.querySelector('.aisle-item__photo, .aisle-item__emoji');
+                        addToBag({ key, name: item.name, image: item.image, emoji: item.emoji }, art);
+                      }}
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 5v14M5 12h14" />
+                      </svg>
+                    </button>
                   </div>
                   <h3 className="aisle-item__name">{item.name}</h3>
                   <p className="aisle-item__unit">{item.unit}</p>
                   <p className="aisle-item__price">Rs {item.price.toLocaleString('en-PK')}</p>
-
-                  {qty === 0 ? (
-                    <button
-                      className="btn btn--solid btn--sm aisle-item__add"
-                      type="button"
-                      onClick={() => step(key, 1)}
-                    >
-                      Add
-                    </button>
-                  ) : (
-                    <div className="aisle-item__stepper">
-                      <button type="button" onClick={() => step(key, -1)} aria-label={`Remove one ${item.name}`}>
-                        −
-                      </button>
-                      <span aria-live="polite">{qty}</span>
-                      <button type="button" onClick={() => step(key, 1)} aria-label={`Add one ${item.name}`}>
-                        +
-                      </button>
-                    </div>
-                  )}
+                  {qty > 0 ? <p className="aisle-item__qty">×{qty} in your bag</p> : null}
                 </article>
               );
             })}

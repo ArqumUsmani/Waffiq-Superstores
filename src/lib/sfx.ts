@@ -24,7 +24,7 @@ declare global {
   }
 }
 
-type SoundKind = 'pickup' | 'drop' | 'peep' | 'horn' | 'rooster';
+type SoundKind = 'pickup' | 'drop' | 'peep' | 'horn' | 'rooster' | 'bagSnip' | 'bagPlace' | 'bagSpill';
 
 interface Voice {
   source: AudioScheduledSourceNode;
@@ -35,6 +35,9 @@ interface Voice {
 const SAMPLE_FILES = {
   horn: '/assets/sfx/horn.mp3',
   rooster: '/assets/sfx/rooster.mp3',
+  bagSnip: '/assets/sfx/bag-snip.mp3',
+  bagPlace: '/assets/sfx/bag-place.mp3',
+  bagSpill: '/assets/sfx/bag-spill.mp3',
   day: '/assets/sfx/day.mp3',
   night: '/assets/sfx/night.mp3',
 } as const;
@@ -66,6 +69,9 @@ const lastPlayedAt: Record<SoundKind, number> = {
   peep: -Infinity,
   horn: -Infinity,
   rooster: -Infinity,
+  bagSnip: -Infinity,
+  bagPlace: -Infinity,
+  bagSpill: -Infinity,
 };
 
 /** Notified when the audio graph becomes usable, or when mute flips. */
@@ -218,8 +224,9 @@ function attemptSample(kind: SoundKind, name: SampleName, gain: number): void {
 }
 
 /**
- * Warms the two one-shots (~29 KB together) so the first horn is not late.
- * Only the bytes — decoding needs a context, which needs a gesture. The
+ * Warms the recorded one-shots (~80 KB together) so the first horn — or the
+ * first item dropped in the bag — is not late. Only the bytes — decoding
+ * needs a context, which needs a gesture. The
  * ambience beds are an order of magnitude larger and are left until the
  * visitor has actually interacted.
  */
@@ -227,6 +234,9 @@ function warmSamples(): void {
   const warm = () => {
     void fetchSample('horn');
     void fetchSample('rooster');
+    void fetchSample('bagPlace');
+    void fetchSample('bagSnip');
+    void fetchSample('bagSpill');
   };
   if (typeof window.requestIdleCallback === 'function') {
     window.requestIdleCallback(warm, { timeout: 3000 });
@@ -251,6 +261,9 @@ export function initSfxUnlock(): void {
     /* Decode what was warmed, so the first horn plays from memory. */
     void loadSample('horn');
     void loadSample('rooster');
+    void loadSample('bagPlace');
+    void loadSample('bagSnip');
+    void loadSample('bagSpill');
     notifyAudio();
     window.removeEventListener('pointerdown', unlock);
     window.removeEventListener('keydown', unlock);
@@ -500,3 +513,18 @@ export function setMuted(next: boolean): void {
 }
 
 export const toggleMuted = (): void => setMuted(!muted);
+
+/** An item landing in the shopping bag. */
+export function bagPlace(): void {
+  attemptSample('bagPlace', 'bagPlace', 0.8);
+}
+
+/** One close of the scissors' blades. Played once per snip, in time with it. */
+export function bagSnip(): void {
+  attemptSample('bagSnip', 'bagSnip', 0.9);
+}
+
+/** Everything tumbling out of the cut bag. */
+export function bagSpill(): void {
+  attemptSample('bagSpill', 'bagSpill', 0.9);
+}
