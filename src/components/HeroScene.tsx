@@ -3,8 +3,9 @@
  *
  * Two renders of the same shot are stacked: a day frame and a night frame in
  * which the windows glow, the string lights are lit and the scooter's
- * headlight throws a beam across the cobbles. Both have a transparent sky, so
- * SkyLayer shows through behind them.
+ * headlight is on. Both have a transparent sky, so SkyLayer shows through —
+ * the night render's was exported white and is cut out by
+ * scripts/gen-images.mjs.
  *
  * Clicking the headlight runs a filament flicker — an irregular stutter, not a
  * fade — that drives `--lit`, which in turn drives the night frame's opacity
@@ -33,11 +34,14 @@ import { useLang, useTheme } from '../state/app-state';
 import { useMuted } from '../hooks/useMuted';
 
 /**
- * Where the lamp sits in the art, measured by diffing the two renders for the
- * brightest pixels present at night and absent by day.
+ * Where the lamp sits in the art: the centre of the headlight's chrome bezel
+ * in the day render, at (1527, 822) of 2048x1152. The night render shares
+ * the camera, so the same point is its lit lamp. (Measuring the night
+ * render's brightest pixels instead lands up-left of the lamp, pulled off
+ * centre by the glow.)
  */
-const LAMP_X = '75.78%';
-const LAMP_Y = '71.17%';
+const LAMP_X = '74.56%';
+const LAMP_Y = '71.35%';
 
 /** Irregular on purpose — an even ramp reads as a fade, not a filament. */
 const FLICKER_ON = [
@@ -229,7 +233,7 @@ export function HeroScene() {
           className="hero-scene__frame hero-scene__frame--day"
           src="/assets/scene-day.webp"
           width={1800}
-          height={1005}
+          height={1013}
           alt={t('heroScene.alt')}
           decoding="async"
           fetchPriority="high"
@@ -240,7 +244,7 @@ export function HeroScene() {
           className="hero-scene__frame hero-scene__frame--night"
           src="/assets/scene-night.webp"
           width={1800}
-          height={1005}
+          height={1013}
           alt=""
           aria-hidden="true"
           decoding="async"

@@ -1458,6 +1458,10 @@ kbd {
   z-index: 2;
   background: rgb(255 255 255 / 0.7);
   border-color: transparent;
+  /* The card is pastel in both themes, so the arrow takes the card's ink
+     rather than .icon-btn's theme colour — which in dark mode is near-white,
+     on a white disc. */
+  color: inherit;
   transform: translateZ(30px);
 }
 
@@ -4378,7 +4382,7 @@ body.has-cursor button {
   /* Intrinsic ratio, never object-fit: a crop would drift the headlight
      hotspot off the lamp, and on a phone would cut the scooter out of
      frame entirely — it has to stay clickable at every width. */
-  aspect-ratio: 1800 / 1005;
+  aspect-ratio: 1800 / 1013;
   /* Anchored to the bottom, and deliberately uncapped in height: on a short
      viewport the art is taller than the hero and overflows past the top,
      where `overflow: clip` on the section trims sky. Capping the height

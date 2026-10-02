@@ -37,10 +37,17 @@ const QUALITY = 0.86;
 const PRESHRINK_ABOVE = 4000;
 
 /* `width` is the output width — roughly twice the largest CSS size the
-   component renders it at, for high-density screens. */
+   component renders it at, for high-density screens. `skyFrom` names a
+   matching render whose transparent sky guides cutting a white sky out of
+   this one (see key-sky.browser.js). */
 const SOURCES = [
   { from: 'src/assets/hero/scene/day.png', to: 'public/assets/scene-day.webp', width: 1800 },
-  { from: 'src/assets/hero/scene/night.png', to: 'public/assets/scene-night.webp', width: 1800 },
+  {
+    from: 'src/assets/hero/scene/night.png',
+    to: 'public/assets/scene-night.webp',
+    width: 1800,
+    skyFrom: 'src/assets/hero/scene/day.png',
+  },
   { from: 'src/assets/Shopping Bag.png', to: 'public/assets/footer-bag.webp', width: 720 },
 ];
 
@@ -100,7 +107,11 @@ async function main() {
   if (!wanted.length) throw new Error(`no source matches "${only}"`);
   for (const [i, spec] of wanted.entries()) {
     files.push({ name: `src-${i}.png`, bytes: await readSource(resolve(ROOT, spec.from), tmp), spec });
+    if (spec.skyFrom) {
+      files.push({ name: `sky-${i}.png`, bytes: await readSource(resolve(ROOT, spec.skyFrom), tmp), guide: true });
+    }
   }
+  const keySkySource = await readFile(resolve(ROOT, 'scripts/key-sky.browser.js'), 'utf8');
   await rm(tmp, { recursive: true, force: true });
 
   const { server, port } = await serve(files);
@@ -118,16 +129,43 @@ async function main() {
 
   await mkdir(resolve(ROOT, 'public/assets'), { recursive: true });
 
-  for (const file of files) {
+  for (const [index, file] of files.entries()) {
+    if (file.guide) continue;
+    const guide = file.spec.skyFrom ? files[index + 1].name : null;
     const expression = `
       (async () => {
-        const img = new Image();
-        img.crossOrigin = 'anonymous';
-        img.src = 'http://127.0.0.1:${port}/${file.name}';
-        await img.decode();
+        ${keySkySource}
+
+        const load = async (name) => {
+          const img = new Image();
+          img.crossOrigin = 'anonymous';
+          img.src = 'http://127.0.0.1:${port}/' + name;
+          await img.decode();
+          return img;
+        };
+        const pixels = (img) => {
+          const c = new OffscreenCanvas(img.naturalWidth, img.naturalHeight);
+          const x = c.getContext('2d');
+          x.drawImage(img, 0, 0);
+          return x.getImageData(0, 0, c.width, c.height);
+        };
+
+        let img = await load('${file.name}');
+        let keyed = null;
+        const guideName = ${JSON.stringify(guide)};
+        if (guideName) {
+          /* Key at full resolution, before the downscale blurs the edges. */
+          const data = pixels(img);
+          keyed = keySky(data, pixels(await load(guideName)));
+          const full = new OffscreenCanvas(data.width, data.height);
+          full.getContext('2d').putImageData(data, 0, 0);
+          img = full;
+        }
+        const srcW = img.naturalWidth ?? img.width;
+        const srcH = img.naturalHeight ?? img.height;
 
         const outW = ${file.spec.width};
-        const outH = Math.round(img.naturalHeight * (outW / img.naturalWidth));
+        const outH = Math.round(srcH * (outW / srcW));
         const canvas = new OffscreenCanvas(outW, outH);
         const ctx = canvas.getContext('2d');
         ctx.imageSmoothingQuality = 'high';
@@ -139,7 +177,7 @@ async function main() {
           reader.onload = () => done(reader.result);
           reader.readAsDataURL(blob);
         });
-        return JSON.stringify({ b64: dataUrl.slice(dataUrl.indexOf(',') + 1), outW, outH });
+        return JSON.stringify({ b64: dataUrl.slice(dataUrl.indexOf(',') + 1), outW, outH, keyed });
       })()
     `;
 
@@ -156,12 +194,13 @@ async function main() {
       );
     }
 
-    const { b64, outW, outH } = JSON.parse(result.result.value);
+    const { b64, outW, outH, keyed } = JSON.parse(result.result.value);
     const bytes = Buffer.from(b64, 'base64');
     await writeFile(resolve(ROOT, file.spec.to), bytes);
     console.log(
       `${file.spec.to}  ${outW}x${outH}  ${(bytes.length / 1024).toFixed(0)} KB` +
-        `  (from ${(file.bytes.length / 1024 / 1024).toFixed(1)} MB)`,
+        `  (from ${(file.bytes.length / 1024 / 1024).toFixed(1)} MB)` +
+        (keyed ? `\n  sky keyed: ${JSON.stringify(keyed)}` : ''),
     );
   }
 
