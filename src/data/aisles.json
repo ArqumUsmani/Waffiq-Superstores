@@ -3,100 +3,347 @@
     "slug": "fruits-vegetables",
     "emoji": "🥬",
     "items": [
-      { "name": "Bananas", "emoji": "🍌", "price": 180, "unit": "per dozen", "tag": "Fresh today" },
-      { "name": "Red Apples", "emoji": "🍎", "price": 320, "unit": "per kg" },
-      { "name": "Tomatoes", "emoji": "🍅", "price": 140, "unit": "per kg" },
-      { "name": "Spinach", "emoji": "🥬", "price": 60, "unit": "per bunch" }
+      {
+        "name": "Bananas",
+        "emoji": "🍌",
+        "price": 180,
+        "unit": "per dozen",
+        "tag": "Fresh today",
+        "image": "/aisle/fruits-vegetables-bananas.jpg"
+      },
+      {
+        "name": "Red Apples",
+        "emoji": "🍎",
+        "price": 320,
+        "unit": "per kg",
+        "image": "/aisle/fruits-vegetables-red-apples.jpg"
+      },
+      {
+        "name": "Tomatoes",
+        "emoji": "🍅",
+        "price": 140,
+        "unit": "per kg",
+        "image": "/aisle/fruits-vegetables-tomatoes.jpg"
+      },
+      {
+        "name": "Spinach",
+        "emoji": "🥬",
+        "price": 60,
+        "unit": "per bunch",
+        "image": "/aisle/fruits-vegetables-spinach.jpg"
+      }
     ]
   },
   {
     "slug": "snacks-confectionery",
     "emoji": "🍫",
     "items": [
-      { "name": "Potato Chips", "emoji": "🥔", "price": 120, "unit": "80 g pack" },
-      { "name": "Milk Chocolate", "emoji": "🍫", "price": 250, "unit": "100 g bar", "tag": "Popular" },
-      { "name": "Cream Biscuits", "emoji": "🍪", "price": 90, "unit": "family pack" },
-      { "name": "Mixed Nuts", "emoji": "🥜", "price": 850, "unit": "per 500 g" }
+      {
+        "name": "Potato Chips",
+        "emoji": "🥔",
+        "price": 120,
+        "unit": "80 g pack",
+        "image": "/aisle/snacks-confectionery-potato-chips.jpg"
+      },
+      {
+        "name": "Milk Chocolate",
+        "emoji": "🍫",
+        "price": 250,
+        "unit": "100 g bar",
+        "tag": "Popular",
+        "image": "/aisle/snacks-confectionery-milk-chocolate.jpg"
+      },
+      {
+        "name": "Cream Biscuits",
+        "emoji": "🍪",
+        "price": 90,
+        "unit": "family pack",
+        "image": "/aisle/snacks-confectionery-cream-biscuits.jpg"
+      },
+      {
+        "name": "Mixed Nuts",
+        "emoji": "🥜",
+        "price": 850,
+        "unit": "per 500 g",
+        "image": "/aisle/snacks-confectionery-mixed-nuts.jpg"
+      }
     ]
   },
   {
     "slug": "tea-coffee-breakfast",
     "emoji": "☕",
     "items": [
-      { "name": "Black Tea", "emoji": "🍵", "price": 780, "unit": "450 g pack", "tag": "Popular" },
-      { "name": "Ground Coffee", "emoji": "☕", "price": 1250, "unit": "200 g tin" },
-      { "name": "Corn Flakes", "emoji": "🥣", "price": 620, "unit": "500 g box" },
-      { "name": "Pure Honey", "emoji": "🍯", "price": 940, "unit": "500 g jar" }
+      {
+        "name": "Black Tea",
+        "emoji": "🍵",
+        "price": 780,
+        "unit": "450 g pack",
+        "tag": "Popular",
+        "image": "/aisle/tea-coffee-breakfast-black-tea.jpg"
+      },
+      {
+        "name": "Ground Coffee",
+        "emoji": "☕",
+        "price": 1250,
+        "unit": "200 g tin",
+        "image": "/aisle/tea-coffee-breakfast-ground-coffee.jpg"
+      },
+      {
+        "name": "Corn Flakes",
+        "emoji": "🥣",
+        "price": 620,
+        "unit": "500 g box",
+        "image": "/aisle/tea-coffee-breakfast-corn-flakes.jpg"
+      },
+      {
+        "name": "Pure Honey",
+        "emoji": "🍯",
+        "price": 940,
+        "unit": "500 g jar",
+        "image": "/aisle/tea-coffee-breakfast-pure-honey.jpg"
+      }
     ]
   },
   {
     "slug": "milk-beverages",
     "emoji": "🥛",
     "items": [
-      { "name": "Fresh Milk", "emoji": "🥛", "price": 320, "unit": "1 litre", "tag": "Daily" },
-      { "name": "Orange Juice", "emoji": "🧃", "price": 280, "unit": "1 litre" },
-      { "name": "Cola", "emoji": "🥤", "price": 190, "unit": "1.5 litre" },
-      { "name": "Mineral Water", "emoji": "💧", "price": 110, "unit": "1.5 litre" }
+      {
+        "name": "Fresh Milk",
+        "emoji": "🥛",
+        "price": 320,
+        "unit": "1 litre",
+        "tag": "Daily",
+        "image": "/aisle/milk-beverages-fresh-milk.jpg"
+      },
+      {
+        "name": "Orange Juice",
+        "emoji": "🧃",
+        "price": 280,
+        "unit": "1 litre",
+        "image": "/aisle/milk-beverages-orange-juice.jpg"
+      },
+      {
+        "name": "Cola",
+        "emoji": "🥤",
+        "price": 190,
+        "unit": "1.5 litre",
+        "image": "/aisle/milk-beverages-cola.jpg"
+      },
+      {
+        "name": "Mineral Water",
+        "emoji": "💧",
+        "price": 110,
+        "unit": "1.5 litre",
+        "image": "/aisle/milk-beverages-mineral-water.jpg"
+      }
     ]
   },
   {
     "slug": "cooking-baking",
     "emoji": "🧑‍🍳",
     "items": [
-      { "name": "Wheat Flour", "emoji": "🌾", "price": 1450, "unit": "10 kg bag" },
-      { "name": "White Sugar", "emoji": "🍬", "price": 460, "unit": "per 2 kg" },
-      { "name": "Cooking Oil", "emoji": "🫒", "price": 1180, "unit": "3 litre tin", "tag": "Popular" },
-      { "name": "Basmati Rice", "emoji": "🍚", "price": 1650, "unit": "5 kg bag" }
+      {
+        "name": "Wheat Flour",
+        "emoji": "🌾",
+        "price": 1450,
+        "unit": "10 kg bag",
+        "image": "/aisle/cooking-baking-wheat-flour.jpg"
+      },
+      {
+        "name": "White Sugar",
+        "emoji": "🍬",
+        "price": 460,
+        "unit": "per 2 kg",
+        "image": "/aisle/cooking-baking-white-sugar.jpg"
+      },
+      {
+        "name": "Cooking Oil",
+        "emoji": "🫒",
+        "price": 1180,
+        "unit": "3 litre tin",
+        "tag": "Popular",
+        "image": "/aisle/cooking-baking-cooking-oil.jpg"
+      },
+      {
+        "name": "Basmati Rice",
+        "emoji": "🍚",
+        "price": 1650,
+        "unit": "5 kg bag",
+        "image": "/aisle/cooking-baking-basmati-rice.jpg"
+      }
     ]
   },
   {
     "slug": "condiments-canned",
     "emoji": "🥫",
     "items": [
-      { "name": "Tomato Ketchup", "emoji": "🍅", "price": 360, "unit": "800 g bottle" },
-      { "name": "Mayonnaise", "emoji": "🥚", "price": 420, "unit": "500 ml jar" },
-      { "name": "Baked Beans", "emoji": "🫘", "price": 310, "unit": "420 g tin" },
-      { "name": "Canned Tuna", "emoji": "🐟", "price": 540, "unit": "185 g tin" }
+      {
+        "name": "Tomato Ketchup",
+        "emoji": "🍅",
+        "price": 360,
+        "unit": "800 g bottle",
+        "image": "/aisle/condiments-canned-tomato-ketchup.jpg"
+      },
+      {
+        "name": "Mayonnaise",
+        "emoji": "🥚",
+        "price": 420,
+        "unit": "500 ml jar",
+        "image": "/aisle/condiments-canned-mayonnaise.jpg"
+      },
+      {
+        "name": "Baked Beans",
+        "emoji": "🫘",
+        "price": 310,
+        "unit": "420 g tin",
+        "image": "/aisle/condiments-canned-baked-beans.jpg"
+      },
+      {
+        "name": "Canned Tuna",
+        "emoji": "🐟",
+        "price": 540,
+        "unit": "185 g tin",
+        "image": "/aisle/condiments-canned-canned-tuna.jpg"
+      }
     ]
   },
   {
     "slug": "home-kitchen",
     "emoji": "🍽️",
     "items": [
-      { "name": "Aluminium Foil", "emoji": "🧻", "price": 380, "unit": "10 m roll" },
-      { "name": "Garbage Bags", "emoji": "🗑️", "price": 260, "unit": "30 bags" },
-      { "name": "Facial Tissues", "emoji": "🤧", "price": 190, "unit": "150 sheets" },
-      { "name": "Food Storage Box", "emoji": "🥡", "price": 450, "unit": "set of 3" }
+      {
+        "name": "Aluminium Foil",
+        "emoji": "🧻",
+        "price": 380,
+        "unit": "10 m roll",
+        "image": "/aisle/home-kitchen-aluminium-foil.jpg"
+      },
+      {
+        "name": "Garbage Bags",
+        "emoji": "🗑️",
+        "price": 260,
+        "unit": "30 bags",
+        "image": "/aisle/home-kitchen-garbage-bags.jpg"
+      },
+      {
+        "name": "Facial Tissues",
+        "emoji": "🤧",
+        "price": 190,
+        "unit": "150 sheets",
+        "image": "/aisle/home-kitchen-facial-tissues.jpg"
+      },
+      {
+        "name": "Food Storage Box",
+        "emoji": "🥡",
+        "price": 450,
+        "unit": "set of 3",
+        "image": "/aisle/home-kitchen-food-storage-box.jpg"
+      }
     ]
   },
   {
     "slug": "cleaning-fresheners",
     "emoji": "🧼",
     "items": [
-      { "name": "Washing Powder", "emoji": "🧺", "price": 890, "unit": "2 kg pack", "tag": "Popular" },
-      { "name": "Dishwash Liquid", "emoji": "🧽", "price": 340, "unit": "750 ml" },
-      { "name": "Surface Cleaner", "emoji": "🧴", "price": 420, "unit": "1 litre" },
-      { "name": "Air Freshener", "emoji": "🌸", "price": 310, "unit": "300 ml can" }
+      {
+        "name": "Washing Powder",
+        "emoji": "🧺",
+        "price": 890,
+        "unit": "2 kg pack",
+        "tag": "Popular",
+        "image": "/aisle/cleaning-fresheners-washing-powder.jpg"
+      },
+      {
+        "name": "Dishwash Liquid",
+        "emoji": "🧽",
+        "price": 340,
+        "unit": "750 ml",
+        "image": "/aisle/cleaning-fresheners-dishwash-liquid.jpg"
+      },
+      {
+        "name": "Surface Cleaner",
+        "emoji": "🧴",
+        "price": 420,
+        "unit": "1 litre",
+        "image": "/aisle/cleaning-fresheners-surface-cleaner.jpg"
+      },
+      {
+        "name": "Air Freshener",
+        "emoji": "🌸",
+        "price": 310,
+        "unit": "300 ml can",
+        "image": "/aisle/cleaning-fresheners-air-freshener.jpg"
+      }
     ]
   },
   {
     "slug": "baby-hygiene",
     "emoji": "🍼",
     "items": [
-      { "name": "Baby Diapers", "emoji": "🧷", "price": 1680, "unit": "pack of 46", "tag": "Popular" },
-      { "name": "Baby Wipes", "emoji": "🧻", "price": 420, "unit": "72 wipes" },
-      { "name": "Baby Cereal", "emoji": "🥣", "price": 760, "unit": "350 g box" },
-      { "name": "Baby Lotion", "emoji": "🧴", "price": 540, "unit": "200 ml" }
+      {
+        "name": "Baby Diapers",
+        "emoji": "🧷",
+        "price": 1680,
+        "unit": "pack of 46",
+        "tag": "Popular",
+        "image": "/aisle/baby-hygiene-baby-diapers.jpg"
+      },
+      {
+        "name": "Baby Wipes",
+        "emoji": "🧻",
+        "price": 420,
+        "unit": "72 wipes",
+        "image": "/aisle/baby-hygiene-baby-wipes.jpg"
+      },
+      {
+        "name": "Baby Cereal",
+        "emoji": "🥣",
+        "price": 760,
+        "unit": "350 g box",
+        "image": "/aisle/baby-hygiene-baby-cereal.jpg"
+      },
+      {
+        "name": "Baby Lotion",
+        "emoji": "🧴",
+        "price": 540,
+        "unit": "200 ml",
+        "image": "/aisle/baby-hygiene-baby-lotion.jpg"
+      }
     ]
   },
   {
     "slug": "personal-care",
     "emoji": "🧴",
     "items": [
-      { "name": "Bath Soap", "emoji": "🧼", "price": 160, "unit": "per bar" },
-      { "name": "Shampoo", "emoji": "🧴", "price": 720, "unit": "400 ml" },
-      { "name": "Toothpaste", "emoji": "🪥", "price": 340, "unit": "150 g tube" },
-      { "name": "Deodorant", "emoji": "💨", "price": 580, "unit": "150 ml spray" }
+      {
+        "name": "Bath Soap",
+        "emoji": "🧼",
+        "price": 160,
+        "unit": "per bar",
+        "image": "/aisle/personal-care-bath-soap.jpg"
+      },
+      {
+        "name": "Shampoo",
+        "emoji": "🧴",
+        "price": 720,
+        "unit": "400 ml",
+        "image": "/aisle/personal-care-shampoo.jpg"
+      },
+      {
+        "name": "Toothpaste",
+        "emoji": "🪥",
+        "price": 340,
+        "unit": "150 g tube",
+        "image": "/aisle/personal-care-toothpaste.jpg"
+      },
+      {
+        "name": "Deodorant",
+        "emoji": "💨",
+        "price": 580,
+        "unit": "150 ml spray",
+        "image": "/aisle/personal-care-deodorant.jpg"
+      }
     ]
   }
 ]

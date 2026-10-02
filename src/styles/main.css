@@ -1840,6 +1840,16 @@ kbd {
   object-fit: cover;
 }
 
+/* Product photos are shot on white. Multiplying lets that white take on
+   the tile behind it, so a photo sits in the card instead of as a white
+   square on it. Only over a light ground: on the dark-mode surface the same
+   blend would darken the product itself. The product page's pastel stays
+   light in both themes. */
+[data-theme='light'] .tile,
+.product__art .tile {
+  mix-blend-mode: multiply;
+}
+
 [data-theme='dark'] .product-card__art {
   filter: saturate(0.82) brightness(0.86);
 }
@@ -3516,6 +3526,18 @@ body.has-cursor button {
 .aisle-item__emoji {
   font-size: clamp(2.5rem, 6vw, 3.25rem);
   line-height: 1;
+  animation: hero-card-bob 5s ease-in-out infinite;
+}
+
+/* The product photo takes the emoji's place, on the same gentle bob. Shot
+   on white, so multiplying drops the white into the tile's pastel — which
+   stays light in both themes, so this holds in dark mode too. */
+.aisle-item__photo {
+  width: auto;
+  height: 86%;
+  max-width: 70%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
   animation: hero-card-bob 5s ease-in-out infinite;
 }
 

@@ -204,7 +204,7 @@ export function SearchPalette({ open, onOpenChange }: Props) {
           <span className="palette__text">
             <span className="palette__title">{highlight(product.name, result.match)}</span>
             <span className="palette__meta">
-              {product.brand} · {product.size} · {aisleName(product.category)}
+              {[product.brand, product.size, aisleName(product.category)].filter(Boolean).join(' · ')}
             </span>
           </span>
           <span className="palette__kind">{t('common.products')}</span>

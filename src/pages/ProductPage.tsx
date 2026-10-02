@@ -97,10 +97,12 @@ export default function ProductPage() {
           </p>
 
           <dl className="product__facts">
-            <div>
-              <dt>{t('product.packSize')}</dt>
-              <dd>{product.size}</dd>
-            </div>
+            {product.size ? (
+              <div>
+                <dt>{t('product.packSize')}</dt>
+                <dd>{product.size}</dd>
+              </div>
+            ) : null}
             <div>
               <dt>{t('product.brand')}</dt>
               <dd>{product.brand}</dd>

@@ -75,7 +75,10 @@ export interface Branch {
 
 export interface AisleItem {
   name: string;
+  /** Fallback when there is no photo. */
   emoji: string;
+  /** Product photo, written by scripts/aisle-images.mjs. */
+  image?: string;
   /** Whole rupees. */
   price: number;
   unit: string;

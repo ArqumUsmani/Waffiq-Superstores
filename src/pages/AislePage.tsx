@@ -150,7 +150,19 @@ export default function AislePage() {
               return (
                 <article className="aisle-item" key={key} data-reveal="" data-reveal-index={index}>
                   <div className="aisle-item__tile" aria-hidden="true">
-                    <span className="aisle-item__emoji">{item.emoji}</span>
+                    {item.image ? (
+                      <img
+                        className="aisle-item__photo"
+                        src={item.image}
+                        alt=""
+                        width={480}
+                        height={480}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    ) : (
+                      <span className="aisle-item__emoji">{item.emoji}</span>
+                    )}
                     {item.tag ? <span className="aisle-item__tag">{item.tag}</span> : null}
                   </div>
                   <h3 className="aisle-item__name">{item.name}</h3>

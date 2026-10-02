@@ -1,5 +1,5 @@
 /**
- * Product card — pack size and a View arrow rather than a price. The 202-item
+ * Product card — pack size and a View arrow rather than a price. The
  * catalogue is a stock listing; the priced items live only on aisle pages.
  */
 import { useRef, useState } from 'react';
@@ -73,7 +73,9 @@ export function ProductCard({
         </span>
       </span>
       <span className="product-card__foot">
-        <span className="pill pill--quiet">{product.size}</span>
+        {/* Not every listing names a pack size; an empty span keeps the
+            arrow pinned to the end of the row. */}
+        {product.size ? <span className="pill pill--quiet">{product.size}</span> : <span />}
         <span className="icon-btn icon-btn--sm" aria-hidden="true">
           <svg
             viewBox="0 0 24 24"

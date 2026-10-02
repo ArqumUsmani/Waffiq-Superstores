@@ -11,6 +11,8 @@
     "typecheck": "tsc --noEmit",
     "gen:lottie": "node scripts/gen-lottie.mjs",
     "gen:data": "node scripts/gen-products.mjs",
+    "scrape:naheed": "node scripts/scrape-naheed.mjs 3",
+    "import:naheed": "node scripts/import-naheed.mjs",
     "gen:scene": "node scripts/gen-scene-placeholders.mjs",
     "gen:tiles": "node scripts/gen-product-tiles.mjs"
   },

@@ -54,7 +54,7 @@ interface Props {
   ref?: Ref<CategoryIconHandle>;
 }
 
-export function CategoryIcon({ category, size = 132, label = '', ref }: Props) {
+export function CategoryIcon({ category, size = 200, label = '', ref }: Props) {
   const slug = category.slug;
   const render = categoryRender(slug);
   const lottieUrl = render ? undefined : categoryLottie(slug);
