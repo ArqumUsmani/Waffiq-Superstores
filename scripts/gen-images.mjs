@@ -48,13 +48,21 @@ const SOURCES = [
     width: 1800,
     skyFrom: 'src/assets/hero/scene/day.png',
   },
-  { from: 'src/assets/Shopping Bag.png', to: 'public/assets/footer-bag.webp', width: 720 },
+  /* The bag is shared by the footer and the shopping bag. It is drawn into
+     a square, centred: the shopping bag positions it as a square box. The
+     SVG is a raster wrapped in SVG (no vector paths), so it is rendered down
+     to WebP rather than shipped as-is at ~900 KB. 1024px: the bag shows at
+     up to ~350 CSS px, so 2x screens need ~700px, and the source's own
+     detail tops out around here. */
+  { from: 'src/assets/shopping-bag.svg', to: 'public/assets/footer-bag.webp', width: 1024, square: true, sharpen: 0.9 },
 ];
 
 const run = promisify(execFile);
 
 /** Reads a source, shrinking it first with macOS `sips` if it is enormous. */
 async function readSource(path, tmp) {
+  /* sips cannot read SVG; it is drawn by the browser at whatever size. */
+  if (path.endsWith('.svg')) return readFile(path);
   const { stdout } = await run('sips', ['-g', 'pixelWidth', '-g', 'pixelHeight', path]);
   const side = Math.max(...[...stdout.matchAll(/pixel(?:Width|Height):\s*(\d+)/g)].map((m) => Number(m[1])));
   if (side <= PRESHRINK_ABOVE) return readFile(path);
@@ -90,7 +98,10 @@ function serve(files) {
     }
     /* CORS, or drawing the image taints the canvas and convertToBlob throws. */
     res
-      .writeHead(200, { 'Content-Type': 'image/png', 'Access-Control-Allow-Origin': '*' })
+      .writeHead(200, {
+        'Content-Type': entry.name.endsWith('.svg') ? 'image/svg+xml' : 'image/png',
+        'Access-Control-Allow-Origin': '*',
+      })
       .end(entry.bytes);
   });
   return new Promise((done) => {
@@ -106,7 +117,8 @@ async function main() {
   const wanted = only ? SOURCES.filter((spec) => spec.to.includes(only)) : SOURCES;
   if (!wanted.length) throw new Error(`no source matches "${only}"`);
   for (const [i, spec] of wanted.entries()) {
-    files.push({ name: `src-${i}.png`, bytes: await readSource(resolve(ROOT, spec.from), tmp), spec });
+    const ext = spec.from.endsWith('.svg') ? 'svg' : 'png';
+    files.push({ name: `src-${i}.${ext}`, bytes: await readSource(resolve(ROOT, spec.from), tmp), spec });
     if (spec.skyFrom) {
       files.push({ name: `sky-${i}.png`, bytes: await readSource(resolve(ROOT, spec.skyFrom), tmp), guide: true });
     }
@@ -165,11 +177,51 @@ async function main() {
         const srcH = img.naturalHeight ?? img.height;
 
         const outW = ${file.spec.width};
-        const outH = Math.round(srcH * (outW / srcW));
+        const square = ${Boolean(file.spec.square)};
+        const outH = square ? outW : Math.round(srcH * (outW / srcW));
         const canvas = new OffscreenCanvas(outW, outH);
         const ctx = canvas.getContext('2d');
         ctx.imageSmoothingQuality = 'high';
-        ctx.drawImage(img, 0, 0, outW, outH);
+        if (square) {
+          /* Contain, centred, on transparency. */
+          const k = Math.min(outW / srcW, outH / srcH);
+          const w = srcW * k;
+          const h = srcH * k;
+          ctx.drawImage(img, (outW - w) / 2, (outH - h) / 2, w, h);
+        } else {
+          ctx.drawImage(img, 0, 0, outW, outH);
+        }
+
+        /* Unsharp mask: add back the difference between each pixel and a
+           3x3 blur of its neighbours, scaled by \`sharpen\`. Colour only —
+           alpha is left alone, and fully transparent neighbours are skipped
+           so the outline does not pick up a dark halo. */
+        const amount = ${file.spec.sharpen ?? 0};
+        if (amount > 0) {
+          const id = ctx.getImageData(0, 0, outW, outH);
+          const src = new Uint8ClampedArray(id.data);
+          const d = id.data;
+          for (let y = 1; y < outH - 1; y += 1) {
+            for (let x = 1; x < outW - 1; x += 1) {
+              const k = (y * outW + x) * 4;
+              if (src[k + 3] < 8) continue;
+              for (let c = 0; c < 3; c += 1) {
+                let sum = 0;
+                let n = 0;
+                for (let dy = -1; dy <= 1; dy += 1) {
+                  for (let dx = -1; dx <= 1; dx += 1) {
+                    const j = ((y + dy) * outW + (x + dx)) * 4;
+                    if (src[j + 3] < 8) continue;
+                    sum += src[j + c];
+                    n += 1;
+                  }
+                }
+                d[k + c] = src[k + c] + amount * (src[k + c] - sum / n);
+              }
+            }
+          }
+          ctx.putImageData(id, 0, 0);
+        }
 
         const blob = await canvas.convertToBlob({ type: 'image/webp', quality: ${QUALITY} });
         const dataUrl = await new Promise((done) => {

@@ -43,17 +43,24 @@ import {
 
 const BAG_SRC = '/assets/footer-bag.webp';
 
-/** The bag element's unscaled box, in px. Everything else scales from it. */
-const BASE = 200;
+/**
+ * The bag element's unscaled box, in px. Everything else scales from it.
+ * Larger than any size the bag is shown at (the footer's 349px is the most),
+ * so it is only ever scaled down. Scaling a smaller box up stretches the
+ * bitmap the browser drew it at, and the bag goes soft.
+ */
+const BASE = 360;
 
 /**
  * Where the bag actually is inside its square image (720px, measured from
- * the alpha channel): the rest is transparent padding.
+ * the alpha channel of footer-bag.webp, rendered from shopping-bag.svg): the
+ * rest is transparent padding. The tote's body spans 31%-87% of the height;
+ * above it are the handles, below it the narrowing bottom panel.
  */
-const ART = { left: 149 / 720, right: 567 / 720, top: 66 / 720, bottom: 656 / 720 };
-/** How far down the box the bag's opening is — where items go in. */
+const ART = { left: 122 / 720, right: 584 / 720, top: 24 / 720, bottom: 697 / 720 };
+/** How far down the box the bag's opening is — where items go in (the top of the body). */
 const MOUTH = 0.34;
-/** Where the scissors cut across, as a fraction of the box height. */
+/** Where the scissors cut across, as a fraction of the box height — the front face, just above its bottom edge. */
 const CUT = 0.84;
 
 /* The bag grows with every item until GROW_CAP, then holds at its largest.
@@ -66,10 +73,12 @@ const dockSize = (count: number) =>
 const popSize = (count: number) => Math.min(dockSize(count) * 1.7, window.innerHeight * 0.45, 300);
 const openSize = () => Math.min(340, window.innerWidth * 0.62, window.innerHeight * 0.55);
 
-/* In the footer the bag stands in for the footer's own bag, a good deal
-   larger than it. 1.6x still fits the gap the footer leaves above itself
-   (0.62 of the footer bag's size plus 3-5.5rem). */
-const FOOTER_SCALE = 1.6;
+/* In the footer the bag stands in for the footer's own bag. It grows with
+   what is in it, like the docked bag — the footer bag's own size with one
+   item, up to FOOTER_MAX times it at GROW_CAP. Kept modest: the tote fills
+   most of its frame, so a large multiple dwarfs the footer. */
+const FOOTER_MAX = 1.3;
+const footerScale = (count: number) => 1 + ((FOOTER_MAX - 1) * Math.min(count, GROW_CAP)) / GROW_CAP;
 
 /* More than this many falling sprites buries the screen and drops frames. */
 const MAX_SPILL = 28;
@@ -127,7 +136,7 @@ const footerSpot = (): Spot | null => {
   return {
     cx: rect.left + rect.width / 2,
     by: rect.top + rect.height / 2 + size / 2,
-    size: size * FOOTER_SCALE,
+    size: size * footerScale(currentBagCount()),
   };
 };
 
@@ -800,10 +809,10 @@ export function ShoppingBag() {
         {/* Two copies of the bag, split along the cut line, so the bottom
             can fall away on its own when the cut is done. */}
         <span className="bag-dock__part bag-dock__part--top" aria-hidden="true">
-          <img src={BAG_SRC} alt="" width={720} height={720} />
+          <img src={BAG_SRC} alt="" width={1024} height={1024} />
         </span>
         <span className="bag-dock__part bag-dock__part--bottom" ref={bottomRef} aria-hidden="true">
-          <img src={BAG_SRC} alt="" width={720} height={720} />
+          <img src={BAG_SRC} alt="" width={1024} height={1024} />
         </span>
         {/* "Cut here" — only shown with the bag open. */}
         <span className="bag-dock__mark" ref={markRef} aria-hidden="true" />

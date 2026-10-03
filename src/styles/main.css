@@ -4642,15 +4642,16 @@ body.has-cursor button {
 
 /* One element for every state of the bag — docked, popping up to catch an
    item, open in the middle of the screen. GSAP positions it entirely by
-   transform (see ShoppingBag.tsx); the box is a fixed 200px square scaled
+   transform (see ShoppingBag.tsx); the box is a fixed 360px square scaled
    from its bottom-centre. Hidden until there is something in it. */
 .bag-dock {
   position: fixed;
   left: 0;
   top: 0;
   z-index: 85;
-  width: 200px;
-  height: 200px;
+  /* = BASE in ShoppingBag.tsx */
+  width: 360px;
+  height: 360px;
   padding: 0;
   border: 0;
   background: none;
@@ -4713,10 +4714,10 @@ body.has-cursor button {
 .bag-dock__mark {
   position: absolute;
   inset-block-start: 84%;
-  left: 21%;
-  right: 22%;
-  height: 3px;
-  background: repeating-linear-gradient(90deg, var(--color-green-ink) 0 9px, transparent 9px 16px);
+  left: 18%;
+  right: 20%;
+  height: 5px;
+  background: repeating-linear-gradient(90deg, var(--color-green-ink) 0 16px, transparent 16px 29px);
   opacity: 0;
   transition: opacity 0.4s 0.3s;
 
@@ -4726,22 +4727,23 @@ body.has-cursor button {
 }
 
 /* Sits on the bag, so it grows with it. */
+/* Sizes are 1.8x what they read as: the 360px box is scaled down. */
 .bag-dock__count {
   position: absolute;
-  left: 66%;
-  top: 22%;
+  left: 70%;
+  top: 28%;
   display: grid;
   place-items: center;
-  min-width: 2.6rem;
-  height: 2.6rem;
-  padding-inline: 0.5rem;
+  min-width: 4.7rem;
+  height: 4.7rem;
+  padding-inline: 0.9rem;
   border-radius: 999px;
   background: var(--color-lime-bright);
   color: var(--color-green-ink);
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 2.35rem;
   font-weight: 800;
-  box-shadow: 0 6px 14px rgb(4 26 14 / 0.3);
+  box-shadow: 0 11px 25px rgb(4 26 14 / 0.3);
 }
 
 /* An item in flight, or spilling out of the cut bag. Drawn as a little

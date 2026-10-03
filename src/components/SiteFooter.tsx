@@ -92,8 +92,8 @@ export function SiteFooter({ onSearchOpen }: { onSearchOpen: () => void }) {
         <img
           className="site-footer__bag"
           src="/assets/footer-bag.webp"
-          width={720}
-          height={720}
+          width={1024}
+          height={1024}
           alt=""
           loading="lazy"
           decoding="async"
