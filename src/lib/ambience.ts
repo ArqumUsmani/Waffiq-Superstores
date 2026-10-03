@@ -43,7 +43,9 @@ declare global {
  * normalised to -20 LUFS by the encoder, so this is the one number that
  * sets how present the soundscape is.
  */
-const BED_GAIN = 0.85;
+/* Background, not foreground: ~5 dB under what it was, so it sits behind
+   the one-shots instead of competing with them. */
+const BED_GAIN = 0.5;
 const FADE = 1.4;
 /* Ducking as the hero leaves should be quicker than the initial arrival —
    long enough not to cut, short enough that it is gone by the time the

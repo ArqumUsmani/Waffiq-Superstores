@@ -87,8 +87,7 @@ async function bed(name, outName) {
 }
 
 /** A one-shot: silence trimmed off the front, short fade off the tail. */
-async function shot(name, outName, { start, end }) {
-  const fade = 0.05;
+async function shot(name, outName, { start, end, fade = 0.05 }) {
   await run('ffmpeg', [
     '-hide_banner', '-loglevel', 'error', '-y',
     '-i', resolve(SRC, name),
@@ -115,8 +114,9 @@ const JOBS = [
   /* The source is 16.5 s of separate snips ~0.7 s apart — too slow to play
      through. One snip (0.3–0.5 s) is kept and played per blade close. */
   ['bag-snip.mp3', () => shot('bag-cutting.mp3', 'bag-snip.mp3', { start: 0.28, end: 0.56 })],
-  /* The rustle is loud from 0.3 s and has settled by 1.4 s. */
-  ['bag-place.mp3', () => shot('placing-in-bag.mp3', 'bag-place.mp3', { start: 0.25, end: 1.5 })],
+  /* The rustle is loud from 0.3 s. Only its opening is kept: it plays on
+     every add, and the full 1.25 s grated on repeat. */
+  ['bag-place.mp3', () => shot('placing-in-bag.mp3', 'bag-place.mp3', { start: 0.25, end: 0.9, fade: 0.3 })],
   /* Silence to 0.23 s, then a run of thuds that is done by 2.6 s. */
   ['bag-spill.mp3', () => shot('dropping-item.mp3', 'bag-spill.mp3', { start: 0.2, end: 2.6 })],
 ];

@@ -82,8 +82,9 @@ const footerScale = (count: number) => 1 + ((FOOTER_MAX - 1) * Math.min(count, G
 
 /* More than this many falling sprites buries the screen and drops frames. */
 const MAX_SPILL = 28;
-/* A blade closes once for every this many pixels of new cut. */
-const SNIP_EVERY = 26;
+/* A blade closes once for every this many pixels of new cut — often
+   enough to feel like cutting, not so often it chatters. */
+const SNIP_EVERY = 60;
 /* Dragged this far along the line, the bag gives way on its own. */
 const CUT_DONE = 0.96;
 

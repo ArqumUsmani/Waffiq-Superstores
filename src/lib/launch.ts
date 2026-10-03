@@ -111,10 +111,16 @@ export function launch({
 
   gsap.set(clone, { rotate, transformOrigin: '50% 50%' });
 
-  const resolvedPastel =
+  const basePastel =
     pastel ||
     getComputedStyle(sourceEl).getPropertyValue('--pastel').trim() ||
     '#e4f2d3';
+  /* In dark mode the flood takes the dark aisle header's colour, so the
+     screen does not flash a light pastel on the way into a dark page. */
+  const resolvedPastel =
+    document.documentElement.dataset.theme === 'dark'
+      ? `color-mix(in oklab, ${basePastel} 14%, #0f1d15)`
+      : basePastel;
 
   const flood = document.createElement('div');
   flood.className = 'scene-launch__flood';

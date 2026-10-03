@@ -51,14 +51,33 @@ export type SampleName = keyof typeof SAMPLE_FILES;
  */
 const LATE_MS = 400;
 
+/**
+ * Playback gain per recording, set from each file's measured loudness so
+ * they all land around the same level (about -24 LUFS before the master)
+ * instead of the loud recordings staying loud. Measured with ffmpeg's
+ * ebur128 on the files in public/assets/sfx:
+ *   horn -17.8, rooster -13.4, bag-place -12.5 LUFS.
+ * Snip and spill are short or sparse, so integrated loudness under-reads
+ * them; their gains were set by ear against the others instead.
+ */
+const SAMPLE_GAIN = {
+  horn: 0.5,
+  rooster: 0.3,
+  bagPlace: 0.3,
+  bagSnip: 0.55,
+  bagSpill: 0.75,
+} as const;
+
 const STORAGE_KEY = 'wafiq:sound';
 const MIN_GAP_MS = 120;
 /* The hover peep needs a longer gate than the rest: a pointer crossing the
    headlight fires many enters, and at 120ms they machine-gun. */
-const PEEP_GAP_MS = 420;
-/* The crow is nearly a second long — overlapping two is a farmyard, not a
-   morning. */
-const ROOSTER_GAP_MS = 2500;
+const PEEP_GAP_MS = 900;
+/* The crow is nearly two seconds long, and charming once — not on every
+   flick of the headlight. */
+const ROOSTER_GAP_MS = 20000;
+/* Adding several items quickly should not stack rustle on rustle. */
+const BAG_PLACE_GAP_MS = 450;
 
 let ctx: AudioContext | null = null;
 let unlocked = false;
@@ -370,7 +389,14 @@ const jitter = (): number => (Math.random() - 0.5) * 80;
 function canPlay(kind: SoundKind): boolean {
   if (muted || motion.reduced) return false;
   const now = performance.now();
-  const gap = kind === 'peep' ? PEEP_GAP_MS : kind === 'rooster' ? ROOSTER_GAP_MS : MIN_GAP_MS;
+  const gap =
+    kind === 'peep'
+      ? PEEP_GAP_MS
+      : kind === 'rooster'
+        ? ROOSTER_GAP_MS
+        : kind === 'bagPlace'
+          ? BAG_PLACE_GAP_MS
+          : MIN_GAP_MS;
   if (now - lastPlayedAt[kind] < gap) return false;
   lastPlayedAt[kind] = now;
   return true;
@@ -490,12 +516,12 @@ export function peep(): void {
  * clearly above the ambience bed rather than competing with it.
  */
 export function horn(): void {
-  attemptSample('horn', 'horn', 0.9);
+  attemptSample('horn', 'horn', SAMPLE_GAIN.horn);
 }
 
 /** A cockerel, on the switch from night back to day. */
 export function rooster(): void {
-  attemptSample('rooster', 'rooster', 0.9);
+  attemptSample('rooster', 'rooster', SAMPLE_GAIN.rooster);
 }
 
 export function isMuted(): boolean {
@@ -516,15 +542,15 @@ export const toggleMuted = (): void => setMuted(!muted);
 
 /** An item landing in the shopping bag. */
 export function bagPlace(): void {
-  attemptSample('bagPlace', 'bagPlace', 0.8);
+  attemptSample('bagPlace', 'bagPlace', SAMPLE_GAIN.bagPlace);
 }
 
 /** One close of the scissors' blades. Played once per snip, in time with it. */
 export function bagSnip(): void {
-  attemptSample('bagSnip', 'bagSnip', 0.9);
+  attemptSample('bagSnip', 'bagSnip', SAMPLE_GAIN.bagSnip);
 }
 
 /** Everything tumbling out of the cut bag. */
 export function bagSpill(): void {
-  attemptSample('bagSpill', 'bagSpill', 0.9);
+  attemptSample('bagSpill', 'bagSpill', SAMPLE_GAIN.bagSpill);
 }
