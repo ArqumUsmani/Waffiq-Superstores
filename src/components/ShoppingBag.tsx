@@ -11,11 +11,10 @@
  * footer's bag fades out — and follows it while the footer is on screen.
  *
  * Clicking the bag brings it to the middle of the screen with a pair of
- * scissors on its left and a dashed line across its bottom. Dragging the
- * scissors along the line cuts it; at the end the bottom falls away and
- * everything inside drops out, scatters across the screen and fades. The
- * scissors can also be pressed from the keyboard, which runs the cut on its
- * own.
+ * scissors on its left and a dashed line across its bottom. Clicking the
+ * scissors (or pressing them from the keyboard) sends them along the line;
+ * the bottom tears away and everything inside drops out, scatters across
+ * the screen and fades.
  *
  * One bag element does all of it. Its position is always described by the
  * bottom-centre point of its box, and the box is a fixed BASE square scaled
@@ -23,7 +22,6 @@
  * scale, and the bottom edge (where the cut runs) never drifts.
  */
 import { useEffect, useRef, useState } from 'react';
-import type { PointerEvent as ReactPointerEvent } from 'react';
 import { useLocation } from 'react-router';
 import { useGSAP } from '@gsap/react';
 import { gsap } from '../lib/gsap-setup';
@@ -82,11 +80,21 @@ const footerScale = (count: number) => 1 + ((FOOTER_MAX - 1) * Math.min(count, G
 
 /* More than this many falling sprites buries the screen and drops frames. */
 const MAX_SPILL = 28;
-/* A blade closes once for every this many pixels of new cut — often
-   enough to feel like cutting, not so often it chatters. */
-const SNIP_EVERY = 60;
-/* Dragged this far along the line, the bag gives way on its own. */
-const CUT_DONE = 0.96;
+/**
+ * The torn edge where the bag splits: a zigzag along the cut line, as
+ * clip-path polygons. The top part keeps everything above it, the bottom
+ * part everything below, so assembled they meet with no gap — and when the
+ * bottom falls away the bag is left with a ragged edge, not a ruler-straight
+ * one. Teeth are uneven on purpose; a regular zigzag reads as pinking shears.
+ */
+const TEAR = (() => {
+  const teeth = [0, 1.4, -0.6, 1.1, -1, 0.8, -0.4, 1.5, -0.9, 0.5, -1.2, 1, -0.3, 1.3, -0.8, 0.6, -1.1, 0.9, -0.5, 1.2, 0];
+  const pts = teeth.map((d, i) => `${((i / (teeth.length - 1)) * 100).toFixed(2)}% ${(CUT * 100 + d).toFixed(2)}%`);
+  return {
+    top: `polygon(0 0, 100% 0, ${[...pts].reverse().join(', ')})`,
+    bottom: `polygon(${pts.join(', ')}, 100% 100%, 0 100%)`,
+  };
+})();
 
 interface Spot {
   /** Bottom-centre of the box. */
@@ -197,12 +205,9 @@ export function ShoppingBag() {
   const footerInView = useRef(false);
   const follow = useRef<((spot: Spot) => void) | null>(null);
 
-  /* Cutting by hand. */
-  const drag = useRef<{ grabX: number; moved: number; lastSnip: number } | null>(null);
+  /* How far the cut has got, 0-1, and whether one is under way. */
   const progress = useRef(0);
-  /* The exact functions attached to the window for the current drag, so
-     the same ones are removed — handlers are recreated on every render. */
-  const dragListeners = useRef<{ move: (e: PointerEvent) => void; up: () => void } | null>(null);
+  const cutting = useRef(false);
 
   const [open, setOpen] = useState(false);
   const [spilling, setSpilling] = useState(false);
@@ -479,7 +484,7 @@ export function ShoppingBag() {
 
   const resetCut = () => {
     progress.current = 0;
-    drag.current = null;
+    cutting.current = false;
     if (slitRef.current) gsap.set(slitRef.current, { width: 0, autoAlpha: 0 });
   };
 
@@ -578,7 +583,6 @@ export function ShoppingBag() {
     const scissors = scissorsRef.current;
     if (!bag || phase.current !== 'open') return;
     phase.current = 'spilling';
-    drag.current = null;
     setSpilling(true);
 
     const { spot, y: cutY } = cutLine();
@@ -589,8 +593,9 @@ export function ShoppingBag() {
       lockScroll(false);
       phase.current = 'hidden';
       setAnnounce('Your bag is empty.');
-      if (bottomRef.current) gsap.set(bottomRef.current, { clearProps: 'all' });
-      if (markRef.current) gsap.set(markRef.current, { clearProps: 'all' });
+      /* Only what GSAP moved — 'all' would also wipe the torn-edge clip-path. */
+      if (bottomRef.current) gsap.set(bottomRef.current, { clearProps: 'transform,opacity,visibility' });
+      if (markRef.current) gsap.set(markRef.current, { clearProps: 'opacity,visibility' });
     };
 
     if (motion.reduced) {
@@ -635,10 +640,11 @@ export function ShoppingBag() {
     );
   });
 
-  /** The keyboard path — or a plain click: the scissors make the whole cut on their own. */
+  /** Clicking the scissors (or pressing them from the keyboard) makes the whole cut. */
   const autoCut = contextSafe(() => {
     const scissors = scissorsRef.current;
-    if (!scissors || phase.current !== 'open') return;
+    if (!scissors || phase.current !== 'open' || cutting.current) return;
+    cutting.current = true;
     if (motion.reduced) {
       spill();
       return;
@@ -667,78 +673,6 @@ export function ShoppingBag() {
     }
   });
 
-  /* Dragging: grab the scissors and they settle onto the cut line; moving
-     right cuts as far as the blades have reached, with a snip every so
-     often. Letting go part-way keeps the cut so far — grab again to go on.
-
-     Moves and the release are listened for on the window for the length of
-     the drag, not via pointer capture: capture proved easy to lose, and
-     the pointer leaves the scissors the moment it slides onto the bag. */
-  const onScissorsMove = contextSafe((event: PointerEvent) => {
-    const scissors = scissorsRef.current;
-    const state = drag.current;
-    if (!scissors || !state || phase.current !== 'open') return;
-    const { left, right } = cutLine();
-    const minX = scissorsXForTip(left) - 40;
-    const maxX = scissorsXForTip(right + 12);
-    const x = Math.min(maxX, Math.max(minX, event.clientX - state.grabX));
-    state.moved += Math.abs(event.movementX) + Math.abs(event.movementY);
-    gsap.set(scissors, { x });
-
-    const reached = (x + scissors.offsetWidth * 0.92 - left) / (right - left);
-    if (reached > progress.current) {
-      showProgress(reached);
-      if ((progress.current - state.lastSnip) * (right - left) >= SNIP_EVERY) {
-        state.lastSnip = progress.current;
-        snip();
-      }
-    }
-    if (progress.current >= CUT_DONE) endDrag(false);
-  });
-
-  const detachDrag = () => {
-    const attached = dragListeners.current;
-    if (!attached) return;
-    window.removeEventListener('pointermove', attached.move);
-    window.removeEventListener('pointerup', attached.up);
-    window.removeEventListener('pointercancel', attached.up);
-    dragListeners.current = null;
-  };
-
-  /** Ends a drag. `released` is a real let-go, as opposed to the cut finishing mid-move. */
-  const endDrag = contextSafe((released: boolean) => {
-    const state = drag.current;
-    detachDrag();
-    if (!state) return;
-    drag.current = null;
-    if (phase.current !== 'open') return;
-    if (progress.current >= CUT_DONE) spill();
-    /* A plain click — no drag at all — still empties the bag. */
-    else if (released && state.moved < 6 && progress.current === 0) autoCut();
-  });
-
-  const onScissorsDown = contextSafe((event: ReactPointerEvent<HTMLButtonElement>) => {
-    const scissors = scissorsRef.current;
-    if (!scissors || phase.current !== 'open' || event.button !== 0 || drag.current) return;
-    event.preventDefault();
-    gsap.killTweensOf(scissors);
-    const x = Number(gsap.getProperty(scissors, 'x'));
-    const { y } = cutLine();
-    drag.current = { grabX: event.clientX - x, moved: 0, lastSnip: progress.current };
-    /* Onto the line, keeping the grab point under the pointer. */
-    gsap.to(scissors, { y: y - scissors.offsetHeight / 2, rotation: 0, duration: 0.18, ease: 'power2.out' });
-    detachDrag();
-    const listeners = { move: onScissorsMove, up: () => endDrag(true) };
-    dragListeners.current = listeners;
-    window.addEventListener('pointermove', listeners.move);
-    window.addEventListener('pointerup', listeners.up);
-    window.addEventListener('pointercancel', listeners.up);
-  });
-
-  /* Never leave window listeners behind if the bag unmounts mid-drag. */
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => detachDrag, []);
-
   return (
     <div className="shopping-bag" ref={rootRef}>
       {open ? (
@@ -765,17 +699,13 @@ export function ShoppingBag() {
           <p className="bag-scene__count" ref={countLabelRef}>
             {count} {count === 1 ? 'item' : 'items'} in your bag
           </p>
-          {spilling ? null : <p className="bag-scene__hint">Grab the scissors to drop items</p>}
+          {spilling ? null : <p className="bag-scene__hint">Click the scissors to drop items</p>}
           <span className="bag-scene__slit" ref={slitRef} aria-hidden="true" />
           <button
             className="bag-scene__scissors"
             ref={scissorsRef}
             type="button"
-            onPointerDown={onScissorsDown}
-            /* Keyboard presses arrive as clicks with no pointer behind them. */
-            onClick={(event) => {
-              if (event.detail === 0) autoCut();
-            }}
+            onClick={autoCut}
             disabled={spilling}
             aria-label="Cut the bag open and empty it"
           >
@@ -809,10 +739,10 @@ export function ShoppingBag() {
       >
         {/* Two copies of the bag, split along the cut line, so the bottom
             can fall away on its own when the cut is done. */}
-        <span className="bag-dock__part bag-dock__part--top" aria-hidden="true">
+        <span className="bag-dock__part" style={{ clipPath: TEAR.top }} aria-hidden="true">
           <img src={BAG_SRC} alt="" width={1024} height={1024} />
         </span>
-        <span className="bag-dock__part bag-dock__part--bottom" ref={bottomRef} aria-hidden="true">
+        <span className="bag-dock__part" ref={bottomRef} style={{ clipPath: TEAR.bottom }} aria-hidden="true">
           <img src={BAG_SRC} alt="" width={1024} height={1024} />
         </span>
         {/* "Cut here" — only shown with the bag open. */}

@@ -50,7 +50,16 @@ export function SiteHeader({ onSearchOpen, onMenuOpen, menuOpen }: Props) {
     const header = headerRef.current;
     if (header) {
       header.classList.toggle('is-stuck', y > REVEAL_AT);
-      header.classList.toggle('is-hidden', overHero && y <= REVEAL_AT);
+      const hide = overHero && y <= REVEAL_AT;
+      /* Hiding as the visitor scrolls back up: let go of any focus left on a
+         clicked control. Otherwise the next key press (an arrow or Space to
+         scroll) turns it into keyboard focus, and the keyboard-reveal rule
+         brings the bar back over the hero's own controls. Only on the
+         visible-to-hidden change, so tabbing into the hidden bar still works. */
+      if (hide && !header.classList.contains('is-hidden') && header.contains(document.activeElement)) {
+        (document.activeElement as HTMLElement).blur();
+      }
+      header.classList.toggle('is-hidden', hide);
     }
 
     const max = document.documentElement.scrollHeight - window.innerHeight;

@@ -447,9 +447,11 @@
   }
 
   /* A keyboard user tabbing in from the top would otherwise land on
-     controls they cannot see. Focus brings the bar back on its own, with
-     no JS involved. */
-  &.is-hidden:focus-within {
+     controls they cannot see. Keyboard focus brings the bar back on its
+     own, with no JS involved. `:focus-visible`, not `:focus-within`: a
+     mouse click also leaves focus on the button, which kept the bar pinned
+     after scrolling back up until something else was clicked. */
+  &.is-hidden:has(:focus-visible) {
     translate: none;
     opacity: 1;
     pointer-events: auto;
@@ -4561,6 +4563,20 @@ body.has-cursor button {
     backdrop-filter: blur(6px);
   }
 }
+/* The hero's controls duplicate the header's. Only one set at a time: they
+   step aside whenever the header is showing — scrolled down, or brought
+   back by keyboard focus at the top of the page. */
+.hero-scene__controls {
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+html:has(.site-header:not(.is-hidden)) .hero-scene__controls,
+html:has(.site-header.is-hidden :focus-visible) .hero-scene__controls {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 
 @media (max-width: 640px) {
   .hero-scene__controls {
@@ -4716,13 +4732,6 @@ body.has-cursor button {
   }
 }
 
-.bag-dock__part--top {
-  clip-path: inset(0 0 16% 0);
-}
-
-.bag-dock__part--bottom {
-  clip-path: inset(84% 0 0 0);
-}
 
 /* "Cut here", across the bottom of the bag. A child of the bag so it scales
    with it; shown only while the bag is open. Spans the bag's own width
@@ -4826,14 +4835,8 @@ body.has-cursor button {
   padding: 0;
   border: 0;
   background: none;
-  cursor: grab;
-  /* The drag is the gesture; the browser must not scroll or zoom with it. */
-  touch-action: none;
+  cursor: pointer;
   filter: drop-shadow(0 8px 14px rgb(0 0 0 / 0.35));
-
-  &:active {
-    cursor: grabbing;
-  }
 
   svg {
     display: block;
@@ -4889,11 +4892,15 @@ body.has-cursor button {
   left: 0;
   top: 0;
   z-index: 132;
-  height: 4px;
+  /* A soft shadowed parting, not a drawn stroke: the hard black line it
+     used to be read as a mark on the bag rather than a cut in it. */
+  height: 3px;
   visibility: hidden;
-  border-radius: 2px;
-  background: #1c2620;
-  box-shadow: 0 1px 0 rgb(255 255 255 / 0.55);
+  border-radius: 999px;
+  background: rgb(20 30 24 / 0.38);
+  filter: blur(0.6px);
+  box-shadow: 0 1px 3px rgb(20 30 24 / 0.25);
+
 }
 
 .bag-scene__hint {
