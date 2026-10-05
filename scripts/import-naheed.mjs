@@ -5,7 +5,9 @@
  * --dry prints the picks and writes nothing.
  * Reads:  scripts/data/naheed-catalogue.json  (from scrape-naheed.mjs)
  * Writes: src/data/products.json
- *         public/products/<sku>.jpg            (product photos)
+ *         public/products/<sku>.jpg            (new product photos — then run
+ *                                              `npm run images:webp`, which converts
+ *                                              them and repoints products.json)
  *         scripts/data/naheed-selection.json   (sku -> source page, for reference)
  *
  * Selection, per subcategory:
@@ -325,7 +327,9 @@ async function main() {
           nameUr = `${brandUr ?? item.brand} ${kind ? kind[1] : urNoun}`;
         }
 
-        const result = DRY ? 'kept' : item.image ? await download(item.image, resolve(IMAGES, `${sku}.jpg`)) : 'failed';
+        /* Already converted to WebP on an earlier run: nothing to fetch. */
+        const converted = await stat(resolve(IMAGES, `${sku}.webp`)).then(() => true, () => false);
+        const result = DRY || converted ? 'kept' : item.image ? await download(item.image, resolve(IMAGES, `${sku}.jpg`)) : 'failed';
         tally[result] += 1;
 
         products.push({
@@ -339,7 +343,7 @@ async function main() {
           desc: blurb,
           tags: rank < POPULAR_PER_SUB && item.score >= 10 ? ['popular'] : [],
           tile: { hue: hash(sku) % 360, glyph },
-          image: result === 'failed' ? null : `/products/${sku}.jpg`,
+          image: result === 'failed' ? null : `/products/${sku}.${converted ? 'webp' : 'jpg'}`,
         });
         selection.push({ sku, title: item.title, source: item.url });
       }

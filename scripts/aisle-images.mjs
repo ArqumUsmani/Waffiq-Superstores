@@ -156,7 +156,11 @@ async function main() {
         continue;
       }
 
-      const file = `${aisle.slug}-${slugify(item.name)}.jpg`;
+      const stem = `${aisle.slug}-${slugify(item.name)}`;
+      /* Already converted by scripts/to-webp.mjs: keep it. New photos land
+         as .jpg and are converted by the next `npm run images:webp`. */
+      const converted = await stat(resolve(OUT_DIR, `${stem}.webp`)).then(() => true, () => false);
+      const file = `${stem}.${converted ? 'webp' : 'jpg'}`;
       const target = resolve(OUT_DIR, file);
       let source = 'kept';
       try {

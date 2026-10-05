@@ -2902,15 +2902,41 @@ body.has-drawer,
   }
 }
 
+.cursor {
+  /* Dark green on light pages, white on dark ones. The icon and a thin rim
+     take the opposite colour, so the disc still shows where the page under
+     it happens to match — the dark footer in light mode, a white product
+     tile in dark mode. */
+  --cursor-fill: var(--color-green-dark);
+  --cursor-ink: var(--color-lime-bright);
+}
+
+[data-theme='dark'] .cursor {
+  --cursor-fill: #fff;
+  --cursor-ink: var(--color-green-dark);
+}
+
 .cursor__ring {
   position: absolute;
   translate: -50% -50%;
-  width: 0.65rem;
-  height: 0.65rem;
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
   border-radius: 999px;
-  background: var(--color-green-dark);
+  background: var(--cursor-fill);
+  box-shadow:
+    0 0 0 1.5px color-mix(in oklab, var(--cursor-ink) 70%, transparent),
+    0 4px 12px rgb(0 0 0 / 0.25);
   transition: width 0.35s var(--ease-spring), height 0.35s var(--ease-spring),
-    background 0.3s, opacity 0.3s;
+    background 0.3s, opacity 0.3s, scale 0.2s;
+}
+
+.cursor__icon {
+  width: 58%;
+  height: 58%;
+  fill: var(--cursor-ink);
+  transition: fill 0.3s;
 }
 
 .cursor__label {
@@ -2930,10 +2956,12 @@ body.has-drawer,
   transition: opacity 0.3s, scale 0.4s var(--ease-spring);
 }
 
+/* Over something clickable: grows, and lets a little of the control show
+   through so the target is not hidden under the disc. */
 .cursor.is-magnetic .cursor__ring {
-  width: 2.2rem;
-  height: 2.2rem;
-  background: color-mix(in oklab, var(--color-lime) 45%, transparent);
+  width: 2.6rem;
+  height: 2.6rem;
+  background: color-mix(in oklab, var(--cursor-fill) 82%, transparent);
 }
 
 .cursor.is-labelled {

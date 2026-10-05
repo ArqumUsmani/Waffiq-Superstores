@@ -15,7 +15,7 @@
       "hue": 269,
       "glyph": "fruit"
     },
-    "image": "/products/fresh-fruits-banana-kela-local.jpg"
+    "image": "/products/fresh-fruits-banana-kela-local.webp"
   },
   {
     "sku": "fresh-fruits-golden-apple",
@@ -33,7 +33,7 @@
       "hue": 264,
       "glyph": "fruit"
     },
-    "image": "/products/fresh-fruits-golden-apple.jpg"
+    "image": "/products/fresh-fruits-golden-apple.webp"
   },
   {
     "sku": "fresh-fruits-red-grapes-local",
@@ -49,7 +49,7 @@
       "hue": 328,
       "glyph": "fruit"
     },
-    "image": "/products/fresh-fruits-red-grapes-local.jpg"
+    "image": "/products/fresh-fruits-red-grapes-local.webp"
   },
   {
     "sku": "fresh-fruits-pomegranate-anaar",
@@ -65,7 +65,7 @@
       "hue": 223,
       "glyph": "fruit"
     },
-    "image": "/products/fresh-fruits-pomegranate-anaar.jpg"
+    "image": "/products/fresh-fruits-pomegranate-anaar.webp"
   },
   {
     "sku": "fresh-fruits-guava-local",
@@ -81,7 +81,7 @@
       "hue": 48,
       "glyph": "fruit"
     },
-    "image": "/products/fresh-fruits-guava-local.jpg"
+    "image": "/products/fresh-fruits-guava-local.webp"
   },
   {
     "sku": "fresh-fruits-sweet-melon-kharboza-local",
@@ -97,7 +97,7 @@
       "hue": 153,
       "glyph": "fruit"
     },
-    "image": "/products/fresh-fruits-sweet-melon-kharboza-local.jpg"
+    "image": "/products/fresh-fruits-sweet-melon-kharboza-local.webp"
   },
   {
     "sku": "fresh-fruits-mosambi-sweet-lemon-1-piece",
@@ -113,7 +113,7 @@
       "hue": 100,
       "glyph": "fruit"
     },
-    "image": "/products/fresh-fruits-mosambi-sweet-lemon-1-piece.jpg"
+    "image": "/products/fresh-fruits-mosambi-sweet-lemon-1-piece.webp"
   },
   {
     "sku": "fresh-fruits-papaya-1-piece",
@@ -129,7 +129,7 @@
       "hue": 287,
       "glyph": "fruit"
     },
-    "image": "/products/fresh-fruits-papaya-1-piece.jpg"
+    "image": "/products/fresh-fruits-papaya-1-piece.webp"
   },
   {
     "sku": "fresh-vegetables-tomato-tamatar",
@@ -147,7 +147,7 @@
       "hue": 90,
       "glyph": "vegetable"
     },
-    "image": "/products/fresh-vegetables-tomato-tamatar.jpg"
+    "image": "/products/fresh-vegetables-tomato-tamatar.webp"
   },
   {
     "sku": "fresh-vegetables-onion-pyaaz",
@@ -165,7 +165,7 @@
       "hue": 310,
       "glyph": "vegetable"
     },
-    "image": "/products/fresh-vegetables-onion-pyaaz.jpg"
+    "image": "/products/fresh-vegetables-onion-pyaaz.webp"
   },
   {
     "sku": "fresh-vegetables-sweet-potato-shakarkandi",
@@ -181,7 +181,7 @@
       "hue": 9,
       "glyph": "vegetable"
     },
-    "image": "/products/fresh-vegetables-sweet-potato-shakarkandi.jpg"
+    "image": "/products/fresh-vegetables-sweet-potato-shakarkandi.webp"
   },
   {
     "sku": "fresh-vegetables-potato-aloo",
@@ -197,7 +197,7 @@
       "hue": 186,
       "glyph": "vegetable"
     },
-    "image": "/products/fresh-vegetables-potato-aloo.jpg"
+    "image": "/products/fresh-vegetables-potato-aloo.webp"
   },
   {
     "sku": "fresh-vegetables-china-garlic",
@@ -213,7 +213,7 @@
       "hue": 321,
       "glyph": "vegetable"
     },
-    "image": "/products/fresh-vegetables-china-garlic.jpg"
+    "image": "/products/fresh-vegetables-china-garlic.webp"
   },
   {
     "sku": "fresh-vegetables-ginger-adrak",
@@ -229,7 +229,7 @@
       "hue": 281,
       "glyph": "vegetable"
     },
-    "image": "/products/fresh-vegetables-ginger-adrak.jpg"
+    "image": "/products/fresh-vegetables-ginger-adrak.webp"
   },
   {
     "sku": "fresh-vegetables-german-green-chilli-hari-mirch-local",
@@ -245,7 +245,7 @@
       "hue": 214,
       "glyph": "vegetable"
     },
-    "image": "/products/fresh-vegetables-german-green-chilli-hari-mirch-local.jpg"
+    "image": "/products/fresh-vegetables-german-green-chilli-hari-mirch-local.webp"
   },
   {
     "sku": "fresh-vegetables-carrot-gajar",
@@ -261,7 +261,7 @@
       "hue": 70,
       "glyph": "vegetable"
     },
-    "image": "/products/fresh-vegetables-carrot-gajar.jpg"
+    "image": "/products/fresh-vegetables-carrot-gajar.webp"
   },
   {
     "sku": "herbs-leafy-greens-parsley-leaves-dhania",
@@ -279,7 +279,7 @@
       "hue": 332,
       "glyph": "leaf"
     },
-    "image": "/products/herbs-leafy-greens-parsley-leaves-dhania.jpg"
+    "image": "/products/herbs-leafy-greens-parsley-leaves-dhania.webp"
   },
   {
     "sku": "herbs-leafy-greens-coriander-dhania-leaves-local-1-bunch",
@@ -297,7 +297,7 @@
       "hue": 236,
       "glyph": "leaf"
     },
-    "image": "/products/herbs-leafy-greens-coriander-dhania-leaves-local-1-bunch.jpg"
+    "image": "/products/herbs-leafy-greens-coriander-dhania-leaves-local-1-bunch.webp"
   },
   {
     "sku": "herbs-leafy-greens-mint-leaves-pudina-local-1-bunch",
@@ -313,7 +313,7 @@
       "hue": 307,
       "glyph": "leaf"
     },
-    "image": "/products/herbs-leafy-greens-mint-leaves-pudina-local-1-bunch.jpg"
+    "image": "/products/herbs-leafy-greens-mint-leaves-pudina-local-1-bunch.webp"
   },
   {
     "sku": "herbs-leafy-greens-spinach-palak-leaves",
@@ -329,7 +329,7 @@
       "hue": 28,
       "glyph": "leaf"
     },
-    "image": "/products/herbs-leafy-greens-spinach-palak-leaves.jpg"
+    "image": "/products/herbs-leafy-greens-spinach-palak-leaves.webp"
   },
   {
     "sku": "herbs-leafy-greens-fenugreek-meethi-leaves-large",
@@ -345,7 +345,7 @@
       "hue": 173,
       "glyph": "leaf"
     },
-    "image": "/products/herbs-leafy-greens-fenugreek-meethi-leaves-large.jpg"
+    "image": "/products/herbs-leafy-greens-fenugreek-meethi-leaves-large.webp"
   },
   {
     "sku": "herbs-leafy-greens-salad-leaves-salad-patta",
@@ -361,7 +361,7 @@
       "hue": 208,
       "glyph": "leaf"
     },
-    "image": "/products/herbs-leafy-greens-salad-leaves-salad-patta.jpg"
+    "image": "/products/herbs-leafy-greens-salad-leaves-salad-patta.webp"
   },
   {
     "sku": "herbs-leafy-greens-basil-tulsi-leaves-local",
@@ -377,7 +377,7 @@
       "hue": 135,
       "glyph": "leaf"
     },
-    "image": "/products/herbs-leafy-greens-basil-tulsi-leaves-local.jpg"
+    "image": "/products/herbs-leafy-greens-basil-tulsi-leaves-local.webp"
   },
   {
     "sku": "herbs-leafy-greens-curry-leaves-kari-patta-local-1-bunch",
@@ -393,7 +393,7 @@
       "hue": 181,
       "glyph": "leaf"
     },
-    "image": "/products/herbs-leafy-greens-curry-leaves-kari-patta-local-1-bunch.jpg"
+    "image": "/products/herbs-leafy-greens-curry-leaves-kari-patta-local-1-bunch.webp"
   },
   {
     "sku": "dried-fruits-nuts-quill-dried-mango",
@@ -411,7 +411,7 @@
       "hue": 122,
       "glyph": "nut"
     },
-    "image": "/products/dried-fruits-nuts-quill-dried-mango.jpg"
+    "image": "/products/dried-fruits-nuts-quill-dried-mango.webp"
   },
   {
     "sku": "dried-fruits-nuts-nice-aseel-dates",
@@ -429,7 +429,7 @@
       "hue": 5,
       "glyph": "nut"
     },
-    "image": "/products/dried-fruits-nuts-nice-aseel-dates.jpg"
+    "image": "/products/dried-fruits-nuts-nice-aseel-dates.webp"
   },
   {
     "sku": "dried-fruits-nuts-royal-shamsi-almond-and-cashew-special-dates",
@@ -445,7 +445,7 @@
       "hue": 214,
       "glyph": "nut"
     },
-    "image": "/products/dried-fruits-nuts-royal-shamsi-almond-and-cashew-special-dates.jpg"
+    "image": "/products/dried-fruits-nuts-royal-shamsi-almond-and-cashew-special-dates.webp"
   },
   {
     "sku": "dried-fruits-nuts-nice-akhrot-giri-walnut",
@@ -461,7 +461,7 @@
       "hue": 82,
       "glyph": "nut"
     },
-    "image": "/products/dried-fruits-nuts-nice-akhrot-giri-walnut.jpg"
+    "image": "/products/dried-fruits-nuts-nice-akhrot-giri-walnut.webp"
   },
   {
     "sku": "dried-fruits-nuts-nice-chickee-peanut",
@@ -477,7 +477,7 @@
       "hue": 89,
       "glyph": "nut"
     },
-    "image": "/products/dried-fruits-nuts-nice-chickee-peanut.jpg"
+    "image": "/products/dried-fruits-nuts-nice-chickee-peanut.webp"
   },
   {
     "sku": "dried-fruits-nuts-nice-figs-anjeer",
@@ -493,7 +493,7 @@
       "hue": 60,
       "glyph": "nut"
     },
-    "image": "/products/dried-fruits-nuts-nice-figs-anjeer.jpg"
+    "image": "/products/dried-fruits-nuts-nice-figs-anjeer.webp"
   },
   {
     "sku": "dried-fruits-nuts-quill-dried-pineapple",
@@ -509,7 +509,7 @@
       "hue": 162,
       "glyph": "nut"
     },
-    "image": "/products/dried-fruits-nuts-quill-dried-pineapple.jpg"
+    "image": "/products/dried-fruits-nuts-quill-dried-pineapple.webp"
   },
   {
     "sku": "dried-fruits-nuts-quill-dried-kiwi",
@@ -525,7 +525,7 @@
       "hue": 116,
       "glyph": "nut"
     },
-    "image": "/products/dried-fruits-nuts-quill-dried-kiwi.jpg"
+    "image": "/products/dried-fruits-nuts-quill-dried-kiwi.webp"
   },
   {
     "sku": "cookies-biscuits-cadbury-cookies-chocolate-filled-biscuits",
@@ -543,7 +543,7 @@
       "hue": 61,
       "glyph": "cookie"
     },
-    "image": "/products/cookies-biscuits-cadbury-cookies-chocolate-filled-biscuits.jpg"
+    "image": "/products/cookies-biscuits-cadbury-cookies-chocolate-filled-biscuits.webp"
   },
   {
     "sku": "cookies-biscuits-peek-freans-sooper-the-original-biscuits",
@@ -561,7 +561,7 @@
       "hue": 51,
       "glyph": "cookie"
     },
-    "image": "/products/cookies-biscuits-peek-freans-sooper-the-original-biscuits.jpg"
+    "image": "/products/cookies-biscuits-peek-freans-sooper-the-original-biscuits.webp"
   },
   {
     "sku": "cookies-biscuits-peek-freans-cake-up-strawberry-twin-pack-36g",
@@ -577,7 +577,7 @@
       "hue": 270,
       "glyph": "cookie"
     },
-    "image": "/products/cookies-biscuits-peek-freans-cake-up-strawberry-twin-pack-36g.jpg"
+    "image": "/products/cookies-biscuits-peek-freans-cake-up-strawberry-twin-pack-36g.webp"
   },
   {
     "sku": "cookies-biscuits-bisconni-chai-wala-plain-cake-20g",
@@ -593,7 +593,7 @@
       "hue": 219,
       "glyph": "cookie"
     },
-    "image": "/products/cookies-biscuits-bisconni-chai-wala-plain-cake-20g.jpg"
+    "image": "/products/cookies-biscuits-bisconni-chai-wala-plain-cake-20g.webp"
   },
   {
     "sku": "cookies-biscuits-bisconni-cocomo-nutty-choc-15-4g",
@@ -609,7 +609,7 @@
       "hue": 24,
       "glyph": "cookie"
     },
-    "image": "/products/cookies-biscuits-bisconni-cocomo-nutty-choc-15-4g.jpg"
+    "image": "/products/cookies-biscuits-bisconni-cocomo-nutty-choc-15-4g.webp"
   },
   {
     "sku": "cookies-biscuits-lu-gala-egg-biscuits",
@@ -625,7 +625,7 @@
       "hue": 58,
       "glyph": "cookie"
     },
-    "image": "/products/cookies-biscuits-lu-gala-egg-biscuits.jpg"
+    "image": "/products/cookies-biscuits-lu-gala-egg-biscuits.webp"
   },
   {
     "sku": "cookies-biscuits-lu-bakeri-nankhatai",
@@ -641,7 +641,7 @@
       "hue": 204,
       "glyph": "cookie"
     },
-    "image": "/products/cookies-biscuits-lu-bakeri-nankhatai.jpg"
+    "image": "/products/cookies-biscuits-lu-bakeri-nankhatai.webp"
   },
   {
     "sku": "cookies-biscuits-hilal-wispy-mini-cone-strawberry",
@@ -657,7 +657,7 @@
       "hue": 337,
       "glyph": "cookie"
     },
-    "image": "/products/cookies-biscuits-hilal-wispy-mini-cone-strawberry.jpg"
+    "image": "/products/cookies-biscuits-hilal-wispy-mini-cone-strawberry.webp"
   },
   {
     "sku": "candies-jellies-diablo-butter-sweets-sugar-free-gluten-free",
@@ -675,7 +675,7 @@
       "hue": 273,
       "glyph": "candy"
     },
-    "image": "/products/candies-jellies-diablo-butter-sweets-sugar-free-gluten-free.jpg"
+    "image": "/products/candies-jellies-diablo-butter-sweets-sugar-free-gluten-free.webp"
   },
   {
     "sku": "candies-jellies-bandb-peanut-chocolate-beans",
@@ -693,7 +693,7 @@
       "hue": 292,
       "glyph": "candy"
     },
-    "image": "/products/candies-jellies-bandb-peanut-chocolate-beans.jpg"
+    "image": "/products/candies-jellies-bandb-peanut-chocolate-beans.webp"
   },
   {
     "sku": "candies-jellies-polo-original",
@@ -709,7 +709,7 @@
       "hue": 114,
       "glyph": "candy"
     },
-    "image": "/products/candies-jellies-polo-original.jpg"
+    "image": "/products/candies-jellies-polo-original.webp"
   },
   {
     "sku": "candies-jellies-candy-shandy-duck-fat-lollipop",
@@ -725,7 +725,7 @@
       "hue": 141,
       "glyph": "candy"
     },
-    "image": "/products/candies-jellies-candy-shandy-duck-fat-lollipop.jpg"
+    "image": "/products/candies-jellies-candy-shandy-duck-fat-lollipop.webp"
   },
   {
     "sku": "candies-jellies-candy-shandy-gorilla-lollipop",
@@ -741,7 +741,7 @@
       "hue": 190,
       "glyph": "candy"
     },
-    "image": "/products/candies-jellies-candy-shandy-gorilla-lollipop.jpg"
+    "image": "/products/candies-jellies-candy-shandy-gorilla-lollipop.webp"
   },
   {
     "sku": "candies-jellies-candyland-watermelon-jelly",
@@ -757,7 +757,7 @@
       "hue": 314,
       "glyph": "candy"
     },
-    "image": "/products/candies-jellies-candyland-watermelon-jelly.jpg"
+    "image": "/products/candies-jellies-candyland-watermelon-jelly.webp"
   },
   {
     "sku": "candies-jellies-candyland-cola-jelly",
@@ -773,7 +773,7 @@
       "hue": 209,
       "glyph": "candy"
     },
-    "image": "/products/candies-jellies-candyland-cola-jelly.jpg"
+    "image": "/products/candies-jellies-candyland-cola-jelly.webp"
   },
   {
     "sku": "candies-jellies-polo-fruits",
@@ -789,7 +789,7 @@
       "hue": 150,
       "glyph": "candy"
     },
-    "image": "/products/candies-jellies-polo-fruits.jpg"
+    "image": "/products/candies-jellies-polo-fruits.webp"
   },
   {
     "sku": "chocolates-cadbury-roast-almond-milk-chocolate",
@@ -807,7 +807,7 @@
       "hue": 68,
       "glyph": "chocolate"
     },
-    "image": "/products/chocolates-cadbury-roast-almond-milk-chocolate.jpg"
+    "image": "/products/chocolates-cadbury-roast-almond-milk-chocolate.webp"
   },
   {
     "sku": "chocolates-cadbury-bubble-oreo-dairy-milk-chocolate",
@@ -825,7 +825,7 @@
       "hue": 183,
       "glyph": "chocolate"
     },
-    "image": "/products/chocolates-cadbury-bubble-oreo-dairy-milk-chocolate.jpg"
+    "image": "/products/chocolates-cadbury-bubble-oreo-dairy-milk-chocolate.webp"
   },
   {
     "sku": "chocolates-kinder-cards",
@@ -841,7 +841,7 @@
       "hue": 58,
       "glyph": "chocolate"
     },
-    "image": "/products/chocolates-kinder-cards.jpg"
+    "image": "/products/chocolates-kinder-cards.webp"
   },
   {
     "sku": "chocolates-nestle-caramel-and-peanuts-chocolate-bar",
@@ -857,7 +857,7 @@
       "hue": 276,
       "glyph": "chocolate"
     },
-    "image": "/products/chocolates-nestle-caramel-and-peanuts-chocolate-bar.jpg"
+    "image": "/products/chocolates-nestle-caramel-and-peanuts-chocolate-bar.webp"
   },
   {
     "sku": "chocolates-nestle-caramel-chocolate-bar",
@@ -873,7 +873,7 @@
       "hue": 159,
       "glyph": "chocolate"
     },
-    "image": "/products/chocolates-nestle-caramel-chocolate-bar.jpg"
+    "image": "/products/chocolates-nestle-caramel-chocolate-bar.webp"
   },
   {
     "sku": "chocolates-mars-chocolate-5-x",
@@ -889,7 +889,7 @@
       "hue": 112,
       "glyph": "chocolate"
     },
-    "image": "/products/chocolates-mars-chocolate-5-x.jpg"
+    "image": "/products/chocolates-mars-chocolate-5-x.webp"
   },
   {
     "sku": "chocolates-mars-minis",
@@ -905,7 +905,7 @@
       "hue": 333,
       "glyph": "chocolate"
     },
-    "image": "/products/chocolates-mars-minis.jpg"
+    "image": "/products/chocolates-mars-minis.webp"
   },
   {
     "sku": "chocolates-nutella-ferrero-b-ready",
@@ -921,7 +921,7 @@
       "hue": 297,
       "glyph": "chocolate"
     },
-    "image": "/products/chocolates-nutella-ferrero-b-ready.jpg"
+    "image": "/products/chocolates-nutella-ferrero-b-ready.webp"
   },
   {
     "sku": "protein-bars-nutrilov-protein-peanut-butter-chocolate-chip-bar-less-sugar",
@@ -939,7 +939,7 @@
       "hue": 255,
       "glyph": "bar"
     },
-    "image": "/products/protein-bars-nutrilov-protein-peanut-butter-chocolate-chip-bar-less-sugar.jpg"
+    "image": "/products/protein-bars-nutrilov-protein-peanut-butter-chocolate-chip-bar-less-sugar.webp"
   },
   {
     "sku": "protein-bars-reload-coffee-and-almond-granola-bars-high-fiber-and-protein-gluten-free",
@@ -957,7 +957,7 @@
       "hue": 343,
       "glyph": "bar"
     },
-    "image": "/products/protein-bars-reload-coffee-and-almond-granola-bars-high-fiber-and-protein-gluten-free.jpg"
+    "image": "/products/protein-bars-reload-coffee-and-almond-granola-bars-high-fiber-and-protein-gluten-free.webp"
   },
   {
     "sku": "protein-bars-nutrilov-granola-bars-chocolate-brownie",
@@ -973,7 +973,7 @@
       "hue": 143,
       "glyph": "bar"
     },
-    "image": "/products/protein-bars-nutrilov-granola-bars-chocolate-brownie.jpg"
+    "image": "/products/protein-bars-nutrilov-granola-bars-chocolate-brownie.webp"
   },
   {
     "sku": "protein-bars-reload-granola-bar-dark-chocolate-and-nuts-high-fiber-and-protein",
@@ -989,7 +989,7 @@
       "hue": 3,
       "glyph": "bar"
     },
-    "image": "/products/protein-bars-reload-granola-bar-dark-chocolate-and-nuts-high-fiber-and-protein.jpg"
+    "image": "/products/protein-bars-reload-granola-bar-dark-chocolate-and-nuts-high-fiber-and-protein.webp"
   },
   {
     "sku": "tea-sweeteners-lipton-yellow-label-tea",
@@ -1007,7 +1007,7 @@
       "hue": 89,
       "glyph": "cup"
     },
-    "image": "/products/tea-sweeteners-lipton-yellow-label-tea.jpg"
+    "image": "/products/tea-sweeteners-lipton-yellow-label-tea.webp"
   },
   {
     "sku": "tea-sweeteners-lipton-tea-danedar",
@@ -1025,7 +1025,7 @@
       "hue": 333,
       "glyph": "cup"
     },
-    "image": "/products/tea-sweeteners-lipton-tea-danedar.jpg"
+    "image": "/products/tea-sweeteners-lipton-tea-danedar.webp"
   },
   {
     "sku": "tea-sweeteners-tapal-infusion-apple-cinnamon-tea-bags",
@@ -1041,7 +1041,7 @@
       "hue": 288,
       "glyph": "cup"
     },
-    "image": "/products/tea-sweeteners-tapal-infusion-apple-cinnamon-tea-bags.jpg"
+    "image": "/products/tea-sweeteners-tapal-infusion-apple-cinnamon-tea-bags.webp"
   },
   {
     "sku": "tea-sweeteners-tapal-mezban-premier-dust-tea",
@@ -1057,7 +1057,7 @@
       "hue": 249,
       "glyph": "cup"
     },
-    "image": "/products/tea-sweeteners-tapal-mezban-premier-dust-tea.jpg"
+    "image": "/products/tea-sweeteners-tapal-mezban-premier-dust-tea.webp"
   },
   {
     "sku": "tea-sweeteners-vital-fit-fast-enveloped-tea-bags",
@@ -1073,7 +1073,7 @@
       "hue": 173,
       "glyph": "cup"
     },
-    "image": "/products/tea-sweeteners-vital-fit-fast-enveloped-tea-bags.jpg"
+    "image": "/products/tea-sweeteners-vital-fit-fast-enveloped-tea-bags.webp"
   },
   {
     "sku": "tea-sweeteners-vital-sweet-harmony-enveloped-tea-bags",
@@ -1089,7 +1089,7 @@
       "hue": 82,
       "glyph": "cup"
     },
-    "image": "/products/tea-sweeteners-vital-sweet-harmony-enveloped-tea-bags.jpg"
+    "image": "/products/tea-sweeteners-vital-sweet-harmony-enveloped-tea-bags.webp"
   },
   {
     "sku": "tea-sweeteners-nestle-everyday-masala-chai-instant-tea-mix-1-sachet",
@@ -1105,7 +1105,7 @@
       "hue": 30,
       "glyph": "cup"
     },
-    "image": "/products/tea-sweeteners-nestle-everyday-masala-chai-instant-tea-mix-1-sachet.jpg"
+    "image": "/products/tea-sweeteners-nestle-everyday-masala-chai-instant-tea-mix-1-sachet.webp"
   },
   {
     "sku": "tea-sweeteners-canderel-with-stevia-zero-calorie-liquid-sweetener-200-drops",
@@ -1121,7 +1121,7 @@
       "hue": 287,
       "glyph": "cup"
     },
-    "image": "/products/tea-sweeteners-canderel-with-stevia-zero-calorie-liquid-sweetener-200-drops.jpg"
+    "image": "/products/tea-sweeteners-canderel-with-stevia-zero-calorie-liquid-sweetener-200-drops.webp"
   },
   {
     "sku": "coffee-caffe-vero-incanto-coffee",
@@ -1139,7 +1139,7 @@
       "hue": 214,
       "glyph": "cup"
     },
-    "image": "/products/coffee-caffe-vero-incanto-coffee.jpg"
+    "image": "/products/coffee-caffe-vero-incanto-coffee.webp"
   },
   {
     "sku": "coffee-caffe-vero-radici-coffee",
@@ -1157,7 +1157,7 @@
       "hue": 156,
       "glyph": "cup"
     },
-    "image": "/products/coffee-caffe-vero-radici-coffee.jpg"
+    "image": "/products/coffee-caffe-vero-radici-coffee.webp"
   },
   {
     "sku": "coffee-nescafe-gold-blend-smooth-vanilla-instant-coffee",
@@ -1173,7 +1173,7 @@
       "hue": 120,
       "glyph": "cup"
     },
-    "image": "/products/coffee-nescafe-gold-blend-smooth-vanilla-instant-coffee.jpg"
+    "image": "/products/coffee-nescafe-gold-blend-smooth-vanilla-instant-coffee.webp"
   },
   {
     "sku": "coffee-nescafe-gold-blend-rich-caramel-instant-coffee",
@@ -1189,7 +1189,7 @@
       "hue": 298,
       "glyph": "cup"
     },
-    "image": "/products/coffee-nescafe-gold-blend-rich-caramel-instant-coffee.jpg"
+    "image": "/products/coffee-nescafe-gold-blend-rich-caramel-instant-coffee.webp"
   },
   {
     "sku": "coffee-starbucks-sunny-day-blend-coffee-pods-56g",
@@ -1205,7 +1205,7 @@
       "hue": 276,
       "glyph": "cup"
     },
-    "image": "/products/coffee-starbucks-sunny-day-blend-coffee-pods-56g.jpg"
+    "image": "/products/coffee-starbucks-sunny-day-blend-coffee-pods-56g.webp"
   },
   {
     "sku": "coffee-starbucks-italian-style-roast-coffee-pods-56g",
@@ -1221,7 +1221,7 @@
       "hue": 310,
       "glyph": "cup"
     },
-    "image": "/products/coffee-starbucks-italian-style-roast-coffee-pods-56g.jpg"
+    "image": "/products/coffee-starbucks-italian-style-roast-coffee-pods-56g.webp"
   },
   {
     "sku": "coffee-klassno-vietnamese-iced-coffee-drink",
@@ -1237,7 +1237,7 @@
       "hue": 203,
       "glyph": "cup"
     },
-    "image": "/products/coffee-klassno-vietnamese-iced-coffee-drink.jpg"
+    "image": "/products/coffee-klassno-vietnamese-iced-coffee-drink.webp"
   },
   {
     "sku": "coffee-klassno-cappuccino-drink",
@@ -1253,7 +1253,7 @@
       "hue": 94,
       "glyph": "cup"
     },
-    "image": "/products/coffee-klassno-cappuccino-drink.jpg"
+    "image": "/products/coffee-klassno-cappuccino-drink.webp"
   },
   {
     "sku": "cereals-porridge-the-earths-rolled-wheat-whole-grain-cereal",
@@ -1271,7 +1271,7 @@
       "hue": 317,
       "glyph": "cereal"
     },
-    "image": "/products/cereals-porridge-the-earths-rolled-wheat-whole-grain-cereal.jpg"
+    "image": "/products/cereals-porridge-the-earths-rolled-wheat-whole-grain-cereal.webp"
   },
   {
     "sku": "cereals-porridge-nutri-lov-granola-protein-choco-almond-cup",
@@ -1289,7 +1289,7 @@
       "hue": 351,
       "glyph": "cereal"
     },
-    "image": "/products/cereals-porridge-nutri-lov-granola-protein-choco-almond-cup.jpg"
+    "image": "/products/cereals-porridge-nutri-lov-granola-protein-choco-almond-cup.webp"
   },
   {
     "sku": "cereals-porridge-nutri-lov-crunchy-cereal-double-chocolate-cup",
@@ -1305,7 +1305,7 @@
       "hue": 34,
       "glyph": "cereal"
     },
-    "image": "/products/cereals-porridge-nutri-lov-crunchy-cereal-double-chocolate-cup.jpg"
+    "image": "/products/cereals-porridge-nutri-lov-crunchy-cereal-double-chocolate-cup.webp"
   },
   {
     "sku": "cereals-porridge-natures-own-granola-fruit-nut-and-seed",
@@ -1321,7 +1321,7 @@
       "hue": 349,
       "glyph": "cereal"
     },
-    "image": "/products/cereals-porridge-natures-own-granola-fruit-nut-and-seed.jpg"
+    "image": "/products/cereals-porridge-natures-own-granola-fruit-nut-and-seed.webp"
   },
   {
     "sku": "cereals-porridge-natures-own-granola-classic-oat-clusters",
@@ -1337,7 +1337,7 @@
       "hue": 128,
       "glyph": "cereal"
     },
-    "image": "/products/cereals-porridge-natures-own-granola-classic-oat-clusters.jpg"
+    "image": "/products/cereals-porridge-natures-own-granola-classic-oat-clusters.webp"
   },
   {
     "sku": "cereals-porridge-nestle-cerelac-natures-selection-multigrain-mango-pineapple",
@@ -1353,7 +1353,7 @@
       "hue": 208,
       "glyph": "cereal"
     },
-    "image": "/products/cereals-porridge-nestle-cerelac-natures-selection-multigrain-mango-pineapple.jpg"
+    "image": "/products/cereals-porridge-nestle-cerelac-natures-selection-multigrain-mango-pineapple.webp"
   },
   {
     "sku": "cereals-porridge-the-earths-classic-rolled-barley-whole-grain-cereal",
@@ -1369,7 +1369,7 @@
       "hue": 90,
       "glyph": "cereal"
     },
-    "image": "/products/cereals-porridge-the-earths-classic-rolled-barley-whole-grain-cereal.jpg"
+    "image": "/products/cereals-porridge-the-earths-classic-rolled-barley-whole-grain-cereal.webp"
   },
   {
     "sku": "cereals-porridge-nestle-koko-krunch",
@@ -1385,7 +1385,7 @@
       "hue": 278,
       "glyph": "cereal"
     },
-    "image": "/products/cereals-porridge-nestle-koko-krunch.jpg"
+    "image": "/products/cereals-porridge-nestle-koko-krunch.webp"
   },
   {
     "sku": "spreads-honey-jams-hamdard-honey",
@@ -1403,7 +1403,7 @@
       "hue": 289,
       "glyph": "jar"
     },
-    "image": "/products/spreads-honey-jams-hamdard-honey.jpg"
+    "image": "/products/spreads-honey-jams-hamdard-honey.webp"
   },
   {
     "sku": "spreads-honey-jams-haut-notch-100-natural-blossom-honey",
@@ -1421,7 +1421,7 @@
       "hue": 345,
       "glyph": "jar"
     },
-    "image": "/products/spreads-honey-jams-haut-notch-100-natural-blossom-honey.jpg"
+    "image": "/products/spreads-honey-jams-haut-notch-100-natural-blossom-honey.webp"
   },
   {
     "sku": "spreads-honey-jams-hamdard-honey-100-natural",
@@ -1437,7 +1437,7 @@
       "hue": 323,
       "glyph": "jar"
     },
-    "image": "/products/spreads-honey-jams-hamdard-honey-100-natural.jpg"
+    "image": "/products/spreads-honey-jams-hamdard-honey-100-natural.webp"
   },
   {
     "sku": "spreads-honey-jams-youngs-honey",
@@ -1453,7 +1453,7 @@
       "hue": 3,
       "glyph": "jar"
     },
-    "image": "/products/spreads-honey-jams-youngs-honey.jpg"
+    "image": "/products/spreads-honey-jams-youngs-honey.webp"
   },
   {
     "sku": "spreads-honey-jams-mitchells-strawberry-jelly",
@@ -1469,7 +1469,7 @@
       "hue": 36,
       "glyph": "jar"
     },
-    "image": "/products/spreads-honey-jams-mitchells-strawberry-jelly.jpg"
+    "image": "/products/spreads-honey-jams-mitchells-strawberry-jelly.webp"
   },
   {
     "sku": "spreads-honey-jams-youngs-peanut-butter-creamy",
@@ -1485,7 +1485,7 @@
       "hue": 80,
       "glyph": "jar"
     },
-    "image": "/products/spreads-honey-jams-youngs-peanut-butter-creamy.jpg"
+    "image": "/products/spreads-honey-jams-youngs-peanut-butter-creamy.webp"
   },
   {
     "sku": "spreads-honey-jams-diablo-no-added-sugar-crunchy-peanut-butter",
@@ -1501,7 +1501,7 @@
       "hue": 325,
       "glyph": "jar"
     },
-    "image": "/products/spreads-honey-jams-diablo-no-added-sugar-crunchy-peanut-butter.jpg"
+    "image": "/products/spreads-honey-jams-diablo-no-added-sugar-crunchy-peanut-butter.webp"
   },
   {
     "sku": "spreads-honey-jams-diablo-no-added-sugar-smooth-peanut-butter",
@@ -1517,7 +1517,7 @@
       "hue": 259,
       "glyph": "jar"
     },
-    "image": "/products/spreads-honey-jams-diablo-no-added-sugar-smooth-peanut-butter.jpg"
+    "image": "/products/spreads-honey-jams-diablo-no-added-sugar-smooth-peanut-butter.webp"
   },
   {
     "sku": "packed-milk-almarai-mango-laban",
@@ -1535,7 +1535,7 @@
       "hue": 109,
       "glyph": "carton"
     },
-    "image": "/products/packed-milk-almarai-mango-laban.jpg"
+    "image": "/products/packed-milk-almarai-mango-laban.webp"
   },
   {
     "sku": "packed-milk-almarai-strawberry-laban",
@@ -1553,7 +1553,7 @@
       "hue": 298,
       "glyph": "carton"
     },
-    "image": "/products/packed-milk-almarai-strawberry-laban.jpg"
+    "image": "/products/packed-milk-almarai-strawberry-laban.webp"
   },
   {
     "sku": "packed-milk-day-fresh-very-very-strawberry-milk",
@@ -1569,7 +1569,7 @@
       "hue": 317,
       "glyph": "carton"
     },
-    "image": "/products/packed-milk-day-fresh-very-very-strawberry-milk.jpg"
+    "image": "/products/packed-milk-day-fresh-very-very-strawberry-milk.webp"
   },
   {
     "sku": "packed-milk-day-fresh-lets-date-chocolate-milk",
@@ -1585,7 +1585,7 @@
       "hue": 54,
       "glyph": "carton"
     },
-    "image": "/products/packed-milk-day-fresh-lets-date-chocolate-milk.jpg"
+    "image": "/products/packed-milk-day-fresh-lets-date-chocolate-milk.webp"
   },
   {
     "sku": "packed-milk-olpers-chocolate-flavored-milk",
@@ -1601,7 +1601,7 @@
       "hue": 240,
       "glyph": "carton"
     },
-    "image": "/products/packed-milk-olpers-chocolate-flavored-milk.jpg"
+    "image": "/products/packed-milk-olpers-chocolate-flavored-milk.webp"
   },
   {
     "sku": "packed-milk-polac-evaporated-milk",
@@ -1617,7 +1617,7 @@
       "hue": 285,
       "glyph": "carton"
     },
-    "image": "/products/packed-milk-polac-evaporated-milk.jpg"
+    "image": "/products/packed-milk-polac-evaporated-milk.webp"
   },
   {
     "sku": "packed-milk-olpers-chaunsa-mango-flavoured-milk",
@@ -1633,7 +1633,7 @@
       "hue": 277,
       "glyph": "carton"
     },
-    "image": "/products/packed-milk-olpers-chaunsa-mango-flavoured-milk.jpg"
+    "image": "/products/packed-milk-olpers-chaunsa-mango-flavoured-milk.webp"
   },
   {
     "sku": "packed-milk-haleeb-milk",
@@ -1649,7 +1649,7 @@
       "hue": 207,
       "glyph": "carton"
     },
-    "image": "/products/packed-milk-haleeb-milk.jpg"
+    "image": "/products/packed-milk-haleeb-milk.webp"
   },
   {
     "sku": "powdered-milk-nido-instant-full-cream-milk-powder",
@@ -1667,7 +1667,7 @@
       "hue": 101,
       "glyph": "tin"
     },
-    "image": "/products/powdered-milk-nido-instant-full-cream-milk-powder.jpg"
+    "image": "/products/powdered-milk-nido-instant-full-cream-milk-powder.webp"
   },
   {
     "sku": "powdered-milk-millac-gro-milk-powder",
@@ -1685,7 +1685,7 @@
       "hue": 245,
       "glyph": "tin"
     },
-    "image": "/products/powdered-milk-millac-gro-milk-powder.jpg"
+    "image": "/products/powdered-milk-millac-gro-milk-powder.webp"
   },
   {
     "sku": "powdered-milk-nestle-bunyad-milk-powder",
@@ -1701,7 +1701,7 @@
       "hue": 21,
       "glyph": "tin"
     },
-    "image": "/products/powdered-milk-nestle-bunyad-milk-powder.jpg"
+    "image": "/products/powdered-milk-nestle-bunyad-milk-powder.webp"
   },
   {
     "sku": "powdered-milk-comelle-full-cream-milk-powder",
@@ -1717,7 +1717,7 @@
       "hue": 208,
       "glyph": "tin"
     },
-    "image": "/products/powdered-milk-comelle-full-cream-milk-powder.jpg"
+    "image": "/products/powdered-milk-comelle-full-cream-milk-powder.webp"
   },
   {
     "sku": "powdered-milk-skimillac-milk-powder",
@@ -1733,7 +1733,7 @@
       "hue": 39,
       "glyph": "tin"
     },
-    "image": "/products/powdered-milk-skimillac-milk-powder.jpg"
+    "image": "/products/powdered-milk-skimillac-milk-powder.webp"
   },
   {
     "sku": "powdered-milk-millac-milk-powder",
@@ -1749,7 +1749,7 @@
       "hue": 22,
       "glyph": "tin"
     },
-    "image": "/products/powdered-milk-millac-milk-powder.jpg"
+    "image": "/products/powdered-milk-millac-milk-powder.webp"
   },
   {
     "sku": "condensed-milk-comelle-sweetened-condensed-milk-jar",
@@ -1767,7 +1767,7 @@
       "hue": 109,
       "glyph": "tin"
     },
-    "image": "/products/condensed-milk-comelle-sweetened-condensed-milk-jar.jpg"
+    "image": "/products/condensed-milk-comelle-sweetened-condensed-milk-jar.webp"
   },
   {
     "sku": "condensed-milk-millac-sweetened-condensed-filled-milk-original",
@@ -1785,7 +1785,7 @@
       "hue": 119,
       "glyph": "tin"
     },
-    "image": "/products/condensed-milk-millac-sweetened-condensed-filled-milk-original.jpg"
+    "image": "/products/condensed-milk-millac-sweetened-condensed-filled-milk-original.webp"
   },
   {
     "sku": "condensed-milk-polac-sweetened-condensed-filled-milk",
@@ -1801,7 +1801,7 @@
       "hue": 154,
       "glyph": "tin"
     },
-    "image": "/products/condensed-milk-polac-sweetened-condensed-filled-milk.jpg"
+    "image": "/products/condensed-milk-polac-sweetened-condensed-filled-milk.webp"
   },
   {
     "sku": "condensed-milk-fruitamins-sweetened-condensed-milk",
@@ -1817,7 +1817,7 @@
       "hue": 198,
       "glyph": "tin"
     },
-    "image": "/products/condensed-milk-fruitamins-sweetened-condensed-milk.jpg"
+    "image": "/products/condensed-milk-fruitamins-sweetened-condensed-milk.webp"
   },
   {
     "sku": "condensed-milk-comelle-condensed-milk",
@@ -1833,7 +1833,7 @@
       "hue": 40,
       "glyph": "tin"
     },
-    "image": "/products/condensed-milk-comelle-condensed-milk.jpg"
+    "image": "/products/condensed-milk-comelle-condensed-milk.webp"
   },
   {
     "sku": "soft-drinks-coca-cola-1-5-liters",
@@ -1851,7 +1851,7 @@
       "hue": 74,
       "glyph": "bottle"
     },
-    "image": "/products/soft-drinks-coca-cola-1-5-liters.jpg"
+    "image": "/products/soft-drinks-coca-cola-1-5-liters.webp"
   },
   {
     "sku": "soft-drinks-sprite-1-5-liters",
@@ -1869,7 +1869,7 @@
       "hue": 213,
       "glyph": "bottle"
     },
-    "image": "/products/soft-drinks-sprite-1-5-liters.jpg"
+    "image": "/products/soft-drinks-sprite-1-5-liters.webp"
   },
   {
     "sku": "soft-drinks-fanta-orange-2-25-liters",
@@ -1885,7 +1885,7 @@
       "hue": 160,
       "glyph": "bottle"
     },
-    "image": "/products/soft-drinks-fanta-orange-2-25-liters.jpg"
+    "image": "/products/soft-drinks-fanta-orange-2-25-liters.webp"
   },
   {
     "sku": "soft-drinks-kinza-soda-sparkling-water",
@@ -1901,7 +1901,7 @@
       "hue": 147,
       "glyph": "bottle"
     },
-    "image": "/products/soft-drinks-kinza-soda-sparkling-water.jpg"
+    "image": "/products/soft-drinks-kinza-soda-sparkling-water.webp"
   },
   {
     "sku": "soft-drinks-kinza-pomegranate-carbonated-drink",
@@ -1917,7 +1917,7 @@
       "hue": 72,
       "glyph": "bottle"
     },
-    "image": "/products/soft-drinks-kinza-pomegranate-carbonated-drink.jpg"
+    "image": "/products/soft-drinks-kinza-pomegranate-carbonated-drink.webp"
   },
   {
     "sku": "soft-drinks-glinter-grapefruit-sparkling-drink-can",
@@ -1933,7 +1933,7 @@
       "hue": 331,
       "glyph": "bottle"
     },
-    "image": "/products/soft-drinks-glinter-grapefruit-sparkling-drink-can.jpg"
+    "image": "/products/soft-drinks-glinter-grapefruit-sparkling-drink-can.webp"
   },
   {
     "sku": "soft-drinks-glinter-passion-fruit-sparkling-drink-can",
@@ -1949,7 +1949,7 @@
       "hue": 262,
       "glyph": "bottle"
     },
-    "image": "/products/soft-drinks-glinter-passion-fruit-sparkling-drink-can.jpg"
+    "image": "/products/soft-drinks-glinter-passion-fruit-sparkling-drink-can.webp"
   },
   {
     "sku": "soft-drinks-sprite-zero-pet-bottle",
@@ -1965,7 +1965,7 @@
       "hue": 223,
       "glyph": "bottle"
     },
-    "image": "/products/soft-drinks-sprite-zero-pet-bottle.jpg"
+    "image": "/products/soft-drinks-sprite-zero-pet-bottle.webp"
   },
   {
     "sku": "powdered-masalas-shan-special-bombay-biryani-recipe-masala-double-pack",
@@ -1983,7 +1983,7 @@
       "hue": 30,
       "glyph": "spice"
     },
-    "image": "/products/powdered-masalas-shan-special-bombay-biryani-recipe-masala-double-pack.jpg"
+    "image": "/products/powdered-masalas-shan-special-bombay-biryani-recipe-masala-double-pack.webp"
   },
   {
     "sku": "powdered-masalas-shan-bombay-biryani-recipe-masala",
@@ -2001,7 +2001,7 @@
       "hue": 216,
       "glyph": "spice"
     },
-    "image": "/products/powdered-masalas-shan-bombay-biryani-recipe-masala.jpg"
+    "image": "/products/powdered-masalas-shan-bombay-biryani-recipe-masala.webp"
   },
   {
     "sku": "powdered-masalas-chefs-pride-achar-gosht-spice-mix-masala",
@@ -2017,7 +2017,7 @@
       "hue": 217,
       "glyph": "spice"
     },
-    "image": "/products/powdered-masalas-chefs-pride-achar-gosht-spice-mix-masala.jpg"
+    "image": "/products/powdered-masalas-chefs-pride-achar-gosht-spice-mix-masala.webp"
   },
   {
     "sku": "powdered-masalas-national-foods-curry-powder-recipe-mix",
@@ -2033,7 +2033,7 @@
       "hue": 321,
       "glyph": "spice"
     },
-    "image": "/products/powdered-masalas-national-foods-curry-powder-recipe-mix.jpg"
+    "image": "/products/powdered-masalas-national-foods-curry-powder-recipe-mix.webp"
   },
   {
     "sku": "powdered-masalas-national-foods-balochi-tikka-recipe-mix",
@@ -2049,7 +2049,7 @@
       "hue": 73,
       "glyph": "spice"
     },
-    "image": "/products/powdered-masalas-national-foods-balochi-tikka-recipe-mix.jpg"
+    "image": "/products/powdered-masalas-national-foods-balochi-tikka-recipe-mix.webp"
   },
   {
     "sku": "powdered-masalas-italiano-nutmeg-powder",
@@ -2065,7 +2065,7 @@
       "hue": 81,
       "glyph": "spice"
     },
-    "image": "/products/powdered-masalas-italiano-nutmeg-powder.jpg"
+    "image": "/products/powdered-masalas-italiano-nutmeg-powder.webp"
   },
   {
     "sku": "powdered-masalas-italiano-pasta-seasoning-mix-salt-free",
@@ -2081,7 +2081,7 @@
       "hue": 247,
       "glyph": "spice"
     },
-    "image": "/products/powdered-masalas-italiano-pasta-seasoning-mix-salt-free.jpg"
+    "image": "/products/powdered-masalas-italiano-pasta-seasoning-mix-salt-free.webp"
   },
   {
     "sku": "powdered-masalas-hamdard-red-chilli-powder",
@@ -2097,7 +2097,7 @@
       "hue": 202,
       "glyph": "spice"
     },
-    "image": "/products/powdered-masalas-hamdard-red-chilli-powder.jpg"
+    "image": "/products/powdered-masalas-hamdard-red-chilli-powder.webp"
   },
   {
     "sku": "sauces-syrups-italiano-strawberry-jelly-zero-sugar-gelatin-free",
@@ -2115,7 +2115,7 @@
       "hue": 127,
       "glyph": "bottle"
     },
-    "image": "/products/sauces-syrups-italiano-strawberry-jelly-zero-sugar-gelatin-free.jpg"
+    "image": "/products/sauces-syrups-italiano-strawberry-jelly-zero-sugar-gelatin-free.webp"
   },
   {
     "sku": "sauces-syrups-italiano-pineapple-jelly-zero-sugar-gelatin-free",
@@ -2133,7 +2133,7 @@
       "hue": 274,
       "glyph": "bottle"
     },
-    "image": "/products/sauces-syrups-italiano-pineapple-jelly-zero-sugar-gelatin-free.jpg"
+    "image": "/products/sauces-syrups-italiano-pineapple-jelly-zero-sugar-gelatin-free.webp"
   },
   {
     "sku": "sauces-syrups-youngs-crave-chocolate-topping",
@@ -2149,7 +2149,7 @@
       "hue": 19,
       "glyph": "bottle"
     },
-    "image": "/products/sauces-syrups-youngs-crave-chocolate-topping.jpg"
+    "image": "/products/sauces-syrups-youngs-crave-chocolate-topping.webp"
   },
   {
     "sku": "sauces-syrups-hamdard-rooh-keri-naturally-refreshing-drink",
@@ -2165,7 +2165,7 @@
       "hue": 227,
       "glyph": "bottle"
     },
-    "image": "/products/sauces-syrups-hamdard-rooh-keri-naturally-refreshing-drink.jpg"
+    "image": "/products/sauces-syrups-hamdard-rooh-keri-naturally-refreshing-drink.webp"
   },
   {
     "sku": "sauces-syrups-hamdard-rooh-anaar-naturally-refreshing-drink",
@@ -2181,7 +2181,7 @@
       "hue": 347,
       "glyph": "bottle"
     },
-    "image": "/products/sauces-syrups-hamdard-rooh-anaar-naturally-refreshing-drink.jpg"
+    "image": "/products/sauces-syrups-hamdard-rooh-anaar-naturally-refreshing-drink.webp"
   },
   {
     "sku": "sauces-syrups-shezan-lemon-squash",
@@ -2197,7 +2197,7 @@
       "hue": 268,
       "glyph": "bottle"
     },
-    "image": "/products/sauces-syrups-shezan-lemon-squash.jpg"
+    "image": "/products/sauces-syrups-shezan-lemon-squash.webp"
   },
   {
     "sku": "sauces-syrups-shezan-orange-squash",
@@ -2213,7 +2213,7 @@
       "hue": 53,
       "glyph": "bottle"
     },
-    "image": "/products/sauces-syrups-shezan-orange-squash.jpg"
+    "image": "/products/sauces-syrups-shezan-orange-squash.webp"
   },
   {
     "sku": "sauces-syrups-mitchells-lemon-barley-squash",
@@ -2229,7 +2229,7 @@
       "hue": 270,
       "glyph": "bottle"
     },
-    "image": "/products/sauces-syrups-mitchells-lemon-barley-squash.jpg"
+    "image": "/products/sauces-syrups-mitchells-lemon-barley-squash.webp"
   },
   {
     "sku": "noodles-pasta-knorr-noodles-chicken-full-meal",
@@ -2247,7 +2247,7 @@
       "hue": 95,
       "glyph": "noodles"
     },
-    "image": "/products/noodles-pasta-knorr-noodles-chicken-full-meal.jpg"
+    "image": "/products/noodles-pasta-knorr-noodles-chicken-full-meal.webp"
   },
   {
     "sku": "noodles-pasta-knorr-chatt-patta-noodles",
@@ -2265,7 +2265,7 @@
       "hue": 315,
       "glyph": "noodles"
     },
-    "image": "/products/noodles-pasta-knorr-chatt-patta-noodles.jpg"
+    "image": "/products/noodles-pasta-knorr-chatt-patta-noodles.webp"
   },
   {
     "sku": "noodles-pasta-shan-shoop-noodles-chattpata",
@@ -2281,7 +2281,7 @@
       "hue": 100,
       "glyph": "noodles"
     },
-    "image": "/products/noodles-pasta-shan-shoop-noodles-chattpata.jpg"
+    "image": "/products/noodles-pasta-shan-shoop-noodles-chattpata.webp"
   },
   {
     "sku": "noodles-pasta-tabasco-ramen-savory-spiced-beef-instant-noodle",
@@ -2297,7 +2297,7 @@
       "hue": 158,
       "glyph": "noodles"
     },
-    "image": "/products/noodles-pasta-tabasco-ramen-savory-spiced-beef-instant-noodle.jpg"
+    "image": "/products/noodles-pasta-tabasco-ramen-savory-spiced-beef-instant-noodle.webp"
   },
   {
     "sku": "noodles-pasta-tabasco-ramen-hot-and-spicy-chicken-delight-instant-noodle",
@@ -2313,7 +2313,7 @@
       "hue": 320,
       "glyph": "noodles"
     },
-    "image": "/products/noodles-pasta-tabasco-ramen-hot-and-spicy-chicken-delight-instant-noodle.jpg"
+    "image": "/products/noodles-pasta-tabasco-ramen-hot-and-spicy-chicken-delight-instant-noodle.webp"
   },
   {
     "sku": "noodles-pasta-shan-shoop-full-meal-spicy-chicken-noodles",
@@ -2329,7 +2329,7 @@
       "hue": 252,
       "glyph": "noodles"
     },
-    "image": "/products/noodles-pasta-shan-shoop-full-meal-spicy-chicken-noodles.jpg"
+    "image": "/products/noodles-pasta-shan-shoop-full-meal-spicy-chicken-noodles.webp"
   },
   {
     "sku": "noodles-pasta-bake-parlor-alfredo-white-sauce-pasta",
@@ -2345,7 +2345,7 @@
       "hue": 240,
       "glyph": "noodles"
     },
-    "image": "/products/noodles-pasta-bake-parlor-alfredo-white-sauce-pasta.jpg"
+    "image": "/products/noodles-pasta-bake-parlor-alfredo-white-sauce-pasta.webp"
   },
   {
     "sku": "noodles-pasta-bake-parlor-chicken-ginger-macaroni",
@@ -2361,7 +2361,7 @@
       "hue": 352,
       "glyph": "noodles"
     },
-    "image": "/products/noodles-pasta-bake-parlor-chicken-ginger-macaroni.jpg"
+    "image": "/products/noodles-pasta-bake-parlor-chicken-ginger-macaroni.webp"
   },
   {
     "sku": "baking-desserts-tid-eaz-butter-paper-pre-cut-sheets-24-pack",
@@ -2379,7 +2379,7 @@
       "hue": 295,
       "glyph": "whisk"
     },
-    "image": "/products/baking-desserts-tid-eaz-butter-paper-pre-cut-sheets-24-pack.jpg"
+    "image": "/products/baking-desserts-tid-eaz-butter-paper-pre-cut-sheets-24-pack.webp"
   },
   {
     "sku": "baking-desserts-tid-eaz-ez-baking-non-stick-baking-paper",
@@ -2397,7 +2397,7 @@
       "hue": 236,
       "glyph": "whisk"
     },
-    "image": "/products/baking-desserts-tid-eaz-ez-baking-non-stick-baking-paper.jpg"
+    "image": "/products/baking-desserts-tid-eaz-ez-baking-non-stick-baking-paper.webp"
   },
   {
     "sku": "baking-desserts-italiano-chocolate-chip-cookie-mix",
@@ -2413,7 +2413,7 @@
       "hue": 211,
       "glyph": "whisk"
     },
-    "image": "/products/baking-desserts-italiano-chocolate-chip-cookie-mix.jpg"
+    "image": "/products/baking-desserts-italiano-chocolate-chip-cookie-mix.webp"
   },
   {
     "sku": "baking-desserts-italiano-premium-mix-lava-cake-chocolate",
@@ -2429,7 +2429,7 @@
       "hue": 149,
       "glyph": "whisk"
     },
-    "image": "/products/baking-desserts-italiano-premium-mix-lava-cake-chocolate.jpg"
+    "image": "/products/baking-desserts-italiano-premium-mix-lava-cake-chocolate.webp"
   },
   {
     "sku": "baking-desserts-canderel-zero-calorie-liquid-sweetener-200-drops",
@@ -2445,7 +2445,7 @@
       "hue": 23,
       "glyph": "whisk"
     },
-    "image": "/products/baking-desserts-canderel-zero-calorie-liquid-sweetener-200-drops.jpg"
+    "image": "/products/baking-desserts-canderel-zero-calorie-liquid-sweetener-200-drops.webp"
   },
   {
     "sku": "baking-desserts-klassno-hot-chocolate-3-in-1-instant-drink-sachet",
@@ -2461,7 +2461,7 @@
       "hue": 92,
       "glyph": "whisk"
     },
-    "image": "/products/baking-desserts-klassno-hot-chocolate-3-in-1-instant-drink-sachet.jpg"
+    "image": "/products/baking-desserts-klassno-hot-chocolate-3-in-1-instant-drink-sachet.webp"
   },
   {
     "sku": "baking-desserts-shangrila-lemon-juice",
@@ -2477,7 +2477,7 @@
       "hue": 352,
       "glyph": "whisk"
     },
-    "image": "/products/baking-desserts-shangrila-lemon-juice.jpg"
+    "image": "/products/baking-desserts-shangrila-lemon-juice.webp"
   },
   {
     "sku": "baking-desserts-hamdard-rooh-afza-custard",
@@ -2493,7 +2493,7 @@
       "hue": 202,
       "glyph": "whisk"
     },
-    "image": "/products/baking-desserts-hamdard-rooh-afza-custard.jpg"
+    "image": "/products/baking-desserts-hamdard-rooh-afza-custard.webp"
   },
   {
     "sku": "pickles-ketchups-shan-tamarind-chutney",
@@ -2511,7 +2511,7 @@
       "hue": 127,
       "glyph": "jar"
     },
-    "image": "/products/pickles-ketchups-shan-tamarind-chutney.jpg"
+    "image": "/products/pickles-ketchups-shan-tamarind-chutney.webp"
   },
   {
     "sku": "pickles-ketchups-shan-garlic-pickle",
@@ -2529,7 +2529,7 @@
       "hue": 129,
       "glyph": "jar"
     },
-    "image": "/products/pickles-ketchups-shan-garlic-pickle.jpg"
+    "image": "/products/pickles-ketchups-shan-garlic-pickle.webp"
   },
   {
     "sku": "pickles-ketchups-youngs-olive-oil-mayonnaise",
@@ -2545,7 +2545,7 @@
       "hue": 28,
       "glyph": "jar"
     },
-    "image": "/products/pickles-ketchups-youngs-olive-oil-mayonnaise.jpg"
+    "image": "/products/pickles-ketchups-youngs-olive-oil-mayonnaise.webp"
   },
   {
     "sku": "pickles-ketchups-mitchells-eureka-lemon-pickle",
@@ -2561,7 +2561,7 @@
       "hue": 95,
       "glyph": "jar"
     },
-    "image": "/products/pickles-ketchups-mitchells-eureka-lemon-pickle.jpg"
+    "image": "/products/pickles-ketchups-mitchells-eureka-lemon-pickle.webp"
   },
   {
     "sku": "pickles-ketchups-american-garden-baked-beans-in-tomato-sauce",
@@ -2577,7 +2577,7 @@
       "hue": 130,
       "glyph": "jar"
     },
-    "image": "/products/pickles-ketchups-american-garden-baked-beans-in-tomato-sauce.jpg"
+    "image": "/products/pickles-ketchups-american-garden-baked-beans-in-tomato-sauce.webp"
   },
   {
     "sku": "pickles-ketchups-shangrila-sweet-mustard-bbq-sauce",
@@ -2593,7 +2593,7 @@
       "hue": 40,
       "glyph": "jar"
     },
-    "image": "/products/pickles-ketchups-shangrila-sweet-mustard-bbq-sauce.jpg"
+    "image": "/products/pickles-ketchups-shangrila-sweet-mustard-bbq-sauce.webp"
   },
   {
     "sku": "pickles-ketchups-knorr-green-chutney",
@@ -2609,7 +2609,7 @@
       "hue": 94,
       "glyph": "jar"
     },
-    "image": "/products/pickles-ketchups-knorr-green-chutney.jpg"
+    "image": "/products/pickles-ketchups-knorr-green-chutney.webp"
   },
   {
     "sku": "pickles-ketchups-mitchells-green-chilli-pickle",
@@ -2625,7 +2625,7 @@
       "hue": 273,
       "glyph": "jar"
     },
-    "image": "/products/pickles-ketchups-mitchells-green-chilli-pickle.jpg"
+    "image": "/products/pickles-ketchups-mitchells-green-chilli-pickle.webp"
   },
   {
     "sku": "spreads-chinese-sauces-shan-ginger-garlic-paste-bottle",
@@ -2643,7 +2643,7 @@
       "hue": 32,
       "glyph": "bottle"
     },
-    "image": "/products/spreads-chinese-sauces-shan-ginger-garlic-paste-bottle.jpg"
+    "image": "/products/spreads-chinese-sauces-shan-ginger-garlic-paste-bottle.webp"
   },
   {
     "sku": "spreads-chinese-sauces-chefs-pride-ginger-garlic-paste",
@@ -2661,7 +2661,7 @@
       "hue": 37,
       "glyph": "bottle"
     },
-    "image": "/products/spreads-chinese-sauces-chefs-pride-ginger-garlic-paste.jpg"
+    "image": "/products/spreads-chinese-sauces-chefs-pride-ginger-garlic-paste.webp"
   },
   {
     "sku": "spreads-chinese-sauces-shangrila-thai-sweet-chilli-sauce",
@@ -2677,7 +2677,7 @@
       "hue": 294,
       "glyph": "bottle"
     },
-    "image": "/products/spreads-chinese-sauces-shangrila-thai-sweet-chilli-sauce.jpg"
+    "image": "/products/spreads-chinese-sauces-shangrila-thai-sweet-chilli-sauce.webp"
   },
   {
     "sku": "spreads-chinese-sauces-national-drizzl-american-classic-burger-sauce",
@@ -2693,7 +2693,7 @@
       "hue": 187,
       "glyph": "bottle"
     },
-    "image": "/products/spreads-chinese-sauces-national-drizzl-american-classic-burger-sauce.jpg"
+    "image": "/products/spreads-chinese-sauces-national-drizzl-american-classic-burger-sauce.webp"
   },
   {
     "sku": "spreads-chinese-sauces-mitchells-ginger-garlic-paste",
@@ -2709,7 +2709,7 @@
       "hue": 146,
       "glyph": "bottle"
     },
-    "image": "/products/spreads-chinese-sauces-mitchells-ginger-garlic-paste.jpg"
+    "image": "/products/spreads-chinese-sauces-mitchells-ginger-garlic-paste.webp"
   },
   {
     "sku": "spreads-chinese-sauces-shangrila-korean-hot-sauce-hot-chicken-flavour",
@@ -2725,7 +2725,7 @@
       "hue": 173,
       "glyph": "bottle"
     },
-    "image": "/products/spreads-chinese-sauces-shangrila-korean-hot-sauce-hot-chicken-flavour.jpg"
+    "image": "/products/spreads-chinese-sauces-shangrila-korean-hot-sauce-hot-chicken-flavour.webp"
   },
   {
     "sku": "spreads-chinese-sauces-arizona-fields-oyster-sauce",
@@ -2741,7 +2741,7 @@
       "hue": 218,
       "glyph": "bottle"
     },
-    "image": "/products/spreads-chinese-sauces-arizona-fields-oyster-sauce.jpg"
+    "image": "/products/spreads-chinese-sauces-arizona-fields-oyster-sauce.webp"
   },
   {
     "sku": "spreads-chinese-sauces-arizona-fields-sambal-oelek",
@@ -2757,7 +2757,7 @@
       "hue": 323,
       "glyph": "bottle"
     },
-    "image": "/products/spreads-chinese-sauces-arizona-fields-sambal-oelek.jpg"
+    "image": "/products/spreads-chinese-sauces-arizona-fields-sambal-oelek.webp"
   },
   {
     "sku": "canned-fruit-veg-haut-notch-light-chunks-tuna-in-sun-flower-oil",
@@ -2775,7 +2775,7 @@
       "hue": 85,
       "glyph": "can"
     },
-    "image": "/products/canned-fruit-veg-haut-notch-light-chunks-tuna-in-sun-flower-oil.jpg"
+    "image": "/products/canned-fruit-veg-haut-notch-light-chunks-tuna-in-sun-flower-oil.webp"
   },
   {
     "sku": "canned-fruit-veg-arizona-fields-cream-style-corn",
@@ -2793,7 +2793,7 @@
       "hue": 51,
       "glyph": "can"
     },
-    "image": "/products/canned-fruit-veg-arizona-fields-cream-style-corn.jpg"
+    "image": "/products/canned-fruit-veg-arizona-fields-cream-style-corn.webp"
   },
   {
     "sku": "canned-fruit-veg-mitchells-sweet-corn",
@@ -2809,7 +2809,7 @@
       "hue": 230,
       "glyph": "can"
     },
-    "image": "/products/canned-fruit-veg-mitchells-sweet-corn.jpg"
+    "image": "/products/canned-fruit-veg-mitchells-sweet-corn.webp"
   },
   {
     "sku": "canned-fruit-veg-pepe-jalapeno-nacho-sliced-green",
@@ -2825,7 +2825,7 @@
       "hue": 265,
       "glyph": "can"
     },
-    "image": "/products/canned-fruit-veg-pepe-jalapeno-nacho-sliced-green.jpg"
+    "image": "/products/canned-fruit-veg-pepe-jalapeno-nacho-sliced-green.webp"
   },
   {
     "sku": "canned-fruit-veg-heinz-baked-beans",
@@ -2841,7 +2841,7 @@
       "hue": 323,
       "glyph": "can"
     },
-    "image": "/products/canned-fruit-veg-heinz-baked-beans.jpg"
+    "image": "/products/canned-fruit-veg-heinz-baked-beans.webp"
   },
   {
     "sku": "canned-fruit-veg-fruitamins-sweet-corn",
@@ -2857,7 +2857,7 @@
       "hue": 71,
       "glyph": "can"
     },
-    "image": "/products/canned-fruit-veg-fruitamins-sweet-corn.jpg"
+    "image": "/products/canned-fruit-veg-fruitamins-sweet-corn.webp"
   },
   {
     "sku": "canned-fruit-veg-arizona-fields-chick-peas",
@@ -2873,7 +2873,7 @@
       "hue": 52,
       "glyph": "can"
     },
-    "image": "/products/canned-fruit-veg-arizona-fields-chick-peas.jpg"
+    "image": "/products/canned-fruit-veg-arizona-fields-chick-peas.webp"
   },
   {
     "sku": "canned-fruit-veg-polac-pineapple-slices-in-heavy-syrup",
@@ -2889,7 +2889,7 @@
       "hue": 273,
       "glyph": "can"
     },
-    "image": "/products/canned-fruit-veg-polac-pineapple-slices-in-heavy-syrup.jpg"
+    "image": "/products/canned-fruit-veg-polac-pineapple-slices-in-heavy-syrup.webp"
   },
   {
     "sku": "mushrooms-olives-oils-heinz-mushroom-pieces-and-stems-tin",
@@ -2907,7 +2907,7 @@
       "hue": 222,
       "glyph": "oil"
     },
-    "image": "/products/mushrooms-olives-oils-heinz-mushroom-pieces-and-stems-tin.jpg"
+    "image": "/products/mushrooms-olives-oils-heinz-mushroom-pieces-and-stems-tin.webp"
   },
   {
     "sku": "mushrooms-olives-oils-heinz-mushroom-whole-tin",
@@ -2925,7 +2925,7 @@
       "hue": 13,
       "glyph": "oil"
     },
-    "image": "/products/mushrooms-olives-oils-heinz-mushroom-whole-tin.jpg"
+    "image": "/products/mushrooms-olives-oils-heinz-mushroom-whole-tin.webp"
   },
   {
     "sku": "mushrooms-olives-oils-clean-greens-sanfarina-farms-sun-dried-tomato-with-olive-oil",
@@ -2941,7 +2941,7 @@
       "hue": 137,
       "glyph": "oil"
     },
-    "image": "/products/mushrooms-olives-oils-clean-greens-sanfarina-farms-sun-dried-tomato-with-olive-oil.jpg"
+    "image": "/products/mushrooms-olives-oils-clean-greens-sanfarina-farms-sun-dried-tomato-with-olive-oil.webp"
   },
   {
     "sku": "mushrooms-olives-oils-fruitamins-whole-mushroom",
@@ -2957,7 +2957,7 @@
       "hue": 273,
       "glyph": "oil"
     },
-    "image": "/products/mushrooms-olives-oils-fruitamins-whole-mushroom.jpg"
+    "image": "/products/mushrooms-olives-oils-fruitamins-whole-mushroom.webp"
   },
   {
     "sku": "mushrooms-olives-oils-fruitamins-sliced-mushroom",
@@ -2973,7 +2973,7 @@
       "hue": 260,
       "glyph": "oil"
     },
-    "image": "/products/mushrooms-olives-oils-fruitamins-sliced-mushroom.jpg"
+    "image": "/products/mushrooms-olives-oils-fruitamins-sliced-mushroom.webp"
   },
   {
     "sku": "mushrooms-olives-oils-dalda-extra-virgin-olive-oil",
@@ -2989,7 +2989,7 @@
       "hue": 160,
       "glyph": "oil"
     },
-    "image": "/products/mushrooms-olives-oils-dalda-extra-virgin-olive-oil.jpg"
+    "image": "/products/mushrooms-olives-oils-dalda-extra-virgin-olive-oil.webp"
   },
   {
     "sku": "mushrooms-olives-oils-dalda-pomace-olive-oil",
@@ -3005,7 +3005,7 @@
       "hue": 3,
       "glyph": "oil"
     },
-    "image": "/products/mushrooms-olives-oils-dalda-pomace-olive-oil.jpg"
+    "image": "/products/mushrooms-olives-oils-dalda-pomace-olive-oil.webp"
   },
   {
     "sku": "mushrooms-olives-oils-italia-natural-extra-virgin-olive-oil",
@@ -3021,7 +3021,7 @@
       "hue": 52,
       "glyph": "oil"
     },
-    "image": "/products/mushrooms-olives-oils-italia-natural-extra-virgin-olive-oil.jpg"
+    "image": "/products/mushrooms-olives-oils-italia-natural-extra-virgin-olive-oil.webp"
   },
   {
     "sku": "tissues-foils-easy-kitchen-aluminium-foil",
@@ -3039,7 +3039,7 @@
       "hue": 140,
       "glyph": "tissue"
     },
-    "image": "/products/tissues-foils-easy-kitchen-aluminium-foil.jpg"
+    "image": "/products/tissues-foils-easy-kitchen-aluminium-foil.webp"
   },
   {
     "sku": "tissues-foils-tid-eaz-ez-aluminium-foil",
@@ -3057,7 +3057,7 @@
       "hue": 81,
       "glyph": "tissue"
     },
-    "image": "/products/tissues-foils-tid-eaz-ez-aluminium-foil.jpg"
+    "image": "/products/tissues-foils-tid-eaz-ez-aluminium-foil.webp"
   },
   {
     "sku": "tissues-foils-sateen-soft-astma-allergi-free-soft-pocket-mini-tissue",
@@ -3073,7 +3073,7 @@
       "hue": 2,
       "glyph": "tissue"
     },
-    "image": "/products/tissues-foils-sateen-soft-astma-allergi-free-soft-pocket-mini-tissue.jpg"
+    "image": "/products/tissues-foils-sateen-soft-astma-allergi-free-soft-pocket-mini-tissue.webp"
   },
   {
     "sku": "tissues-foils-xtra-kleen-toilet-tissue-roll-2-ply",
@@ -3089,7 +3089,7 @@
       "hue": 252,
       "glyph": "tissue"
     },
-    "image": "/products/tissues-foils-xtra-kleen-toilet-tissue-roll-2-ply.jpg"
+    "image": "/products/tissues-foils-xtra-kleen-toilet-tissue-roll-2-ply.webp"
   },
   {
     "sku": "tissues-foils-xtra-kleen-tissue-pop-up-black",
@@ -3105,7 +3105,7 @@
       "hue": 287,
       "glyph": "tissue"
     },
-    "image": "/products/tissues-foils-xtra-kleen-tissue-pop-up-black.jpg"
+    "image": "/products/tissues-foils-xtra-kleen-tissue-pop-up-black.webp"
   },
   {
     "sku": "tissues-foils-sateen-soft-car-pack-tissue-box",
@@ -3121,7 +3121,7 @@
       "hue": 170,
       "glyph": "tissue"
     },
-    "image": "/products/tissues-foils-sateen-soft-car-pack-tissue-box.jpg"
+    "image": "/products/tissues-foils-sateen-soft-car-pack-tissue-box.webp"
   },
   {
     "sku": "tissues-foils-cool-and-cool-moments-premium-facial-tissues-150x2ply",
@@ -3137,7 +3137,7 @@
       "hue": 279,
       "glyph": "tissue"
     },
-    "image": "/products/tissues-foils-cool-and-cool-moments-premium-facial-tissues-150x2ply.jpg"
+    "image": "/products/tissues-foils-cool-and-cool-moments-premium-facial-tissues-150x2ply.webp"
   },
   {
     "sku": "tissues-foils-cool-and-cool-breeze-luxury-facial-tissues-2ply",
@@ -3153,7 +3153,7 @@
       "hue": 339,
       "glyph": "tissue"
     },
-    "image": "/products/tissues-foils-cool-and-cool-breeze-luxury-facial-tissues-2ply.jpg"
+    "image": "/products/tissues-foils-cool-and-cool-breeze-luxury-facial-tissues-2ply.webp"
   },
   {
     "sku": "lighters-matches-topic-lighter-gas-refill",
@@ -3171,7 +3171,7 @@
       "hue": 68,
       "glyph": "flame"
     },
-    "image": "/products/lighters-matches-topic-lighter-gas-refill.jpg"
+    "image": "/products/lighters-matches-topic-lighter-gas-refill.webp"
   },
   {
     "sku": "lighters-matches-super-hockey-safety-match",
@@ -3189,7 +3189,7 @@
       "hue": 244,
       "glyph": "flame"
     },
-    "image": "/products/lighters-matches-super-hockey-safety-match.jpg"
+    "image": "/products/lighters-matches-super-hockey-safety-match.webp"
   },
   {
     "sku": "storage-wraps-easy-kitchen-cling-warp",
@@ -3207,7 +3207,7 @@
       "hue": 223,
       "glyph": "box"
     },
-    "image": "/products/storage-wraps-easy-kitchen-cling-warp.jpg"
+    "image": "/products/storage-wraps-easy-kitchen-cling-warp.webp"
   },
   {
     "sku": "storage-wraps-shabnam-plastic-container",
@@ -3225,7 +3225,7 @@
       "hue": 68,
       "glyph": "box"
     },
-    "image": "/products/storage-wraps-shabnam-plastic-container.jpg"
+    "image": "/products/storage-wraps-shabnam-plastic-container.webp"
   },
   {
     "sku": "storage-wraps-tid-eaz-ez-lock-slider-freezer-bags-small-7-5-x-9-inches",
@@ -3241,7 +3241,7 @@
       "hue": 127,
       "glyph": "box"
     },
-    "image": "/products/storage-wraps-tid-eaz-ez-lock-slider-freezer-bags-small-7-5-x-9-inches.jpg"
+    "image": "/products/storage-wraps-tid-eaz-ez-lock-slider-freezer-bags-small-7-5-x-9-inches.webp"
   },
   {
     "sku": "storage-wraps-tid-eaz-ez-wrap-cling-film",
@@ -3257,7 +3257,7 @@
       "hue": 357,
       "glyph": "box"
     },
-    "image": "/products/storage-wraps-tid-eaz-ez-wrap-cling-film.jpg"
+    "image": "/products/storage-wraps-tid-eaz-ez-wrap-cling-film.webp"
   },
   {
     "sku": "storage-wraps-appollo-clear-lock-storage-box-bpa-free-large-7-liters-turquish",
@@ -3273,7 +3273,7 @@
       "hue": 37,
       "glyph": "box"
     },
-    "image": "/products/storage-wraps-appollo-clear-lock-storage-box-bpa-free-large-7-liters-turquish.jpg"
+    "image": "/products/storage-wraps-appollo-clear-lock-storage-box-bpa-free-large-7-liters-turquish.webp"
   },
   {
     "sku": "storage-wraps-lock-and-lock-classic-plus-rectangular-container-bpa-free-1-65-liter",
@@ -3289,7 +3289,7 @@
       "hue": 37,
       "glyph": "box"
     },
-    "image": "/products/storage-wraps-lock-and-lock-classic-plus-rectangular-container-bpa-free-1-65-liter.jpg"
+    "image": "/products/storage-wraps-lock-and-lock-classic-plus-rectangular-container-bpa-free-1-65-liter.webp"
   },
   {
     "sku": "storage-wraps-lock-and-lock-easy-toc-container-set-bpa-free-1-1-liter-hle-315s2",
@@ -3305,7 +3305,7 @@
       "hue": 238,
       "glyph": "box"
     },
-    "image": "/products/storage-wraps-lock-and-lock-easy-toc-container-set-bpa-free-1-1-liter-hle-315s2.jpg"
+    "image": "/products/storage-wraps-lock-and-lock-easy-toc-container-set-bpa-free-1-1-liter-hle-315s2.webp"
   },
   {
     "sku": "storage-wraps-appollo-smart-jar-bpa-free-small-green",
@@ -3321,7 +3321,7 @@
       "hue": 75,
       "glyph": "box"
     },
-    "image": "/products/storage-wraps-appollo-smart-jar-bpa-free-small-green.jpg"
+    "image": "/products/storage-wraps-appollo-smart-jar-bpa-free-small-green.webp"
   },
   {
     "sku": "dish-washing-cif-scrub-sponge-mommy-1-pack",
@@ -3339,7 +3339,7 @@
       "hue": 211,
       "glyph": "dish"
     },
-    "image": "/products/dish-washing-cif-scrub-sponge-mommy-1-pack.jpg"
+    "image": "/products/dish-washing-cif-scrub-sponge-mommy-1-pack.webp"
   },
   {
     "sku": "dish-washing-vim-vinegar-and-lime-dishwash-liquid",
@@ -3357,7 +3357,7 @@
       "hue": 68,
       "glyph": "dish"
     },
-    "image": "/products/dish-washing-vim-vinegar-and-lime-dishwash-liquid.jpg"
+    "image": "/products/dish-washing-vim-vinegar-and-lime-dishwash-liquid.webp"
   },
   {
     "sku": "dish-washing-sufi-safon-dish-washing-paste",
@@ -3373,7 +3373,7 @@
       "hue": 180,
       "glyph": "dish"
     },
-    "image": "/products/dish-washing-sufi-safon-dish-washing-paste.jpg"
+    "image": "/products/dish-washing-sufi-safon-dish-washing-paste.webp"
   },
   {
     "sku": "dish-washing-fairy-clean-and-fresh-pomegranate-and-grapefruit-liquid-dishwash",
@@ -3389,7 +3389,7 @@
       "hue": 163,
       "glyph": "dish"
     },
-    "image": "/products/dish-washing-fairy-clean-and-fresh-pomegranate-and-grapefruit-liquid-dishwash.jpg"
+    "image": "/products/dish-washing-fairy-clean-and-fresh-pomegranate-and-grapefruit-liquid-dishwash.webp"
   },
   {
     "sku": "dish-washing-fairy-max-power-pomegranate-liquid-dishwash",
@@ -3405,7 +3405,7 @@
       "hue": 57,
       "glyph": "dish"
     },
-    "image": "/products/dish-washing-fairy-max-power-pomegranate-liquid-dishwash.jpg"
+    "image": "/products/dish-washing-fairy-max-power-pomegranate-liquid-dishwash.webp"
   },
   {
     "sku": "dish-washing-astonish-all-in-1-lemon-fresh-dishwasher-tablets",
@@ -3421,7 +3421,7 @@
       "hue": 245,
       "glyph": "dish"
     },
-    "image": "/products/dish-washing-astonish-all-in-1-lemon-fresh-dishwasher-tablets.jpg"
+    "image": "/products/dish-washing-astonish-all-in-1-lemon-fresh-dishwasher-tablets.webp"
   },
   {
     "sku": "dish-washing-vim-power-of-vinegar-and-lime-dishwash-liquid",
@@ -3437,7 +3437,7 @@
       "hue": 74,
       "glyph": "dish"
     },
-    "image": "/products/dish-washing-vim-power-of-vinegar-and-lime-dishwash-liquid.jpg"
+    "image": "/products/dish-washing-vim-power-of-vinegar-and-lime-dishwash-liquid.webp"
   },
   {
     "sku": "toilet-cleaning-clorox-ocean-mist-bathroom-bleach-foamer",
@@ -3455,7 +3455,7 @@
       "hue": 55,
       "glyph": "spray"
     },
-    "image": "/products/toilet-cleaning-clorox-ocean-mist-bathroom-bleach-foamer.jpg"
+    "image": "/products/toilet-cleaning-clorox-ocean-mist-bathroom-bleach-foamer.webp"
   },
   {
     "sku": "toilet-cleaning-clorox-original-bathroom-disinfecting-cleaner",
@@ -3473,7 +3473,7 @@
       "hue": 2,
       "glyph": "spray"
     },
-    "image": "/products/toilet-cleaning-clorox-original-bathroom-disinfecting-cleaner.jpg"
+    "image": "/products/toilet-cleaning-clorox-original-bathroom-disinfecting-cleaner.webp"
   },
   {
     "sku": "toilet-cleaning-harpic-active-fresh-caribbean-paradise-toilet-block",
@@ -3489,7 +3489,7 @@
       "hue": 124,
       "glyph": "spray"
     },
-    "image": "/products/toilet-cleaning-harpic-active-fresh-caribbean-paradise-toilet-block.jpg"
+    "image": "/products/toilet-cleaning-harpic-active-fresh-caribbean-paradise-toilet-block.webp"
   },
   {
     "sku": "toilet-cleaning-johnsons-bathroom-cleaner",
@@ -3505,7 +3505,7 @@
       "hue": 91,
       "glyph": "spray"
     },
-    "image": "/products/toilet-cleaning-johnsons-bathroom-cleaner.jpg"
+    "image": "/products/toilet-cleaning-johnsons-bathroom-cleaner.webp"
   },
   {
     "sku": "toilet-cleaning-johnsons-toilet-rim-cleaner-lavender",
@@ -3521,7 +3521,7 @@
       "hue": 195,
       "glyph": "spray"
     },
-    "image": "/products/toilet-cleaning-johnsons-toilet-rim-cleaner-lavender.jpg"
+    "image": "/products/toilet-cleaning-johnsons-toilet-rim-cleaner-lavender.webp"
   },
   {
     "sku": "toilet-cleaning-harpic-hygienic-and-fresh-sticker-pine-toilet-block",
@@ -3537,7 +3537,7 @@
       "hue": 239,
       "glyph": "spray"
     },
-    "image": "/products/toilet-cleaning-harpic-hygienic-and-fresh-sticker-pine-toilet-block.jpg"
+    "image": "/products/toilet-cleaning-harpic-hygienic-and-fresh-sticker-pine-toilet-block.webp"
   },
   {
     "sku": "toilet-cleaning-astonish-toilet-fresh-ocean-long-lasting-freshness",
@@ -3553,7 +3553,7 @@
       "hue": 206,
       "glyph": "spray"
     },
-    "image": "/products/toilet-cleaning-astonish-toilet-fresh-ocean-long-lasting-freshness.jpg"
+    "image": "/products/toilet-cleaning-astonish-toilet-fresh-ocean-long-lasting-freshness.webp"
   },
   {
     "sku": "toilet-cleaning-astonish-toilet-fresh-lemon-long-lasting-freshness",
@@ -3569,7 +3569,7 @@
       "hue": 45,
       "glyph": "spray"
     },
-    "image": "/products/toilet-cleaning-astonish-toilet-fresh-lemon-long-lasting-freshness.jpg"
+    "image": "/products/toilet-cleaning-astonish-toilet-fresh-lemon-long-lasting-freshness.webp"
   },
   {
     "sku": "washing-cleaning-surf-excel-detergent-washing-powder",
@@ -3587,7 +3587,7 @@
       "hue": 300,
       "glyph": "detergent"
     },
-    "image": "/products/washing-cleaning-surf-excel-detergent-washing-powder.jpg"
+    "image": "/products/washing-cleaning-surf-excel-detergent-washing-powder.webp"
   },
   {
     "sku": "washing-cleaning-surf-excel-washing-powder",
@@ -3605,7 +3605,7 @@
       "hue": 279,
       "glyph": "detergent"
     },
-    "image": "/products/washing-cleaning-surf-excel-washing-powder.jpg"
+    "image": "/products/washing-cleaning-surf-excel-washing-powder.webp"
   },
   {
     "sku": "washing-cleaning-fairy-fresh-silk-tree-blossom-and-jasmine-fabric-softener-50-washes",
@@ -3621,7 +3621,7 @@
       "hue": 49,
       "glyph": "detergent"
     },
-    "image": "/products/washing-cleaning-fairy-fresh-silk-tree-blossom-and-jasmine-fabric-softener-50-washes.jpg"
+    "image": "/products/washing-cleaning-fairy-fresh-silk-tree-blossom-and-jasmine-fabric-softener-50-washes.webp"
   },
   {
     "sku": "washing-cleaning-sufi-super-washing-powder",
@@ -3637,7 +3637,7 @@
       "hue": 32,
       "glyph": "detergent"
     },
-    "image": "/products/washing-cleaning-sufi-super-washing-powder.jpg"
+    "image": "/products/washing-cleaning-sufi-super-washing-powder.webp"
   },
   {
     "sku": "washing-cleaning-astonish-oxy-active-fabric-stain-remover",
@@ -3653,7 +3653,7 @@
       "hue": 111,
       "glyph": "detergent"
     },
-    "image": "/products/washing-cleaning-astonish-oxy-active-fabric-stain-remover.jpg"
+    "image": "/products/washing-cleaning-astonish-oxy-active-fabric-stain-remover.webp"
   },
   {
     "sku": "washing-cleaning-bonus-tri-star-washing-powder",
@@ -3669,7 +3669,7 @@
       "hue": 199,
       "glyph": "detergent"
     },
-    "image": "/products/washing-cleaning-bonus-tri-star-washing-powder.jpg"
+    "image": "/products/washing-cleaning-bonus-tri-star-washing-powder.webp"
   },
   {
     "sku": "washing-cleaning-ariel-color-laundry-liquid-detergent",
@@ -3685,7 +3685,7 @@
       "hue": 288,
       "glyph": "detergent"
     },
-    "image": "/products/washing-cleaning-ariel-color-laundry-liquid-detergent.jpg"
+    "image": "/products/washing-cleaning-ariel-color-laundry-liquid-detergent.webp"
   },
   {
     "sku": "washing-cleaning-power-plus-whito-liquid-shoe-cleaner",
@@ -3701,7 +3701,7 @@
       "hue": 225,
       "glyph": "detergent"
     },
-    "image": "/products/washing-cleaning-power-plus-whito-liquid-shoe-cleaner.jpg"
+    "image": "/products/washing-cleaning-power-plus-whito-liquid-shoe-cleaner.webp"
   },
   {
     "sku": "insect-killers-mortein-fragrant-liquid-refills-3-pieces-jumbo-pack",
@@ -3719,7 +3719,7 @@
       "hue": 200,
       "glyph": "spray"
     },
-    "image": "/products/insect-killers-mortein-fragrant-liquid-refills-3-pieces-jumbo-pack.jpg"
+    "image": "/products/insect-killers-mortein-fragrant-liquid-refills-3-pieces-jumbo-pack.webp"
   },
   {
     "sku": "insect-killers-mortein-peaceful-nights-mosquito-killer-spray-value-pack",
@@ -3737,7 +3737,7 @@
       "hue": 221,
       "glyph": "spray"
     },
-    "image": "/products/insect-killers-mortein-peaceful-nights-mosquito-killer-spray-value-pack.jpg"
+    "image": "/products/insect-killers-mortein-peaceful-nights-mosquito-killer-spray-value-pack.webp"
   },
   {
     "sku": "insect-killers-finis-all-purpose-insect-killer-liquid",
@@ -3753,7 +3753,7 @@
       "hue": 275,
       "glyph": "spray"
     },
-    "image": "/products/insect-killers-finis-all-purpose-insect-killer-liquid.jpg"
+    "image": "/products/insect-killers-finis-all-purpose-insect-killer-liquid.webp"
   },
   {
     "sku": "insect-killers-baygon-flying-and-crawling-insect-killer-100-knockdown-for-24h",
@@ -3769,7 +3769,7 @@
       "hue": 322,
       "glyph": "spray"
     },
-    "image": "/products/insect-killers-baygon-flying-and-crawling-insect-killer-100-knockdown-for-24h.jpg"
+    "image": "/products/insect-killers-baygon-flying-and-crawling-insect-killer-100-knockdown-for-24h.webp"
   },
   {
     "sku": "insect-killers-tyfon-total-control-insect-killer",
@@ -3785,7 +3785,7 @@
       "hue": 185,
       "glyph": "spray"
     },
-    "image": "/products/insect-killers-tyfon-total-control-insect-killer.jpg"
+    "image": "/products/insect-killers-tyfon-total-control-insect-killer.webp"
   },
   {
     "sku": "insect-killers-power-plus-fast-kill-insecticide-aerosol",
@@ -3801,7 +3801,7 @@
       "hue": 18,
       "glyph": "spray"
     },
-    "image": "/products/insect-killers-power-plus-fast-kill-insecticide-aerosol.jpg"
+    "image": "/products/insect-killers-power-plus-fast-kill-insecticide-aerosol.webp"
   },
   {
     "sku": "insect-killers-hiclean-natural-mosquito-repellent-spray",
@@ -3817,7 +3817,7 @@
       "hue": 165,
       "glyph": "spray"
     },
-    "image": "/products/insect-killers-hiclean-natural-mosquito-repellent-spray.jpg"
+    "image": "/products/insect-killers-hiclean-natural-mosquito-repellent-spray.webp"
   },
   {
     "sku": "insect-killers-power-plus-fast-kill-knock-out-flying-and-crawling-insect-killer",
@@ -3833,7 +3833,7 @@
       "hue": 136,
       "glyph": "spray"
     },
-    "image": "/products/insect-killers-power-plus-fast-kill-knock-out-flying-and-crawling-insect-killer.jpg"
+    "image": "/products/insect-killers-power-plus-fast-kill-knock-out-flying-and-crawling-insect-killer.webp"
   },
   {
     "sku": "air-fresheners-lattafa-teriaq-air-freshener",
@@ -3851,7 +3851,7 @@
       "hue": 128,
       "glyph": "spray"
     },
-    "image": "/products/air-fresheners-lattafa-teriaq-air-freshener.jpg"
+    "image": "/products/air-fresheners-lattafa-teriaq-air-freshener.webp"
   },
   {
     "sku": "air-fresheners-lattafa-art-of-universe-air-freshener",
@@ -3869,7 +3869,7 @@
       "hue": 3,
       "glyph": "spray"
     },
-    "image": "/products/air-fresheners-lattafa-art-of-universe-air-freshener.jpg"
+    "image": "/products/air-fresheners-lattafa-art-of-universe-air-freshener.webp"
   },
   {
     "sku": "air-fresheners-air-way-blue-de-world-spray-refill-air-fresheners",
@@ -3885,7 +3885,7 @@
       "hue": 348,
       "glyph": "spray"
     },
-    "image": "/products/air-fresheners-air-way-blue-de-world-spray-refill-air-fresheners.jpg"
+    "image": "/products/air-fresheners-air-way-blue-de-world-spray-refill-air-fresheners.webp"
   },
   {
     "sku": "air-fresheners-air-way-oud-spray-refill-air-fresheners",
@@ -3901,7 +3901,7 @@
       "hue": 209,
       "glyph": "spray"
     },
-    "image": "/products/air-fresheners-air-way-oud-spray-refill-air-fresheners.jpg"
+    "image": "/products/air-fresheners-air-way-oud-spray-refill-air-fresheners.webp"
   },
   {
     "sku": "air-fresheners-perfect-matic-lavender-dispencer-refill-air-freshener",
@@ -3917,7 +3917,7 @@
       "hue": 285,
       "glyph": "spray"
     },
-    "image": "/products/air-fresheners-perfect-matic-lavender-dispencer-refill-air-freshener.jpg"
+    "image": "/products/air-fresheners-perfect-matic-lavender-dispencer-refill-air-freshener.webp"
   },
   {
     "sku": "air-fresheners-perfect-matic-heaven-dispencer-refill-air-freshener",
@@ -3933,7 +3933,7 @@
       "hue": 257,
       "glyph": "spray"
     },
-    "image": "/products/air-fresheners-perfect-matic-heaven-dispencer-refill-air-freshener.jpg"
+    "image": "/products/air-fresheners-perfect-matic-heaven-dispencer-refill-air-freshener.webp"
   },
   {
     "sku": "air-fresheners-johnsons-air-freshener-gel-jasmin",
@@ -3949,7 +3949,7 @@
       "hue": 276,
       "glyph": "spray"
     },
-    "image": "/products/air-fresheners-johnsons-air-freshener-gel-jasmin.jpg"
+    "image": "/products/air-fresheners-johnsons-air-freshener-gel-jasmin.webp"
   },
   {
     "sku": "air-fresheners-johnsons-air-freshener-gel-lavender",
@@ -3965,7 +3965,7 @@
       "hue": 61,
       "glyph": "spray"
     },
-    "image": "/products/air-fresheners-johnsons-air-freshener-gel-lavender.jpg"
+    "image": "/products/air-fresheners-johnsons-air-freshener-gel-lavender.webp"
   },
   {
     "sku": "diapers-canbebe-diapers-jumbo-pack-xxl-no-7-19-kg",
@@ -3983,7 +3983,7 @@
       "hue": 324,
       "glyph": "baby"
     },
-    "image": "/products/diapers-canbebe-diapers-jumbo-pack-xxl-no-7-19-kg.jpg"
+    "image": "/products/diapers-canbebe-diapers-jumbo-pack-xxl-no-7-19-kg.webp"
   },
   {
     "sku": "diapers-leo-plus-soft-and-dry-baby-diaper-medium-3-4-9kg",
@@ -4001,7 +4001,7 @@
       "hue": 186,
       "glyph": "baby"
     },
-    "image": "/products/diapers-leo-plus-soft-and-dry-baby-diaper-medium-3-4-9kg.jpg"
+    "image": "/products/diapers-leo-plus-soft-and-dry-baby-diaper-medium-3-4-9kg.webp"
   },
   {
     "sku": "diapers-molfix-premium-diaper-jumbo-economy-newborn-1-2-5kg",
@@ -4017,7 +4017,7 @@
       "hue": 261,
       "glyph": "baby"
     },
-    "image": "/products/diapers-molfix-premium-diaper-jumbo-economy-newborn-1-2-5kg.jpg"
+    "image": "/products/diapers-molfix-premium-diaper-jumbo-economy-newborn-1-2-5kg.webp"
   },
   {
     "sku": "diapers-molfix-premium-diaper-jumbo-economy-mini-2-3-6kg",
@@ -4033,7 +4033,7 @@
       "hue": 198,
       "glyph": "baby"
     },
-    "image": "/products/diapers-molfix-premium-diaper-jumbo-economy-mini-2-3-6kg.jpg"
+    "image": "/products/diapers-molfix-premium-diaper-jumbo-economy-mini-2-3-6kg.webp"
   },
   {
     "sku": "diapers-canbebe-baby-diapers-economy-pack-midi-no-3-4-9kg",
@@ -4049,7 +4049,7 @@
       "hue": 176,
       "glyph": "baby"
     },
-    "image": "/products/diapers-canbebe-baby-diapers-economy-pack-midi-no-3-4-9kg.jpg"
+    "image": "/products/diapers-canbebe-baby-diapers-economy-pack-midi-no-3-4-9kg.webp"
   },
   {
     "sku": "diapers-huggies-little-swimmers-swim-nappies-2-3years-3-8kg",
@@ -4065,7 +4065,7 @@
       "hue": 293,
       "glyph": "baby"
     },
-    "image": "/products/diapers-huggies-little-swimmers-swim-nappies-2-3years-3-8kg.jpg"
+    "image": "/products/diapers-huggies-little-swimmers-swim-nappies-2-3years-3-8kg.webp"
   },
   {
     "sku": "diapers-leo-baby-diaper-xxl-6-17-kg",
@@ -4081,7 +4081,7 @@
       "hue": 57,
       "glyph": "baby"
     },
-    "image": "/products/diapers-leo-baby-diaper-xxl-6-17-kg.jpg"
+    "image": "/products/diapers-leo-baby-diaper-xxl-6-17-kg.webp"
   },
   {
     "sku": "diapers-good-care-natural-pants-chlorine-paraben-and-latex-free-6-xx-large",
@@ -4097,7 +4097,7 @@
       "hue": 163,
       "glyph": "baby"
     },
-    "image": "/products/diapers-good-care-natural-pants-chlorine-paraben-and-latex-free-6-xx-large.jpg"
+    "image": "/products/diapers-good-care-natural-pants-chlorine-paraben-and-latex-free-6-xx-large.webp"
   },
   {
     "sku": "baby-care-cool-and-cool-max-fresh-antibacterial-wipes",
@@ -4115,7 +4115,7 @@
       "hue": 262,
       "glyph": "baby"
     },
-    "image": "/products/baby-care-cool-and-cool-max-fresh-antibacterial-wipes.jpg"
+    "image": "/products/baby-care-cool-and-cool-max-fresh-antibacterial-wipes.webp"
   },
   {
     "sku": "baby-care-cool-and-cool-baby-wipes",
@@ -4133,7 +4133,7 @@
       "hue": 77,
       "glyph": "baby"
     },
-    "image": "/products/baby-care-cool-and-cool-baby-wipes.jpg"
+    "image": "/products/baby-care-cool-and-cool-baby-wipes.webp"
   },
   {
     "sku": "baby-care-farlin-doctor-j-paper-stem-cotton-swab-bc-61001",
@@ -4149,7 +4149,7 @@
       "hue": 101,
       "glyph": "baby"
     },
-    "image": "/products/baby-care-farlin-doctor-j-paper-stem-cotton-swab-bc-61001.jpg"
+    "image": "/products/baby-care-farlin-doctor-j-paper-stem-cotton-swab-bc-61001.webp"
   },
   {
     "sku": "baby-care-dove-rich-moisture-baby-wipes-for-newborns",
@@ -4165,7 +4165,7 @@
       "hue": 355,
       "glyph": "baby"
     },
-    "image": "/products/baby-care-dove-rich-moisture-baby-wipes-for-newborns.jpg"
+    "image": "/products/baby-care-dove-rich-moisture-baby-wipes-for-newborns.webp"
   },
   {
     "sku": "baby-care-molfix-isotonic-water-sensitive-skin-baby-wipes-60-pack",
@@ -4181,7 +4181,7 @@
       "hue": 262,
       "glyph": "baby"
     },
-    "image": "/products/baby-care-molfix-isotonic-water-sensitive-skin-baby-wipes-60-pack.jpg"
+    "image": "/products/baby-care-molfix-isotonic-water-sensitive-skin-baby-wipes-60-pack.webp"
   },
   {
     "sku": "baby-care-leo-pure-care-aloe-and-vitamin-e-baby-wipes",
@@ -4197,7 +4197,7 @@
       "hue": 254,
       "glyph": "baby"
     },
-    "image": "/products/baby-care-leo-pure-care-aloe-and-vitamin-e-baby-wipes.jpg"
+    "image": "/products/baby-care-leo-pure-care-aloe-and-vitamin-e-baby-wipes.webp"
   },
   {
     "sku": "baby-care-farlin-moisture-baby-wipes-35-pack",
@@ -4213,7 +4213,7 @@
       "hue": 230,
       "glyph": "baby"
     },
-    "image": "/products/baby-care-farlin-moisture-baby-wipes-35-pack.jpg"
+    "image": "/products/baby-care-farlin-moisture-baby-wipes-35-pack.webp"
   },
   {
     "sku": "baby-care-dove-sensitive-moisture-baby-wipes-fragrance-free",
@@ -4229,7 +4229,7 @@
       "hue": 245,
       "glyph": "baby"
     },
-    "image": "/products/baby-care-dove-sensitive-moisture-baby-wipes-fragrance-free.jpg"
+    "image": "/products/baby-care-dove-sensitive-moisture-baby-wipes-fragrance-free.webp"
   },
   {
     "sku": "hair-removal-cosmee-hard-wax-beans",
@@ -4247,7 +4247,7 @@
       "hue": 36,
       "glyph": "razor"
     },
-    "image": "/products/hair-removal-cosmee-hard-wax-beans.jpg"
+    "image": "/products/hair-removal-cosmee-hard-wax-beans.webp"
   },
   {
     "sku": "hair-removal-silky-girl-lubnas-herbal-wonder-wax",
@@ -4265,7 +4265,7 @@
       "hue": 320,
       "glyph": "razor"
     },
-    "image": "/products/hair-removal-silky-girl-lubnas-herbal-wonder-wax.jpg"
+    "image": "/products/hair-removal-silky-girl-lubnas-herbal-wonder-wax.webp"
   },
   {
     "sku": "hair-removal-elmore-avocado-halawa-wax-citric-acid",
@@ -4281,7 +4281,7 @@
       "hue": 70,
       "glyph": "razor"
     },
-    "image": "/products/hair-removal-elmore-avocado-halawa-wax-citric-acid.jpg"
+    "image": "/products/hair-removal-elmore-avocado-halawa-wax-citric-acid.webp"
   },
   {
     "sku": "hair-removal-rica-aloe-vera-hard-wax-beads",
@@ -4297,7 +4297,7 @@
       "hue": 246,
       "glyph": "razor"
     },
-    "image": "/products/hair-removal-rica-aloe-vera-hard-wax-beads.jpg"
+    "image": "/products/hair-removal-rica-aloe-vera-hard-wax-beads.webp"
   },
   {
     "sku": "hair-removal-elmore-lavender-halawa-wax-citric-acid",
@@ -4313,7 +4313,7 @@
       "hue": 184,
       "glyph": "razor"
     },
-    "image": "/products/hair-removal-elmore-lavender-halawa-wax-citric-acid.jpg"
+    "image": "/products/hair-removal-elmore-lavender-halawa-wax-citric-acid.webp"
   },
   {
     "sku": "hair-removal-nisa-lemon-hair-removal-lotion-aloe-vera-vitamin-e",
@@ -4329,7 +4329,7 @@
       "hue": 54,
       "glyph": "razor"
     },
-    "image": "/products/hair-removal-nisa-lemon-hair-removal-lotion-aloe-vera-vitamin-e.jpg"
+    "image": "/products/hair-removal-nisa-lemon-hair-removal-lotion-aloe-vera-vitamin-e.webp"
   },
   {
     "sku": "hair-removal-veet-pure-rose-and-freesia-fragrance-dry-skin-hair-removal-cream-63g",
@@ -4345,7 +4345,7 @@
       "hue": 358,
       "glyph": "razor"
     },
-    "image": "/products/hair-removal-veet-pure-rose-and-freesia-fragrance-dry-skin-hair-removal-cream-63g.jpg"
+    "image": "/products/hair-removal-veet-pure-rose-and-freesia-fragrance-dry-skin-hair-removal-cream-63g.webp"
   },
   {
     "sku": "hair-removal-nisa-lemon-hair-removal-cream",
@@ -4361,7 +4361,7 @@
       "hue": 133,
       "glyph": "razor"
     },
-    "image": "/products/hair-removal-nisa-lemon-hair-removal-cream.jpg"
+    "image": "/products/hair-removal-nisa-lemon-hair-removal-cream.webp"
   },
   {
     "sku": "sanitary-pads-bodyform-cushion-soft-long-maxi-pantiliners",
@@ -4379,7 +4379,7 @@
       "hue": 232,
       "glyph": "pad"
     },
-    "image": "/products/sanitary-pads-bodyform-cushion-soft-long-maxi-pantiliners.jpg"
+    "image": "/products/sanitary-pads-bodyform-cushion-soft-long-maxi-pantiliners.webp"
   },
   {
     "sku": "sanitary-pads-bodyform-cushion-soft-regular-maxi-pantiliners",
@@ -4397,7 +4397,7 @@
       "hue": 154,
       "glyph": "pad"
     },
-    "image": "/products/sanitary-pads-bodyform-cushion-soft-regular-maxi-pantiliners.jpg"
+    "image": "/products/sanitary-pads-bodyform-cushion-soft-regular-maxi-pantiliners.webp"
   },
   {
     "sku": "sanitary-pads-molped-maxi-thick-aloevera-freshness-pads-long",
@@ -4413,7 +4413,7 @@
       "hue": 43,
       "glyph": "pad"
     },
-    "image": "/products/sanitary-pads-molped-maxi-thick-aloevera-freshness-pads-long.jpg"
+    "image": "/products/sanitary-pads-molped-maxi-thick-aloevera-freshness-pads-long.webp"
   },
   {
     "sku": "sanitary-pads-embrace-essentials-maxi-pads-extra-long",
@@ -4429,7 +4429,7 @@
       "hue": 312,
       "glyph": "pad"
     },
-    "image": "/products/sanitary-pads-embrace-essentials-maxi-pads-extra-long.jpg"
+    "image": "/products/sanitary-pads-embrace-essentials-maxi-pads-extra-long.webp"
   },
   {
     "sku": "sanitary-pads-molped-maxi-thick-aloevera-freshness-pads-extra-long",
@@ -4445,7 +4445,7 @@
       "hue": 274,
       "glyph": "pad"
     },
-    "image": "/products/sanitary-pads-molped-maxi-thick-aloevera-freshness-pads-extra-long.jpg"
+    "image": "/products/sanitary-pads-molped-maxi-thick-aloevera-freshness-pads-extra-long.webp"
   },
   {
     "sku": "sanitary-pads-puffin-premium-disposible-period-panty-s-m-23-to-38-waist",
@@ -4461,7 +4461,7 @@
       "hue": 179,
       "glyph": "pad"
     },
-    "image": "/products/sanitary-pads-puffin-premium-disposible-period-panty-s-m-23-to-38-waist.jpg"
+    "image": "/products/sanitary-pads-puffin-premium-disposible-period-panty-s-m-23-to-38-waist.webp"
   },
   {
     "sku": "sanitary-pads-butterfly-breathables-ultra-thin-extra-long-pad",
@@ -4477,7 +4477,7 @@
       "hue": 336,
       "glyph": "pad"
     },
-    "image": "/products/sanitary-pads-butterfly-breathables-ultra-thin-extra-long-pad.jpg"
+    "image": "/products/sanitary-pads-butterfly-breathables-ultra-thin-extra-long-pad.webp"
   },
   {
     "sku": "sanitary-pads-butterfly-breathables-ultra-thin-long-pad",
@@ -4493,7 +4493,7 @@
       "hue": 149,
       "glyph": "pad"
     },
-    "image": "/products/sanitary-pads-butterfly-breathables-ultra-thin-long-pad.jpg"
+    "image": "/products/sanitary-pads-butterfly-breathables-ultra-thin-long-pad.webp"
   },
   {
     "sku": "shampoos-soaps-dove-damage-therapy-hair-fall-rescue-bio-protein-care-conditioner",
@@ -4511,7 +4511,7 @@
       "hue": 206,
       "glyph": "bottle-pump"
     },
-    "image": "/products/shampoos-soaps-dove-damage-therapy-hair-fall-rescue-bio-protein-care-conditioner.jpg"
+    "image": "/products/shampoos-soaps-dove-damage-therapy-hair-fall-rescue-bio-protein-care-conditioner.webp"
   },
   {
     "sku": "shampoos-soaps-dove-hair-fall-rescue-bio-protein-care-shampoo-for-weak-hair",
@@ -4529,7 +4529,7 @@
       "hue": 57,
       "glyph": "bottle-pump"
     },
-    "image": "/products/shampoos-soaps-dove-hair-fall-rescue-bio-protein-care-shampoo-for-weak-hair.jpg"
+    "image": "/products/shampoos-soaps-dove-hair-fall-rescue-bio-protein-care-shampoo-for-weak-hair.webp"
   },
   {
     "sku": "shampoos-soaps-safeguard-white-camellia-soap",
@@ -4545,7 +4545,7 @@
       "hue": 96,
       "glyph": "bottle-pump"
     },
-    "image": "/products/shampoos-soaps-safeguard-white-camellia-soap.jpg"
+    "image": "/products/shampoos-soaps-safeguard-white-camellia-soap.webp"
   },
   {
     "sku": "shampoos-soaps-safeguard-pure-white-soap",
@@ -4561,7 +4561,7 @@
       "hue": 146,
       "glyph": "bottle-pump"
     },
-    "image": "/products/shampoos-soaps-safeguard-pure-white-soap.jpg"
+    "image": "/products/shampoos-soaps-safeguard-pure-white-soap.webp"
   },
   {
     "sku": "shampoos-soaps-lux-vibrant-glow-tangerine-soap",
@@ -4577,7 +4577,7 @@
       "hue": 357,
       "glyph": "bottle-pump"
     },
-    "image": "/products/shampoos-soaps-lux-vibrant-glow-tangerine-soap.jpg"
+    "image": "/products/shampoos-soaps-lux-vibrant-glow-tangerine-soap.webp"
   },
   {
     "sku": "shampoos-soaps-lifebuoy-cool-fresh-with-vitamins-antibacterial-body-wash",
@@ -4593,7 +4593,7 @@
       "hue": 93,
       "glyph": "bottle-pump"
     },
-    "image": "/products/shampoos-soaps-lifebuoy-cool-fresh-with-vitamins-antibacterial-body-wash.jpg"
+    "image": "/products/shampoos-soaps-lifebuoy-cool-fresh-with-vitamins-antibacterial-body-wash.webp"
   },
   {
     "sku": "shampoos-soaps-lux-soft-rose-french-rose-and-almond-oil-body-wash-paraben-free",
@@ -4609,7 +4609,7 @@
       "hue": 301,
       "glyph": "bottle-pump"
     },
-    "image": "/products/shampoos-soaps-lux-soft-rose-french-rose-and-almond-oil-body-wash-paraben-free.jpg"
+    "image": "/products/shampoos-soaps-lux-soft-rose-french-rose-and-almond-oil-body-wash-paraben-free.webp"
   },
   {
     "sku": "shampoos-soaps-sufi-classic-liquid-soap-blossom-glow",
@@ -4625,7 +4625,7 @@
       "hue": 130,
       "glyph": "bottle-pump"
     },
-    "image": "/products/shampoos-soaps-sufi-classic-liquid-soap-blossom-glow.jpg"
+    "image": "/products/shampoos-soaps-sufi-classic-liquid-soap-blossom-glow.webp"
   },
   {
     "sku": "oral-care-colgate-sensitive-pro-relief-repair-and-prevent-tooth-paste",
@@ -4643,7 +4643,7 @@
       "hue": 176,
       "glyph": "tooth"
     },
-    "image": "/products/oral-care-colgate-sensitive-pro-relief-repair-and-prevent-tooth-paste.jpg"
+    "image": "/products/oral-care-colgate-sensitive-pro-relief-repair-and-prevent-tooth-paste.webp"
   },
   {
     "sku": "oral-care-soda-white-baking-soda-tartar-control-toothpaste",
@@ -4661,7 +4661,7 @@
       "hue": 337,
       "glyph": "tooth"
     },
-    "image": "/products/oral-care-soda-white-baking-soda-tartar-control-toothpaste.jpg"
+    "image": "/products/oral-care-soda-white-baking-soda-tartar-control-toothpaste.webp"
   },
   {
     "sku": "oral-care-dabur-herbl-blackseed-complete-care-toothpaste",
@@ -4677,7 +4677,7 @@
       "hue": 201,
       "glyph": "tooth"
     },
-    "image": "/products/oral-care-dabur-herbl-blackseed-complete-care-toothpaste.jpg"
+    "image": "/products/oral-care-dabur-herbl-blackseed-complete-care-toothpaste.webp"
   },
   {
     "sku": "oral-care-crest-fresh-mint-with-active-flouride-cavity-protection-toothpaste",
@@ -4693,7 +4693,7 @@
       "hue": 183,
       "glyph": "tooth"
     },
-    "image": "/products/oral-care-crest-fresh-mint-with-active-flouride-cavity-protection-toothpaste.jpg"
+    "image": "/products/oral-care-crest-fresh-mint-with-active-flouride-cavity-protection-toothpaste.webp"
   },
   {
     "sku": "oral-care-crest-cavity-protection-long-lasting-freshness-toothpaste",
@@ -4709,7 +4709,7 @@
       "hue": 84,
       "glyph": "tooth"
     },
-    "image": "/products/oral-care-crest-cavity-protection-long-lasting-freshness-toothpaste.jpg"
+    "image": "/products/oral-care-crest-cavity-protection-long-lasting-freshness-toothpaste.webp"
   },
   {
     "sku": "oral-care-colgate-max-white-coffee-tea-and-tobacco-flouride-toothpaste",
@@ -4725,7 +4725,7 @@
       "hue": 267,
       "glyph": "tooth"
     },
-    "image": "/products/oral-care-colgate-max-white-coffee-tea-and-tobacco-flouride-toothpaste.jpg"
+    "image": "/products/oral-care-colgate-max-white-coffee-tea-and-tobacco-flouride-toothpaste.webp"
   },
   {
     "sku": "oral-care-oral-b-pro-health-complete-defence-system-toothpaste",
@@ -4741,7 +4741,7 @@
       "hue": 187,
       "glyph": "tooth"
     },
-    "image": "/products/oral-care-oral-b-pro-health-complete-defence-system-toothpaste.jpg"
+    "image": "/products/oral-care-oral-b-pro-health-complete-defence-system-toothpaste.webp"
   },
   {
     "sku": "oral-care-dabur-herbl-clove-cavity-protection-toothpaste",
@@ -4757,7 +4757,7 @@
       "hue": 159,
       "glyph": "tooth"
     },
-    "image": "/products/oral-care-dabur-herbl-clove-cavity-protection-toothpaste.jpg"
+    "image": "/products/oral-care-dabur-herbl-clove-cavity-protection-toothpaste.webp"
   },
   {
     "sku": "handwash-baby-oils-dupas-berrymore-hand-wash-glycerin",
@@ -4775,7 +4775,7 @@
       "hue": 198,
       "glyph": "bottle-pump"
     },
-    "image": "/products/handwash-baby-oils-dupas-berrymore-hand-wash-glycerin.jpg"
+    "image": "/products/handwash-baby-oils-dupas-berrymore-hand-wash-glycerin.webp"
   },
   {
     "sku": "handwash-baby-oils-lifebuoy-lemon-fresh-with-vitamin-hand-wash",
@@ -4793,7 +4793,7 @@
       "hue": 279,
       "glyph": "bottle-pump"
     },
-    "image": "/products/handwash-baby-oils-lifebuoy-lemon-fresh-with-vitamin-hand-wash.jpg"
+    "image": "/products/handwash-baby-oils-lifebuoy-lemon-fresh-with-vitamin-hand-wash.webp"
   },
   {
     "sku": "handwash-baby-oils-dettol-skincare-hand-wash",
@@ -4809,7 +4809,7 @@
       "hue": 40,
       "glyph": "bottle-pump"
     },
-    "image": "/products/handwash-baby-oils-dettol-skincare-hand-wash.jpg"
+    "image": "/products/handwash-baby-oils-dettol-skincare-hand-wash.webp"
   },
   {
     "sku": "handwash-baby-oils-dettol-original-antibacterial-hand-wash",
@@ -4825,7 +4825,7 @@
       "hue": 87,
       "glyph": "bottle-pump"
     },
-    "image": "/products/handwash-baby-oils-dettol-original-antibacterial-hand-wash.jpg"
+    "image": "/products/handwash-baby-oils-dettol-original-antibacterial-hand-wash.webp"
   },
   {
     "sku": "handwash-baby-oils-safeguard-lavender-hand-wash",
@@ -4841,7 +4841,7 @@
       "hue": 259,
       "glyph": "bottle-pump"
     },
-    "image": "/products/handwash-baby-oils-safeguard-lavender-hand-wash.jpg"
+    "image": "/products/handwash-baby-oils-safeguard-lavender-hand-wash.webp"
   },
   {
     "sku": "handwash-baby-oils-dupas-floral-bouquet-hand-wash",
@@ -4857,7 +4857,7 @@
       "hue": 115,
       "glyph": "bottle-pump"
     },
-    "image": "/products/handwash-baby-oils-dupas-floral-bouquet-hand-wash.jpg"
+    "image": "/products/handwash-baby-oils-dupas-floral-bouquet-hand-wash.webp"
   },
   {
     "sku": "handwash-baby-oils-lifebuoy-active-fresh-hand-wash",
@@ -4873,7 +4873,7 @@
       "hue": 270,
       "glyph": "bottle-pump"
     },
-    "image": "/products/handwash-baby-oils-lifebuoy-active-fresh-hand-wash.jpg"
+    "image": "/products/handwash-baby-oils-lifebuoy-active-fresh-hand-wash.webp"
   },
   {
     "sku": "handwash-baby-oils-lux-botanicals-freesia-and-aloe-vera-scent-hand-wash-refill",
@@ -4889,7 +4889,7 @@
       "hue": 125,
       "glyph": "bottle-pump"
     },
-    "image": "/products/handwash-baby-oils-lux-botanicals-freesia-and-aloe-vera-scent-hand-wash-refill.jpg"
+    "image": "/products/handwash-baby-oils-lux-botanicals-freesia-and-aloe-vera-scent-hand-wash-refill.webp"
   },
   {
     "sku": "intimate-care-summers-eve-aloe-love-love-cleansing-wash-for-sensitive-skin",
@@ -4907,7 +4907,7 @@
       "hue": 70,
       "glyph": "bottle-pump"
     },
-    "image": "/products/intimate-care-summers-eve-aloe-love-love-cleansing-wash-for-sensitive-skin.jpg"
+    "image": "/products/intimate-care-summers-eve-aloe-love-love-cleansing-wash-for-sensitive-skin.webp"
   },
   {
     "sku": "intimate-care-fute-aloe-vera-and-vitamin-b-intimate-wash",
@@ -4925,7 +4925,7 @@
       "hue": 52,
       "glyph": "bottle-pump"
     },
-    "image": "/products/intimate-care-fute-aloe-vera-and-vitamin-b-intimate-wash.jpg"
+    "image": "/products/intimate-care-fute-aloe-vera-and-vitamin-b-intimate-wash.webp"
   },
   {
     "sku": "intimate-care-abena-intimate-care-wash",
@@ -4941,7 +4941,7 @@
       "hue": 180,
       "glyph": "bottle-pump"
     },
-    "image": "/products/intimate-care-abena-intimate-care-wash.jpg"
+    "image": "/products/intimate-care-abena-intimate-care-wash.webp"
   },
   {
     "sku": "intimate-care-summers-eve-ultimate-odor-feminine-cleansing-wash-dyes-and-paraben-free",
@@ -4957,7 +4957,7 @@
       "hue": 265,
       "glyph": "bottle-pump"
     },
-    "image": "/products/intimate-care-summers-eve-ultimate-odor-feminine-cleansing-wash-dyes-and-paraben-free.jpg"
+    "image": "/products/intimate-care-summers-eve-ultimate-odor-feminine-cleansing-wash-dyes-and-paraben-free.webp"
   },
   {
     "sku": "intimate-care-dr-rashel-soothing-and-moisturizing-femine-wash-citric-acid-glycerin-for-sen",
@@ -4973,7 +4973,7 @@
       "hue": 131,
       "glyph": "bottle-pump"
     },
-    "image": "/products/intimate-care-dr-rashel-soothing-and-moisturizing-femine-wash-citric-acid-glycerin-for-sen.jpg"
+    "image": "/products/intimate-care-dr-rashel-soothing-and-moisturizing-femine-wash-citric-acid-glycerin-for-sen.webp"
   },
   {
     "sku": "intimate-care-dr-rashel-daily-cleansing-femine-wash-glycerin-citric-acid-for-all-types-of",
@@ -4989,6 +4989,6 @@
       "hue": 100,
       "glyph": "bottle-pump"
     },
-    "image": "/products/intimate-care-dr-rashel-daily-cleansing-femine-wash-glycerin-citric-acid-for-all-types-of.jpg"
+    "image": "/products/intimate-care-dr-rashel-daily-cleansing-femine-wash-glycerin-citric-acid-for-all-types-of.webp"
   }
 ]

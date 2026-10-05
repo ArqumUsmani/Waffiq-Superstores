@@ -1,7 +1,8 @@
 /**
  * Magnetic cursor.
  *
- * A lime dot that trails the pointer, snaps to interactive elements, and
+ * A disc with a pointer arrow in it — dark green in light mode, white in
+ * dark mode — that trails the pointer, grows over interactive elements, and
  * expands into a labelled disc over product and category cards.
  *
  * Desktop pointers only, and never under reduced motion — on touch the
@@ -87,7 +88,12 @@ export function Cursor() {
 
   return createPortal(
     <div className="cursor" aria-hidden="true" ref={dotRef}>
-      <div className="cursor__ring" />
+      <div className="cursor__ring">
+        {/* A pointer arrow, so the disc reads as the cursor at a glance. */}
+        <svg className="cursor__icon" viewBox="0 0 24 24">
+          <path d="M6 4.5v14l4-3.6 2.6 5.6 2.3-1.1-2.6-5.5 5.4-.4z" />
+        </svg>
+      </div>
       <span className="cursor__label" ref={labelRef} />
     </div>,
     document.body,

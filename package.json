@@ -13,6 +13,7 @@
     "gen:data": "node scripts/gen-products.mjs",
     "scrape:naheed": "node scripts/scrape-naheed.mjs 3",
     "import:naheed": "node scripts/import-naheed.mjs",
+    "images:webp": "node scripts/to-webp.mjs",
     "gen:scene": "node scripts/gen-scene-placeholders.mjs",
     "gen:tiles": "node scripts/gen-product-tiles.mjs"
   },
