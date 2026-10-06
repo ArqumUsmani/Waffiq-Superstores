@@ -24,7 +24,7 @@ declare global {
   }
 }
 
-type SoundKind = 'pickup' | 'drop' | 'peep' | 'horn' | 'rooster' | 'bagSnip' | 'bagPlace' | 'bagSpill';
+type SoundKind = 'pickup' | 'drop' | 'peep' | 'horn' | 'rooster' | 'bagSnip' | 'bagPlace' | 'bagSpill' | 'popper';
 
 interface Voice {
   source: AudioScheduledSourceNode;
@@ -91,6 +91,7 @@ const lastPlayedAt: Record<SoundKind, number> = {
   bagSnip: -Infinity,
   bagPlace: -Infinity,
   bagSpill: -Infinity,
+  popper: -Infinity,
 };
 
 /** Notified when the audio graph becomes usable, or when mute flips. */
@@ -485,6 +486,23 @@ export function drop(): void {
     setTimeout(() => {
       pendingBounce = null;
     }, bounceDelayMs);
+  });
+}
+
+/**
+ * Two party poppers going off a breath apart: a sharp crack with a little
+ * body under it, then the paper fizzing out. Kept short and well under the
+ * level of the recorded effects — it is a flourish on a placed order, not
+ * an alarm.
+ */
+export function popper(): void {
+  attempt('popper', (context, detune) => {
+    for (const delay of [0, 0.07]) {
+      tone(context, { type: 'triangle', from: 520, to: 90, duration: 0.09, gain: 0.34, delay, detuneCents: detune });
+      noiseBurst(context, { duration: 0.07, filterType: 'highpass', filterFreq: 2200, gain: 0.3, delay });
+      /* The streamers: a quieter, longer hiss trailing each crack. */
+      noiseBurst(context, { duration: 0.42, filterType: 'bandpass', filterFreq: 5200, gain: 0.07, delay: delay + 0.03 });
+    }
   });
 }
 

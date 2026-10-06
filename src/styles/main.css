@@ -5687,3 +5687,43 @@ html:has(.site-header.is-hidden :focus-visible) .hero-scene__controls {
     align-items: center;
   }
 }
+
+/* ---- party poppers on a placed order (see PartyPoppers.tsx) ---- */
+
+.poppers {
+  position: fixed;
+  inset: 0;
+  z-index: 140;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.popper,
+.popper__bit {
+  position: absolute;
+  left: 0;
+  top: 0;
+  will-change: transform;
+}
+
+.popper {
+  font-size: 56px;
+  line-height: 1;
+}
+
+.popper__bit {
+  width: 10px;
+  height: 14px;
+  border-radius: 2px;
+}
+
+.popper__bit--round {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.popper__bit--strip {
+  width: 6px;
+  height: 20px;
+}

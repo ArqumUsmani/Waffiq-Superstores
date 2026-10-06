@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Link, Navigate, useLocation, useParams, useSearchParams } from 'react-router';
+import { PartyPoppers } from '../../components/PartyPoppers';
 import { ShopPage } from '../../components/shop';
 import { api, errorMessage } from '../../lib/api';
 import { rupees } from '../../lib/money';
@@ -117,6 +118,7 @@ export default function OrderPage() {
       title={justPlaced ? t('shop.order.placedTitle') : t('shop.order.title', { number: order.number })}
       eyebrow={justPlaced ? t('shop.order.title', { number: order.number }) : t('shop.order.placedOn', { date: orderDate(order.created_at) })}
     >
+      {justPlaced ? <PartyPoppers id={order.number} /> : null}
       {justPlaced ? <p className="lede">{t('shop.order.placedBody')}</p> : null}
 
       {order.status === 'cancelled' ? (
