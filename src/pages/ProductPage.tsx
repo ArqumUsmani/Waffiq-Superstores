@@ -7,6 +7,10 @@ import { motion } from '../lib/motion-guard';
 import { useLang } from '../state/app-state';
 import { useReveal } from '../hooks/useReveal';
 import { ProductArt, ProductRail } from '../components/ProductCard';
+import { bagItemFor } from '../lib/cart';
+import { rupees } from '../lib/money';
+import { addToBag, useBag } from '../state/bag';
+import { offerFor, useShop } from '../state/shop';
 
 const asRecord = (value: unknown) => value as Record<string, unknown>;
 
@@ -16,6 +20,9 @@ export default function ProductPage() {
   const product = getProduct(sku);
   const category = product ? getCategory(product.category) : null;
   const shelf = product ? getSubcategory(product.subcategory) : null;
+
+  const shop = useShop();
+  const bag = useBag();
 
   const pageRef = useRef<HTMLDivElement>(null);
   const relatedRef = useReveal<HTMLElement>([sku]);
@@ -64,6 +71,8 @@ export default function ProductPage() {
   const aisleName = pick(asRecord(category), 'en');
   const shelfName = pick(asRecord(shelf), 'en');
   const aisleHref = `/aisle/${category.slug}`;
+  const offer = offerFor(shop, product.sku);
+  const inBag = bag.find((item) => item.sku === product.sku)?.qty ?? 0;
 
   return (
     <div
@@ -96,6 +105,19 @@ export default function ProductPage() {
             {secondary}
           </p>
 
+          {offer ? (
+            <p className="product__price">
+              <strong>{rupees(offer.price)}</strong>
+              <span className={`pill ${offer.stock > 0 ? 'pill--lime' : 'pill--quiet'}`}>
+                {offer.stock === 0
+                  ? t('shop.outOfStock')
+                  : offer.stock <= 5
+                    ? t('shop.fewLeft', { n: offer.stock })
+                    : t('shop.inStock')}
+              </span>
+            </p>
+          ) : null}
+
           <dl className="product__facts">
             {product.size ? (
               <div>
@@ -122,12 +144,26 @@ export default function ProductPage() {
           <h2 className="product__subhead">{t('product.about')}</h2>
           <p className="product__desc">{product.desc}</p>
 
-          <p className="notice">{t('product.listingNote')}</p>
+          <p className="notice">
+            {shop.enabled ? t(offer ? 'shop.productNote' : 'shop.notOnline') : t('product.listingNote')}
+          </p>
 
           <div className="product__actions">
-            <Link className="btn btn--solid" to="/#branches">
-              {t('branchCta.cta')}
-            </Link>
+            {offer ? (
+              <button
+                className="btn btn--solid"
+                type="button"
+                disabled={offer.stock === 0 || inBag >= offer.stock}
+                onClick={() => addToBag(bagItemFor(product), pageRef.current?.querySelector('[data-product-art] .tile'))}
+              >
+                {offer.stock === 0 ? t('shop.outOfStock') : t('shop.add')}
+                {inBag > 0 ? <span className="product__in-bag">{t('shop.inBag', { n: inBag })}</span> : null}
+              </button>
+            ) : (
+              <Link className="btn btn--solid" to="/#branches">
+                {t('branchCta.cta')}
+              </Link>
+            )}
             <Link className="btn btn--ghost" to={aisleHref}>
               {t('product.back')} {aisleName}
             </Link>

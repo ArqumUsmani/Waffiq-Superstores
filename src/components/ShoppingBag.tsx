@@ -22,7 +22,7 @@
  * scale, and the bottom edge (where the cut runs) never drifts.
  */
 import { useEffect, useRef, useState } from 'react';
-import { useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { useGSAP } from '@gsap/react';
 import { gsap } from '../lib/gsap-setup';
 import { motion } from '../lib/motion-guard';
@@ -38,6 +38,12 @@ import {
   type BagAddEvent,
   type BagItem,
 } from '../state/bag';
+import { useShop } from '../state/shop';
+import { priceCart } from '../lib/cart';
+import { rupees } from '../lib/money';
+import { t } from '../lib/i18n';
+import { useLang } from '../state/app-state';
+import { CartBlocker, CartLines, canCheckOut } from './shop';
 
 const BAG_SRC = '/assets/footer-bag.webp';
 
@@ -183,6 +189,11 @@ function makeSprite(item: BagItem, size: number): HTMLElement {
 export function ShoppingBag() {
   const items = useBag();
   const count = bagCount(items);
+  /* With the online store on, the open bag is also the cart. */
+  useLang();
+  const shop = useShop();
+  const navigate = useNavigate();
+  const cart = shop.enabled ? priceCart(items, shop) : null;
   const itemsRef = useRef(items);
   itemsRef.current = items;
 
@@ -509,6 +520,23 @@ export function ShoppingBag() {
     bagRef.current?.focus();
   });
 
+  /* The bag changing size without anything flying into it — a quantity
+     changed in the cart, or an order placed. At rest it re-settles; open and
+     emptied, it closes. Adds are left alone: they move the bag themselves. */
+  useEffect(() => {
+    if (phase.current === 'open' && count === 0) closeBag();
+    else if (phase.current === 'docked' || phase.current === 'footer' || (phase.current === 'hidden' && count > 0)) {
+      settle(motion.reduced || phase.current === 'hidden' || count === 0);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [count]);
+
+  /** Out of the open bag and on to another page. */
+  const leaveFor = (path: string) => {
+    closeBag();
+    navigate(path);
+  };
+
   /* The scene's pieces settle in once it has rendered. */
   useEffect(() => {
     if (!open) return undefined;
@@ -723,6 +751,29 @@ export function ShoppingBag() {
               <circle className="pivot" cx="60" cy="30" r="3.2" />
             </svg>
           </button>
+          {cart && cart.lines.length && !spilling ? (
+            <aside className="bag-scene__cart" aria-label={t('shop.cart.title')}>
+              {/* Lenis is stopped while the bag is open; this list scrolls natively. */}
+              <div className="bag-scene__cart-list" data-lenis-prevent="">
+                <CartLines cart={cart} onNavigate={closeBag} />
+              </div>
+              <p className="bag-scene__cart-total">
+                <span>{t('shop.cart.subtotal')}</span>
+                <strong>{rupees(cart.subtotal)}</strong>
+              </p>
+              <CartBlocker cart={cart} config={shop.config} />
+              <div className="bag-scene__cart-actions">
+                {canCheckOut(cart, shop.config) ? (
+                  <button className="btn btn--solid" type="button" onClick={() => leaveFor('/checkout')}>
+                    {t('shop.cart.checkout')}
+                  </button>
+                ) : null}
+                <button className="btn btn--light" type="button" onClick={() => leaveFor('/cart')}>
+                  {t('shop.cart.viewFull')}
+                </button>
+              </div>
+            </aside>
+          ) : null}
           <button className="bag-scene__close" type="button" onClick={closeBag} disabled={spilling}>
             Keep my bag
           </button>

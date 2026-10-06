@@ -16,6 +16,7 @@ import { FALLBACK_MAPS_URL, getCachedReviewSummary } from '../lib/reviews';
 import { NAV } from './nav-model';
 import { useLang } from '../state/app-state';
 import { useSectionNav } from '../hooks/useSectionNav';
+import { useShop } from '../state/shop';
 
 /* ---------------------------------------------------------------- *
    Contour lines
@@ -73,6 +74,7 @@ function Contours() {
 
 export function SiteFooter({ onSearchOpen }: { onSearchOpen: () => void }) {
   useLang();
+  const shop = useShop();
   const { go } = useSectionNav();
   const year = new Date().getFullYear();
   const branch = branches[0];
@@ -161,6 +163,16 @@ export function SiteFooter({ onSearchOpen }: { onSearchOpen: () => void }) {
                   </Link>
                 </li>
               ))}
+              {shop.enabled ? (
+                <>
+                  <li>
+                    <Link to="/cart">{t('shop.bag')}</Link>
+                  </li>
+                  <li>
+                    <Link to="/account">{t('shop.account')}</Link>
+                  </li>
+                </>
+              ) : null}
               <li>
                 <button type="button" onClick={onSearchOpen}>
                   {t('search.open')}
@@ -190,7 +202,7 @@ export function SiteFooter({ onSearchOpen }: { onSearchOpen: () => void }) {
             </li>
           </ul>
 
-          <p className="site-footer__note">{t('footer.note')}</p>
+          <p className="site-footer__note">{t(shop.enabled ? 'shop.note' : 'footer.note')}</p>
 
           <p className="site-footer__legal">
             © {year} {t('brand.name')}. {t('footer.rights')}

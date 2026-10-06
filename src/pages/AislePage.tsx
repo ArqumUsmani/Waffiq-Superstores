@@ -12,6 +12,9 @@ import { useLaunch, type Arrival } from '../components/LaunchProvider';
 import { CategoryIcon } from '../components/CategoryIcon';
 import { ProductCard } from '../components/ProductCard';
 import { addToBag, bagCount, useBag } from '../state/bag';
+import { AddButton } from '../components/shop';
+import { rupees } from '../lib/money';
+import { offerFor, useShop } from '../state/shop';
 import type { Aisle } from '../lib/types';
 
 const AISLES = aislesJson as Aisle[];
@@ -25,8 +28,11 @@ export default function AislePage() {
 
   const { takeArrival } = useLaunch();
   const headerRef = useRef<HTMLDivElement>(null);
-  const gridRef = useReveal<HTMLDivElement>([slug]);
-  const shelfRef = useReveal<HTMLDivElement>([slug]);
+  const shop = useShop();
+  /* The store switching on swaps in cards that can be bought; they need the
+     reveal set up again. */
+  const gridRef = useReveal<HTMLDivElement>([slug, shop.enabled]);
+  const shelfRef = useReveal<HTMLDivElement>([slug, shop.enabled]);
   const bag = useBag();
 
   /* The arrival half of the launch transition. The wash is rendered *only*
@@ -88,6 +94,14 @@ export default function AislePage() {
   const total = countInCategory(category.slug);
   const others = categories.filter((c) => c.slug !== category.slug);
   const shelfProducts = productsInCategory(category.slug);
+  /* With the store on, the strip at the top shows real products that can be
+     bought — the popular ones first — instead of the showcase items. */
+  const featured = shop.enabled
+    ? [...shelfProducts]
+        .filter((p) => (offerFor(shop, p.sku)?.stock ?? 0) > 0)
+        .sort((a, b) => Number(b.tags.includes('popular')) - Number(a.tags.includes('popular')))
+        .slice(0, 4)
+    : [];
 
   return (
     <>
@@ -133,7 +147,26 @@ export default function AislePage() {
       <section className="section section--framed">
         <div className="section__frame">
           <div className="aisle-items" ref={gridRef}>
-            {aisle.items.map((item, index) => {
+            {featured.map((product, index) => {
+              const qty = bag.find((entry) => entry.sku === product.sku)?.qty ?? 0;
+              return (
+                <article className="aisle-item" key={product.sku} data-reveal="" data-reveal-index={index} data-add-scope="">
+                  <div className="aisle-item__tile">
+                    {product.image ? (
+                      <img className="aisle-item__photo" src={product.image} alt="" width={480} height={480} loading="lazy" decoding="async" />
+                    ) : null}
+                    <AddButton product={product} artFrom=".aisle-item__photo" />
+                  </div>
+                  <h3 className="aisle-item__name">
+                    <Link to={`/product/${encodeURIComponent(product.sku)}`}>{product.name}</Link>
+                  </h3>
+                  <p className="aisle-item__unit">{product.size || product.brand}</p>
+                  <p className="aisle-item__price">{rupees(offerFor(shop, product.sku)!.price)}</p>
+                  {qty > 0 ? <p className="aisle-item__qty">{t('shop.inBag', { n: qty })}</p> : null}
+                </article>
+              );
+            })}
+            {(shop.enabled ? [] : aisle.items).map((item, index) => {
               const key = `${aisle.slug}:${item.name}`;
               const qty = bag.find((entry) => entry.key === key)?.qty ?? 0;
               return (
@@ -182,7 +215,7 @@ export default function AislePage() {
           </div>
 
           <p className="aisle-items__note">
-            Showing {aisle.items.length} of {total} —{' '}
+            Showing {shop.enabled ? featured.length : aisle.items.length} of {total} —{' '}
             <a
               href="#full-shelf"
               onClick={(event) => {

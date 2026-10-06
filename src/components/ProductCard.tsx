@@ -7,6 +7,10 @@ import { Link } from 'react-router';
 import { getCategory, getSubcategory } from '../lib/data';
 import { isRtl, pick, t } from '../lib/i18n';
 import { useLang } from '../state/app-state';
+import { rupees } from '../lib/money';
+import { useBag } from '../state/bag';
+import { offerFor, useShop } from '../state/shop';
+import { AddButton } from './shop';
 import type { Product } from '../lib/types';
 
 export function ProductArt({
@@ -46,7 +50,15 @@ export function ProductCard({
   const name = rtl ? product.nameUr : product.name;
   const secondary = rtl ? product.name : product.nameUr;
 
-  return (
+  /* With the online store on, the card also carries a price and a way to
+     buy. With it off — the default — none of this renders. */
+  const shop = useShop();
+  const bag = useBag();
+  const offer = offerFor(shop, product.sku);
+  const inBag = shop.enabled ? (bag.find((item) => item.sku === product.sku)?.qty ?? 0) : 0;
+  const buyable = offer !== null && offer.stock > 0 && inBag < offer.stock;
+
+  const card = (
     <Link
       className="product-card"
       to={`/product/${encodeURIComponent(product.sku)}`}
@@ -75,8 +87,21 @@ export function ProductCard({
       <span className="product-card__foot">
         {/* Not every listing names a pack size; an empty span keeps the
             arrow pinned to the end of the row. */}
-        {product.size ? <span className="pill pill--quiet">{product.size}</span> : <span />}
-        <span className="icon-btn icon-btn--sm" aria-hidden="true">
+        {offer ? (
+          <span className="product-card__offer">
+            {offer.stock > 0 ? (
+              <strong className="product-card__price">{rupees(offer.price)}</strong>
+            ) : (
+              <span className="pill pill--quiet">{t('shop.outOfStock')}</span>
+            )}
+            <small>{inBag > 0 ? t('shop.inBag', { n: inBag }) : product.size}</small>
+          </span>
+        ) : product.size ? (
+          <span className="pill pill--quiet">{product.size}</span>
+        ) : (
+          <span />
+        )}
+        <span className={`icon-btn icon-btn--sm${buyable ? ' product-card__go' : ''}`} aria-hidden="true">
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -90,6 +115,16 @@ export function ProductCard({
         </span>
       </span>
     </Link>
+  );
+
+  if (!shop.enabled) return card;
+  /* A button cannot sit inside a link, so the card gets a wrapper and the
+     button is laid over its corner. */
+  return (
+    <div className="product-cell" data-add-scope="">
+      {card}
+      {buyable ? <AddButton product={product} artFrom=".tile" className="product-cell__add" /> : null}
+    </div>
   );
 }
 

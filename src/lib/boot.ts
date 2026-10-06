@@ -5,13 +5,13 @@
  * before any of this code has loaded. This module only decides when it can
  * go: after the things whose absence makes the page look broken — the web
  * fonts, and on the home page the hero picture — and never sooner than
- * MIN_MS, so the card completes a flip instead of flashing past. It never
+ * MIN_MS, so every aisle is seen once even when the site loads at once. It never
  * holds the site back longer than MAX_MS; a slow image is better shown late
  * than hidden behind a spinner.
  */
 
-/** Long enough for one full flip of the card (a loop is 2s). */
-const MIN_MS = 2000;
+/** One full pass through all four aisles (4 x 1.3s in index.html). */
+const MIN_MS = 5200;
 /** After this the site is shown regardless. */
 const MAX_MS = 8000;
 /** Matches the splash's opacity transition in index.html. */
@@ -45,7 +45,9 @@ export async function dismissSplash(): Promise<void> {
      splash appeared — so MIN_MS is measured from what the visitor saw. */
   const shown = performance.now();
   await Promise.race([siteReady(), sleep(Math.max(0, MAX_MS - shown))]);
-  await sleep(Math.max(0, MIN_MS - performance.now()));
+  /* The admin panel is a tool, opened many times a day: no show for it. */
+  const minimum = window.location.pathname.startsWith('/admin') ? 0 : MIN_MS;
+  await sleep(Math.max(0, minimum - performance.now()));
 
   splash.classList.remove('is-stuck');
   splash.classList.add('is-leaving');

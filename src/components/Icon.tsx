@@ -16,7 +16,8 @@ export type IconName =
   | 'soundOn'
   | 'soundOff'
   | 'arrow'
-  | 'external';
+  | 'external'
+  | 'user';
 
 const PATHS: Record<IconName, ReactNode> = {
   search: <path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM21 21l-4.3-4.3" />,
@@ -44,6 +45,7 @@ const PATHS: Record<IconName, ReactNode> = {
   ),
   arrow: <path d="M5 12h14M13 6l6 6-6 6" />,
   external: <path d="M7 17 17 7M8 7h9v9" />,
+  user: <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20a7.5 7.5 0 0 1 15 0" />,
 };
 
 export function Icon({ name, className = '' }: { name: IconName; className?: string }) {

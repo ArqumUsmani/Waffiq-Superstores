@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import { Link } from 'react-router';
 import monogram from '../assets/logo/monogram.svg?raw';
 import { Icon } from './Icon';
 import { NAV } from './nav-model';
@@ -7,6 +8,7 @@ import { t } from '../lib/i18n';
 import { lockScroll } from '../lib/smooth-scroll';
 import { useLang } from '../state/app-state';
 import { useSectionNav } from '../hooks/useSectionNav';
+import { useShop } from '../state/shop';
 
 interface Props {
   open: boolean;
@@ -21,6 +23,7 @@ interface Props {
  */
 export function Drawer({ open, onClose, onSearchOpen }: Props) {
   useLang();
+  const shop = useShop();
   const { go } = useSectionNav();
   const panelRef = useRef<HTMLDivElement>(null);
   const lastFocused = useRef<HTMLElement | null>(null);
@@ -100,7 +103,14 @@ export function Drawer({ open, onClose, onSearchOpen }: Props) {
           <span>{t('search.open')}</span>
         </button>
 
-        <p className="drawer__note">{t('footer.note')}</p>
+        {shop.enabled ? (
+          <Link className="btn btn--ghost drawer__search" to="/account" onClick={onClose}>
+            <Icon name="user" />
+            <span>{t('shop.account')}</span>
+          </Link>
+        ) : null}
+
+        <p className="drawer__note">{t(shop.enabled ? 'shop.note' : 'footer.note')}</p>
       </div>
     </div>,
     document.body,

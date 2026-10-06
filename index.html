@@ -58,7 +58,7 @@
       .sp-card {
         position: relative; width: min(60vw, 40vh, 280px); aspect-ratio: 5 / 7;
         transform-style: preserve-3d; will-change: transform;
-        animation: sp-flip 2s cubic-bezier(.5, 0, .2, 1) infinite;
+        animation: sp-flip 1.3s cubic-bezier(.5, 0, .2, 1) infinite;
         transition: scale .5s ease;
       }
       @keyframes sp-flip {
@@ -72,12 +72,12 @@
         display: grid; grid-template-rows: auto 1fr auto; justify-items: center;
         padding: 9% 6%; color: #f3f8ec; background: var(--panel);
         box-shadow: 0 24px 50px -22px rgb(4 26 14 / .55);
-        animation: sp-face 8s steps(1) infinite;
+        animation: sp-face 5.2s steps(1) infinite;
       }
       .sp-face:nth-child(1) { --panel: #136f37; --n: 0; }
-      .sp-face:nth-child(2) { --panel: #2f7d32; --n: 1; animation-delay: 2s; }
-      .sp-face:nth-child(3) { --panel: #1c7a46; --n: 2; animation-delay: 4s; }
-      .sp-face:nth-child(4) { --panel: #0a4527; --n: 3; animation-delay: 6s; }
+      .sp-face:nth-child(2) { --panel: #2f7d32; --n: 1; animation-delay: 1.3s; }
+      .sp-face:nth-child(3) { --panel: #1c7a46; --n: 2; animation-delay: 2.6s; }
+      .sp-face:nth-child(4) { --panel: #0a4527; --n: 3; animation-delay: 3.9s; }
       @keyframes sp-face { 0% { opacity: 1; } 25%, 100% { opacity: 0; } }
       .sp-word { margin: 0; font-size: clamp(1.4rem, 7.5vmin, 2.1rem); font-weight: 800; letter-spacing: -.02em; line-height: 1; }
       /* The white-lettered logo: every panel is a dark enough green for it. */
@@ -91,13 +91,13 @@
         position: absolute; inset: -14%;
         background: url(/assets/splash.webp) calc(var(--n) * 33.333%) 0 / 400% 100% no-repeat;
         filter: drop-shadow(0 12px 14px rgb(4 26 14 / .35));
-        animation: sp-pop 2s cubic-bezier(.34, 1.56, .64, 1) infinite;
+        animation: sp-pop 1.3s cubic-bezier(.34, 1.56, .64, 1) infinite;
       }
       .sp-chip {
         position: absolute; padding: .35em .7em; border-radius: 99px; white-space: nowrap;
         background: #f3f8ec; color: #0a4527; font-size: clamp(.6rem, 2.6vmin, .78rem); font-weight: 700;
         box-shadow: 0 6px 14px rgb(4 26 14 / .25);
-        animation: sp-pop 2s cubic-bezier(.34, 1.56, .64, 1) infinite;
+        animation: sp-pop 1.3s cubic-bezier(.34, 1.56, .64, 1) infinite;
       }
       .sp-chip:nth-of-type(1) { top: 2%; left: -16%; animation-delay: .1s; }
       .sp-chip:nth-of-type(2) { bottom: 4%; right: -18%; background: #bae957; animation-delay: .2s; }

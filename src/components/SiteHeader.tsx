@@ -11,6 +11,8 @@ import { toggleMuted } from '../lib/sfx';
 import { useLang, useTheme } from '../state/app-state';
 import { useSectionNav } from '../hooks/useSectionNav';
 import { useMuted } from '../hooks/useMuted';
+import { useAuth } from '../state/auth';
+import { useShop } from '../state/shop';
 
 const isMac = () => /mac/i.test(navigator.platform ?? navigator.userAgent);
 
@@ -29,6 +31,8 @@ interface Props {
 
 export function SiteHeader({ onSearchOpen, onMenuOpen, menuOpen }: Props) {
   const lang = useLang();
+  const shop = useShop();
+  const { user } = useAuth();
   const theme = useTheme();
   const { active, go } = useSectionNav();
   const muted = useMuted();
@@ -165,6 +169,12 @@ export function SiteHeader({ onSearchOpen, onMenuOpen, menuOpen }: Props) {
             {/* Shows the language you would switch *to*. */}
             <span className="lang-toggle__value">{lang === 'ur' ? 'English' : 'اردو'}</span>
           </button>
+
+          {shop.enabled ? (
+            <Link className="icon-btn site-header__account" to={user ? '/account' : '/login'} aria-label={t(user ? 'shop.account' : 'shop.signIn')}>
+              <Icon name="user" />
+            </Link>
+          ) : null}
 
           <button
             className="icon-btn icon-btn--menu"

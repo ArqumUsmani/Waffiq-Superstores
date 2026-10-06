@@ -18,6 +18,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { App } from './App';
 import { dismissSplash } from './lib/boot';
+import { loadShop } from './state/shop';
 
 const host = document.getElementById('root');
 if (!host) throw new Error('#root is missing from index.html');
@@ -31,3 +32,7 @@ createRoot(host).render(
 /* The splash in index.html has been covering the page since the first byte;
    it goes once the fonts and hero are in. */
 void dismissSplash();
+
+/* Is the online store switched on? Asked in the background: the site never
+   waits for the answer, and no answer means no store. */
+void loadShop();

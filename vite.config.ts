@@ -29,5 +29,10 @@ export default defineConfig({
   server: {
     port: 5178,
     open: true,
+    /* The API runs beside Vite in development (npm run dev:api). In
+       production the same paths are served by Vercel functions. */
+    proxy: {
+      '/api': 'http://localhost:8787',
+    },
   },
 });

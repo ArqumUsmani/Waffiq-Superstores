@@ -20,6 +20,10 @@ export interface BagItem {
   /** Fallback when there is no photo. */
   emoji: string;
   qty: number;
+  /** Set when the item is a real product from the catalogue. */
+  sku?: string;
+  /** Pack size, shown beside the name in the cart. */
+  size?: string;
 }
 
 /** Fired for every add, so the bag can animate the item in from where it was clicked. */
@@ -89,6 +93,23 @@ export function addToBag(item: Omit<BagItem, 'qty'>, from?: Element | null): voi
   const added = next.find((i) => i.key === item.key)!;
   const event: BagAddEvent = { item: added, from: from?.getBoundingClientRect() ?? null };
   addListeners.forEach((cb) => cb(event));
+}
+
+/** Sets how many of an item are in the bag; zero takes it out. */
+export function setBagQty(key: string, qty: number): void {
+  const wanted = Math.max(0, Math.min(99, Math.floor(qty)));
+  commit(
+    wanted === 0 ? items.filter((i) => i.key !== key) : items.map((i) => (i.key === key ? { ...i, qty: wanted } : i)),
+  );
+}
+
+/**
+ * With the online store on, only real products can be bought. This clears
+ * out the unpriced showcase items a visitor may have added while the site
+ * was a listing only.
+ */
+export function dropUnsellable(): void {
+  if (items.some((i) => !i.sku)) commit(items.filter((i) => i.sku));
 }
 
 export function emptyBag(): void {
