@@ -37,6 +37,15 @@ export const env = {
   get databaseSsl() {
     return process.env.DATABASE_SSL === '1';
   },
+  /**
+   * The certificate authority to trust for the database, as base64 of its
+   * PEM file. Needed where the host signs with its own authority (Aiven
+   * does) rather than a public one. Unset, the system's authorities apply.
+   */
+  get databaseCa() {
+    const encoded = process.env.DATABASE_CA;
+    return encoded ? Buffer.from(encoded, 'base64').toString('utf8') : undefined;
+  },
   get jwtSecret() {
     const secret = need('JWT_SECRET');
     if (secret.length < 32) throw new Error('JWT_SECRET must be at least 32 characters');

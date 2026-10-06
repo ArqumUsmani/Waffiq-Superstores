@@ -14,7 +14,9 @@ const holder = globalThis as unknown as { __wafiqPool?: Pool };
 export function pool(): Pool {
   holder.__wafiqPool ??= mysql.createPool({
     uri: env.databaseUrl,
-    ssl: env.databaseSsl ? { rejectUnauthorized: true } : undefined,
+    /* Always verified. A host with its own authority is trusted by naming
+       that authority (DATABASE_CA), never by switching the check off. */
+    ssl: env.databaseSsl ? { rejectUnauthorized: true, ca: env.databaseCa } : undefined,
     /* Small: each serverless instance holds its own pool. */
     connectionLimit: 4,
     timezone: 'Z',
