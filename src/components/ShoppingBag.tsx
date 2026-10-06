@@ -115,18 +115,24 @@ const at = ({ cx, by, size }: Spot) => ({ x: cx - BASE / 2, y: by - BASE, scale:
 /** The art's bottom sits above the box's bottom; this lifts a spot by that. */
 const artDrop = (size: number) => (1 - ART.bottom) * size;
 
+/** Height of the phone tab bar when it is showing, so the bag rests above it. */
+const tabBarInset = (): number => {
+  const bar = document.querySelector<HTMLElement>('.tabbar');
+  return bar && getComputedStyle(bar).display !== 'none' ? bar.offsetHeight : 0;
+};
+
 const dockSpot = (count: number): Spot => {
   const size = dockSize(count);
   return {
     /* The bag's own left edge, not its box's, sits 16px from the side. */
     cx: 16 + (0.5 - ART.left) * size,
-    by: window.innerHeight - 16 + artDrop(size),
+    by: window.innerHeight - 16 - tabBarInset() + artDrop(size),
     size,
   };
 };
 const popSpot = (count: number): Spot => {
   const size = popSize(count);
-  return { cx: window.innerWidth / 2, by: window.innerHeight - 28 + artDrop(size), size };
+  return { cx: window.innerWidth / 2, by: window.innerHeight - 28 - tabBarInset() + artDrop(size), size };
 };
 const openSpot = (): Spot => {
   const size = openSize();

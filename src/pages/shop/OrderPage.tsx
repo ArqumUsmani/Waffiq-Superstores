@@ -1,5 +1,8 @@
-import { useCallback, useEffect, useState } from 'react';
-import { Link, Navigate, useLocation, useParams, useSearchParams } from 'react-router';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Link, Navigate, useLocation, useNavigate, useParams, useSearchParams } from 'react-router';
+import { useAddWanted } from '../../components/Alternatives';
+import { InstallCard } from '../../components/AppBar';
+import { createList } from '../../state/lists';
 import { PartyPoppers } from '../../components/PartyPoppers';
 import { ShopPage } from '../../components/shop';
 import { api, errorMessage } from '../../lib/api';
@@ -38,6 +41,9 @@ interface Order {
 export const orderDate = (stamp: string): string =>
   new Date(`${stamp.replace(' ', 'T')}Z`).toLocaleString('en-PK', { dateStyle: 'medium', timeStyle: 'short' });
 
+/** How often an open order page asks for the latest status. */
+const LIVE_EVERY_MS = 4000;
+
 const stepsFor = (fulfilment: Order['fulfilment']): OrderStatus[] => [
   'placed',
   'confirmed',
@@ -71,6 +77,39 @@ export default function OrderPage() {
   useEffect(() => {
     if (auth.user) void load();
   }, [auth.user, load]);
+
+  /* Live status. While the order is still moving, ask every few seconds
+     whether the store has taken the next step, so it shows here without a
+     reload. Paused while the tab is hidden; stops once the order is done. */
+  const status = order?.status;
+  const [justMoved, setJustMoved] = useState(false);
+  const moveTimer = useRef(0);
+  useEffect(() => {
+    if (!auth.user || !status || status === 'completed' || status === 'cancelled') return undefined;
+    const check = async () => {
+      if (document.hidden) return;
+      try {
+        const latest = await api<{ status: OrderStatus }>(`/orders/${encodeURIComponent(number)}/status`, { timeoutMs: 4000 });
+        if (latest.status !== status) {
+          await load();
+          setJustMoved(true);
+          window.clearTimeout(moveTimer.current);
+          moveTimer.current = window.setTimeout(() => setJustMoved(false), 4000);
+        }
+      } catch {
+        /* a missed beat; the next one will catch up */
+      }
+    };
+    const timer = window.setInterval(check, LIVE_EVERY_MS);
+    document.addEventListener('visibilitychange', check);
+    return () => {
+      window.clearInterval(timer);
+      document.removeEventListener('visibilitychange', check);
+    };
+  }, [auth.user, status, number, load]);
+
+  const navigate = useNavigate();
+  const { add, prompt } = useAddWanted();
 
   if (auth.ready && !auth.user) {
     return <Navigate to={`/login?next=${encodeURIComponent(location.pathname)}`} replace />;
@@ -124,7 +163,7 @@ export default function OrderPage() {
       {order.status === 'cancelled' ? (
         <p className="notice notice--warn">{t('shop.order.cancelled')}</p>
       ) : (
-        <ol className="order-steps" aria-label={t('shop.order.status')}>
+        <ol className={`order-steps${justMoved ? ' is-fresh' : ''}`} aria-label={t('shop.order.status')}>
           {steps.map((step, index) => (
             <li
               key={step}
@@ -136,6 +175,18 @@ export default function OrderPage() {
           ))}
         </ol>
       )}
+
+      {order.status !== 'cancelled' && order.status !== 'completed' ? (
+        <p className="order-live">
+          <span className="order-live__dot" aria-hidden="true" />
+          {t('shop.order.live')}
+        </p>
+      ) : null}
+      <p className="sr-only" role="status" aria-live="polite">
+        {justMoved ? `${t('shop.order.status')}: ${t(`shop.order.s.${order.status}`)}` : ''}
+      </p>
+      {prompt}
+      {justPlaced ? <InstallCard /> : null}
 
       <div className="shop-split">
         <div className="shop-stack">
@@ -151,6 +202,23 @@ export default function OrderPage() {
               </li>
             ))}
           </ul>
+          <div className="shop-form__row">
+            <button className="btn btn--solid btn--sm" type="button" onClick={() => add(order.items.map(({ sku, qty }) => ({ sku, qty })))}>
+              {t('shop.order.again')}
+            </button>
+            <button
+              className="btn btn--ghost btn--sm"
+              type="button"
+              onClick={() =>
+                void createList(t('shop.lists.fromOrder', { number: order.number }), 'none', order.items.map(({ sku, qty }) => ({ sku, qty: Math.min(50, qty) }))).then(
+                  () => navigate('/lists'),
+                  (problem) => setError(errorMessage(problem)),
+                )
+              }
+            >
+              {t('shop.order.saveList')}
+            </button>
+          </div>
         </div>
 
         <aside className="shop-card">

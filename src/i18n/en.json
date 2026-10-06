@@ -293,7 +293,7 @@
       "signUpTitle": "Create your account",
       "signInTab": "Sign in",
       "signUpTab": "New here",
-      "lede": "Sign in with your mobile number to check out and follow your orders.",
+      "lede": "Sign in to check out, follow your orders and keep shopping lists.",
       "name": "Your name",
       "phone": "Mobile number",
       "phoneHint": "For example 0300 1234567",
@@ -302,7 +302,20 @@
       "submitIn": "Sign in",
       "submitUp": "Create account",
       "busy": "Just a moment…",
-      "signOut": "Sign out"
+      "signOut": "Sign out",
+      "login": "Email or mobile number",
+      "email": "Email address",
+      "emailHint": "Order updates are sent here.",
+      "phoneWhy": "We call this number to confirm your order.",
+      "forgot": "Forgot your password?",
+      "forgotTitle": "Forgot your password?",
+      "forgotLede": "Enter the email on your account and we will send a link to set a new password.",
+      "forgotSubmit": "Send me a link",
+      "forgotSent": "If {{email}} has an account, a link is on its way. It works for one hour.",
+      "backToSignIn": "Back to sign in",
+      "resetTitle": "Set a new password",
+      "newPassword": "New password",
+      "resetSubmit": "Save and sign in"
     },
     "checkout": {
       "title": "Checkout",
@@ -357,7 +370,10 @@
         "ready_for_pickup": "Ready to collect",
         "completed": "Completed",
         "cancelled": "Cancelled"
-      }
+      },
+      "live": "Updates here by itself — no need to refresh.",
+      "again": "Add these to my bag again",
+      "saveList": "Save as a list"
     },
     "acct": {
       "title": "My account",
@@ -367,6 +383,67 @@
       "addresses": "Saved addresses",
       "view": "View",
       "admin": "Open the admin panel"
+    },
+    "alts": {
+      "goneNow": "Out of stock right now.",
+      "instead": "Here is what we have instead:",
+      "none": "Nothing similar is in stock at the moment.",
+      "added": "Added",
+      "swap": "Swap",
+      "swapLede": "Swap it for one of these:",
+      "titleOne": "1 item is out of stock right now",
+      "titleMany": "{{n}} items are out of stock right now",
+      "restAdded": "The other {{n}} went into your bag.",
+      "done": "Done"
+    },
+    "recs": {
+      "again": "Buy again",
+      "like": "You might also like",
+      "popular": "Popular right now"
+    },
+    "lists": {
+      "title": "My lists",
+      "lede": "Keep the things you buy every week or month in a list, then drop them into your bag in one go.",
+      "new": "Start a new list",
+      "name": "List name",
+      "namePlaceholder": "Weekly shop",
+      "cadence": "How often",
+      "c": {
+        "weekly": "Every week",
+        "monthly": "Every month",
+        "none": "Now and then"
+      },
+      "create": "Create list",
+      "how": "Add products from any product page, or save your bag or an earlier order as a list.",
+      "empty": "Nothing on this list yet. Open a product and choose “Add to a list”.",
+      "selected": "{{n}} selected",
+      "addToBag": "Add selected to bag",
+      "addedNote": "{{n}} added to your bag.",
+      "delete": "Delete list",
+      "deleteConfirm": "Delete “{{name}}”?",
+      "suggest": "You have bought {{n}} things more than once. Want them in a weekly list?",
+      "suggestCta": "Make my weekly list",
+      "regularName": "My regulars",
+      "weeklyName": "Weekly shop",
+      "monthlyName": "Monthly shop",
+      "fromOrder": "From order {{number}}",
+      "addTo": "Add to a list…",
+      "newWeekly": "+ New weekly list",
+      "newMonthly": "+ New monthly list",
+      "savedTo": "Saved.",
+      "saveBag": "Save this bag as a list"
+    },
+    "app": {
+      "home": "Home",
+      "aisles": "Aisles",
+      "search": "Search",
+      "bag": "Bag",
+      "account": "Account",
+      "install": "Install the Wafiq app",
+      "installBody": "Add Wafiq to your home screen for one-tap shopping.",
+      "installIos": "To install: tap Share, then “Add to Home Screen”.",
+      "installCta": "Install",
+      "later": "Not now"
     }
   }
 }

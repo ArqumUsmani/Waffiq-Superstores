@@ -19,6 +19,7 @@ import { createRoot } from 'react-dom/client';
 import { App } from './App';
 import { dismissSplash } from './lib/boot';
 import { loadShop } from './state/shop';
+import { initInstall } from './lib/install';
 
 const host = document.getElementById('root');
 if (!host) throw new Error('#root is missing from index.html');
@@ -36,3 +37,14 @@ void dismissSplash();
 /* Is the online store switched on? Asked in the background: the site never
    waits for the answer, and no answer means no store. */
 void loadShop();
+
+/* The offline worker that makes the site installable. Production only: in
+   development it would serve stale modules over Vite's own. */
+if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {
+      /* the site works the same without it */
+    });
+  });
+}
+initInstall();

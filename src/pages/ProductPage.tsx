@@ -11,6 +11,8 @@ import { bagItemFor } from '../lib/cart';
 import { rupees } from '../lib/money';
 import { addToBag, useBag } from '../state/bag';
 import { offerFor, useShop } from '../state/shop';
+import { Alternatives } from '../components/Alternatives';
+import { SaveToList } from '../components/SaveToList';
 
 const asRecord = (value: unknown) => value as Record<string, unknown>;
 
@@ -144,9 +146,18 @@ export default function ProductPage() {
           <h2 className="product__subhead">{t('product.about')}</h2>
           <p className="product__desc">{product.desc}</p>
 
-          <p className="notice">
-            {shop.enabled ? t(offer ? 'shop.productNote' : 'shop.notOnline') : t('product.listingNote')}
-          </p>
+          {offer && offer.stock === 0 ? (
+            <div className="notice notice--warn product__alts" role="status">
+              <p>
+                <strong>{t('shop.alts.goneNow')}</strong> {t('shop.alts.instead')}
+              </p>
+              <Alternatives sku={product.sku} />
+            </div>
+          ) : (
+            <p className="notice">
+              {shop.enabled ? t(offer ? 'shop.productNote' : 'shop.notOnline') : t('product.listingNote')}
+            </p>
+          )}
 
           <div className="product__actions">
             {offer ? (
@@ -168,6 +179,7 @@ export default function ProductPage() {
               {t('product.back')} {aisleName}
             </Link>
           </div>
+          {offer ? <SaveToList sku={product.sku} /> : null}
         </div>
       </article>
 

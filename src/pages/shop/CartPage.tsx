@@ -6,11 +6,18 @@ import { t } from '../../lib/i18n';
 import { useLang } from '../../state/app-state';
 import { useBag } from '../../state/bag';
 import { useShop } from '../../state/shop';
+import { useAuth } from '../../state/auth';
+import { createList } from '../../state/lists';
+import { Recommendations, useRecommendations } from '../../components/Recommendations';
+import { useNavigate } from 'react-router';
 
 export default function CartPage() {
   useLang();
   const shop = useShop();
   const cart = priceCart(useBag(), shop);
+  const { user } = useAuth();
+  const recs = useRecommendations();
+  const navigate = useNavigate();
 
   if (!cart.lines.length) {
     return (
@@ -30,7 +37,7 @@ export default function CartPage() {
       eyebrow={cart.units === 1 ? t('shop.cart.item') : t('shop.cart.items', { n: cart.units })}
     >
       <div className="shop-split">
-        <CartLines cart={cart} />
+        <CartLines cart={cart} alternatives />
         <aside className="shop-card">
           <CartTotals cart={cart} config={shop.config} />
           {shop.config.freeDeliveryOver > 0 ? (
@@ -45,8 +52,24 @@ export default function CartPage() {
           <Link className="btn btn--ghost shop-card__cta" to="/#categories">
             {t('shop.cart.keepShopping')}
           </Link>
+          {user ? (
+            <button
+              className="shop-form__link"
+              type="button"
+              onClick={() =>
+                void createList(
+                  t('shop.lists.weeklyName'),
+                  'weekly',
+                  cart.lines.map((line) => ({ sku: line.item.sku!, qty: Math.min(50, line.item.qty) })),
+                ).then(() => navigate('/lists'))
+              }
+            >
+              {t('shop.lists.saveBag')}
+            </button>
+          ) : null}
         </aside>
       </div>
+      <Recommendations recs={recs} only="regulars" />
     </ShopPage>
   );
 }

@@ -17,7 +17,11 @@ export type IconName =
   | 'soundOff'
   | 'arrow'
   | 'external'
-  | 'user';
+  | 'user'
+  | 'home'
+  | 'grid'
+  | 'bag'
+  | 'list';
 
 const PATHS: Record<IconName, ReactNode> = {
   search: <path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM21 21l-4.3-4.3" />,
@@ -45,6 +49,10 @@ const PATHS: Record<IconName, ReactNode> = {
   ),
   arrow: <path d="M5 12h14M13 6l6 6-6 6" />,
   external: <path d="M7 17 17 7M8 7h9v9" />,
+  home: <path d="M4 11.5 12 4l8 7.5V20h-5.5v-5h-5v5H4v-8.5Z" />,
+  grid: <path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" />,
+  bag: <path d="M5 8h14l-1 12H6L5 8ZM9 8V6.5a3 3 0 0 1 6 0V8" />,
+  list: <path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01" />,
   user: <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20a7.5 7.5 0 0 1 15 0" />,
 };
 

@@ -8,7 +8,8 @@ import { Link } from 'react-router';
 import { bagItemFor, type Cart } from '../lib/cart';
 import { rupees } from '../lib/money';
 import { t } from '../lib/i18n';
-import { addToBag, setBagQty } from '../state/bag';
+import { addToBag, replaceInBag, setBagQty } from '../state/bag';
+import { Alternatives } from './Alternatives';
 import { deliveryFeeFor, useShop, type ShopConfig } from '../state/shop';
 import NotFound from '../pages/NotFound';
 import type { Product } from '../lib/types';
@@ -42,7 +43,16 @@ export function AddButton({
 }
 
 /** Every line in the bag, with its quantity control and what it comes to. */
-export function CartLines({ cart, onNavigate }: { cart: Cart; onNavigate?: () => void }) {
+export function CartLines({
+  cart,
+  onNavigate,
+  alternatives = false,
+}: {
+  cart: Cart;
+  onNavigate?: () => void;
+  /** Offer something else for a line that has sold out. */
+  alternatives?: boolean;
+}) {
   return (
     <ul className="cart-lines">
       {cart.lines.map(({ item, offer, max, ok, total }) => (
@@ -59,7 +69,7 @@ export function CartLines({ cart, onNavigate }: { cart: Cart; onNavigate?: () =>
             </p>
             {ok ? null : (
               <p className="cart-line__warn" role="alert">
-                {max > 0 ? t('shop.cart.onlyLeft', { n: max }) : t('shop.cart.gone')}
+                {max > 0 ? t('shop.cart.onlyLeft', { n: max }) : t('shop.alts.goneNow')}
               </p>
             )}
           </div>
@@ -78,6 +88,12 @@ export function CartLines({ cart, onNavigate }: { cart: Cart; onNavigate?: () =>
               {t('shop.cart.remove')}
             </button>
           </div>
+          {alternatives && max === 0 ? (
+            <div className="cart-line__alts">
+              <p>{t('shop.alts.swapLede')}</p>
+              <Alternatives sku={item.sku!} action={t('shop.alts.swap')} onPick={(product) => replaceInBag(item.key, bagItemFor(product))} />
+            </div>
+          ) : null}
         </li>
       ))}
     </ul>

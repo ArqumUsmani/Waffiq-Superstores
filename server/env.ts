@@ -46,6 +46,22 @@ export const env = {
     const encoded = process.env.DATABASE_CA;
     return encoded ? Buffer.from(encoded, 'base64').toString('utf8') : undefined;
   },
+  /**
+   * The mail server emails go out through (Mailgun's SMTP, or any other).
+   * Null until host, user and password are all set — emails are then
+   * written to the log instead of sent.
+   */
+  get smtp() {
+    const host = process.env.SMTP_HOST;
+    const user = process.env.SMTP_USER;
+    const pass = process.env.SMTP_PASS;
+    if (!host || !user || !pass) return null;
+    return { host, user, pass, port: Number(process.env.SMTP_PORT) || 587 };
+  },
+  /** Who emails come from, e.g. "Wafiq Super Store <orders@mg.wafiq.pk>". Must be on the domain the mail server is set up for. */
+  get emailFrom() {
+    return process.env.EMAIL_FROM || '';
+  },
   get jwtSecret() {
     const secret = need('JWT_SECRET');
     if (secret.length < 32) throw new Error('JWT_SECRET must be at least 32 characters');

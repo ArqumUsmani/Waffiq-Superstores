@@ -95,6 +95,36 @@ export function addToBag(item: Omit<BagItem, 'qty'>, from?: Element | null): voi
   addListeners.forEach((cb) => cb(event));
 }
 
+/**
+ * Adds several items at once — a saved list, or an earlier order. One
+ * change and one event, so the bag reacts once instead of once per item.
+ */
+export function addManyToBag(list: { item: Omit<BagItem, 'qty'>; qty: number }[]): void {
+  if (!list.length) return;
+  let next = items;
+  for (const { item, qty } of list) {
+    const existing = next.find((i) => i.key === item.key);
+    next = existing
+      ? next.map((i) => (i.key === item.key ? { ...i, qty: Math.min(99, i.qty + qty) } : i))
+      : [...next, { ...item, qty }];
+  }
+  commit(next);
+  const last = next.find((i) => i.key === list[list.length - 1]!.item.key)!;
+  addListeners.forEach((cb) => cb({ item: last, from: null }));
+}
+
+/** Swaps one item for another, keeping the quantity — an alternative for something sold out. */
+export function replaceInBag(key: string, item: Omit<BagItem, 'qty'>): void {
+  const old = items.find((i) => i.key === key);
+  if (!old) return;
+  const already = items.find((i) => i.key === item.key);
+  commit(
+    already
+      ? items.filter((i) => i.key !== key).map((i) => (i.key === item.key ? { ...i, qty: Math.min(99, i.qty + old.qty) } : i))
+      : items.map((i) => (i.key === key ? { ...item, qty: old.qty } : i)),
+  );
+}
+
 /** Sets how many of an item are in the bag; zero takes it out. */
 export function setBagQty(key: string, qty: number): void {
   const wanted = Math.max(0, Math.min(99, Math.floor(qty)));

@@ -6,6 +6,7 @@
  */
 import type { BagItem } from '../state/bag';
 import type { Offer, ShopState } from '../state/shop';
+import { getProduct, productsInCategory, productsInSubcategory } from './data';
 import type { Product } from './types';
 
 export interface CartLine {
@@ -41,6 +42,40 @@ export function priceCart(bag: BagItem[], shop: ShopState): Cart {
     subtotal: lines.reduce((sum, line) => sum + line.total, 0),
     blocked: lines.some((line) => !line.ok),
   };
+}
+
+/**
+ * What to offer instead of a product that cannot be bought right now: the
+ * closest things in stock from the same shelf (then the same aisle), nearest
+ * in price first.
+ */
+export function alternativesFor(sku: string, shop: ShopState, limit = 3): Product[] {
+  const product = getProduct(sku);
+  if (!product || !shop.enabled) return [];
+  const price = shop.offers[sku]?.price ?? null;
+  const inStock = (p: Product) => p.sku !== sku && (shop.offers[p.sku]?.stock ?? 0) > 0;
+  const nearest = (a: Product, b: Product) =>
+    price === null ? 0 : Math.abs(shop.offers[a.sku]!.price - price) - Math.abs(shop.offers[b.sku]!.price - price);
+  const shelf = productsInSubcategory(product.subcategory).filter(inStock).sort(nearest);
+  if (shelf.length >= limit) return shelf.slice(0, limit);
+  const aisle = productsInCategory(product.category)
+    .filter((p) => inStock(p) && p.subcategory !== product.subcategory)
+    .sort(nearest);
+  return [...shelf, ...aisle].slice(0, limit);
+}
+
+/** Splits wanted items into what can go in the bag now and what cannot. */
+export function splitByStock(wanted: { sku: string; qty: number }[], shop: ShopState) {
+  const ready: { product: Product; qty: number }[] = [];
+  const missing: Product[] = [];
+  for (const { sku, qty } of wanted) {
+    const product = getProduct(sku);
+    if (!product) continue;
+    const stock = shop.offers[sku]?.stock ?? 0;
+    if (stock > 0) ready.push({ product, qty: Math.min(qty, stock) });
+    else missing.push(product);
+  }
+  return { ready, missing };
 }
 
 /** A catalogue product as a bag item. */

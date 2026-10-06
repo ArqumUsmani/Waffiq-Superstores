@@ -5727,3 +5727,511 @@ html:has(.site-header.is-hidden :focus-visible) .hero-scene__controls {
   width: 6px;
   height: 20px;
 }
+
+/* ------------------------------------------------------------------ *
+   Online store, second part: accounts by email, alternatives, lists,
+   live order status, and the phone app shell
+ * ------------------------------------------------------------------ */
+
+.field__hint {
+  font-size: 0.78rem;
+  color: var(--fg-muted);
+}
+
+.shop-form__link {
+  justify-self: start;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-green);
+  font: inherit;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+
+  [data-theme='dark'] & {
+    color: var(--color-lime);
+  }
+}
+
+.shop-card .shop-form__link {
+  justify-self: center;
+}
+
+/* ---- alternatives ---- */
+
+.alts {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: grid;
+    grid-template-columns: 3rem minmax(0, 1fr) auto;
+    gap: 0.7rem;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--fg);
+  }
+}
+
+.alts__art {
+  display: block;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.alts__body {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.3;
+
+  a {
+    color: inherit;
+  }
+
+  small {
+    font-weight: 400;
+    color: var(--fg-muted);
+  }
+}
+
+.alts__none {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+}
+
+.product__alts {
+  display: grid;
+  gap: 0.7rem;
+  color: var(--fg);
+
+  p {
+    margin: 0;
+  }
+}
+
+.cart-line__alts {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 0.5rem;
+  padding-block-start: 0.75rem;
+  border-block-start: 1px dashed var(--border-strong);
+
+  p {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+}
+
+.stock-prompt {
+  width: min(32rem, calc(100vw - 2rem));
+  max-height: min(85vh, 44rem);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--surface-2);
+  color: var(--fg);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+
+  &::backdrop {
+    background: rgb(6 20 12 / 0.6);
+    backdrop-filter: blur(4px);
+  }
+
+  h2 {
+    margin: 0 0 0.4rem;
+    font-size: 1.35rem;
+  }
+
+  h3 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1.1rem 0 0.2rem;
+    font-size: 1rem;
+  }
+}
+
+.stock-prompt__added,
+.stock-prompt__instead {
+  margin: 0 0 0.5rem;
+  font-size: 0.88rem;
+  color: var(--fg-muted);
+}
+
+.stock-prompt__done {
+  width: 100%;
+  margin-block-start: 1.25rem;
+}
+
+/* ---- lists ---- */
+
+.shop-lists {
+  display: grid;
+  gap: 1rem;
+  margin-block: 1.25rem;
+  align-items: start;
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.shop-list {
+  position: static;
+}
+
+.shop-list__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+
+  select {
+    padding: 0.4rem 0.6rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    color: var(--fg);
+    font: inherit;
+    font-size: 0.85rem;
+  }
+}
+
+.shop-list__items {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 0.7rem;
+    align-items: center;
+    padding: 0.55rem 0.7rem;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  li.is-out small {
+    font-weight: 700;
+    color: #a86a00;
+
+    [data-theme='dark'] & {
+      color: #f0b95a;
+    }
+  }
+
+  input[type='checkbox'] {
+    width: 1.15rem;
+    height: 1.15rem;
+    accent-color: var(--color-green);
+  }
+}
+
+.shop-list__name {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 0;
+  font-weight: 600;
+  line-height: 1.3;
+
+  a {
+    color: inherit;
+  }
+
+  small {
+    font-weight: 400;
+    color: var(--fg-muted);
+  }
+}
+
+.shop-list__total {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+
+  strong {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+  }
+}
+
+.shop-lists__new {
+  max-width: 30rem;
+}
+
+.shop-suggest {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  color: var(--fg);
+
+  p {
+    margin: 0;
+  }
+}
+
+.save-to-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.9rem 0 0;
+  font-size: 0.88rem;
+
+  select {
+    padding: 0.55rem 0.8rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    color: var(--fg);
+    font: inherit;
+  }
+}
+
+.shop-recs {
+  display: grid;
+  gap: 0.9rem;
+  margin-block-start: 2.25rem;
+  min-width: 0;
+}
+
+/* ---- live order status ---- */
+
+.order-live {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--fg-muted);
+}
+
+.order-live__dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--color-green);
+  animation: order-live 1.8s ease-out infinite;
+
+  [data-theme='dark'] & {
+    background: var(--color-lime);
+  }
+}
+
+@keyframes order-live {
+  0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-green) 55%, transparent); }
+  100% { box-shadow: 0 0 0 0.6rem transparent; }
+}
+
+/* The step the store has just moved the order to. */
+.order-steps.is-fresh .is-current {
+  animation: order-step 0.7s var(--ease-spring) 2;
+}
+
+@keyframes order-step {
+  50% { scale: 1.12; box-shadow: 0 0 0 6px color-mix(in oklab, var(--color-lime) 55%, transparent); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .order-live__dot,
+  .order-steps.is-fresh .is-current {
+    animation: none;
+  }
+}
+
+/* ---- install card ---- */
+
+.install-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.75rem 0.9rem;
+  align-items: center;
+  margin-block: 1rem;
+  color: var(--fg);
+
+  img {
+    border-radius: 12px;
+  }
+
+  p {
+    margin: 0.15rem 0 0;
+    font-size: 0.85rem;
+    color: var(--fg-muted);
+  }
+}
+
+.install-card__actions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* ---- the phone tab bar ---- */
+
+.tabbar {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .tabbar {
+    position: fixed;
+    inset-inline: 0;
+    inset-block-end: 0;
+    z-index: 84;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    padding: 0.35rem 0.25rem calc(0.35rem + env(safe-area-inset-bottom));
+    border-block-start: 1px solid var(--border);
+    background: color-mix(in oklab, var(--surface) 94%, transparent);
+    backdrop-filter: blur(14px);
+    transition: translate 0.4s var(--ease-out-expo);
+  }
+
+  /* Out of the way while the hero fills the screen, like the header. */
+  [data-bag-avoid='hero'] .tabbar {
+    translate: 0 110%;
+  }
+
+  .tabbar__tab {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: 0.15rem;
+    padding: 0.4rem 0.1rem;
+    border: 0;
+    border-radius: 12px;
+    background: none;
+    color: var(--fg-muted);
+    font: inherit;
+    font-size: 0.68rem;
+    font-weight: 600;
+    line-height: 1.2;
+    cursor: pointer;
+
+    svg {
+      width: 1.35rem;
+      height: 1.35rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    &.is-current {
+      color: var(--color-green);
+
+      [data-theme='dark'] & {
+        color: var(--color-lime);
+      }
+    }
+  }
+
+  .tabbar__badge {
+    position: absolute;
+    inset-block-start: 0.1rem;
+    inset-inline-start: calc(50% + 0.35rem);
+    min-width: 1.15rem;
+    padding: 0.05rem 0.3rem;
+    border-radius: 999px;
+    background: var(--color-lime-bright);
+    color: var(--color-green-ink);
+    font-size: 0.66rem;
+    font-weight: 800;
+    text-align: center;
+  }
+
+  /* Everything that lives at the bottom of the screen makes room. */
+  [data-tabbar] body {
+    padding-block-end: calc(4rem + env(safe-area-inset-bottom));
+  }
+
+  [data-tabbar] .back-to-top {
+    inset-block-end: calc(5rem + env(safe-area-inset-bottom));
+  }
+
+  [data-tabbar] .bag-scene__cart {
+    inset-block-end: calc(4.5rem + env(safe-area-inset-bottom));
+  }
+
+  /* Phone polish for the shop pages. */
+  .shop-page {
+    padding-block-start: 5.5rem;
+  }
+
+  .shop-split {
+    gap: 1.25rem;
+  }
+
+  .shop-list__items li {
+    grid-template-columns: auto minmax(0, 1fr);
+
+    .stepper {
+      grid-column: 2;
+      justify-self: start;
+    }
+  }
+
+  .alts li {
+    grid-template-columns: 2.75rem minmax(0, 1fr);
+
+    .btn {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+/* A dialog is centred by the browser with auto margins; the reset zeroes
+   them, so they are put back. */
+.stock-prompt {
+  margin: auto;
+}
+
+/* The header's five controls did not fit a 390px phone: the menu button ran
+   off the edge. A little smaller and closer together, they do. */
+@media (max-width: 430px) {
+  .site-header__actions {
+    gap: 0.3rem;
+
+    .icon-btn,
+    .search-trigger {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+
+    .lang-toggle {
+      height: 2.4rem;
+      padding-inline: 0.6rem;
+      font-size: 0.78rem;
+    }
+  }
+}

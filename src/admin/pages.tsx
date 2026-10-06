@@ -529,6 +529,7 @@ interface CustomerRow {
   id: number;
   name: string;
   phone: string;
+  email: string | null;
   created_at: string;
   is_demo: number;
   orders: number;
@@ -546,7 +547,7 @@ export function Customers() {
           <thead>
             <tr>
               <th>Customer</th>
-              <th>Phone</th>
+              <th>Contact</th>
               <th className="is-num">Orders</th>
               <th className="is-num">Spent</th>
               <th>Last order</th>
@@ -560,7 +561,10 @@ export function Customers() {
                   {customer.name}
                   {customer.is_demo ? <span className="adm-tag adm-tag--demo">demo</span> : null}
                 </td>
-                <td>{customer.phone}</td>
+                <td>
+                  {customer.phone}
+                  {customer.email ? <small>{customer.email}</small> : null}
+                </td>
                 <td className="is-num">{customer.orders}</td>
                 <td className="is-num">{rupees(Number(customer.spent))}</td>
                 <td>{customer.last_order ? orderDate(customer.last_order) : '—'}</td>

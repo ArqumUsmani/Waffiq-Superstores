@@ -49,10 +49,22 @@ r = await stranger('GET', '/products');
 check('store off: no prices published', Object.keys(r.data.products ?? {}).length === 0);
 
 const phone = `0311${String(Math.floor(1000000 + Math.random() * 8999999))}`;
-r = await customer('POST', '/auth/register', { name: 'Smoke Test', phone, password: 'correct-horse' });
+const email = `smoke-${phone}@example.com`;
+r = await customer('POST', '/auth/register', { name: 'Smoke Test', email, phone, password: 'correct-horse' });
 check('customer registers', r.status === 200 && r.data.user?.role === 'customer');
-r = await customer('POST', '/auth/register', { name: 'Again', phone, password: 'correct-horse' });
+r = await customer('POST', '/auth/register', { name: 'Again', email: `other-${email}`, phone, password: 'correct-horse' });
 check('same number cannot register twice', r.status === 409);
+r = await stranger('POST', '/auth/register', { name: 'Again', email: email.toUpperCase(), phone: `0312${phone.slice(4)}`, password: 'correct-horse' });
+check('same email cannot register twice', r.status === 409);
+r = await stranger('POST', '/auth/register', { name: 'No Email', email: 'not-an-email', phone: `0313${phone.slice(4)}`, password: 'correct-horse' });
+check('a bad email is refused', r.status === 400);
+r = await stranger('POST', '/auth/login', { login: email, password: 'correct-horse' });
+check('sign in by email', r.status === 200 && r.data.user?.email === email);
+await stranger('POST', '/auth/logout');
+r = await stranger('POST', '/auth/forgot', { email: 'nobody-here@example.com' });
+check('forgot password gives nothing away', r.status === 200 && r.data.ok === true);
+r = await stranger('POST', '/auth/reset', { token: 'x'.repeat(43), password: 'another-horse' });
+check('a made-up reset link is refused', r.status === 400);
 r = await stranger('POST', '/auth/login', { phone, password: 'wrong-password' });
 check('wrong password refused', r.status === 403);
 r = await stranger('POST', '/auth/register', { name: 'X', phone: '12345', password: 'short' });
@@ -130,6 +142,26 @@ r = await admin('GET', '/admin/summary');
 check('dashboard figures', r.status === 200 && r.data.month.orders > 0, `30 days: ${r.data.month.orders} orders, Rs ${r.data.month.revenue.toLocaleString()}`);
 r = await admin('GET', '/admin/analytics?days=30');
 check('analytics', r.status === 200 && r.data.bestSellers.length > 0, `best seller: ${r.data.bestSellers[0]?.name} (${r.data.bestSellers[0]?.units}) · ${r.data.restock.length} to restock · ${r.data.slow.length} slow`);
+
+/* --- lists and recommendations --- */
+r = await customer('GET', '/recommendations');
+check('recommendations', r.status === 200 && Array.isArray(r.data.regulars) && r.data.suggested.length > 0, `${r.data.regulars?.length} regulars, ${r.data.suggested?.length} suggested`);
+const anySku = r.data.suggested[0];
+r = await customer('POST', '/lists', { name: 'Weekly shop', cadence: 'weekly', items: [{ sku: anySku, qty: 2 }, { sku: 'no-such-product', qty: 1 }] });
+const listId = r.data.id;
+r = await customer('GET', '/lists');
+const saved = r.data.lists?.find((l) => l.id === listId);
+check('a list is saved, unknown products dropped', saved?.cadence === 'weekly' && saved.items.length === 1 && saved.items[0].qty === 2);
+r = await stranger('PUT', `/lists/${listId}`, { name: 'Hijack', cadence: 'none', items: [] });
+check('lists need a sign-in', r.status === 401);
+r = await admin('PUT', `/lists/${listId}`, { name: 'Hijack', cadence: 'none', items: [] });
+check("another account cannot change someone's list", r.status === 404);
+r = await customer('PUT', `/lists/${listId}`, { name: 'Monthly', cadence: 'monthly', items: [{ sku: anySku, qty: 5 }] });
+r = await customer('GET', '/lists');
+check('a list can be changed', r.data.lists.find((l) => l.id === listId)?.items[0]?.qty === 5);
+await customer('DELETE', `/lists/${listId}`);
+r = await customer('GET', '/lists');
+check('a list can be deleted', !r.data.lists.some((l) => l.id === listId));
 
 /* --- sign-in rate limit --- */
 let limited = false;

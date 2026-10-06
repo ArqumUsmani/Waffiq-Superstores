@@ -24,6 +24,7 @@ export interface SessionUser {
   id: number;
   name: string;
   phone: string;
+  email: string | null;
   role: 'customer' | 'admin';
 }
 
@@ -44,6 +45,12 @@ export function normalisePhone(input: string): string | null {
   else if (digits.startsWith('92') && digits.length === 12) digits = digits.slice(2);
   if (digits.length === 10 && digits.startsWith('3')) digits = `0${digits}`;
   return /^03\d{9}$/.test(digits) ? digits : null;
+}
+
+/** Lower-cased and trimmed, or null when it is not an email address at all. */
+export function normaliseEmail(input: string): string | null {
+  const email = input.trim().toLowerCase();
+  return email.length <= 190 && /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) ? email : null;
 }
 
 export async function startSession(c: Context, userId: number): Promise<void> {
@@ -71,7 +78,7 @@ export async function currentUser(c: Context): Promise<SessionUser | null> {
   if (!token) return null;
   try {
     const { payload } = await jwtVerify(token, secret());
-    const found = await rows<SessionUser>('SELECT id, name, phone, role FROM users WHERE id = ?', [
+    const found = await rows<SessionUser>('SELECT id, name, phone, email, role FROM users WHERE id = ?', [
       Number(payload.sub),
     ]);
     return found[0] ?? null;

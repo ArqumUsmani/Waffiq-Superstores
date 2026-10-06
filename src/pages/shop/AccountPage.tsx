@@ -8,6 +8,8 @@ import { t } from '../../lib/i18n';
 import { useLang } from '../../state/app-state';
 import { loadUser, signOut, useAuth } from '../../state/auth';
 import { useShop } from '../../state/shop';
+import { InstallCard } from '../../components/AppBar';
+import { Recommendations, useRecommendations } from '../../components/Recommendations';
 import { orderDate, type OrderStatus } from './OrderPage';
 
 interface OrderRow {
@@ -38,7 +40,10 @@ export default function AccountPage() {
   return (
     <ShopPage title={t('shop.acct.hello', { name: auth.user.name })} eyebrow={t('shop.acct.title')}>
       <p className="shop-account__who">
-        <span dir="ltr">{auth.user.phone}</span>
+        <span dir="ltr">{[auth.user.email, auth.user.phone].filter(Boolean).join(' · ')}</span>
+        <Link className="btn btn--solid btn--sm" to="/lists">
+          {t('shop.lists.title')}
+        </Link>
         <button className="btn btn--ghost btn--sm" type="button" onClick={() => void signOut()}>
           {t('shop.auth.signOut')}
         </button>
@@ -48,22 +53,35 @@ export default function AccountPage() {
           </a>
         ) : null}
       </p>
+      <InstallCard />
       <div className="shop-split shop-split--even">
         <Orders />
         <SavedAddresses />
       </div>
+      <AccountRecs />
     </ShopPage>
   );
+}
+
+function AccountRecs() {
+  return <Recommendations recs={useRecommendations()} />;
 }
 
 function Orders() {
   const [orders, setOrders] = useState<OrderRow[] | null>(null);
 
+  /* Re-read now and then, so a status the store changes shows up here too. */
   useEffect(() => {
-    api<{ orders: OrderRow[] }>('/orders').then(
-      (data) => setOrders(data.orders),
-      () => setOrders([]),
-    );
+    const load = () => {
+      if (document.hidden) return;
+      api<{ orders: OrderRow[] }>('/orders').then(
+        (data) => setOrders(data.orders),
+        () => setOrders((current) => current ?? []),
+      );
+    };
+    load();
+    const timer = window.setInterval(load, 15000);
+    return () => window.clearInterval(timer);
   }, []);
 
   return (

@@ -107,3 +107,36 @@ CREATE TABLE IF NOT EXISTS login_attempts (
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   KEY idx_attempts_phone (phone, created_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- One-time links for setting a new password. Only a hash of the token is
+-- kept, so a copy of this table cannot be used to take over an account.
+CREATE TABLE IF NOT EXISTS password_resets (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id INT UNSIGNED NOT NULL,
+  token_hash CHAR(64) NOT NULL,
+  expires_at TIMESTAMP NOT NULL,
+  used TINYINT(1) NOT NULL DEFAULT 0,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY uq_resets_token (token_hash),
+  KEY idx_resets_user (user_id),
+  CONSTRAINT fk_resets_user FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- A customer's saved shopping lists: the weekly shop, the monthly stock-up.
+CREATE TABLE IF NOT EXISTS lists (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id INT UNSIGNED NOT NULL,
+  name VARCHAR(80) NOT NULL,
+  cadence ENUM('weekly', 'monthly', 'none') NOT NULL DEFAULT 'none',
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  KEY idx_lists_user (user_id),
+  CONSTRAINT fk_lists_user FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS list_items (
+  list_id INT UNSIGNED NOT NULL,
+  sku VARCHAR(120) NOT NULL,
+  qty INT NOT NULL DEFAULT 1,
+  PRIMARY KEY (list_id, sku),
+  CONSTRAINT fk_list_items_list FOREIGN KEY (list_id) REFERENCES lists (id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

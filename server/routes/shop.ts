@@ -2,7 +2,9 @@
  * The customer-facing API: the on/off flag, live prices and stock, accounts,
  * addresses and orders.
  */
+import { createHash, randomBytes } from 'node:crypto';
 import { Hono } from 'hono';
+import type { Context } from 'hono';
 import { z } from 'zod';
 import type { PoolConnection } from 'mysql2/promise';
 import {
@@ -10,6 +12,7 @@ import {
   currentUser,
   endSession,
   hashPassword,
+  normaliseEmail,
   normalisePhone,
   recordAttempt,
   requireUser,
@@ -18,6 +21,8 @@ import {
   type AppEnv,
 } from '../auth.js';
 import { rows, run, transaction } from '../db/pool.js';
+import { sendOrderEmail, sendResetEmail, type OrderForEmail } from '../email.js';
+import { env } from '../env.js';
 import { deliveryFeeFor, getSettings } from '../settings.js';
 
 export const shop = new Hono<AppEnv>();
@@ -77,43 +82,64 @@ const password = z.string().min(8, 'Use a password of at least 8 characters.').m
 shop.post('/auth/register', async (c) => {
   const input = await body(
     c,
-    z.object({ name: z.string().trim().min(2, 'Please enter your name.').max(120), phone: z.string(), password }),
+    z.object({
+      name: z.string().trim().min(2, 'Please enter your name.').max(120),
+      email: z.string().max(190),
+      phone: z.string(),
+      password,
+    }),
   );
+  const email = normaliseEmail(input.email);
+  if (!email) throw new Refusal('Enter an email address like name@example.com.');
+  /* The phone stays: the store calls it to confirm an order and the rider calls it at the door. */
   const phone = normalisePhone(input.phone);
   if (!phone) throw new Refusal('Enter a mobile number like 0300 1234567.');
-  const taken = await rows('SELECT id FROM users WHERE phone = ?', [phone]);
-  if (taken.length) throw new Refusal('That number already has an account. Sign in instead.', 409);
+  const taken = await rows<{ email: string | null }>('SELECT email FROM users WHERE email = ? OR phone = ?', [email, phone]);
+  if (taken.length) {
+    throw new Refusal(
+      taken.some((row) => row.email === email)
+        ? 'That email already has an account. Sign in instead.'
+        : 'That mobile number already has an account. Sign in instead.',
+      409,
+    );
+  }
 
-  const created = await run('INSERT INTO users (name, phone, password_hash) VALUES (?, ?, ?)', [
+  const created = await run('INSERT INTO users (name, phone, email, password_hash) VALUES (?, ?, ?, ?)', [
     input.name,
     phone,
+    email,
     await hashPassword(input.password),
   ]);
   await startSession(c, created.insertId);
-  return c.json({ user: { id: created.insertId, name: input.name, phone, role: 'customer' } });
+  return c.json({ user: { id: created.insertId, name: input.name, phone, email, role: 'customer' } });
 });
 
 shop.post('/auth/login', async (c) => {
-  const input = await body(c, z.object({ phone: z.string(), password: z.string().max(100) }));
-  const phone = normalisePhone(input.phone);
-  /* One message for every failure: it must not reveal which numbers exist. */
-  const wrong = new Refusal('That number and password do not match.', 403);
-  if (!phone) throw wrong;
-  if (await tooManyAttempts(phone)) {
+  /* `login` is an email address or a mobile number; `phone` is the older name for the same field. */
+  const input = await body(
+    c,
+    z.object({ login: z.string().max(190).optional(), phone: z.string().max(190).optional(), password: z.string().max(100) }),
+  );
+  const typed = (input.login ?? input.phone ?? '').trim();
+  const byEmail = typed.includes('@');
+  const key = byEmail ? normaliseEmail(typed) : normalisePhone(typed);
+  /* One message for every failure: it must not reveal which accounts exist. */
+  const wrong = new Refusal('Those details and password do not match.', 403);
+  if (!key) throw wrong;
+  if (await tooManyAttempts(key)) {
     throw new Refusal('Too many attempts. Please try again in 15 minutes.', 403);
   }
 
-  const found = await rows<{ id: number; name: string; role: 'customer' | 'admin'; password_hash: string }>(
-    'SELECT id, name, role, password_hash FROM users WHERE phone = ?',
-    [phone],
-  );
+  const found = await rows<{
+    id: number; name: string; phone: string; email: string | null; role: 'customer' | 'admin'; password_hash: string;
+  }>(`SELECT id, name, phone, email, role, password_hash FROM users WHERE ${byEmail ? 'email' : 'phone'} = ?`, [key]);
   const user = found[0];
   const ok = user ? await checkPassword(input.password, user.password_hash) : false;
-  await recordAttempt(phone, ok);
+  await recordAttempt(key, ok);
   if (!user || !ok) throw wrong;
 
   await startSession(c, user.id);
-  return c.json({ user: { id: user.id, name: user.name, phone, role: user.role } });
+  return c.json({ user: { id: user.id, name: user.name, phone: user.phone, email: user.email, role: user.role } });
 });
 
 shop.post('/auth/logout', (c) => {
@@ -122,6 +148,63 @@ shop.post('/auth/logout', (c) => {
 });
 
 shop.get('/auth/me', async (c) => c.json({ user: await currentUser(c) }));
+
+/* ---------------- forgotten passwords ---------------- */
+
+/**
+ * The site's own address, for links in emails. Set SITE_URL to pin it;
+ * otherwise it is taken from the request.
+ */
+export function siteOrigin(c: Context): string {
+  if (process.env.SITE_URL) return process.env.SITE_URL.replace(/\/$/, '');
+  const url = new URL(c.req.url);
+  return `${env.production ? 'https' : url.protocol.replace(':', '')}://${c.req.header('host') ?? url.host}`;
+}
+
+const tokenHash = (token: string) => createHash('sha256').update(token).digest('hex');
+
+shop.post('/auth/forgot', async (c) => {
+  const input = await body(c, z.object({ email: z.string().max(190) }));
+  const email = normaliseEmail(input.email);
+  if (!email) throw new Refusal('Enter an email address like name@example.com.');
+  /* Throttled like sign-in, so this cannot be used to flood someone's inbox. */
+  const throttle = `reset:${email}`;
+  if (!(await tooManyAttempts(throttle))) {
+    await recordAttempt(throttle, false);
+    const found = await rows<{ id: number; name: string }>('SELECT id, name FROM users WHERE email = ?', [email]);
+    const user = found[0];
+    if (user) {
+      const token = randomBytes(32).toString('base64url');
+      await run('INSERT INTO password_resets (user_id, token_hash, expires_at) VALUES (?, ?, UTC_TIMESTAMP() + INTERVAL 1 HOUR)', [
+        user.id,
+        tokenHash(token),
+      ]);
+      await sendResetEmail(email, user.name, `${siteOrigin(c)}/reset?token=${token}`);
+    }
+  }
+  /* The same answer whether or not the address has an account. */
+  return c.json({ ok: true });
+});
+
+shop.post('/auth/reset', async (c) => {
+  const input = await body(c, z.object({ token: z.string().min(20).max(200), password }));
+  const done = await transaction(async (conn) => {
+    const found = await rows<{ id: number; user_id: number }>(
+      'SELECT id, user_id FROM password_resets WHERE token_hash = ? AND used = 0 AND expires_at > UTC_TIMESTAMP() FOR UPDATE',
+      [tokenHash(input.token)],
+      conn,
+    );
+    const reset = found[0];
+    if (!reset) return null;
+    await run('UPDATE users SET password_hash = ? WHERE id = ?', [await hashPassword(input.password), reset.user_id], conn);
+    /* This link, and any other still outstanding for the account, is spent. */
+    await run('UPDATE password_resets SET used = 1 WHERE user_id = ?', [reset.user_id], conn);
+    return reset.user_id;
+  });
+  if (!done) throw new Refusal('That link has expired or was already used. Ask for a new one.', 400);
+  await startSession(c, done);
+  return c.json({ user: await rows('SELECT id, name, phone, email, role FROM users WHERE id = ?', [done]).then((r) => r[0]) });
+});
 
 /* ---------------- addresses ---------------- */
 
@@ -271,11 +354,29 @@ shop.post('/orders', requireUser, async (c) => {
         id,
       ], conn);
     }
-    return { number, subtotal, deliveryFee, total };
+    return { id, number, subtotal, deliveryFee, total };
   });
 
-  return c.json({ order });
+  await notify(c, order.id);
+  return c.json({ order: { number: order.number, subtotal: order.subtotal, deliveryFee: order.deliveryFee, total: order.total } });
 });
+
+/** Emails the customer where their order now stands. Never throws. */
+export async function notify(c: Context, orderId: number): Promise<void> {
+  try {
+    const found = await rows<OrderForEmail & { id: number; email: string | null }>(
+      `SELECT o.id, o.number, o.status, o.fulfilment, o.contact_name, o.address_line, o.area, o.subtotal, o.delivery_fee, o.total, u.email
+       FROM orders o JOIN users u ON u.id = o.user_id WHERE o.id = ?`,
+      [orderId],
+    );
+    const order = found[0];
+    if (!order?.email) return;
+    const items = await rows<{ name: string; qty: number; price: number }>('SELECT name, qty, price FROM order_items WHERE order_id = ?', [orderId]);
+    await sendOrderEmail(order.email, { ...order, items }, siteOrigin(c));
+  } catch (error) {
+    console.error('Order email failed:', error);
+  }
+}
 
 const ORDER_FIELDS =
   'id, number, status, fulfilment, contact_name, contact_phone, address_line, area, notes, subtotal, delivery_fee, total, created_at';
@@ -299,9 +400,22 @@ shop.get('/orders/:number', requireUser, async (c) => {
   return c.json({ order: { ...order, items } });
 });
 
+/**
+ * Just the status — small enough for the order page to ask every few
+ * seconds, so a step the store takes shows up without a reload.
+ */
+shop.get('/orders/:number/status', requireUser, async (c) => {
+  const found = await rows<{ status: string; updated_at: string }>(
+    'SELECT status, updated_at FROM orders WHERE number = ? AND user_id = ?',
+    [c.req.param('number'), c.get('user').id],
+  );
+  if (!found[0]) throw new Refusal('We could not find that order.', 404);
+  return c.json(found[0]);
+});
+
 /** A customer can change their mind until the store has started on it. */
 shop.post('/orders/:number/cancel', requireUser, async (c) => {
-  await transaction(async (conn) => {
+  const cancelled = await transaction(async (conn) => {
     const found = await rows<{ id: number; status: string }>(
       'SELECT id, status FROM orders WHERE number = ? AND user_id = ? FOR UPDATE',
       [c.req.param('number'), c.get('user').id],
@@ -314,6 +428,114 @@ shop.post('/orders/:number/cancel', requireUser, async (c) => {
     }
     await run("UPDATE orders SET status = 'cancelled' WHERE id = ?", [order.id], conn);
     await restock(conn, order.id);
+    return order.id;
   });
+  await notify(c, cancelled);
+  return c.json({ ok: true });
+});
+
+/* ---------------- recommendations ---------------- */
+
+/**
+ * What this customer buys again and again, and what others buy from the
+ * same aisles. SKUs only — the page already has the catalogue.
+ */
+shop.get('/recommendations', requireUser, async (c) => {
+  const userId = c.get('user').id;
+  const regulars = await rows<{ sku: string; orders: number; qty: number }>(
+    `SELECT i.sku, COUNT(DISTINCT o.id) AS orders, ROUND(AVG(i.qty)) AS qty
+     FROM order_items i JOIN orders o ON o.id = i.order_id JOIN products p ON p.sku = i.sku AND p.active = 1
+     WHERE o.user_id = ? AND o.status <> 'cancelled'
+     GROUP BY i.sku ORDER BY orders DESC, SUM(i.qty) DESC LIMIT 16`,
+    [userId],
+  );
+  const suggested = await rows<{ sku: string }>(
+    `SELECT p.sku
+     FROM products p
+     LEFT JOIN (
+       SELECT i.sku, SUM(i.qty) AS units FROM order_items i JOIN orders o ON o.id = i.order_id
+       WHERE o.status <> 'cancelled' AND o.created_at >= (UTC_TIMESTAMP() - INTERVAL 60 DAY) GROUP BY i.sku
+     ) s ON s.sku = p.sku
+     WHERE p.active = 1 AND p.stock > 0
+       AND p.sku NOT IN (SELECT i.sku FROM order_items i JOIN orders o ON o.id = i.order_id WHERE o.user_id = ?)
+     ORDER BY
+       (p.category IN (SELECT DISTINCT p2.category FROM order_items i JOIN orders o ON o.id = i.order_id
+                       JOIN products p2 ON p2.sku = i.sku WHERE o.user_id = ?)) DESC,
+       COALESCE(s.units, 0) DESC
+     LIMIT 8`,
+    [userId, userId],
+  );
+  return c.json({
+    regulars: regulars.map((row) => ({ sku: row.sku, orders: Number(row.orders), qty: Math.max(1, Number(row.qty)) })),
+    suggested: suggested.map((row) => row.sku),
+  });
+});
+
+/* ---------------- shopping lists ---------------- */
+
+const listInput = z.object({
+  name: z.string().trim().min(1, 'Give the list a name.').max(80),
+  cadence: z.enum(['weekly', 'monthly', 'none']).default('none'),
+  items: z.array(z.object({ sku: z.string().max(120), qty: z.number().int().min(1).max(50) })).max(100).default([]),
+});
+
+async function writeListItems(conn: PoolConnection, listId: number, items: { sku: string; qty: number }[]): Promise<void> {
+  await run('DELETE FROM list_items WHERE list_id = ?', [listId], conn);
+  if (!items.length) return;
+  /* Only products that exist; the same one twice counts once. */
+  const wanted = new Map(items.map((item) => [item.sku, item.qty]));
+  const skus = [...wanted.keys()];
+  const real = await rows<{ sku: string }>(`SELECT sku FROM products WHERE sku IN (${skus.map(() => '?').join(',')})`, skus, conn);
+  for (const { sku } of real) {
+    await run('INSERT INTO list_items (list_id, sku, qty) VALUES (?, ?, ?)', [listId, sku, wanted.get(sku)!], conn);
+  }
+}
+
+shop.get('/lists', requireUser, async (c) => {
+  const lists = await rows<{ id: number; name: string; cadence: string }>(
+    'SELECT id, name, cadence FROM lists WHERE user_id = ? ORDER BY id',
+    [c.get('user').id],
+  );
+  const items = lists.length
+    ? await rows<{ list_id: number; sku: string; qty: number }>(
+        `SELECT list_id, sku, qty FROM list_items WHERE list_id IN (${lists.map(() => '?').join(',')}) ORDER BY sku`,
+        lists.map((list) => list.id),
+      )
+    : [];
+  return c.json({
+    lists: lists.map((list) => ({
+      ...list,
+      items: items.filter((item) => item.list_id === list.id).map(({ sku, qty }) => ({ sku, qty })),
+    })),
+  });
+});
+
+shop.post('/lists', requireUser, async (c) => {
+  const input = await body(c, listInput);
+  const userId = c.get('user').id;
+  const id = await transaction(async (conn) => {
+    const [count] = await rows<{ n: number }>('SELECT COUNT(*) AS n FROM lists WHERE user_id = ?', [userId], conn);
+    if ((count?.n ?? 0) >= 20) throw new Refusal('That is the most lists an account can keep. Delete one first.');
+    const created = await run('INSERT INTO lists (user_id, name, cadence) VALUES (?, ?, ?)', [userId, input.name, input.cadence], conn);
+    await writeListItems(conn, created.insertId, input.items);
+    return created.insertId;
+  });
+  return c.json({ id });
+});
+
+shop.put('/lists/:id', requireUser, async (c) => {
+  const input = await body(c, listInput);
+  const id = Number(c.req.param('id'));
+  await transaction(async (conn) => {
+    const mine = await rows('SELECT id FROM lists WHERE id = ? AND user_id = ? FOR UPDATE', [id, c.get('user').id], conn);
+    if (!mine.length) throw new Refusal('We could not find that list.', 404);
+    await run('UPDATE lists SET name = ?, cadence = ? WHERE id = ?', [input.name, input.cadence, id], conn);
+    await writeListItems(conn, id, input.items);
+  });
+  return c.json({ ok: true });
+});
+
+shop.delete('/lists/:id', requireUser, async (c) => {
+  await run('DELETE FROM lists WHERE id = ? AND user_id = ?', [Number(c.req.param('id')), c.get('user').id]);
   return c.json({ ok: true });
 });

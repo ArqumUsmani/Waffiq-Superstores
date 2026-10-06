@@ -109,8 +109,8 @@ function AdminLogin() {
     <form className="adm-gate" onSubmit={submit}>
       <h1>Wafiq admin</h1>
       <label>
-        Mobile number
-        <input value={phone} onChange={(e) => setPhone(e.target.value)} type="tel" autoComplete="username" required />
+        Email or mobile number
+        <input value={phone} onChange={(e) => setPhone(e.target.value)} type="text" autoComplete="username" autoCapitalize="none" required />
       </label>
       <label>
         Password

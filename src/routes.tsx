@@ -10,6 +10,8 @@ import LoginPage from './pages/shop/LoginPage';
 import CheckoutPage from './pages/shop/CheckoutPage';
 import OrderPage from './pages/shop/OrderPage';
 import AccountPage from './pages/shop/AccountPage';
+import ListsPage from './pages/shop/ListsPage';
+import { ForgotPage, ResetPage } from './pages/shop/ResetPages';
 
 /* Every route is bundled eagerly: a lazy chunk that has not loaded yet would
    suspend at the launch transition's cover moment, and the flood would fade
@@ -31,6 +33,9 @@ export const router = createBrowserRouter([
       { path: 'checkout', element: <ShopGate><CheckoutPage /></ShopGate> },
       { path: 'order/:number', element: <ShopGate><OrderPage /></ShopGate> },
       { path: 'account', element: <ShopGate><AccountPage /></ShopGate> },
+      { path: 'lists', element: <ShopGate><ListsPage /></ShopGate> },
+      { path: 'forgot', element: <ShopGate><ForgotPage /></ShopGate> },
+      { path: 'reset', element: <ShopGate><ResetPage /></ShopGate> },
       { path: '*', element: <NotFound /> },
     ],
   },

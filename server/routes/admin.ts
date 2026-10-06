@@ -12,7 +12,7 @@ import { z } from 'zod';
 import type { AppEnv } from '../auth.js';
 import { rows, run, transaction } from '../db/pool.js';
 import { getSettings, saveSettings } from '../settings.js';
-import { Refusal, restock } from './shop.js';
+import { Refusal, notify, restock } from './shop.js';
 
 export const admin = new Hono<AppEnv>();
 
@@ -126,7 +126,7 @@ admin.get('/orders/:number', async (c) => {
 
 admin.patch('/orders/:number', async (c) => {
   const input = await parse(c, z.object({ status: z.enum(STATUSES) }));
-  await transaction(async (conn) => {
+  const moved = await transaction(async (conn) => {
     const found = await rows<{ id: number; status: Status; fulfilment: 'delivery' | 'pickup' }>(
       'SELECT id, status, fulfilment FROM orders WHERE number = ? FOR UPDATE',
       [c.req.param('number')],
@@ -139,7 +139,10 @@ admin.patch('/orders/:number', async (c) => {
     }
     await run('UPDATE orders SET status = ? WHERE id = ?', [input.status, order.id], conn);
     if (input.status === 'cancelled') await restock(conn, order.id);
+    return order.id;
   });
+  /* After the change is saved, so the email never reports a step that did not happen. */
+  await notify(c, moved);
   return c.json({ ok: true });
 });
 
@@ -207,7 +210,7 @@ admin.patch('/products/:sku', async (c) => {
 
 admin.get('/customers', async (c) => {
   const list = await rows(
-    `SELECT u.id, u.name, u.phone, u.created_at, u.is_demo,
+    `SELECT u.id, u.name, u.phone, u.email, u.created_at, u.is_demo,
             COUNT(o.id) AS orders, COALESCE(SUM(o.total), 0) AS spent, MAX(o.created_at) AS last_order
      FROM users u LEFT JOIN orders o ON o.user_id = u.id AND ${LIVE}
      WHERE u.role = 'customer' GROUP BY u.id ORDER BY spent DESC LIMIT 300`,

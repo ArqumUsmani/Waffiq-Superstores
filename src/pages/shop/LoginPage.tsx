@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Navigate, useSearchParams } from 'react-router';
+import { Link, Navigate, useSearchParams } from 'react-router';
 import { ShopPage } from '../../components/shop';
 import { errorMessage } from '../../lib/api';
 import { t } from '../../lib/i18n';
@@ -18,6 +18,7 @@ export default function LoginPage() {
 
   const [mode, setMode] = useState<'in' | 'up'>('in');
   const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [busy, setBusy] = useState(false);
@@ -34,8 +35,8 @@ export default function LoginPage() {
     setBusy(true);
     setError('');
     try {
-      if (mode === 'in') await signIn(phone, password);
-      else await signUp(name, phone, password);
+      if (mode === 'in') await signIn(email, password);
+      else await signUp(name, email, phone, password);
     } catch (problem) {
       setError(errorMessage(problem));
       setBusy(false);
@@ -72,6 +73,24 @@ export default function LoginPage() {
           </label>
         ) : null}
         <label className="field">
+          <span className="field__label">{t(mode === 'in' ? 'shop.auth.login' : 'shop.auth.email')}</span>
+          <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            /* Signing in also takes a mobile number, for accounts made before email. */
+            type={mode === 'up' ? 'email' : 'text'}
+            inputMode="email"
+            autoComplete={mode === 'in' ? 'username' : 'email'}
+            autoCapitalize="none"
+            spellCheck={false}
+            dir="ltr"
+            required
+            maxLength={190}
+          />
+          {mode === 'up' ? <small className="field__hint">{t('shop.auth.emailHint')}</small> : null}
+        </label>
+        {mode === 'up' ? (
+        <label className="field">
           <span className="field__label">{t('shop.auth.phone')}</span>
           <input
             value={phone}
@@ -83,7 +102,9 @@ export default function LoginPage() {
             dir="ltr"
             required
           />
+          <small className="field__hint">{t('shop.auth.phoneWhy')}</small>
         </label>
+        ) : null}
         <label className="field">
           <span className="field__label">{t('shop.auth.password')}</span>
           <input
@@ -106,6 +127,11 @@ export default function LoginPage() {
         <button className="btn btn--solid" type="submit" disabled={busy}>
           {busy ? t('shop.auth.busy') : t(mode === 'in' ? 'shop.auth.submitIn' : 'shop.auth.submitUp')}
         </button>
+        {mode === 'in' ? (
+          <Link className="shop-form__link" to="/forgot">
+            {t('shop.auth.forgot')}
+          </Link>
+        ) : null}
       </form>
     </ShopPage>
   );
