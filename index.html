@@ -32,9 +32,156 @@
         } catch (e) {}
       })();
     </script>
+
+    <!-- Splash screen. Inline on purpose: it has to show before the bundle
+         (and main.css) arrive, which on a slow connection is the whole
+         point. CSS keyframes only, no script drives it; src/lib/boot.ts
+         removes it once the site is ready. -->
+    <link rel="preload" as="image" href="/assets/splash.webp" type="image/webp" />
+    <link rel="preload" as="image" href="/assets/logo-on-dark.svg" type="image/svg+xml" />
+    <style>
+      html:has(#splash) { overflow: hidden; }
+      #splash {
+        --bg: #eef6e2; --ink: #0a4527; --muted: #4a6b57;
+        position: fixed; inset: 0; z-index: 9999;
+        display: grid; place-content: center; justify-items: center; gap: 2rem;
+        background: var(--bg); color: var(--ink);
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+        transition: opacity .5s ease, visibility .5s;
+      }
+      [data-theme="dark"] #splash { --bg: #0d1410; --ink: #f3f8ec; --muted: #9ba79e; }
+      #splash.is-leaving { opacity: 0; visibility: hidden; }
+      #splash.is-leaving .sp-card { scale: 1.18; }
+      .sp-stage { perspective: 1100px; }
+      /* One loop is one aisle: the card arrives edge-on, faces front, and
+         leaves edge-on, so the face can swap while it cannot be seen. */
+      .sp-card {
+        position: relative; width: min(60vw, 40vh, 280px); aspect-ratio: 5 / 7;
+        transform-style: preserve-3d; will-change: transform;
+        animation: sp-flip 2s cubic-bezier(.5, 0, .2, 1) infinite;
+        transition: scale .5s ease;
+      }
+      @keyframes sp-flip {
+        0% { transform: rotateY(-89deg) scale(.9); }
+        20% { transform: rotateY(7deg) scale(1); }
+        28%, 78% { transform: rotateY(0) scale(1); }
+        100% { transform: rotateY(89deg) scale(.9); }
+      }
+      .sp-face {
+        position: absolute; inset: 0; border-radius: 9%; opacity: 0;
+        display: grid; grid-template-rows: auto 1fr auto; justify-items: center;
+        padding: 9% 6%; color: #f3f8ec; background: var(--panel);
+        box-shadow: 0 24px 50px -22px rgb(4 26 14 / .55);
+        animation: sp-face 8s steps(1) infinite;
+      }
+      .sp-face:nth-child(1) { --panel: #136f37; --n: 0; }
+      .sp-face:nth-child(2) { --panel: #2f7d32; --n: 1; animation-delay: 2s; }
+      .sp-face:nth-child(3) { --panel: #1c7a46; --n: 2; animation-delay: 4s; }
+      .sp-face:nth-child(4) { --panel: #0a4527; --n: 3; animation-delay: 6s; }
+      @keyframes sp-face { 0% { opacity: 1; } 25%, 100% { opacity: 0; } }
+      .sp-word { margin: 0; font-size: clamp(1.4rem, 7.5vmin, 2.1rem); font-weight: 800; letter-spacing: -.02em; line-height: 1; }
+      /* The white-lettered logo: every panel is a dark enough green for it. */
+      .sp-logo { width: 68%; height: auto; }
+      .sp-disc {
+        position: relative; align-self: center; width: 74%; aspect-ratio: 1; border-radius: 50%;
+        background: rgb(243 248 236 / .22);
+      }
+      /* All four renders are one image, four cells wide; --n picks the cell. */
+      .sp-art {
+        position: absolute; inset: -14%;
+        background: url(/assets/splash.webp) calc(var(--n) * 33.333%) 0 / 400% 100% no-repeat;
+        filter: drop-shadow(0 12px 14px rgb(4 26 14 / .35));
+        animation: sp-pop 2s cubic-bezier(.34, 1.56, .64, 1) infinite;
+      }
+      .sp-chip {
+        position: absolute; padding: .35em .7em; border-radius: 99px; white-space: nowrap;
+        background: #f3f8ec; color: #0a4527; font-size: clamp(.6rem, 2.6vmin, .78rem); font-weight: 700;
+        box-shadow: 0 6px 14px rgb(4 26 14 / .25);
+        animation: sp-pop 2s cubic-bezier(.34, 1.56, .64, 1) infinite;
+      }
+      .sp-chip:nth-of-type(1) { top: 2%; left: -16%; animation-delay: .1s; }
+      .sp-chip:nth-of-type(2) { bottom: 4%; right: -18%; background: #bae957; animation-delay: .2s; }
+      @keyframes sp-pop {
+        0%, 22% { opacity: 0; transform: scale(.5); }
+        42%, 100% { opacity: 1; transform: scale(1); }
+      }
+      .sp-foot { display: grid; justify-items: center; gap: .7rem; }
+      .sp-bar { width: 9rem; height: 4px; border-radius: 99px; overflow: hidden; background: color-mix(in srgb, var(--ink) 14%, transparent); }
+      .sp-bar::after {
+        content: ""; display: block; width: 40%; height: 100%; border-radius: inherit; background: #8dc63f;
+        animation: sp-bar 1.4s ease-in-out infinite;
+      }
+      @keyframes sp-bar { 0% { translate: -110% 0; } 100% { translate: 260% 0; } }
+      .sp-note { margin: 0; font-size: .85rem; color: var(--muted); }
+      .sp-retry { display: none; padding: .55rem 1.2rem; border: 0; border-radius: 99px; background: #136f37; color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+      #splash.is-stuck .sp-bar { display: none; }
+      #splash.is-stuck .sp-retry { display: block; }
+      #splash [lang="ur"] { display: none; }
+      html[lang="ur"] #splash [lang="ur"] { display: revert; }
+      html[lang="ur"] #splash [lang="en"] { display: none; }
+      /* One message at a time; the language rules above pick en or ur. */
+      #splash:not(.is-stuck) .sp-wait, #splash.is-stuck .sp-load { display: none !important; }
+      @media (prefers-reduced-motion: reduce) {
+        .sp-card, .sp-face, .sp-art, .sp-chip, .sp-bar::after { animation: none; }
+        .sp-face:nth-child(1) { opacity: 1; }
+      }
+    </style>
+    <noscript><style>#splash { display: none; }</style></noscript>
   </head>
 
   <body>
+    <div id="splash" role="status" aria-label="Loading Wafiq Superstores">
+      <div class="sp-stage" aria-hidden="true">
+        <div class="sp-card">
+          <div class="sp-face">
+            <p class="sp-word"><span lang="en">Fresh</span><span lang="ur">تازہ</span></p>
+            <div class="sp-disc"><div class="sp-art"></div><span class="sp-chip">Fresh today</span><span class="sp-chip">6am – 11pm</span></div>
+            <img class="sp-logo" src="/assets/logo-on-dark.svg" alt="" width="220" height="63" />
+          </div>
+          <div class="sp-face">
+            <p class="sp-word"><span lang="en">Snacks</span><span lang="ur">اسنیکس</span></p>
+            <div class="sp-disc"><div class="sp-art"></div><span class="sp-chip">Tea-time</span><span class="sp-chip">28 products</span></div>
+            <img class="sp-logo" src="/assets/logo-on-dark.svg" alt="" width="220" height="63" />
+          </div>
+          <div class="sp-face">
+            <p class="sp-word"><span lang="en">Dairy</span><span lang="ur">ڈیری</span></p>
+            <div class="sp-disc"><div class="sp-art"></div><span class="sp-chip">Chilled</span><span class="sp-chip">27 products</span></div>
+            <img class="sp-logo" src="/assets/logo-on-dark.svg" alt="" width="220" height="63" />
+          </div>
+          <div class="sp-face">
+            <p class="sp-word"><span lang="en">Care</span><span lang="ur">نگہداشت</span></p>
+            <div class="sp-disc"><div class="sp-art"></div><span class="sp-chip">Everyday</span><span class="sp-chip">30 products</span></div>
+            <img class="sp-logo" src="/assets/logo-on-dark.svg" alt="" width="220" height="63" />
+          </div>
+        </div>
+      </div>
+      <div class="sp-foot">
+        <div class="sp-bar"></div>
+        <p class="sp-note">
+          <span class="sp-load" lang="en">Stocking the shelves…</span>
+          <span class="sp-load" lang="ur">شیلف سجائے جا رہے ہیں…</span>
+          <span class="sp-wait" lang="en">This is taking longer than usual.</span>
+          <span class="sp-wait" lang="ur">معمول سے زیادہ وقت لگ رہا ہے۔</span>
+        </p>
+        <button class="sp-retry" type="button" onclick="location.reload()">
+          <span lang="en">Try again</span><span lang="ur">دوبارہ کوشش کریں</span>
+        </button>
+      </div>
+    </div>
+    <script>
+      /* If the app never arrives — the bundle fails to load, or it is simply
+         too slow — offer a retry instead of leaving the splash up forever. */
+      (function () {
+        function stuck() {
+          var el = document.getElementById('splash');
+          if (el && !el.classList.contains('is-leaving')) el.classList.add('is-stuck');
+        }
+        addEventListener('error', function (e) {
+          if (e.target && e.target.tagName === 'SCRIPT') stuck();
+        }, true);
+        setTimeout(stuck, 15000);
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

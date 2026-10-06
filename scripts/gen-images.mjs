@@ -57,6 +57,23 @@ const SOURCES = [
   { from: 'src/assets/shopping-bag.svg', to: 'public/assets/footer-bag.webp', width: 1024, square: true, sharpen: 0.9 },
 ];
 
+/**
+ * Sprites: several images side by side in one file, each fitted into a
+ * square cell. The splash screen in index.html uses one — it has to show
+ * before the bundle loads, so it cannot use the bundled (hashed) renders,
+ * and one small file is one request and one small bitmap to hold.
+ */
+const SPRITES = [
+  {
+    to: 'public/assets/splash.webp',
+    /* Shown at ~265 CSS px, so 2x screens need ~530. */
+    cell: 540,
+    from: ['fruits-vegetables', 'snacks-confectionery', 'milk-beverages', 'personal-care'].map(
+      (slug) => `src/assets/categories/originals/${slug}.png`,
+    ),
+  },
+];
+
 const run = promisify(execFile);
 
 /** Reads a source, shrinking it first with macOS `sips` if it is enormous. */
@@ -115,7 +132,18 @@ async function main() {
   /* Sequential: the preshrink step reuses one temp file. */
   const only = process.argv[2];
   const wanted = only ? SOURCES.filter((spec) => spec.to.includes(only)) : SOURCES;
-  if (!wanted.length) throw new Error(`no source matches "${only}"`);
+  const sprites = only ? SPRITES.filter((spec) => spec.to.includes(only)) : SPRITES;
+  if (!wanted.length && !sprites.length) throw new Error(`no source matches "${only}"`);
+  /* Sprite cells ride along as extra files for the server; `guide` keeps
+     the single-image loop below from encoding them on their own. */
+  for (const [s, sprite] of sprites.entries()) {
+    sprite.names = [];
+    for (const [c, from] of sprite.from.entries()) {
+      const name = `sprite-${s}-${c}.png`;
+      sprite.names.push(name);
+      files.push({ name, bytes: await readSource(resolve(ROOT, from), tmp), guide: true });
+    }
+  }
   for (const [i, spec] of wanted.entries()) {
     const ext = spec.from.endsWith('.svg') ? 'svg' : 'png';
     files.push({ name: `src-${i}.${ext}`, bytes: await readSource(resolve(ROOT, spec.from), tmp), spec });
@@ -254,6 +282,39 @@ async function main() {
         `  (from ${(file.bytes.length / 1024 / 1024).toFixed(1)} MB)` +
         (keyed ? `\n  sky keyed: ${JSON.stringify(keyed)}` : ''),
     );
+  }
+
+  for (const sprite of sprites) {
+    const expression = `
+      (async () => {
+        const cell = ${sprite.cell};
+        const names = ${JSON.stringify(sprite.names)};
+        const canvas = new OffscreenCanvas(cell * names.length, cell);
+        const ctx = canvas.getContext('2d');
+        ctx.imageSmoothingQuality = 'high';
+        for (const [i, name] of names.entries()) {
+          const img = new Image();
+          img.crossOrigin = 'anonymous';
+          img.src = 'http://127.0.0.1:${port}/' + name;
+          await img.decode();
+          /* Contain, centred in its cell. */
+          const k = Math.min(cell / img.naturalWidth, cell / img.naturalHeight);
+          const w = img.naturalWidth * k;
+          const h = img.naturalHeight * k;
+          ctx.drawImage(img, i * cell + (cell - w) / 2, (cell - h) / 2, w, h);
+        }
+        const blob = await canvas.convertToBlob({ type: 'image/webp', quality: ${QUALITY} });
+        const buf = new Uint8Array(await blob.arrayBuffer());
+        let s = '';
+        for (let i = 0; i < buf.length; i += 32768) s += String.fromCharCode(...buf.subarray(i, i + 32768));
+        return btoa(s);
+      })()
+    `;
+    const result = await rpc(ws, 'Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true }, sessionId);
+    if (result.exceptionDetails) throw new Error(result.exceptionDetails.exception?.description ?? 'sprite failed');
+    const bytes = Buffer.from(result.result.value, 'base64');
+    await writeFile(resolve(ROOT, sprite.to), bytes);
+    console.log(`${sprite.to}  ${sprite.cell * sprite.names.length}x${sprite.cell}  ${(bytes.length / 1024).toFixed(0)} KB  (${sprite.names.length} cells)`);
   }
 
   await rpc(ws, 'Target.closeTarget', { targetId });
